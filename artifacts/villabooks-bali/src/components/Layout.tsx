@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, Menu, X, Phone, MapPin } from "lucide-react";
+import { Logo } from "@/components/Logo";
 
 const WA = "https://wa.me/6281237402292";
 const wa = (msg: string) => `${WA}?text=${encodeURIComponent(msg)}`;
@@ -52,10 +53,14 @@ export function Layout({ children }: { children: ReactNode }) {
           <a
             href="#top"
             onClick={(e) => smoothScroll(e, "#top")}
-            className="flex items-center gap-2 group"
+            className="flex items-center group"
+            aria-label="VillaBooks Bali — home"
           >
-            <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-secondary flex items-center justify-center font-bold text-secondary-foreground text-sm shadow-md group-hover:scale-105 transition-transform">VB</span>
-            <span className="font-serif text-lg sm:text-xl font-bold text-white tracking-tight">VillaBooks <span className="text-secondary">Bali</span></span>
+            <Logo
+              variant="full"
+              onDark
+              iconClassName="w-9 h-9 sm:w-10 sm:h-10 group-hover:scale-105 transition-transform"
+            />
           </a>
 
           {/* Desktop nav */}
@@ -143,9 +148,8 @@ export function Layout({ children }: { children: ReactNode }) {
       <footer className="bg-[#0b1f1c] text-white/80 pt-14 pb-6">
         <div className="container mx-auto px-4 sm:px-6 grid gap-8 md:grid-cols-3 mb-10">
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <span className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center font-bold text-secondary-foreground text-sm">VB</span>
-              <span className="font-serif text-xl font-bold text-white">VillaBooks <span className="text-secondary">Bali</span></span>
+            <div className="mb-3">
+              <Logo variant="full" onDark iconClassName="w-10 h-10" textClassName="text-xl" />
             </div>
             <p className="text-sm text-white/60 leading-relaxed mb-4">
               Bookkeeping for Bali villa owners. Clear monthly reports. Real numbers. Zero stress.

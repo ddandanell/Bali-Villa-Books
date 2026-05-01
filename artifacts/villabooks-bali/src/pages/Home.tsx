@@ -406,7 +406,7 @@ export default function Home() {
             </p>
           </FadeUp>
 
-          <Stagger className="grid md:grid-cols-3 gap-5">
+          <Stagger className="grid md:grid-cols-3 gap-5 pt-4">
             {[
               {
                 name: "Starter",
@@ -457,7 +457,7 @@ export default function Home() {
                 <div
                   className={`relative h-full rounded-2xl p-6 sm:p-7 transition-all flex flex-col ${
                     p.highlight
-                      ? "bg-primary text-primary-foreground shadow-2xl shadow-primary/30 ring-1 ring-secondary/40 scale-[1.02]"
+                      ? "bg-primary text-primary-foreground shadow-2xl shadow-primary/30 ring-1 ring-secondary/40 md:scale-[1.02]"
                       : "bg-white border border-border/60 shadow-sm hover:shadow-md"
                   }`}
                 >
