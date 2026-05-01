@@ -361,10 +361,10 @@ export default function Home() {
               <div className="relative">
                 <div className="absolute -inset-4 bg-secondary/20 rounded-3xl blur-2xl" />
                 <div className="relative grid grid-cols-2 gap-3 sm:gap-4">
-                  <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=800&auto=format&fit=crop" alt="Bali villa pool" className="rounded-2xl aspect-[3/4] object-cover w-full shadow-lg" />
-                  <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=800&auto=format&fit=crop" alt="Bali villa interior" className="rounded-2xl aspect-square object-cover w-full mt-8 shadow-lg" />
-                  <img src="https://images.unsplash.com/photo-1505873242700-f289a29e1e0f?q=80&w=800&auto=format&fit=crop" alt="Bali rice fields" className="rounded-2xl aspect-square object-cover w-full -mt-4 shadow-lg" />
-                  <img src="https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd?q=80&w=800&auto=format&fit=crop" alt="Bali villa garden" className="rounded-2xl aspect-[3/4] object-cover w-full shadow-lg" />
+                  <img src="/images/team-accountant.png" alt="Indonesian bookkeeper working at a villa office in Bali" loading="lazy" className="rounded-2xl aspect-[3/4] object-cover w-full shadow-lg" />
+                  <img src="/images/team-villa-staff.png" alt="Balinese villa hospitality team welcoming guests" loading="lazy" className="rounded-2xl aspect-square object-cover w-full mt-8 shadow-lg" />
+                  <img src="/images/team-bookkeeper.png" alt="Indonesian woman reviewing financial reports on a tablet" loading="lazy" className="rounded-2xl aspect-square object-cover w-full -mt-4 shadow-lg" />
+                  <img src="/images/team-manager.png" alt="Indonesian villa manager outside a Bali villa" loading="lazy" className="rounded-2xl aspect-[3/4] object-cover w-full shadow-lg" />
                 </div>
               </div>
             </FadeUp>

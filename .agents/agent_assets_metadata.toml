@@ -1,8 +1,79 @@
 uploads = []
-generated = []
+
+[[generated]]
+id = "yWTFzO15Ov_zokCsETYVK"
+uri = "file://artifacts/villabooks-bali/public/images/team-accountant.png"
+type = "image"
+title = "indonesian accountant"
+
+[[generated]]
+id = "T4bPIVYlr_K-H5eQUsJoM"
+uri = "file://artifacts/villabooks-bali/public/images/team-villa-staff.png"
+type = "image"
+title = "balinese villa staff"
+
+[[generated]]
+id = "7aoaSpXWWBEpLGMee9DEM"
+uri = "file://artifacts/villabooks-bali/public/images/team-bookkeeper.png"
+type = "image"
+title = "indonesian bookkeeper"
+
+[[generated]]
+id = "hhKyfjBNo9qAKmjeEUfMI"
+uri = "file://artifacts/villabooks-bali/public/images/team-manager.png"
+type = "image"
+title = "indonesian manager"
 
 [[outputs]]
 id = "7ybegaG7sYw8i3f5mnvHw"
 uri = "file://artifacts/villabooks-bali/public/images/hero.jpg"
 type = "image"
 title = "luxury bali villa architecture beautiful pool sunny modern"
+
+[[outputs]]
+id = "OJgyOAh7eRdNjNhGTMBjw"
+uri = "file://attached_assets/stock_images/indonesian-accountant_1.jpg"
+type = "image"
+title = "Indonesian Balinese woman professional with laptop, warm friendly portrait, natural lighting"
+
+[[outputs]]
+id = "mVYLi3muoZdrSHiu6xpT6"
+uri = "file://attached_assets/stock_images/indonesian-accountant_2.jpg"
+type = "image"
+title = "Indonesian Balinese woman professional with laptop, warm friendly portrait, natural lighting"
+
+[[outputs]]
+id = "yksD_hzVW2laLIvUAcOAK"
+uri = "file://attached_assets/stock_images/balinese-staff_1.jpg"
+type = "image"
+title = "Balinese hospitality villa staff in uniform welcoming guests, smiling, tropical setting"
+
+[[outputs]]
+id = "EXQ-mn__mo6W5bqW8U60l"
+uri = "file://attached_assets/stock_images/balinese-staff_2.jpg"
+type = "image"
+title = "Balinese hospitality villa staff in uniform welcoming guests, smiling, tropical setting"
+
+[[outputs]]
+id = "Ui0aswTHsIA9UXMfJ8vB8"
+uri = "file://attached_assets/stock_images/indonesian-bookkeeper_1.jpg"
+type = "image"
+title = "Indonesian person reviewing documents at desk, modern office, Bali"
+
+[[outputs]]
+id = "uDmUB6m1fBb-QhDyb9DH6"
+uri = "file://attached_assets/stock_images/indonesian-bookkeeper_2.jpg"
+type = "image"
+title = "Indonesian person reviewing documents at desk, modern office, Bali"
+
+[[outputs]]
+id = "AtOD_tB5FkroxLkIlYY55"
+uri = "file://attached_assets/stock_images/balinese-woman-portrait_1.jpg"
+type = "image"
+title = "Balinese woman portrait outdoors tropical, smiling, natural"
+
+[[outputs]]
+id = "zt4g3P98Ak_ZPvwp3l5x7"
+uri = "file://attached_assets/stock_images/balinese-woman-portrait_2.jpg"
+type = "image"
+title = "Balinese woman portrait outdoors tropical, smiling, natural"
