@@ -57,11 +57,11 @@ export default function SampleReport() {
                   </div>
                   <div className="bg-muted/20 p-4 rounded-lg">
                     <div className="text-sm text-muted-foreground mb-1">ADR (Avg Daily Rate)</div>
-                    <div className="text-xl font-bold">$ 345.00</div>
+                    <div className="text-xl font-bold">Rp 5.700.000</div>
                   </div>
                   <div className="bg-muted/20 p-4 rounded-lg">
                     <div className="text-sm text-muted-foreground mb-1">RevPAR</div>
-                    <div className="text-xl font-bold">$ 276.00</div>
+                    <div className="text-xl font-bold">Rp 4.560.000</div>
                   </div>
                 </div>
               </div>
@@ -75,33 +75,33 @@ export default function SampleReport() {
                       <th className="py-2 font-medium">Channel</th>
                       <th className="py-2 font-medium text-right">Gross Booking</th>
                       <th className="py-2 font-medium text-right">OTA Commission</th>
-                      <th className="py-2 font-medium text-right">Net Received (USD)</th>
+                      <th className="py-2 font-medium text-right">Net Received (IDR)</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b border-border/50">
                       <td className="py-3">Airbnb</td>
-                      <td className="py-3 text-right">$ 6,240.00</td>
-                      <td className="py-3 text-right text-destructive">($ 936.00)</td>
-                      <td className="py-3 text-right font-medium">$ 5,304.00</td>
+                      <td className="py-3 text-right">Rp 103.000.000</td>
+                      <td className="py-3 text-right text-destructive">(Rp 15.450.000)</td>
+                      <td className="py-3 text-right font-medium">Rp 87.550.000</td>
                     </tr>
                     <tr className="border-b border-border/50">
                       <td className="py-3">Booking.com</td>
-                      <td className="py-3 text-right">$ 2,040.00</td>
-                      <td className="py-3 text-right text-destructive">($ 306.00)</td>
-                      <td className="py-3 text-right font-medium">$ 1,734.00</td>
+                      <td className="py-3 text-right">Rp 33.660.000</td>
+                      <td className="py-3 text-right text-destructive">(Rp 5.050.000)</td>
+                      <td className="py-3 text-right font-medium">Rp 28.610.000</td>
                     </tr>
                     <tr className="border-b border-border/50">
                       <td className="py-3">Direct</td>
-                      <td className="py-3 text-right">$ 1,035.00</td>
-                      <td className="py-3 text-right text-destructive">$ 0.00</td>
-                      <td className="py-3 text-right font-medium">$ 1,035.00</td>
+                      <td className="py-3 text-right">Rp 17.080.000</td>
+                      <td className="py-3 text-right text-destructive">Rp 0</td>
+                      <td className="py-3 text-right font-medium">Rp 17.080.000</td>
                     </tr>
                     <tr className="bg-muted/10 font-bold">
                       <td className="py-3">Total Revenue</td>
-                      <td className="py-3 text-right">$ 9,315.00</td>
-                      <td className="py-3 text-right text-destructive">($ 1,242.00)</td>
-                      <td className="py-3 text-right text-primary">$ 8,073.00</td>
+                      <td className="py-3 text-right">Rp 153.740.000</td>
+                      <td className="py-3 text-right text-destructive">(Rp 20.500.000)</td>
+                      <td className="py-3 text-right text-primary">Rp 133.240.000</td>
                     </tr>
                   </tbody>
                 </table>
@@ -114,31 +114,31 @@ export default function SampleReport() {
                   <tbody>
                     <tr className="border-b border-border/50">
                       <td className="py-2 text-muted-foreground">Management Fee (15%)</td>
-                      <td className="py-2 text-right">$ 1,210.95</td>
+                      <td className="py-2 text-right">Rp 19.985.000</td>
                     </tr>
                     <tr className="border-b border-border/50">
                       <td className="py-2 text-muted-foreground">Staff Wages (Manager, Housekeeping)</td>
-                      <td className="py-2 text-right">$ 850.00</td>
+                      <td className="py-2 text-right">Rp 14.025.000</td>
                     </tr>
                     <tr className="border-b border-border/50">
                       <td className="py-2 text-muted-foreground">Utilities (Electricity, Internet, Water)</td>
-                      <td className="py-2 text-right">$ 320.50</td>
+                      <td className="py-2 text-right">Rp 5.290.000</td>
                     </tr>
                     <tr className="border-b border-border/50">
                       <td className="py-2 text-muted-foreground">Maintenance (Pool, Garden)</td>
-                      <td className="py-2 text-right">$ 180.00</td>
+                      <td className="py-2 text-right">Rp 2.970.000</td>
                     </tr>
                     <tr className="border-b border-border/50">
                       <td className="py-2 text-muted-foreground">Guest Supplies & Amenities</td>
-                      <td className="py-2 text-right">$ 215.25</td>
+                      <td className="py-2 text-right">Rp 3.555.000</td>
                     </tr>
                     <tr className="border-b border-border/50">
                       <td className="py-2 text-muted-foreground">Banjar & Local Fees</td>
-                      <td className="py-2 text-right">$ 50.00</td>
+                      <td className="py-2 text-right">Rp 825.000</td>
                     </tr>
                     <tr className="bg-muted/10 font-bold text-destructive">
                       <td className="py-3">Total Operating Expenses</td>
-                      <td className="py-3 text-right">$ 2,826.70</td>
+                      <td className="py-3 text-right">Rp 46.650.000</td>
                     </tr>
                   </tbody>
                 </table>
@@ -150,15 +150,15 @@ export default function SampleReport() {
                 <div className="bg-primary/5 p-6 rounded-lg border border-primary/20">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-muted-foreground">Total Net Revenue</span>
-                    <span className="font-medium">$ 8,073.00</span>
+                    <span className="font-medium">Rp 133.240.000</span>
                   </div>
                   <div className="flex justify-between items-center mb-4 border-b border-primary/10 pb-4">
                     <span className="text-muted-foreground">Total Operating Expenses</span>
-                    <span className="font-medium text-destructive">($ 2,826.70)</span>
+                    <span className="font-medium text-destructive">(Rp 46.650.000)</span>
                   </div>
                   <div className="flex justify-between items-center text-xl font-bold text-primary">
                     <span>Net Operating Income</span>
-                    <span>$ 5,246.30</span>
+                    <span>Rp 86.590.000</span>
                   </div>
                 </div>
               </div>
@@ -169,19 +169,19 @@ export default function SampleReport() {
                 <div className="grid grid-cols-4 gap-4 text-center">
                   <div className="border border-border/50 p-4 rounded-lg">
                     <div className="text-xs text-muted-foreground mb-1 uppercase tracking-wider">Opening Bal</div>
-                    <div className="font-bold">$ 2,100.00</div>
+                    <div className="font-bold">Rp 34.650.000</div>
                   </div>
                   <div className="border border-border/50 p-4 rounded-lg bg-green-50/50">
                     <div className="text-xs text-muted-foreground mb-1 uppercase tracking-wider">Cash In</div>
-                    <div className="font-bold text-green-700">+$ 8,073.00</div>
+                    <div className="font-bold text-green-700">+ Rp 133.240.000</div>
                   </div>
                   <div className="border border-border/50 p-4 rounded-lg bg-red-50/50">
                     <div className="text-xs text-muted-foreground mb-1 uppercase tracking-wider">Cash Out</div>
-                    <div className="font-bold text-destructive">-$ 2,826.70</div>
+                    <div className="font-bold text-destructive">– Rp 46.650.000</div>
                   </div>
                   <div className="border-2 border-primary p-4 rounded-lg bg-primary/5">
                     <div className="text-xs text-primary font-bold mb-1 uppercase tracking-wider">Closing Bal</div>
-                    <div className="font-bold text-primary">$ 7,346.30</div>
+                    <div className="font-bold text-primary">Rp 121.240.000</div>
                   </div>
                 </div>
               </div>

@@ -396,17 +396,17 @@ export default function GetStarted() {
                     </div>
 
                     <div className="space-y-4">
-                      <Label className="text-base">Estimated Monthly Gross Revenue (USD) <span className="text-destructive">*</span></Label>
+                      <Label className="text-base">Estimated Monthly Gross Revenue (IDR) <span className="text-destructive">*</span></Label>
                       <RadioGroup
                         value={formData.monthlyRevenue}
                         onValueChange={(v) => set("monthlyRevenue", v)}
                         className="grid sm:grid-cols-2 gap-3"
                       >
                         {[
-                          { id: "rev-1", label: "Under $3,000" },
-                          { id: "rev-2", label: "$3,000 – $8,000" },
-                          { id: "rev-3", label: "$8,000 – $20,000" },
-                          { id: "rev-4", label: "Above $20,000" },
+                          { id: "rev-1", label: "Under Rp 50.000.000" },
+                          { id: "rev-2", label: "Rp 50.000.000 – Rp 130.000.000" },
+                          { id: "rev-3", label: "Rp 130.000.000 – Rp 330.000.000" },
+                          { id: "rev-4", label: "Above Rp 330.000.000" },
                         ].map((opt) => (
                           <div key={opt.id} className="flex items-center space-x-3 bg-muted/20 p-4 rounded-lg border border-border/50">
                             <RadioGroupItem value={opt.id} id={`rev-${opt.id}`} />

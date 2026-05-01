@@ -1,92 +1,105 @@
 import { Layout } from "@/components/Layout";
 import { FadeIn } from "@/components/Motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { MessageCircle } from "lucide-react";
+
+const WA = "https://wa.me/6281237402292";
+const wa = (msg: string) => `${WA}?text=${encodeURIComponent(msg)}`;
+
+function WAButton({ label, message }: { label: string; message: string }) {
+  return (
+    <a
+      href={wa(message)}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex w-full sm:w-auto items-center justify-center gap-2 h-14 px-8 rounded-xl bg-[#25D366] text-white font-bold text-base shadow-lg hover:bg-[#1ebe5e] active:scale-[0.98] transition-all"
+    >
+      <MessageCircle className="w-5 h-5" />
+      {label}
+    </a>
+  );
+}
 
 const faqs = [
   {
-    q: "What exactly is bookkeeping vs. accounting vs. tax advice — and what does VillaBooks Bali do?",
-    a: "Bookkeeping is the daily and monthly organization of your financial transactions. Accounting involves higher-level financial strategy and official tax filing. VillaBooks Bali specializes exclusively in bookkeeping and financial reporting. We organize your raw data into clear, professional Owner Financial Statements so you understand your villa's performance. We do not provide tax advice or official tax filings."
+    q: "What do you actually do?",
+    a: "We do your villa's monthly bookkeeping. Every month we collect your receipts, match your Airbnb and Booking.com payouts, and send you one clear report showing what came in, what went out, and what you actually made."
   },
   {
-    q: "Do you file our Indonesian taxes for us?",
-    a: "No — we prepare your records and coordinate with licensed Indonesian Konsultan Pajak. We are not a licensed tax firm. We act as the bridge, ensuring your data is perfectly clean and tax-ready so the Konsultan Pajak can file accurately and efficiently."
+    q: "How much does it cost?",
+    a: "Three packages — Rp 2.500.000, Rp 5.000.000, or Rp 8.500.000 per month. All in Indonesian Rupiah. No setup fee. Cancel anytime."
   },
   {
-    q: "What is a PT PMA and why does it matter for my villa's finances?",
-    a: "A PT PMA (Perseroan Terbatas Penanaman Modal Asing) is a foreign-owned Indonesian limited liability company. If your villa is operated under a PT PMA, it is subject to specific corporate tax and reporting requirements in Indonesia. Proper bookkeeping is legally essential to maintain your PT PMA status in good standing."
+    q: "Do you file my Indonesian taxes?",
+    a: "No. We organize your records and prepare a clean document pack. Then a licensed Indonesian Konsultan Pajak (registered with DJP) handles your actual filings. We work with their team or yours."
   },
   {
-    q: "What is an OTA and how do you reconcile my payouts?",
-    a: "OTA stands for Online Travel Agency (like Airbnb, Booking.com, VRBO). Reconciling payouts is complex because OTAs deduct their commissions before sending you money, and payouts often cross over month-ends. We cross-reference every payout against your booking calendar to ensure you received exactly what you were owed, accounting for all commissions and fees."
+    q: "I don't live in Bali. Can you still help?",
+    a: "Yes. 100% remote. Most of our clients live in Australia, Europe, Singapore, or the US. Everything happens by WhatsApp, email, and Google Drive."
   },
   {
-    q: "Do I need to be physically in Bali for this service?",
-    a: "No — 100% remote. Our entire process is digital. We are built specifically for remote foreign owners who need visibility from afar."
+    q: "How do I send you my receipts?",
+    a: "We set up a private Google Drive folder. Your villa manager snaps photos of paper receipts. You forward digital invoices. Done."
   },
   {
-    q: "How do you receive my receipts and invoices?",
-    a: "We set up a secure, shared Google Drive folder for you. Your local manager simply snaps photos of physical receipts and uploads them, while you can forward digital invoices and OTA reports. We handle the rest."
+    q: "What if my books are a total mess right now?",
+    a: "Very normal. We do a one-time cleanup (from Rp 8.500.000) — rebuild up to 12 months of records, then start your monthly service with clean books."
   },
   {
-    q: "Is my financial data secure?",
-    a: "Yes. We use secure cloud storage (Google Workspace) with restricted access controls. Your data is never shared with third parties without your explicit permission (such as your chosen Konsultan Pajak)."
+    q: "What's the difference between you and my villa manager?",
+    a: "Your manager runs the villa — guests, cleaning, staff. We do the books — independent, third-party financial oversight. We check the manager's spending, sort everything correctly, and send the report straight to you."
   },
   {
-    q: "What if my villa records are completely disorganized?",
-    a: "That's exactly why we're here. We offer a One-Time Financial Cleanup service where we can reconstruct up to 12 months of historical data, categorizing every transaction to give you a clean starting point."
+    q: "When do I get my monthly report?",
+    a: "By the 15th of every month. As long as your data is in by the 5th."
   },
   {
-    q: "How is this different from what my villa manager already does?",
-    a: "Your villa manager focuses on operations — guest experience, maintenance, and staff management. While they handle petty cash, they are rarely trained bookkeepers. We provide independent, third-party financial oversight. We verify the manager's reports, categorize the expenses properly, and present you with professional financial statements."
+    q: "What currency are reports in?",
+    a: "Indonesian Rupiah (IDR) only. Same currency you use to pay staff and vendors. Same currency your Konsultan Pajak expects."
   },
   {
-    q: "When will I receive my monthly Owner Financial Statement?",
-    a: "By the 15th of every month, provided all raw data (receipts, OTA reports) is submitted by the 5th."
+    q: "Do you work with PT PMA villas? Leasehold? Nominee?",
+    a: "Yes — all of them. The legal structure changes the compliance details, not our bookkeeping work."
   },
   {
-    q: "Can you work with my existing accountant in my home country?",
-    a: "Absolutely. Our reports are delivered in plain English and follow standard accounting principles, making it easy for your home-country accountant to understand your Bali income for your personal tax returns."
+    q: "Is my data safe?",
+    a: "Yes. Secure Google Workspace storage with locked-down access. We never share your data with anyone without your permission."
   },
   {
-    q: "What currency are the reports in?",
-    a: "Our standard reports present transactions in their native currency (usually IDR for expenses) and are consolidated into your preferred reporting currency (e.g., USD, AUD, EUR) based on standardized monthly exchange rates for a clear net position."
+    q: "Can my home-country accountant use your reports?",
+    a: "Yes. Reports are in plain English and follow standard accounting format. Easy to drop into your home tax return."
   },
-  {
-    q: "Do you work with leasehold/nominee-owned villas as well as PT PMAs?",
-    a: "Yes. We organize the financial reality of your villa regardless of the legal structure, though the compliance requirements will differ."
-  },
-  {
-    q: "What are Indonesian tax obligations for foreign villa rental income?",
-    a: "As a general awareness note: income generated from property in Indonesia is generally subject to Indonesian tax, regardless of where the money is paid or where the owner lives. However, we do not provide tax advice. We strongly recommend speaking to a licensed Konsultan Pajak to understand your specific obligations based on your ownership structure."
-  }
 ];
 
 export default function FAQ() {
   return (
     <Layout>
-      <div className="bg-muted/30 py-20">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <FadeIn className="text-center">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-6">Frequently Asked Questions</h1>
-            <p className="text-lg text-foreground/70">
-              Clear answers to the most common concerns from remote villa owners.
+      <section className="bg-primary text-primary-foreground py-16 sm:py-20">
+        <div className="container mx-auto px-4 max-w-3xl text-center">
+          <FadeIn>
+            <h1 className="text-4xl sm:text-5xl font-serif font-bold mb-4">Quick Answers.</h1>
+            <p className="text-lg sm:text-xl text-primary-foreground/85 mb-8">
+              Real questions from real Bali villa owners. Plain English answers.
             </p>
+            <div className="flex justify-center">
+              <WAButton label="Don't see your question? Ask Abel" message="Hi Abel, I have a question about your villa accounting service." />
+            </div>
           </FadeIn>
         </div>
-      </div>
+      </section>
 
-      <div className="container mx-auto px-4 py-24 max-w-3xl">
-        <FadeIn delay={0.1}>
+      <section className="container mx-auto px-4 py-16 sm:py-20 max-w-3xl">
+        <FadeIn>
           <Card className="border-border/50 shadow-sm">
-            <CardContent className="p-6 md:p-8">
+            <CardContent className="p-4 sm:p-8">
               <Accordion type="single" collapsible className="w-full">
                 {faqs.map((faq, index) => (
                   <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className="text-left font-serif font-bold text-lg hover:text-primary hover:no-underline">
+                    <AccordionTrigger className="text-left font-serif font-bold text-base sm:text-lg hover:text-primary hover:no-underline">
                       {faq.q}
                     </AccordionTrigger>
-                    <AccordionContent className="text-foreground/80 leading-relaxed text-base">
+                    <AccordionContent className="text-foreground/80 leading-relaxed text-sm sm:text-base">
                       {faq.a}
                     </AccordionContent>
                   </AccordionItem>
@@ -95,7 +108,21 @@ export default function FAQ() {
             </CardContent>
           </Card>
         </FadeIn>
-      </div>
+      </section>
+
+      <section className="py-12 sm:py-16 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4 max-w-3xl text-center">
+          <FadeIn>
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold mb-3">Still Got Questions?</h2>
+            <p className="text-primary-foreground/85 mb-6 text-base sm:text-lg">
+              Send Abel a message on WhatsApp. Real human reply, usually within a few hours.
+            </p>
+            <div className="flex justify-center">
+              <WAButton label="Chat on WhatsApp" message="Hi Abel, I have a question about VillaBooks Bali." />
+            </div>
+          </FadeIn>
+        </div>
+      </section>
     </Layout>
   );
 }
