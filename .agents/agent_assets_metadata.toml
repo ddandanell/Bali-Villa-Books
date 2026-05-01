@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "7ybegaG7sYw8i3f5mnvHw"
+uri = "file://artifacts/villabooks-bali/public/images/hero.jpg"
+type = "image"
+title = "luxury bali villa architecture beautiful pool sunny modern"
