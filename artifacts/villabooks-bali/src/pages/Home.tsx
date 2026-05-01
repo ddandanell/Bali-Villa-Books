@@ -235,7 +235,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Testimonials — PLACEHOLDERS: replace with verified client quotes before launch */}
       <section className="py-24">
         <div className="container mx-auto px-4">
           <FadeIn className="text-center mb-16">
@@ -246,19 +246,19 @@ export default function Home() {
           <StaggerContainer className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
-                quote: "I finally understood where 40M IDR was going each month — turned out our maintenance vendor was double-billing. VillaBooks caught it in the first report.",
-                author: "Mark T.",
-                detail: "Australian, villa owner in Canggu"
+                quote: "[Client testimonial placeholder — replace with verified quote before launch]",
+                author: "[Client Name], [Nationality]",
+                detail: "[Ownership type], [Area], Bali"
               },
               {
-                quote: "As a remote owner in the Netherlands, I had zero visibility into our villa's actual profit. Now I get a clean 2-page report by the 15th of every month. I finally feel in control.",
-                author: "Sophie V.",
-                detail: "Dutch, villa owner in Ubud"
+                quote: "[Client testimonial placeholder — replace with verified quote before launch]",
+                author: "[Client Name], [Nationality]",
+                detail: "[Ownership type], [Area], Bali"
               },
               {
-                quote: "We were about to refinance and our records were a disaster. The cleanup service gave us 12 months of organized books in two weeks. The bank was happy. We were relieved.",
-                author: "James & Rachel K.",
-                detail: "British, villa owners in Seminyak"
+                quote: "[Client testimonial placeholder — replace with verified quote before launch]",
+                author: "[Client Name], [Nationality]",
+                detail: "[Ownership type], [Area], Bali"
               }
             ].map((item, i) => (
               <StaggerItem key={i}>
@@ -436,7 +436,7 @@ export default function Home() {
       <section className="py-8 bg-muted/20 border-y border-border/30">
         <div className="container mx-auto px-4 max-w-3xl text-center">
           <p className="text-xs text-muted-foreground leading-relaxed">
-            VillaBooks Bali is a bookkeeping and financial reporting service. Our reports are for owner information only and do not constitute official tax filings or legal advice. For Indonesian tax filings and legal compliance, we coordinate with and refer to licensed Konsultan Pajak registered with the Directorate General of Taxes (DJP).
+            VillaBooks Bali is a bookkeeping and financial reporting service. We organize your financial records and prepare them for review by a licensed professional. Our reports are for owner information only and do not constitute official tax filings or legal advice. For Indonesian tax filings and legal compliance, we coordinate with and refer to licensed Konsultan Pajak registered with the Directorate General of Taxes (DJP).
           </p>
         </div>
       </section>

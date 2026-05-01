@@ -107,7 +107,7 @@ export default function About() {
 
         <FadeIn className="text-center pb-12">
           <p className="text-sm text-foreground/50 max-w-2xl mx-auto">
-            <strong>A Note on Compliance:</strong> VillaBooks Bali is a bookkeeping and financial reporting service. Our reports are for owner information only and do not constitute official tax filings or legal advice. For Indonesian tax filings and legal compliance, we coordinate with and refer to licensed Konsultan Pajak registered with the Directorate General of Taxes (DJP).
+            <strong>A Note on Compliance:</strong> VillaBooks Bali is a bookkeeping and financial reporting service. We organize your financial records and prepare them for review by a licensed professional. Our reports are for owner information only and do not constitute official tax filings or legal advice. For Indonesian tax filings and legal compliance, we coordinate with and refer to licensed Konsultan Pajak registered with the Directorate General of Taxes (DJP).
           </p>
         </FadeIn>
       </div>

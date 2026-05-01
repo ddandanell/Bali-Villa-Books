@@ -43,7 +43,7 @@ export function Layout({ children }: { children: ReactNode }) {
           <div className="lg:col-span-2">
             <h4 className="font-bold mb-4">Compliance</h4>
             <p className="text-xs text-primary-foreground/60 leading-relaxed">
-              VillaBooks Bali is a bookkeeping and financial reporting service. Our reports are for owner information only and do not constitute official tax filings or legal advice. For Indonesian tax filings and legal compliance, we coordinate with and refer to licensed Konsultan Pajak registered with the Directorate General of Taxes (DJP).
+              VillaBooks Bali is a bookkeeping and financial reporting service. We organize your financial records and prepare them for review by a licensed professional. Our reports are for owner information only and do not constitute official tax filings or legal advice. For Indonesian tax filings and legal compliance, we coordinate with and refer to licensed Konsultan Pajak registered with the Directorate General of Taxes (DJP).
             </p>
           </div>
         </div>

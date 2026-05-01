@@ -1,0 +1,109 @@
+Then please get pictures in everywhere, animation, and total mobile optimization.
+Please update the landing page for:
+
+Company name:
+Bali-Villa-Account-Service
+
+Business owner:
+Abel Yuniartini
+
+WhatsApp:
++62 812-3740-2292
+
+Office address:
+Jl. Tukad Barito Timur III No.16, Panjer, Denpasar Selatan, Kota Denpasar, Bali 80226
+
+Important team direction:
+Create a strong internal team section with Abel Yuniartini as the main partner and day-to-day leader. Position her as a hardworking advisor, finance controller, and client-facing lead who works directly with villa owners on bookkeeping, accounting structure, reporting, expense control, and financial clarity.
+
+Do not make the external advisors look like the core team running daily operations. They are external partners the company can work with when needed.
+
+Team structure:
+1. Abel Yuniartini
+Role: Partner / Finance Controller / Villa Accounting Lead
+Focus: Day-to-day client work, bookkeeping structure, document collection, owner reporting, expense control, monthly accounting review, and coordination with villa owners.
+Personality: hardworking, precise, responsible, calm under pressure, practical, client-focused, and reliable.
+
+2. Accounting Assistant
+Role: Bookkeeping Support
+Focus: Receipt collection, invoice organization, expense categorization, data entry, document follow-up, and monthly bookkeeping preparation.
+Personality: organized, detail-focused, patient, consistent, and careful.
+
+3. Client Coordinator
+Role: Owner Communication & Document Coordinator
+Focus: WhatsApp follow-up, client reminders, missing documents, meeting coordination, owner questions, and reporting schedules.
+Personality: friendly, responsive, structured, clear, and service-minded.
+
+4. Financial Reporting Specialist
+Role: Monthly Reporting & Owner Statement Support
+Focus: Monthly financial reports, cashflow summaries, expense breakdowns, staff cost summaries, and owner statement preparation.
+Personality: analytical, accurate, calm, responsible, and good with numbers.
+
+5. Compliance Coordinator
+Role: Compliance-Readiness Support
+Focus: Preparing clean documents for licensed Indonesian tax or legal professionals, keeping records organized, tracking deadlines, and flagging missing documents.
+Personality: careful, discreet, structured, professional, and compliance-minded.
+
+6. Operations Finance Controller
+Role: Villa Expense & Cost Control Support
+Focus: Supplier bills, petty cash review, staff salary tracking, recurring expenses, maintenance cost visibility, and operational finance checks.
+Personality: practical, firm, fair, observant, and problem-solving.
+
+External partners:
+1. Michael David
+Role: External Accounting Advisor
+Focus: Accounting advisory, financial control, international reporting structure, and owner-level review.
+Background: Former PwC experience.
+Important: Present him only as an external advisor. Do not present him as an Indonesian legal, tax, or compliance representative.
+
+2. David Jurosmidt
+Role: External Accounting Advisor
+Focus: Accounting advisory, bookkeeping structure, reporting quality, financial review, and operational finance control.
+Background: Former Deloitte experience.
+Important: Present him only as an external advisor. Do not present him as an Indonesian legal, tax, or compliance representative.
+
+3. Licensed Indonesian Compliance Partner
+Role: External Licensed Compliance Partner
+Focus: Indonesian tax, legal, and compliance matters when formal local advice, filing, or representation is required.
+Important: Make clear that formal Indonesian tax/legal work is handled by licensed Indonesian professionals where required.
+
+Add a section called:
+“Built Around Daily Control, Not Just Monthly Numbers”
+
+Explain that the company is structured so villa owners get daily follow-up, clean bookkeeping, organized records, monthly reporting, expense control, and compliance-ready documents.
+
+Bookkeeping workflow:
+1. Initial villa accounting review
+2. Collection of receipts, invoices, bank statements, booking/rental income records, supplier bills, and payroll data
+3. Expense categorization
+4. Petty cash and supplier payment review
+5. Staff salary and operational cost tracking
+6. Monthly financial report preparation
+7. Compliance-readiness check
+8. Owner review call
+9. Ongoing monthly bookkeeping and reporting
+
+Add:
+1. WhatsApp floating button linked to +62 812-3740-2292
+2. Office address in the contact section
+3. Professional image placeholders for Abel, the internal team, external advisors, compliance partner, Bali villas, accounting work, documents, reporting dashboards, and office/contact section
+4. A trust section explaining that the company combines daily local bookkeeping support, owner-focused financial reporting, expense control, external accounting advisory, and licensed Indonesian compliance coordination where required
+5. A clear call-to-action: “Book a Confidential Accounting Review”
+
+Compliance-safe wording:
+Use wording such as:
+“We provide bookkeeping, accounting organization, owner reporting, expense control, and compliance-readiness support. Formal Indonesian tax, legal, or filing matters are coordinated with licensed Indonesian professionals where required.”
+
+Avoid:
+- Do not position the company as a villa management company
+- Do not claim to provide Indonesian legal or tax advice directly unless handled by licensed Indonesian professionals
+- Do not overstate PwC or Deloitte affiliation
+- Do not suggest external advisors replace Indonesian licensed professionals
+- Do not make unsupported guarantees
+- Do not make the company sound like a big corporate firm if it is a hands-on specialist team
+
+Tone:
+Professional, premium, clear, trustworthy, local, hardworking, structured, Bali-specific, and conversion-focused.
+
+Output:
+Create the updated final landing page copy and ready-to-use frontend code.
