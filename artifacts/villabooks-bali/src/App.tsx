@@ -4,11 +4,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
-import Services from "@/pages/Services";
-import SampleReport from "@/pages/SampleReport";
-import GetStarted from "@/pages/GetStarted";
-import FAQ from "@/pages/FAQ";
-import About from "@/pages/About";
 
 const queryClient = new QueryClient();
 
@@ -16,11 +11,12 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/services" component={Services} />
-      <Route path="/sample-report" component={SampleReport} />
-      <Route path="/get-started" component={GetStarted} />
-      <Route path="/faq" component={FAQ} />
-      <Route path="/about" component={About} />
+      {/* Legacy paths now redirect to single landing page */}
+      <Route path="/services" component={Home} />
+      <Route path="/sample-report" component={Home} />
+      <Route path="/get-started" component={Home} />
+      <Route path="/faq" component={Home} />
+      <Route path="/about" component={Home} />
       <Route component={NotFound} />
     </Switch>
   );
