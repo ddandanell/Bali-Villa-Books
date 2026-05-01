@@ -3,7 +3,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   CheckCircle2,
   MessageCircle,
-  ArrowRight,
   Star,
   Clock,
   ShieldCheck,
@@ -26,6 +25,24 @@ import {
 const WA = "https://wa.me/6281237402292";
 const wa = (msg: string) =>
   `${WA}?text=${encodeURIComponent(msg)}`;
+
+const CALENDLY_URL = "https://calendly.com/villabooksbali/clarity-call";
+
+declare global {
+  interface Window {
+    Calendly?: {
+      initPopupWidget: (opts: { url: string }) => void;
+    };
+  }
+}
+
+function openCalendly() {
+  if (window.Calendly) {
+    window.Calendly.initPopupWidget({ url: CALENDLY_URL });
+  } else {
+    window.open(CALENDLY_URL, "_blank", "noopener,noreferrer");
+  }
+}
 
 /* ---------- Reusable WhatsApp button ---------- */
 function WAButton({
@@ -62,6 +79,43 @@ function WAButton({
       <MessageCircle className={size === "lg" ? "w-5 h-5" : "w-4 h-4"} />
       {label}
     </a>
+  );
+}
+
+/* ---------- Calendly / Book a Call button ---------- */
+function BookCallButton({
+  label = "Get a Free 15-Min Clarity Call",
+  size = "lg",
+  variant = "primary",
+  className = "",
+}: {
+  label?: string;
+  size?: "lg" | "md";
+  variant?: "primary" | "outline" | "outline-dark";
+  className?: string;
+}) {
+  const base =
+    "inline-flex items-center justify-center gap-2 rounded-xl font-bold shadow-lg transition-all active:scale-[0.97] cursor-pointer";
+  const sizes =
+    size === "lg"
+      ? "h-14 px-7 text-base w-full sm:w-auto"
+      : "h-12 px-5 text-sm w-full sm:w-auto";
+  const styles =
+    variant === "outline"
+      ? "border-2 border-white/40 text-white hover:bg-white/10 shadow-none"
+      : variant === "outline-dark"
+      ? "border-2 border-primary/40 text-primary hover:bg-primary/5 shadow-none"
+      : "bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-secondary/30 hover:shadow-xl hover:shadow-secondary/40";
+
+  return (
+    <button
+      type="button"
+      onClick={openCalendly}
+      className={`${base} ${sizes} ${styles} ${className}`}
+    >
+      <Clock className={size === "lg" ? "w-5 h-5" : "w-4 h-4"} />
+      {label}
+    </button>
   );
 }
 
@@ -175,17 +229,8 @@ export default function Home() {
 
           <FadeUp delay={0.18}>
             <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center">
-              <WAButton label="Chat on WhatsApp Now" />
-              <a
-                href="#pricing"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector("#pricing")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="inline-flex items-center justify-center h-14 px-6 rounded-xl border-2 border-white/30 text-white font-semibold text-base hover:bg-white/10 transition-colors w-full sm:w-auto"
-              >
-                See Pricing <ArrowRight className="w-4 h-4 ml-2" />
-              </a>
+              <BookCallButton label="Get a Free 15-Min Clarity Call" />
+              <WAButton label="Chat on WhatsApp" variant="outline" />
             </div>
           </FadeUp>
 
@@ -574,18 +619,19 @@ export default function Home() {
           <FadeUp>
             <p className="text-xs font-bold uppercase tracking-widest text-secondary mb-3">Let's talk</p>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold tracking-tight leading-[1.1] mb-5">
-              One message.<br/>
-              <span className="text-secondary">Real answers today.</span>
+              Ready to see your<br/>
+              <span className="text-secondary">real numbers?</span>
             </h2>
             <p className="text-base sm:text-lg text-white/80 mb-10 max-w-xl mx-auto">
-              Send Abel a WhatsApp. Real human reply, usually within an hour.
-              No sales call. No pressure. Just real talk about your villa.
+              Book a free 15-minute clarity call and we'll walk through your villa's finances together.
+              No pressure. No jargon. Just honest answers.
             </p>
           </FadeUp>
 
           <FadeUp delay={0.1}>
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12">
-              <WAButton label="Chat on WhatsApp Now" />
+              <BookCallButton label="Book a Free 15-Min Clarity Call" />
+              <WAButton label="Chat on WhatsApp" variant="outline" />
             </div>
           </FadeUp>
 
