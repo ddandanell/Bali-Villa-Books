@@ -41,7 +41,7 @@ export default function About() {
           </FadeIn>
         </div>
 
-        <FadeIn className="mb-16">
+        <FadeIn className="mb-12">
           <h2 className="text-3xl font-serif font-bold text-primary mb-8 text-center">Our Core Expertise</h2>
         </FadeIn>
 
@@ -90,16 +90,16 @@ export default function About() {
             </p>
             <div className="flex flex-wrap gap-4">
               <span className="inline-flex items-center rounded-full bg-background border px-3 py-1 text-sm font-medium text-muted-foreground">
-                🇦🇺 AEST / AWST
+                Australia — AEST / AWST
               </span>
               <span className="inline-flex items-center rounded-full bg-background border px-3 py-1 text-sm font-medium text-muted-foreground">
-                🇬🇧 GMT / BST
+                UK — GMT / BST
               </span>
               <span className="inline-flex items-center rounded-full bg-background border px-3 py-1 text-sm font-medium text-muted-foreground">
-                🇳🇱 CET / CEST
+                Netherlands — CET / CEST
               </span>
               <span className="inline-flex items-center rounded-full bg-background border px-3 py-1 text-sm font-medium text-muted-foreground">
-                🇺🇸 EST / PST
+                USA — EST / PST
               </span>
             </div>
           </FadeIn>

@@ -1,7 +1,8 @@
 import { Layout } from "@/components/Layout";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/Motion";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { CheckCircle2, Clock, CheckCircle, FileText, UploadCloud, AlertCircle } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CheckCircle2, Clock, CheckCircle, FileText, UploadCloud, AlertCircle, ArrowRight } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Services() {
   return (
@@ -130,6 +131,157 @@ export default function Services() {
             Beyond monthly reporting, we ensure your records are always organized for compliance. Documents are stored in structured annual folders, and at year-end, we prepare a clean document pack ready for seamless coordination with your licensed Konsultan Pajak.
           </p>
         </FadeIn>
+      </div>
+
+      {/* Packages Detail */}
+      <div className="py-24 bg-muted/20">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <FadeIn className="mb-16 text-center">
+            <h2 className="text-3xl font-serif font-bold text-primary mb-4">Service Packages</h2>
+            <p className="text-lg text-foreground/70">Flat monthly rates. No hidden fees. Cancel anytime.</p>
+          </FadeIn>
+
+          <StaggerContainer className="space-y-8">
+            {/* Essentials */}
+            <StaggerItem>
+              <Card className="border-border/50">
+                <CardHeader className="pb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                      <CardTitle className="text-2xl font-serif text-primary">Essentials</CardTitle>
+                      <p className="text-foreground/60 mt-1">For owners who need the basics organized</p>
+                    </div>
+                    <div className="text-3xl font-bold text-primary">$149<span className="text-base font-normal text-muted-foreground">/month</span></div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {[
+                      "Monthly bookkeeping and expense categorization",
+                      "OTA revenue reconciliation (up to 2 platforms)",
+                      "Basic monthly P&L summary",
+                      "Digital receipt and invoice organization via shared Google Drive",
+                      "Email support within 48 hours"
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-2 text-sm text-foreground/70">
+                        <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="mt-4 text-sm font-medium text-muted-foreground border-t border-border/50 pt-4">Best for: Owners with a single villa, straightforward operations, or one rental channel.</p>
+                </CardContent>
+              </Card>
+            </StaggerItem>
+
+            {/* Professional */}
+            <StaggerItem>
+              <Card className="border-primary/40 shadow-md relative">
+                <div className="absolute top-0 right-6 -translate-y-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Most Popular</div>
+                <CardHeader className="pb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                      <CardTitle className="text-2xl font-serif text-primary">Professional</CardTitle>
+                      <p className="text-foreground/60 mt-1">For owners who want full financial visibility</p>
+                    </div>
+                    <div className="text-3xl font-bold text-primary">$299<span className="text-base font-normal text-muted-foreground">/month</span></div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm font-medium mb-3">Everything in Essentials, plus:</p>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {[
+                      "Full monthly Owner Financial Statement (revenue, expenses, net position, cash summary)",
+                      "Staff payroll reconciliation and tracking",
+                      "Vendor invoice verification and anomaly log",
+                      "OTA reconciliation across all platforms (Airbnb, Booking.com, VRBO, direct)",
+                      "Occupancy vs. revenue analysis",
+                      "Monthly 30-minute review call with your account manager",
+                      "Quarterly performance summary"
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-2 text-sm text-foreground/70">
+                        <CheckCircle2 className="w-4 h-4 text-secondary shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="mt-4 text-sm font-medium text-muted-foreground border-t border-border/50 pt-4">Best for: Owners with active operations, multiple OTA channels, or staff payroll.</p>
+                </CardContent>
+              </Card>
+            </StaggerItem>
+
+            {/* Premium */}
+            <StaggerItem>
+              <Card className="border-border/50">
+                <CardHeader className="pb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                      <CardTitle className="text-2xl font-serif text-primary">Premium</CardTitle>
+                      <p className="text-foreground/60 mt-1">For owners who want professional-grade financial management and tax preparedness</p>
+                    </div>
+                    <div className="text-3xl font-bold text-primary">$499<span className="text-base font-normal text-muted-foreground">/month</span></div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm font-medium mb-3">Everything in Professional, plus:</p>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {[
+                      "Tax-year document pack preparation (coordinated with a licensed Indonesian Konsultan Pajak)",
+                      "Annual estimated tax position summary (for owner reference only — not legal tax advice)",
+                      "Expense anomaly alerts flagging unusual vendor charges or cost spikes",
+                      "Financial forecast vs. actuals comparison",
+                      "Priority support with 24-hour turnaround",
+                      "Dedicated account manager"
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-2 text-sm text-foreground/70">
+                        <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="mt-4 text-sm font-medium text-muted-foreground border-t border-border/50 pt-4">Best for: High-revenue properties, PT PMA structures, or owners preparing to refinance or sell.</p>
+                </CardContent>
+              </Card>
+            </StaggerItem>
+
+            {/* One-Time Cleanup */}
+            <StaggerItem>
+              <Card className="bg-foreground text-background border-foreground">
+                <CardHeader className="pb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                      <CardTitle className="text-2xl font-serif text-background">One-Time Financial Cleanup</CardTitle>
+                      <p className="text-background/60 mt-1">For owners whose records are a mess</p>
+                    </div>
+                    <div className="text-3xl font-bold text-secondary">from $499<span className="text-base font-normal text-background/60"> one time</span></div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {[
+                      "Historical bookkeeping reconstruction (up to 12 months)",
+                      "Categorization of all past transactions, receipts, and OTA payouts",
+                      "Clean, organized starting point for ongoing monthly service",
+                      "Deliverable: structured, organized financial folder ready for professional review"
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-2 text-sm text-background/80">
+                        <CheckCircle2 className="w-4 h-4 text-secondary shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="mt-4 text-sm font-medium text-background/60 border-t border-background/10 pt-4">Best for: Owners who have been operating informally and want a clean, organized fresh start.</p>
+                </CardContent>
+              </Card>
+            </StaggerItem>
+          </StaggerContainer>
+
+          <FadeIn className="mt-12 text-center">
+            <Link href="/get-started" className="inline-flex items-center gap-2 h-14 px-8 rounded-md bg-primary text-primary-foreground font-semibold text-base shadow hover:bg-primary/90 transition-colors">
+              Start with a free 15-minute clarity call <ArrowRight className="w-5 h-5" />
+            </Link>
+          </FadeIn>
+        </div>
       </div>
     </Layout>
   );

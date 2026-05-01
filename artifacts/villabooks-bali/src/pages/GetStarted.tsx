@@ -11,12 +11,20 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useState } from "react";
 import { CheckCircle2, ChevronRight, ArrowLeft } from "lucide-react";
 
+type FormData = {
+  name: string;
+  channelManager: string;
+  channelManagerName: string;
+};
+
 export default function GetStarted() {
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "Jane Doe"
-  }); // Just holding name for the success message
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    channelManager: "no",
+    channelManagerName: "",
+  });
 
   const nextStep = () => setStep((s) => Math.min(s + 1, 4));
   const prevStep = () => setStep((s) => Math.max(s - 1, 1));
@@ -141,7 +149,7 @@ export default function GetStarted() {
                       <div className="space-y-4">
                         <Label className="text-base">Rental Platforms Used</Label>
                         <div className="grid sm:grid-cols-2 gap-4">
-                          {["Airbnb", "Booking.com", "VRBO", "Direct bookings"].map((platform) => (
+                          {["Airbnb", "Booking.com", "VRBO", "Direct bookings", "Other"].map((platform) => (
                             <div key={platform} className="flex items-center space-x-3 bg-muted/20 p-3 rounded-lg border border-border/50">
                               <Checkbox id={`platform-${platform}`} />
                               <Label htmlFor={`platform-${platform}`} className="font-normal cursor-pointer w-full">{platform}</Label>
@@ -152,7 +160,12 @@ export default function GetStarted() {
 
                       <div className="space-y-4">
                         <Label className="text-base">Do you use a Channel Manager?</Label>
-                        <RadioGroup defaultValue="no" className="flex flex-col space-y-2">
+                        <RadioGroup 
+                          defaultValue="no" 
+                          value={formData.channelManager}
+                          onValueChange={(v) => setFormData({ ...formData, channelManager: v })}
+                          className="flex flex-col space-y-2"
+                        >
                           <div className="flex items-center space-x-3 bg-muted/20 p-3 rounded-lg border border-border/50">
                             <RadioGroupItem value="yes" id="cm-yes" />
                             <Label htmlFor="cm-yes" className="font-normal cursor-pointer w-full">Yes</Label>
@@ -162,6 +175,17 @@ export default function GetStarted() {
                             <Label htmlFor="cm-no" className="font-normal cursor-pointer w-full">No</Label>
                           </div>
                         </RadioGroup>
+                        {formData.channelManager === "yes" && (
+                          <div className="space-y-2 pt-2">
+                            <Label htmlFor="channelManagerName" className="text-sm text-muted-foreground">Which channel manager do you use?</Label>
+                            <Input 
+                              id="channelManagerName" 
+                              placeholder="e.g. Cloudbeds, Guesty, Hostaway, Lodgify..." 
+                              value={formData.channelManagerName}
+                              onChange={(e) => setFormData({ ...formData, channelManagerName: e.target.value })}
+                            />
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}

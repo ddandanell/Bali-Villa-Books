@@ -1,8 +1,8 @@
 import { Layout } from "@/components/Layout";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/Motion";
 import { Link } from "wouter";
-import { CheckCircle2, ArrowRight, FileText, BarChart3, TrendingUp, Building2, ShieldCheck, Clock } from "lucide-react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { CheckCircle2, ArrowRight, FileText, ShieldCheck } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export default function Home() {
@@ -294,6 +294,150 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Monthly Owner Statement Preview */}
+      <section className="py-24 bg-muted/20">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <FadeIn className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary mb-4">Your Monthly Owner Financial Statement</h2>
+            <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
+              Delivered by the 15th of every month. Clear, structured, and written in plain English — not accountant-speak.
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <div className="bg-background border border-border/60 rounded-2xl shadow-xl overflow-hidden">
+              {/* Document Header */}
+              <div className="bg-primary text-primary-foreground px-8 py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-primary-foreground/60 mb-1">Owner Financial Statement</div>
+                  <div className="text-xl font-serif font-bold">Villa Tirta Sari, Canggu</div>
+                </div>
+                <div className="text-right">
+                  <div className="text-xs text-primary-foreground/60">Reporting Period</div>
+                  <div className="font-semibold">April 1 – April 30, 2025</div>
+                </div>
+              </div>
+              <div className="p-6 md:p-8 space-y-6">
+                {/* Revenue Summary */}
+                <div>
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3 border-b border-border pb-2">1. Revenue Summary</h3>
+                  <table className="w-full text-sm">
+                    <tbody>
+                      <tr className="border-b border-border/30"><td className="py-2 text-foreground/70">Airbnb gross revenue</td><td className="text-right font-medium">$6,840</td></tr>
+                      <tr className="border-b border-border/30"><td className="py-2 text-foreground/70">Booking.com gross revenue</td><td className="text-right font-medium">$2,100</td></tr>
+                      <tr className="border-b border-border/30"><td className="py-2 text-foreground/70 pl-4 text-xs">Less: OTA commissions (15%)</td><td className="text-right text-destructive text-xs">– $1,341</td></tr>
+                      <tr className="border-b border-border/30"><td className="py-2 text-foreground/70">Direct booking</td><td className="text-right font-medium">$1,200</td></tr>
+                      <tr><td className="py-2 font-bold text-primary">Net revenue received</td><td className="text-right font-bold text-primary">$8,799</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                {/* Operating Expenses */}
+                <div>
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3 border-b border-border pb-2">2. Operating Expenses</h3>
+                  <table className="w-full text-sm">
+                    <tbody>
+                      <tr className="border-b border-border/30"><td className="py-2 text-foreground/70">Staff wages & payroll</td><td className="text-right font-medium">$1,200</td></tr>
+                      <tr className="border-b border-border/30"><td className="py-2 text-foreground/70">Utilities (electricity, water, internet)</td><td className="text-right font-medium">$380</td></tr>
+                      <tr className="border-b border-border/30"><td className="py-2 text-foreground/70">Maintenance & repairs</td><td className="text-right font-medium">$215</td></tr>
+                      <tr className="border-b border-border/30"><td className="py-2 text-foreground/70">Cleaning & laundry</td><td className="text-right font-medium">$340</td></tr>
+                      <tr className="border-b border-border/30"><td className="py-2 text-foreground/70">Supplies & consumables</td><td className="text-right font-medium">$95</td></tr>
+                      <tr className="border-b border-border/30"><td className="py-2 text-foreground/70">Villa agent management fee</td><td className="text-right font-medium">$450</td></tr>
+                      <tr><td className="py-2 font-bold text-foreground">Total operating expenses</td><td className="text-right font-bold">$2,680</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                {/* Net Position + Occupancy */}
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div className="bg-primary/5 rounded-xl p-5 border border-primary/10">
+                    <div className="text-xs uppercase tracking-wider text-muted-foreground mb-3">3. Net Operating Position</div>
+                    <div className="flex justify-between mb-1 text-sm"><span>Total revenue</span><span className="font-medium">$8,799</span></div>
+                    <div className="flex justify-between mb-3 text-sm"><span>Total expenses</span><span className="font-medium text-destructive">– $2,680</span></div>
+                    <div className="flex justify-between border-t border-primary/20 pt-3"><span className="font-bold text-primary">Net income (April)</span><span className="font-bold text-primary text-lg">$6,119</span></div>
+                  </div>
+                  <div className="bg-muted/30 rounded-xl p-5 border border-border/50">
+                    <div className="text-xs uppercase tracking-wider text-muted-foreground mb-3">5. Occupancy Snapshot</div>
+                    <div className="flex justify-between mb-1 text-sm"><span>Nights booked / available</span><span className="font-medium">24 / 30</span></div>
+                    <div className="flex justify-between mb-1 text-sm"><span>Avg daily rate (ADR)</span><span className="font-medium">$365</span></div>
+                    <div className="flex justify-between text-sm"><span>Revenue per available night</span><span className="font-medium">$293</span></div>
+                  </div>
+                </div>
+                <div className="text-center pt-2">
+                  <Link href="/sample-report" className="inline-flex items-center gap-2 text-primary font-medium text-sm hover:underline">
+                    <FileText className="w-4 h-4" /> View the full sample statement
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <FadeIn className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary mb-4">Common Questions</h2>
+            <p className="text-lg text-foreground/70">Clear answers about how VillaBooks Bali works.</p>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <Accordion type="single" collapsible className="space-y-3">
+              {[
+                {
+                  q: "What exactly does VillaBooks Bali do — and what doesn't it do?",
+                  a: "We organize your monthly villa finances: bookkeeping, OTA revenue reconciliation, expense categorization, and Owner Financial Statements in plain English. We are not a villa management company, and we do not handle property maintenance, guest services, or staffing. For Indonesian tax filings and legal advice, we coordinate with and refer to licensed Konsultan Pajak — we do not file taxes ourselves."
+                },
+                {
+                  q: "Do you file our Indonesian taxes for us?",
+                  a: "No. We are a bookkeeping and financial reporting service, not a licensed tax firm. We prepare your records, organize your documents, and keep everything tax-ready. When you need to file, we coordinate with and refer to a licensed Indonesian Konsultan Pajak (tax consultant registered with DJP) on your behalf."
+                },
+                {
+                  q: "Do I need to be in Bali for this service?",
+                  a: "Not at all. Our entire service is remote. You share documents via a secure Google Drive folder, and we deliver your Owner Financial Statement by email. We coordinate with your local manager or management company so you never need to be physically present to keep your books organized."
+                },
+                {
+                  q: "My records are a complete mess. Can you still help?",
+                  a: "Yes — that's exactly what our One-Time Financial Cleanup service is designed for. We'll reconstruct up to 12 months of historical bookkeeping from whatever records you have, categorize everything, and give you a clean starting point for ongoing monthly work."
+                },
+                {
+                  q: "What is OTA reconciliation and why does it matter?",
+                  a: "OTA stands for Online Travel Agency — Airbnb, Booking.com, VRBO, and similar platforms. Their payouts often don't match your actual bookings due to platform commissions, currency conversions, and timing delays. We download and cross-reference your payout reports against your booking calendar every month to make sure every dollar is accounted for."
+                },
+                {
+                  q: "What ownership structures do you work with?",
+                  a: "We work with all common Bali villa ownership structures — PT PMA (foreign investment company), leasehold arrangements, and nominee structures. You don't need to have a formal corporate structure; many of our clients are individual foreign owners with various levels of formalization."
+                },
+                {
+                  q: "How is this different from what my villa manager already does?",
+                  a: "Villa managers focus on operations — guest check-ins, maintenance, pool cleaning, staff scheduling. Very few produce financial reports that are clean enough for an owner to understand their actual profitability. VillaBooks Bali provides the financial layer that most management arrangements don't include: structured monthly bookkeeping, reconciliation, and an owner-facing financial statement."
+                },
+                {
+                  q: "What are the Indonesian tax obligations for foreign villa rental income?",
+                  a: "Indonesian tax obligations for villa rental income vary based on your ownership structure, residency status, and income level. We can help you keep your records organized and tax-ready, but for specific advice on your tax obligations, we recommend speaking with a licensed Konsultan Pajak registered with the Directorate General of Taxes (DJP). We can facilitate that referral."
+                },
+              ].map((item, i) => (
+                <AccordionItem key={i} value={`item-${i}`} className="border border-border/50 rounded-xl px-6 data-[state=open]:border-primary/30 data-[state=open]:bg-primary/5 transition-colors">
+                  <AccordionTrigger className="text-left font-semibold py-5 hover:no-underline text-foreground/90">{item.q}</AccordionTrigger>
+                  <AccordionContent className="text-foreground/70 pb-5 leading-relaxed">{item.a}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+            <div className="text-center mt-8">
+              <Link href="/faq" className="inline-flex items-center gap-2 text-primary font-medium hover:underline">
+                View all frequently asked questions <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Compliance Disclaimer */}
+      <section className="py-8 bg-muted/20 border-y border-border/30">
+        <div className="container mx-auto px-4 max-w-3xl text-center">
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            VillaBooks Bali is a bookkeeping and financial reporting service. Our reports are for owner information only and do not constitute official tax filings or legal advice. For Indonesian tax filings and legal compliance, we coordinate with and refer to licensed Konsultan Pajak registered with the Directorate General of Taxes (DJP).
+          </p>
         </div>
       </section>
 
