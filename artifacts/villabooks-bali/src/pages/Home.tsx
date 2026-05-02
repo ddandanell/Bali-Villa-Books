@@ -36,12 +36,30 @@ declare global {
   }
 }
 
+/** Load the Calendly widget assets on first call, then open the popup. */
+let calendlyLoading = false;
 function openCalendly() {
   if (window.Calendly) {
     window.Calendly.initPopupWidget({ url: CALENDLY_URL });
-  } else {
-    window.open(CALENDLY_URL, "_blank", "noopener,noreferrer");
+    return;
   }
+
+  // Fallback immediately so the user gets a response even before the script loads
+  window.open(CALENDLY_URL, "_blank", "noopener,noreferrer");
+
+  // Also inject the widget assets lazily so subsequent clicks use the popup
+  if (calendlyLoading) return;
+  calendlyLoading = true;
+
+  const css = document.createElement("link");
+  css.rel = "stylesheet";
+  css.href = "https://assets.calendly.com/assets/external/widget.css";
+  document.head.appendChild(css);
+
+  const js = document.createElement("script");
+  js.src = "https://assets.calendly.com/assets/external/widget.js";
+  js.async = true;
+  document.head.appendChild(js);
 }
 
 /* ---------- Reusable WhatsApp button ---------- */
