@@ -1,8 +1,9 @@
 {
   "buildCommand": "pnpm --filter @workspace/villabooks-bali run build",
   "outputDirectory": "artifacts/villabooks-bali/dist/public",
-  "installCommand": "pnpm install",
+  "installCommand": "pnpm install --frozen-lockfile",
   "framework": null,
+  "nodejs": "20.x",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
