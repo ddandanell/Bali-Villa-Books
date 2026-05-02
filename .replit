@@ -38,4 +38,3 @@ externalPort = 3000
 [userenv]
 
 [userenv.shared]
-GITHUB_USERNAME = "ddandanell"
