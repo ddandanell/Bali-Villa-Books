@@ -1,0 +1,9 @@
+{
+  "buildCommand": "pnpm --filter @workspace/villabooks-bali run build",
+  "outputDirectory": "artifacts/villabooks-bali/dist/public",
+  "installCommand": "pnpm install",
+  "framework": null,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
