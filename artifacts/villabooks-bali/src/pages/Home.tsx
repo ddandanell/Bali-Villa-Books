@@ -24,7 +24,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const WA = "https://wa.me/6281237402292";
+const WA = "https://wa.me/6282323011656";
 const wa = (msg: string) =>
   `${WA}?text=${encodeURIComponent(msg)}`;
 
@@ -259,7 +259,7 @@ export default function Home() {
                 className="flex items-center gap-1.5 text-xs text-white/45 hover:text-white/70 transition-colors"
               >
                 <Phone className="w-3.5 h-3.5 text-secondary shrink-0" />
-                +62 812-3740-2292
+                +62 823-2301-1656
               </a>
             </div>
           </FadeUp>
@@ -440,7 +440,7 @@ export default function Home() {
                       className="inline-flex items-center gap-1.5 text-xs text-foreground/60 hover:text-primary transition-colors"
                     >
                       <Phone className="w-3 h-3 text-secondary shrink-0" />
-                      +62 812-3740-2292 (WhatsApp)
+                      +62 823-2301-1656 (WhatsApp)
                     </a>
                     <a
                       href="https://maps.google.com/?q=Jl.+Tukad+Barito+Timur+III+No.16,+Panjer,+Denpasar+Selatan,+Bali"
@@ -738,7 +738,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="text-sm font-semibold hover:text-secondary transition-colors"
                 >
-                  +62 812-3740-2292
+                  +62 823-2301-1656
                 </a>
               </div>
               <div className="rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm p-5">

@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, Menu, X, Phone, MapPin } from "lucide-react";
 import { Logo } from "@/components/Logo";
 
-const WA = "https://wa.me/6281237402292";
+const WA = "https://wa.me/6282323011656";
 const wa = (msg: string) => `${WA}?text=${encodeURIComponent(msg)}`;
 
 const NAV_LINKS = [
@@ -71,7 +71,7 @@ export function Layout({ children }: { children: ReactNode }) {
               className="flex items-center gap-1.5 hover:text-white/75 transition-colors"
             >
               <Phone className="w-3 h-3 text-secondary shrink-0" />
-              +62 812-3740-2292
+              +62 823-2301-1656
             </a>
           </div>
         </div>
@@ -205,7 +205,7 @@ export function Layout({ children }: { children: ReactNode }) {
                 className="flex items-start gap-2 text-white/70 hover:text-white transition-colors"
               >
                 <Phone className="w-4 h-4 shrink-0 mt-0.5 text-secondary" />
-                <span>+62 812-3740-2292 (WhatsApp)</span>
+                <span>+62 823-2301-1656 (WhatsApp)</span>
               </a>
               <a
                 href="https://maps.google.com/?q=Jl.+Tukad+Barito+Timur+III+No.16,+Panjer,+Denpasar+Selatan,+Bali"
