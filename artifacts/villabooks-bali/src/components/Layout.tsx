@@ -41,7 +41,6 @@ export function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background">
-      {/* DARK CONTRAST NAV */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
@@ -49,6 +48,35 @@ export function Layout({ children }: { children: ReactNode }) {
             : "bg-[#0b1f1c]/80 backdrop-blur-sm"
         }`}
       >
+        {/* Top info bar — desktop only, hidden on scroll */}
+        <div
+          className={`hidden md:block overflow-hidden transition-all duration-300 ${
+            scrolled ? "max-h-0 opacity-0" : "max-h-10 opacity-100"
+          } bg-[#071611] border-b border-white/10`}
+        >
+          <div className="container mx-auto px-4 sm:px-6 h-9 flex items-center justify-between text-xs text-white/50">
+            <a
+              href="https://maps.google.com/?q=Jl.+Tukad+Barito+Timur+III+No.16,+Panjer,+Denpasar+Selatan,+Bali"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 hover:text-white/75 transition-colors"
+            >
+              <MapPin className="w-3 h-3 text-secondary shrink-0" />
+              Jl. Tukad Barito Timur III No.16, Panjer, Denpasar Selatan, Bali 80226
+            </a>
+            <a
+              href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 hover:text-white/75 transition-colors"
+            >
+              <Phone className="w-3 h-3 text-secondary shrink-0" />
+              +62 812-3740-2292
+            </a>
+          </div>
+        </div>
+
+        {/* Main nav */}
         <div className="container mx-auto px-4 sm:px-6 h-16 sm:h-[72px] flex items-center justify-between">
           <a
             href="#top"
@@ -81,7 +109,7 @@ export function Layout({ children }: { children: ReactNode }) {
               rel="noopener noreferrer"
               className="ml-3 inline-flex h-10 items-center justify-center gap-1.5 rounded-lg bg-[#25D366] hover:bg-[#1ebe5e] px-4 text-sm font-bold text-white shadow-md hover:shadow-lg active:scale-95 transition-all"
             >
-              <MessageCircle className="w-4 h-4" /> WhatsApp Us
+              <MessageCircle className="w-4 h-4" /> WhatsApp Abel
             </a>
           </nav>
 
@@ -127,6 +155,10 @@ export function Layout({ children }: { children: ReactNode }) {
                     {l.label}
                   </a>
                 ))}
+                <div className="mt-3 pt-3 border-t border-white/10 flex items-center gap-2 text-xs text-white/45">
+                  <MapPin className="w-3.5 h-3.5 text-secondary shrink-0" />
+                  <span>Jl. Tukad Barito Timur III No.16, Panjer, Denpasar Selatan</span>
+                </div>
                 <a
                   href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
                   target="_blank"
@@ -134,7 +166,7 @@ export function Layout({ children }: { children: ReactNode }) {
                   onClick={() => setOpen(false)}
                   className="mt-2 inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] hover:bg-[#1ebe5e] px-4 text-base font-bold text-white shadow-md active:scale-95 transition-all"
                 >
-                  <MessageCircle className="w-5 h-5" /> WhatsApp Now
+                  <MessageCircle className="w-5 h-5" /> WhatsApp Abel Now
                 </a>
               </nav>
             </motion.div>
@@ -152,7 +184,7 @@ export function Layout({ children }: { children: ReactNode }) {
               <Logo variant="full" onDark iconClassName="w-10 h-10" textClassName="text-xl" />
             </div>
             <p className="text-sm text-white/60 leading-relaxed mb-4">
-              Bookkeeping for Bali villa owners. Clear monthly reports. Real numbers. Zero stress.
+              Monthly bookkeeping for Bali villa owners. Run personally by Abel Yuniartini from our office in Denpasar.
             </p>
             <a
               href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
@@ -160,20 +192,30 @@ export function Layout({ children }: { children: ReactNode }) {
               rel="noopener noreferrer"
               className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[#25D366] hover:bg-[#1ebe5e] px-5 text-sm font-bold text-white shadow-md transition-colors"
             >
-              <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
+              <MessageCircle className="w-4 h-4" /> WhatsApp Abel
             </a>
           </div>
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">Contact</h4>
             <div className="space-y-3 text-sm">
-              <a href={wa("Hi Abel, quick question about my Bali villa.")} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 text-white/70 hover:text-white transition-colors">
+              <a
+                href={wa("Hi Abel, quick question about my Bali villa.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 text-white/70 hover:text-white transition-colors"
+              >
                 <Phone className="w-4 h-4 shrink-0 mt-0.5 text-secondary" />
                 <span>+62 812-3740-2292 (WhatsApp)</span>
               </a>
-              <div className="flex items-start gap-2 text-white/70">
+              <a
+                href="https://maps.google.com/?q=Jl.+Tukad+Barito+Timur+III+No.16,+Panjer,+Denpasar+Selatan,+Bali"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 text-white/70 hover:text-white transition-colors"
+              >
                 <MapPin className="w-4 h-4 shrink-0 mt-0.5 text-secondary" />
-                <span>Jl. Tukad Barito Timur III No.16,<br/>Panjer, Denpasar Selatan, Bali 80226</span>
-              </div>
+                <span>Jl. Tukad Barito Timur III No.16,<br />Panjer, Denpasar Selatan,<br />Bali 80226</span>
+              </a>
             </div>
           </div>
           <div>
@@ -185,7 +227,7 @@ export function Layout({ children }: { children: ReactNode }) {
         </div>
         <div className="container mx-auto px-4 sm:px-6 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/40">
           <span>© 2025 VillaBooks Bali. All rights reserved.</span>
-          <span>Made in Denpasar, Bali</span>
+          <span>Made in Denpasar, Bali 🌴</span>
         </div>
       </footer>
 
@@ -199,7 +241,7 @@ export function Layout({ children }: { children: ReactNode }) {
       >
         <span className="flex items-center gap-2 px-4 py-3 sm:px-5 sm:py-3.5 text-sm font-bold">
           <MessageCircle className="w-5 h-5" />
-          <span className="hidden sm:inline">WhatsApp Us</span>
+          <span className="hidden sm:inline">WhatsApp Abel</span>
         </span>
       </a>
     </div>

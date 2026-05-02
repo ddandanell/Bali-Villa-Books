@@ -14,6 +14,8 @@ import {
   Phone,
   MapPin,
   Sparkles,
+  Building2,
+  UserCheck,
 } from "lucide-react";
 import {
   Accordion,
@@ -72,7 +74,7 @@ function WAButton({
 
 /* ---------- Calendly / Book a Call button ---------- */
 function BookCallButton({
-  label = "Get a Free 15-Min Clarity Call",
+  label = "Book a Free 15-Min Call",
   size = "lg",
   variant = "primary",
   className = "",
@@ -193,9 +195,9 @@ export default function Home() {
         <div className="relative container mx-auto px-4 sm:px-6 pt-16 pb-20 sm:pt-24 sm:pb-28 max-w-5xl">
           <FadeUp>
             <div className="inline-flex items-center gap-2 mb-6 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-sm">
-              <Sparkles className="w-3.5 h-3.5 text-secondary" />
+              <MapPin className="w-3.5 h-3.5 text-secondary" />
               <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-white/90">
-                Bali Villa Accounting — Made Simple
+                Kantor di Denpasar · Melayani seluruh Bali
               </span>
             </div>
           </FadeUp>
@@ -210,31 +212,55 @@ export default function Home() {
 
           <FadeUp delay={0.12}>
             <p className="mt-5 text-lg sm:text-xl text-white/80 leading-relaxed max-w-2xl">
-              We do your villa bookkeeping every month. You get one clear report.
-              In plain English. No spreadsheets. No surprises. Just real numbers.
+              We handle every receipt, every OTA payout, every staff cost —
+              personally. One clean report by the 15th, every month. In plain English.
             </p>
           </FadeUp>
 
           <FadeUp delay={0.18}>
             <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center">
-              <BookCallButton label="Get a Free 15-Min Clarity Call" />
-              <WAButton label="Chat on WhatsApp" variant="outline" />
+              <BookCallButton label="Book a Free 15-Min Call" />
+              <WAButton label="WhatsApp Abel Now" variant="outline" />
             </div>
           </FadeUp>
 
           <FadeUp delay={0.25}>
-            <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-x-5 gap-y-3 max-w-2xl">
+            <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-x-5 gap-y-3 max-w-2xl">
               {[
-                "100% remote",
-                "Local Bali team",
-                "Reports by 15th",
-                "Plain English",
+                "Office in Denpasar",
+                "Serving all of Bali",
+                "Report by the 15th",
+                "English & Indonesian",
               ].map((t) => (
                 <div key={t} className="flex items-center gap-2 text-sm text-white/85">
                   <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
                   <span>{t}</span>
                 </div>
               ))}
+            </div>
+          </FadeUp>
+
+          <FadeUp delay={0.32}>
+            <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2">
+              <a
+                href="https://maps.google.com/?q=Jl.+Tukad+Barito+Timur+III+No.16,+Panjer,+Denpasar+Selatan,+Bali"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-xs text-white/45 hover:text-white/70 transition-colors"
+              >
+                <MapPin className="w-3.5 h-3.5 text-secondary shrink-0" />
+                Jl. Tukad Barito Timur III No.16, Panjer, Denpasar Selatan, Bali 80226
+              </a>
+              <span className="text-white/20 hidden sm:inline">·</span>
+              <a
+                href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-xs text-white/45 hover:text-white/70 transition-colors"
+              >
+                <Phone className="w-3.5 h-3.5 text-secondary shrink-0" />
+                +62 812-3740-2292
+              </a>
             </div>
           </FadeUp>
         </div>
@@ -266,16 +292,28 @@ export default function Home() {
               Sound familiar?
             </p>
             <h2 className="text-3xl sm:text-5xl font-serif font-bold text-primary tracking-tight">
-              You own a villa in Bali.<br/>
+              You own a villa in Bali.<br />
               You have <span className="italic">no idea</span> if it's making money.
             </h2>
           </FadeUp>
 
           <Stagger className="grid sm:grid-cols-3 gap-5">
             {[
-              { icon: AlertTriangle, title: "Mystery payouts", text: "Airbnb sends money. You don't know what's a commission, a refund, or what month it's even for." },
-              { icon: Eye, title: "Black-box manager", text: "Your villa manager sends a WhatsApp summary. You're trusting it but you can't verify a thing." },
-              { icon: FileText, title: "Year-end panic", text: "Tax time arrives. You scramble through receipts and emails. You probably overpay." },
+              {
+                icon: AlertTriangle,
+                title: "Mystery payouts",
+                text: "Airbnb, Booking.com, and VRBO send money with deductions you can't explain. Commissions, adjustments, damage claims — what's actually yours?",
+              },
+              {
+                icon: Eye,
+                title: "You can't verify your manager",
+                text: "Your villa manager sends a WhatsApp summary. The numbers look fine. But you can't cross-check a thing — and you know it.",
+              },
+              {
+                icon: FileText,
+                title: "Tax season is a crisis",
+                text: "Your Konsultan Pajak asks for documents you don't have. You scramble through emails and receipts. You probably overpay — or underpay and get penalised.",
+              },
             ].map((p) => (
               <Item key={p.title}>
                 <div className="h-full rounded-2xl bg-white border border-border/60 p-6 sm:p-7 shadow-sm hover:shadow-md transition-shadow">
@@ -291,7 +329,7 @@ export default function Home() {
 
           <FadeUp className="mt-10 text-center">
             <p className="text-base sm:text-lg text-foreground/75 max-w-2xl mx-auto">
-              We fix all of that. One small monthly fee. One clear report. One WhatsApp away.
+              We fix all of that. One clear report every month. One person handling everything. One WhatsApp away.
             </p>
           </FadeUp>
         </div>
@@ -308,7 +346,7 @@ export default function Home() {
               Three simple steps. Every month.
             </h2>
             <p className="mt-4 text-base sm:text-lg text-foreground/70 max-w-2xl mx-auto">
-              Same rhythm. Same WhatsApp contact. Same clear report. Forever.
+              Same routine. Same WhatsApp contact. Same clean report. Month after month.
             </p>
           </FadeUp>
 
@@ -316,20 +354,20 @@ export default function Home() {
             {[
               {
                 n: "01",
-                title: "You send your stuff",
-                text: "Receipts, OTA reports, manager updates — all dropped into your private Google Drive. We even pull Airbnb and Booking.com for you.",
+                title: "You send your documents",
+                text: "Receipts, OTA reports, manager summaries — dropped into your private Google Drive. We pull Airbnb and Booking.com reports directly. You don't need to do much.",
                 icon: FileText,
               },
               {
                 n: "02",
-                title: "We do the work",
-                text: "We sort, check, reconcile. We catch double-charges, weird spikes, and missing payouts. We message you on WhatsApp if anything looks off.",
+                title: "We do all the work",
+                text: "We sort, reconcile, and check every transaction. Banjar fees, BPJS, pool staff, OTA commissions — nothing is missed. We WhatsApp you immediately if anything looks wrong.",
                 icon: ShieldCheck,
               },
               {
                 n: "03",
-                title: "You get the report",
-                text: "By the 15th. Revenue, expenses, profit, cash, occupancy. Plain English. Plus a 2-line summary so you know what to do next.",
+                title: "Your report arrives",
+                text: "By the 15th. Revenue, expenses, profit, occupancy. Abel personally reviews every figure before your report is sent. Plus a plain-English summary of what you need to know.",
                 icon: TrendingUp,
               },
             ].map((s) => (
@@ -349,33 +387,33 @@ export default function Home() {
           </Stagger>
 
           <FadeUp className="mt-12 text-center">
-            <WAButton label="Start This Month" message="Hi Abel, I want to start your monthly villa accounting service." />
+            <WAButton label="Start This Month" message="Hi Abel, I want to start your monthly villa bookkeeping service." />
           </FadeUp>
         </div>
       </section>
 
-      {/* ============== WHY US ============== */}
+      {/* ============== WHY US / ABOUT ABEL ============== */}
       <section className="py-16 sm:py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
-          <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
             <FadeUp>
               <p className="text-xs font-bold uppercase tracking-widest text-secondary mb-3">
-                Why VillaBooks Bali
+                Who we are
               </p>
-              <h2 className="text-3xl sm:text-5xl font-serif font-bold text-primary tracking-tight mb-6">
-                Built only for Bali villa owners.
+              <h2 className="text-3xl sm:text-5xl font-serif font-bold text-primary tracking-tight mb-5">
+                A real person.<br />A real Bali office.
               </h2>
-              <p className="text-base sm:text-lg text-foreground/75 leading-relaxed mb-8">
-                We don't do random bookkeeping. We do villa bookkeeping. Every day.
-                Airbnb, Booking.com, VRBO, banjar fees, pool guys, staff BPJS — we
-                already speak the language.
+              <p className="text-base sm:text-lg text-foreground/75 leading-relaxed mb-6">
+                VillaBooks Bali is run personally by <strong>Abel Yuniartini</strong>, from our office in Panjer, Denpasar Selatan.
+                Every client works directly with Abel — there is no assistant, no outsourced team, no automated system.
+                Just one dedicated person who handles your villa's books, every month.
               </p>
-              <div className="space-y-3">
+              <div className="space-y-3 mb-8">
                 {[
-                  "Run by Abel Yuniartini, based right here in Denpasar",
-                  "Foreign-owner specialists — PT PMA, leasehold, nominee",
-                  "All prices in Indonesian Rupiah. Always.",
-                  "Quick WhatsApp replies — usually within 1 hour",
+                  "Full-time villa bookkeeping — Airbnb, Booking.com, VRBO, banjar, BPJS",
+                  "Specialists in foreign-owned villas: PT PMA, leasehold, nominee",
+                  "We prepare your documents and coordinate with your Konsultan Pajak",
+                  "All prices in Indonesian Rupiah · WhatsApp within 1 hour",
                 ].map((b) => (
                   <div key={b} className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full bg-secondary/20 flex items-center justify-center mt-0.5 shrink-0">
@@ -385,9 +423,39 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <div className="mt-8">
-                <WAButton label="Ask Abel a Question" message="Hi Abel, I have a quick question about VillaBooks Bali." />
+
+              {/* Abel's business card */}
+              <div className="rounded-2xl border border-border bg-[#f4f1ea] p-5 flex flex-col sm:flex-row sm:items-center gap-4 mb-8">
+                <div className="w-14 h-14 rounded-full bg-primary/10 border-2 border-secondary/30 flex items-center justify-center shrink-0">
+                  <UserCheck className="w-7 h-7 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <p className="font-bold text-primary text-base">Abel Yuniartini</p>
+                  <p className="text-sm text-foreground/60 mb-2">Founder & Lead Bookkeeper, VillaBooks Bali</p>
+                  <div className="flex flex-col gap-1">
+                    <a
+                      href={wa("Hi Abel, I have a question about VillaBooks Bali.")}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs text-foreground/60 hover:text-primary transition-colors"
+                    >
+                      <Phone className="w-3 h-3 text-secondary shrink-0" />
+                      +62 812-3740-2292 (WhatsApp)
+                    </a>
+                    <a
+                      href="https://maps.google.com/?q=Jl.+Tukad+Barito+Timur+III+No.16,+Panjer,+Denpasar+Selatan,+Bali"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs text-foreground/60 hover:text-primary transition-colors"
+                    >
+                      <MapPin className="w-3 h-3 text-secondary shrink-0" />
+                      Jl. Tukad Barito Timur III No.16, Panjer, Denpasar Selatan, Bali 80226
+                    </a>
+                  </div>
+                </div>
               </div>
+
+              <WAButton label="Ask Abel a Question" message="Hi Abel, I have a quick question about VillaBooks Bali." />
             </FadeUp>
 
             <FadeUp delay={0.1}>
@@ -410,10 +478,10 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
           <Stagger className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
             {[
-              { n: "15th", t: "Monthly report delivery" },
-              { n: "1 hr", t: "Avg. WhatsApp reply" },
-              { n: "100%", t: "Indonesian Rupiah" },
-              { n: "0", t: "Spreadsheets you touch" },
+              { n: "15th", t: "Report every month, on time" },
+              { n: "< 1 hr", t: "WhatsApp reply time" },
+              { n: "IDR", t: "All prices in Rupiah" },
+              { n: "Abel", t: "You always deal with her directly" },
             ].map((m) => (
               <Item key={m.t}>
                 <div className="text-3xl sm:text-4xl font-serif font-bold text-secondary mb-1">{m.n}</div>
@@ -444,7 +512,7 @@ export default function Home() {
               {
                 name: "Starter",
                 price: "Rp 2.500.000",
-                tagline: "1 villa. Simple ops.",
+                tagline: "1 villa. Simple operations.",
                 msg: "Hi Abel, I want the Starter package (Rp 2.500.000/month).",
                 features: [
                   "Monthly bookkeeping",
@@ -458,7 +526,7 @@ export default function Home() {
               {
                 name: "Professional",
                 price: "Rp 5.000.000",
-                tagline: "Most popular. Full clarity.",
+                tagline: "Most popular. Full visibility.",
                 msg: "Hi Abel, I want the Professional package (Rp 5.000.000/month).",
                 features: [
                   "Everything in Starter",
@@ -480,7 +548,7 @@ export default function Home() {
                   "Tax-pack for Konsultan Pajak",
                   "Annual position summary",
                   "Forecast vs. actuals",
-                  "Priority 24h support",
+                  "Priority 24-hour support",
                   "Dedicated account manager",
                 ],
                 highlight: false,
@@ -545,7 +613,15 @@ export default function Home() {
 
           <FadeUp className="mt-8 text-center">
             <p className="text-sm text-foreground/60">
-              Not sure which package? <a href={wa("Hi Abel, I'm not sure which package fits my villa. Can you help me choose?")} target="_blank" rel="noopener noreferrer" className="font-bold text-primary hover:text-primary/80 underline underline-offset-4">Ask Abel on WhatsApp →</a>
+              Not sure which package?{" "}
+              <a
+                href={wa("Hi Abel, I'm not sure which package fits my villa. Can you help me choose?")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-primary hover:text-primary/80 underline underline-offset-4"
+              >
+                Ask Abel on WhatsApp →
+              </a>
             </p>
           </FadeUp>
         </div>
@@ -566,14 +642,42 @@ export default function Home() {
           <FadeUp>
             <Accordion type="single" collapsible className="w-full divide-y divide-border/60">
               {[
-                { q: "What do you actually do?", a: "We do your villa's monthly bookkeeping. Every month we collect your receipts, match your Airbnb and Booking.com payouts, and send you one clear report showing what came in, what went out, and what you actually made." },
-                { q: "How much does it cost?", a: "Three packages: Rp 2.500.000, Rp 5.000.000, or Rp 8.500.000 per month. All Indonesian Rupiah. No setup fee. Cancel anytime." },
-                { q: "Do you file my Indonesian taxes?", a: "No. We organize your records and prepare a clean document pack. Then a licensed Indonesian Konsultan Pajak (registered with DJP) handles your actual filings. We work with their team or yours." },
-                { q: "I don't live in Bali. Can you still help?", a: "Yes — 100% remote. Most clients live in Australia, Europe, Singapore, or the US. Everything happens by WhatsApp, email, and Google Drive." },
-                { q: "What if my books are a total mess right now?", a: "Very normal. We do a one-time cleanup (from Rp 8.500.000) — rebuild up to 12 months of records, then start your monthly service with clean books." },
-                { q: "When do I get my monthly report?", a: "By the 15th of every month. As long as your data is in by the 5th." },
-                { q: "Is my data safe?", a: "Yes. Secure Google Workspace storage with locked-down access. We never share your data with anyone without your permission." },
-                { q: "Do you work with PT PMA, leasehold, nominee?", a: "Yes — all of them. The legal structure changes the compliance details, not our bookkeeping work." },
+                {
+                  q: "What do you actually do?",
+                  a: "We do your villa's monthly bookkeeping. Every month we collect your receipts, match your Airbnb and Booking.com payouts, and send you one clear report showing what came in, what went out, and what you actually made.",
+                },
+                {
+                  q: "How much does it cost?",
+                  a: "Three packages: Rp 2.500.000, Rp 5.000.000, or Rp 8.500.000 per month. All Indonesian Rupiah. No setup fee. Cancel anytime.",
+                },
+                {
+                  q: "Do you file my Indonesian taxes?",
+                  a: "No. We organise your records and prepare a clean document pack. Then a licensed Indonesian Konsultan Pajak (registered with DJP) handles your actual filings. We work with their team or yours.",
+                },
+                {
+                  q: "I don't live in Bali. Can you still help?",
+                  a: "Yes — 100% remote. Most clients live in Australia, Europe, Singapore, or the US. Everything happens by WhatsApp, email, and Google Drive.",
+                },
+                {
+                  q: "What if my books are a total mess right now?",
+                  a: "Very common. We do a one-time cleanup (from Rp 8.500.000) — rebuild up to 12 months of records, then start your monthly service with clean books.",
+                },
+                {
+                  q: "When do I get my monthly report?",
+                  a: "By the 15th of every month. As long as your documents are in the Google Drive by the 5th.",
+                },
+                {
+                  q: "Is my data safe?",
+                  a: "Yes. Secure Google Workspace storage with locked access. We never share your data with anyone without your permission.",
+                },
+                {
+                  q: "Do you work with PT PMA, leasehold, nominee?",
+                  a: "Yes — all of them. The legal structure changes the compliance details, not the bookkeeping work itself.",
+                },
+                {
+                  q: "Who will I actually deal with?",
+                  a: "Abel Yuniartini directly. Not an assistant, not a call centre. You WhatsApp Abel. She answers. That's how it works.",
+                },
               ].map((f, i) => (
                 <AccordionItem key={i} value={`faq-${i}`} className="border-0">
                   <AccordionTrigger className="text-left font-serif font-bold text-base sm:text-lg text-primary hover:text-primary/80 hover:no-underline py-5">
@@ -588,7 +692,7 @@ export default function Home() {
           </FadeUp>
 
           <FadeUp className="mt-10 text-center">
-            <WAButton label="Got Another Question? Ask Abel" message="Hi Abel, I have a question about VillaBooks Bali." />
+            <WAButton label="Got a Question? Ask Abel" message="Hi Abel, I have a question about VillaBooks Bali." />
           </FadeUp>
         </div>
       </section>
@@ -605,21 +709,21 @@ export default function Home() {
         </div>
         <div className="relative container mx-auto px-4 sm:px-6 max-w-3xl text-center">
           <FadeUp>
-            <p className="text-xs font-bold uppercase tracking-widest text-secondary mb-3">Let's talk</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-secondary mb-3">Talk to Abel</p>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold tracking-tight leading-[1.1] mb-5">
-              Ready to see your<br/>
+              Ready to see your<br />
               <span className="text-secondary">real numbers?</span>
             </h2>
             <p className="text-base sm:text-lg text-white/80 mb-10 max-w-xl mx-auto">
-              Book a free 15-minute clarity call and we'll walk through your villa's finances together.
-              No pressure. No jargon. Just honest answers.
+              Book a free 15-minute call with Abel. Tell her about your villa — which platforms you use, how messy your books are, what you need.
+              She'll tell you exactly how she can help. No pressure, no jargon.
             </p>
           </FadeUp>
 
           <FadeUp delay={0.1}>
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12">
-              <BookCallButton label="Book a Free 15-Min Clarity Call" />
-              <WAButton label="Chat on WhatsApp" variant="outline" />
+              <BookCallButton label="Book a Free 15-Min Call" />
+              <WAButton label="WhatsApp Abel Now" variant="outline" />
             </div>
           </FadeUp>
 
@@ -628,24 +732,38 @@ export default function Home() {
               <div className="rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm p-5">
                 <Phone className="w-5 h-5 text-secondary mb-3" />
                 <p className="text-xs uppercase tracking-wider text-white/60 mb-1">WhatsApp</p>
-                <p className="text-sm font-semibold">+62 812-3740-2292</p>
+                <a
+                  href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-semibold hover:text-secondary transition-colors"
+                >
+                  +62 812-3740-2292
+                </a>
               </div>
               <div className="rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm p-5">
                 <Clock className="w-5 h-5 text-secondary mb-3" />
-                <p className="text-xs uppercase tracking-wider text-white/60 mb-1">Response</p>
+                <p className="text-xs uppercase tracking-wider text-white/60 mb-1">Response time</p>
                 <p className="text-sm font-semibold">Within 1 hour</p>
               </div>
               <div className="rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm p-5">
                 <MapPin className="w-5 h-5 text-secondary mb-3" />
                 <p className="text-xs uppercase tracking-wider text-white/60 mb-1">Office</p>
-                <p className="text-sm font-semibold">Denpasar Selatan, Bali</p>
+                <a
+                  href="https://maps.google.com/?q=Jl.+Tukad+Barito+Timur+III+No.16,+Panjer,+Denpasar+Selatan,+Bali"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-semibold hover:text-secondary transition-colors leading-snug"
+                >
+                  Panjer, Denpasar Selatan,<br />Bali 80226
+                </a>
               </div>
             </div>
           </FadeUp>
 
           <FadeUp delay={0.2}>
             <p className="mt-12 text-xs text-white/45 max-w-xl mx-auto leading-relaxed">
-              VillaBooks Bali is a bookkeeping service. We organize your financial records and prepare them for review by a licensed professional. For Indonesian tax filings, we coordinate with licensed Konsultan Pajak registered with DJP.
+              VillaBooks Bali is a bookkeeping service. We organise your financial records and prepare them for review by a licensed professional. For Indonesian tax filings, we coordinate with licensed Konsultan Pajak registered with DJP.
             </p>
           </FadeUp>
         </div>
