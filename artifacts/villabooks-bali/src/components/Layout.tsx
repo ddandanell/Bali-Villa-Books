@@ -82,7 +82,7 @@ export function Layout({ children }: { children: ReactNode }) {
             href="#top"
             onClick={(e) => smoothScroll(e, "#top")}
             className="flex items-center group"
-            aria-label="VillaBooks Bali — home"
+            aria-label="Bali Accounting — home"
           >
             <Logo
               variant="full"
@@ -221,12 +221,12 @@ export function Layout({ children }: { children: ReactNode }) {
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">Compliance</h4>
             <p className="text-xs text-white/50 leading-relaxed">
-              VillaBooks Bali is a bookkeeping and financial reporting service. We organize your financial records and prepare them for review by a licensed professional. Our reports are for owner information only and do not constitute official tax filings or legal advice. For Indonesian tax filings we coordinate with licensed Konsultan Pajak registered with DJP.
+              Bali Accounting is a bookkeeping and financial reporting service. We organize your financial records and prepare them for review by a licensed professional. Our reports are for owner information only and do not constitute official tax filings or legal advice. For Indonesian tax filings we coordinate with licensed Konsultan Pajak registered with DJP.
             </p>
           </div>
         </div>
         <div className="container mx-auto px-4 sm:px-6 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/40">
-          <span>© 2025 VillaBooks Bali. All rights reserved.</span>
+          <span>© 2025 Bali Accounting. All rights reserved.</span>
           <span>Made in Denpasar, Bali 🌴</span>
         </div>
       </footer>

@@ -404,7 +404,7 @@ export default function Home() {
                 A real person.<br />A real Bali office.
               </h2>
               <p className="text-base sm:text-lg text-foreground/75 leading-relaxed mb-6">
-                VillaBooks Bali is run personally by <strong>Abel Yuniartini</strong>, from our office in Panjer, Denpasar Selatan.
+                Bali Accounting is run personally by <strong>Abel Yuniartini</strong>, from our office in Panjer, Denpasar Selatan.
                 Every client works directly with Abel — there is no assistant, no outsourced team, no automated system.
                 Just one dedicated person who handles your villa's books, every month.
               </p>
@@ -431,10 +431,10 @@ export default function Home() {
                 </div>
                 <div className="flex-1">
                   <p className="font-bold text-primary text-base">Abel Yuniartini</p>
-                  <p className="text-sm text-foreground/60 mb-2">Founder & Lead Bookkeeper, VillaBooks Bali</p>
+                  <p className="text-sm text-foreground/60 mb-2">Founder & Lead Bookkeeper, Bali Accounting</p>
                   <div className="flex flex-col gap-1">
                     <a
-                      href={wa("Hi Abel, I have a question about VillaBooks Bali.")}
+                      href={wa("Hi Abel, I have a question about Bali Accounting.")}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-xs text-foreground/60 hover:text-primary transition-colors"
@@ -455,7 +455,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <WAButton label="Ask Abel a Question" message="Hi Abel, I have a quick question about VillaBooks Bali." />
+              <WAButton label="Ask Abel a Question" message="Hi Abel, I have a quick question about Bali Accounting." />
             </FadeUp>
 
             <FadeUp delay={0.1}>
@@ -692,7 +692,7 @@ export default function Home() {
           </FadeUp>
 
           <FadeUp className="mt-10 text-center">
-            <WAButton label="Got a Question? Ask Abel" message="Hi Abel, I have a question about VillaBooks Bali." />
+            <WAButton label="Got a Question? Ask Abel" message="Hi Abel, I have a question about Bali Accounting." />
           </FadeUp>
         </div>
       </section>
@@ -763,7 +763,7 @@ export default function Home() {
 
           <FadeUp delay={0.2}>
             <p className="mt-12 text-xs text-white/45 max-w-xl mx-auto leading-relaxed">
-              VillaBooks Bali is a bookkeeping service. We organise your financial records and prepare them for review by a licensed professional. For Indonesian tax filings, we coordinate with licensed Konsultan Pajak registered with DJP.
+              Bali Accounting is a bookkeeping service. We organise your financial records and prepare them for review by a licensed professional. For Indonesian tax filings, we coordinate with licensed Konsultan Pajak registered with DJP.
             </p>
           </FadeUp>
         </div>

@@ -8,7 +8,7 @@ interface LogoProps {
 }
 
 /**
- * VillaBooks Bali brand logo.
+ * Bali Accounting brand logo.
  * - Icon: rounded-square mark with a stylized villa roofline + sun + ledger lines
  * - Full: icon + wordmark
  */
@@ -28,7 +28,7 @@ export function Logo({
             onDark ? "text-white" : "text-primary"
           } ${textClassName}`}
         >
-          VillaBooks <span className="text-secondary">Bali</span>
+          Bali <span className="text-secondary">Accounting</span>
         </span>
       )}
     </span>
