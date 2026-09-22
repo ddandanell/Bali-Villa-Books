@@ -4,6 +4,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import Blog from "@/pages/Blog";
+import BlogArticle from "@/pages/BlogArticle";
 
 const queryClient = new QueryClient();
 
@@ -11,6 +13,8 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/blog" component={Blog} />
+      <Route path="/blog/:slug" component={BlogArticle} />
       {/* Legacy paths now redirect to single landing page */}
       <Route path="/services" component={Home} />
       <Route path="/sample-report" component={Home} />

@@ -1,720 +1,82 @@
 import { Layout } from "@/components/Layout";
 import { motion, useReducedMotion } from "framer-motion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Link } from "wouter";
+import { useListBlogPosts } from "@workspace/api-client-react";
+import { BlogCard } from "@/components/BlogCard";
+import { trackEvent } from "@/lib/analytics";
 import {
-  CheckCircle2,
-  MessageCircle,
-  Clock,
-  ShieldCheck,
-  TrendingUp,
-  Eye,
-  AlertTriangle,
-  FileText,
-  Phone,
-  MapPin,
-  Star,
-  UserCheck,
-  Building2,
-  ArrowRight,
+  ArrowRight, AlertTriangle, Building2, CheckCircle2, Clock, Eye, FileText,
+  MapPin, MessageCircle, Phone, ShieldCheck, TrendingUp
 } from "lucide-react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 const WA = "https://wa.me/6281237402292";
-const wa = (msg: string) =>
-  `${WA}?text=${encodeURIComponent(msg)}`;
-
+const wa = (msg: string) => `${WA}?text=${encodeURIComponent(msg)}`;
 const CALENDLY_URL = "https://calendly.com/villabooksbali/clarity-call";
-
 function openCalendly() {
+  trackEvent("call_booking_click", { location: "landing_page" });
   window.open(CALENDLY_URL, "_blank", "noopener,noreferrer");
 }
 
-/* ---------- Reusable WhatsApp button ---------- */
-function WAButton({
-  label = "Chat on WhatsApp",
-  message = "Hi Abel, I want to talk about accounting for my Bali villa.",
-  size = "lg",
-  variant = "primary",
-  className = "",
-}: {
-  label?: string;
-  message?: string;
-  size?: "lg" | "md";
-  variant?: "primary" | "outline" | "green";
-  className?: string;
-}) {
-  const base =
-    "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 active:scale-[0.98]";
-  const sizes =
-    size === "lg"
-      ? "h-14 px-8 text-base w-full sm:w-auto"
-      : "h-12 px-6 text-sm w-full sm:w-auto";
-      
-  let styles = "";
-  if (variant === "primary") {
-    styles = "bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/20 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-0.5";
-  } else if (variant === "green") {
-    styles = "bg-[#25D366] hover:bg-[#1ebe5e] text-white shadow-xl shadow-[#25D366]/30 hover:shadow-2xl hover:shadow-[#25D366]/40 hover:-translate-y-0.5";
-  } else {
-    styles = "border-2 border-primary text-primary hover:bg-primary/5 shadow-none";
-  }
-
-  return (
-    <a
-      href={wa(message)}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`${base} ${sizes} ${styles} ${className}`}
-    >
-      <MessageCircle className={size === "lg" ? "w-5 h-5" : "w-4 h-4"} />
-      {label}
-    </a>
-  );
+function WAButton({ label = "Contact Sales", message = "Hello Sales team, I would like to discuss accounting for my Bali villa.", variant = "primary", className = "" }: { label?: string; message?: string; variant?: "primary" | "outline" | "green"; className?: string }) {
+  const styles = variant === "green" ? "bg-[#25D366] hover:bg-[#1ebe5e] text-white shadow-lg shadow-[#25D366]/25" : variant === "outline" ? "border border-primary/25 text-primary hover:bg-primary/5" : "bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20";
+  return <a href={wa(message)} target="_blank" rel="noopener noreferrer" data-testid={`link-${label.toLowerCase().replaceAll(" ", "-")}`} className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition-all hover:-translate-y-0.5 ${styles} ${className}`}><MessageCircle className="h-4 w-4" />{label}</a>;
 }
-
-/* ---------- Calendly / Book a Call button ---------- */
-function BookCallButton({
-  label = "Book a Free 15-Min Call",
-  size = "lg",
-  variant = "secondary",
-  className = "",
-}: {
-  label?: string;
-  size?: "lg" | "md";
-  variant?: "secondary" | "outline" | "primary";
-  className?: string;
-}) {
-  const base =
-    "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 active:scale-[0.98] cursor-pointer";
-  const sizes =
-    size === "lg"
-      ? "h-14 px-8 text-base w-full sm:w-auto"
-      : "h-12 px-6 text-sm w-full sm:w-auto";
-  
-  let styles = "";
-  if (variant === "secondary") {
-    styles = "bg-secondary hover:bg-secondary/90 text-white shadow-xl shadow-secondary/30 hover:shadow-2xl hover:shadow-secondary/40 hover:-translate-y-0.5";
-  } else if (variant === "primary") {
-    styles = "bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/20 hover:-translate-y-0.5";
-  } else {
-    styles = "bg-white text-primary border border-primary/20 hover:border-primary/40 shadow-sm hover:shadow-md";
-  }
-
-  return (
-    <button
-      type="button"
-      onClick={openCalendly}
-      className={`${base} ${sizes} ${styles} ${className}`}
-    >
-      <Clock className={size === "lg" ? "w-5 h-5" : "w-4 h-4"} />
-      {label}
-    </button>
-  );
+function BookCallButton({ label = "Book a clarity call", variant = "outline" }: { label?: string; variant?: "outline" | "secondary" }) {
+  return <button type="button" onClick={openCalendly} data-testid="button-book-clarity-call" className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition-all hover:-translate-y-0.5 ${variant === "secondary" ? "bg-secondary text-white shadow-lg shadow-secondary/25" : "border border-primary/25 bg-background text-primary hover:bg-primary/5"}`}><Clock className="h-4 w-4" />{label}</button>;
 }
-
-/* ---------- Animation helpers ---------- */
-function FadeUp({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
+function FadeUp({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const reduce = useReducedMotion();
-  return (
-    <motion.div
-      initial={reduce ? false : { opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
+  return <motion.div initial={reduce ? false : { opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: .65, delay, ease: [.22, 1, .36, 1] }} className={className}>{children}</motion.div>;
 }
+const eyebrow = "mb-4 block text-xs font-bold uppercase tracking-[.22em] text-secondary";
 
-function Stagger({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={{
-        visible: { transition: { staggerChildren: 0.15 } },
-        hidden: {},
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-function Item({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const reduce = useReducedMotion();
-  return (
-    <motion.div
-      variants={{
-        hidden: reduce ? { opacity: 1 } : { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-/* ---------- Page ---------- */
 export default function Home() {
-  return (
-    <Layout>
-
-      {/* ============== HERO ============== */}
-      <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-32 overflow-hidden bg-background">
-        <div className="container mx-auto px-5 md:px-8 max-w-7xl relative z-10">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            
-            <div className="lg:col-span-6 lg:pr-8">
-              <FadeUp>
-                <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20">
-                  <MapPin className="w-4 h-4 text-secondary" />
-                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary">
-                    Based in Denpasar, Bali
-                  </span>
-                </div>
-              </FadeUp>
-
-              <FadeUp delay={0.1}>
-                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif text-primary leading-[1.1] tracking-tight mb-6">
-                  Your Bali villa. <br />
-                  <span className="italic text-secondary">Real numbers.</span> <br />
-                  Zero stress.
-                </h1>
-              </FadeUp>
-
-              <FadeUp delay={0.2}>
-                <p className="text-lg sm:text-xl text-foreground/80 leading-relaxed mb-10 max-w-lg font-sans">
-                  Professional Bali villa accounting and bookkeeping services. Expert account management for Bali villas handling every receipt, Airbnb bookkeeping, and OTA payout reconciliation—delivering clear financial reporting by the 15th of every month.
-                </p>
-              </FadeUp>
-
-              <FadeUp delay={0.3}>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <WAButton 
-                    label="WhatsApp Abel" 
-                    message="Hi Abel, I need a reliable villa accountant in Bali." 
-                    variant="green"
-                  />
-                  <BookCallButton label="Book Free Call" variant="outline" />
-                </div>
-                
-                <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:gap-8 text-sm font-sans text-foreground/60">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-secondary" />
-                    <span>English & Indonesian</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-secondary" />
-                    <span>All prices in IDR</span>
-                  </div>
-                </div>
-              </FadeUp>
-            </div>
-
-            <div className="lg:col-span-6 relative">
-              <FadeUp delay={0.4} className="relative">
-                {/* Decorative blob */}
-                <div className="absolute -inset-4 bg-secondary/20 rounded-[100px] blur-3xl rotate-12 opacity-60" />
-                
-                <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-white/50 aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5]">
-                  <img
-                    src="/images/bali-villa-accounting-services-hero.jpg"
-                    alt="Professional Bali villa accountant working on financial reporting"
-                    width="800"
-                    height="1000"
-                    className="w-full h-full object-cover"
-                    fetchPriority="high"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
-                  
-                  {/* Floating Trust Badge */}
-                  <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 glass-panel rounded-2xl p-5 sm:p-6 flex items-center gap-5">
-                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm shrink-0">
-                      <img src="/images/bali-accountant-consultation.jpg" alt="Abel Yuniartini, Villa Accountant in Bali" width="48" height="48" className="w-10 h-10 rounded-full object-cover" />
-                    </div>
-                    <div>
-                      <p className="text-primary font-bold text-sm sm:text-base font-serif">Run personally by Abel</p>
-                      <p className="text-primary/70 text-xs sm:text-sm font-sans mt-0.5">Your dedicated Denpasar bookkeeper</p>
-                    </div>
-                  </div>
-                </div>
-              </FadeUp>
-            </div>
-
-          </div>
+  const { data: latestPosts, isError: isBlogError } = useListBlogPosts({ limit: 3 });
+  return <Layout>
+    <section className="overflow-hidden bg-background pb-24 pt-32 sm:pb-32 sm:pt-40">
+      <div className="container relative mx-auto grid max-w-7xl items-center gap-14 px-5 md:px-8 lg:grid-cols-12">
+        <div className="lg:col-span-6">
+          <FadeUp><div className="mb-7 inline-flex items-center gap-2 rounded-full border border-secondary/20 bg-secondary/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-primary"><MapPin className="h-4 w-4 text-secondary" />Denpasar, Bali · Professional services</div></FadeUp>
+          <FadeUp delay={.08}><h1 className="mb-7 text-5xl leading-[1.02] tracking-tight text-primary sm:text-7xl">Bali villa accounting for owners who need the <em className="text-secondary">whole picture.</em></h1></FadeUp>
+          <FadeUp delay={.16}><p className="mb-9 max-w-xl text-lg leading-relaxed text-foreground/75">Bali Accounting provides disciplined bookkeeping, account management, and monthly reporting for villa owners and operators. We turn booking payouts, supplier invoices, payroll records, and everyday expenses into a dependable view of the business.</p></FadeUp>
+          <FadeUp delay={.24}><div className="flex flex-col gap-3 sm:flex-row"><WAButton label="Contact Sales" message="Hello Sales team, I would like to discuss professional accounting for my Bali villa." variant="green" /><BookCallButton /></div></FadeUp>
+          <div className="mt-8 flex flex-wrap gap-x-7 gap-y-2 text-sm text-foreground/60"><span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-secondary" />English and Indonesian</span><span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-secondary" />IDR reporting</span></div>
         </div>
-      </section>
+        <FadeUp delay={.2} className="relative lg:col-span-6"><div className="absolute -inset-5 rounded-[4rem] bg-secondary/10 blur-3xl" /><div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] border border-white/60 shadow-2xl sm:aspect-[5/4] lg:aspect-[4/5]"><img src="/images/bali-villa-accounting-services-hero.jpg" alt="Bali accounting professional reviewing villa financial records beside a laptop" width="1024" height="1024" fetchPriority="high" className="h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-primary/75 via-transparent to-transparent" /><div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/30 bg-white/80 p-5 backdrop-blur-md"><p className="font-serif text-xl text-primary">A reporting rhythm built for ownership.</p><p className="mt-1 text-sm text-primary/70">Clear records. Fewer unanswered questions.</p></div></div></FadeUp>
+      </div>
+    </section>
 
-      {/* ============== LOGOS / PROOF ============== */}
-      <section className="py-10 border-y border-border/50 bg-white">
-        <div className="container mx-auto px-5 max-w-7xl">
-          <p className="text-center text-sm font-semibold uppercase tracking-widest text-foreground/40 mb-6 font-sans">
-            Reconciling operations across
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-60 grayscale mix-blend-multiply">
-            <span className="text-xl font-bold font-sans">Airbnb</span>
-            <span className="text-xl font-bold font-sans">Booking.com</span>
-            <span className="text-xl font-bold font-sans">VRBO</span>
-            <span className="text-xl font-bold font-sans">Agoda</span>
-            <span className="text-xl font-bold font-sans">Expedia</span>
-          </div>
-        </div>
-      </section>
+    <section className="border-y border-border/60 bg-white py-9"><div className="container mx-auto max-w-7xl px-5 md:px-8"><p className="mb-5 text-center text-xs font-bold uppercase tracking-[.2em] text-foreground/40">Reconciliation across the channels your villa uses</p><div className="flex flex-wrap justify-center gap-x-12 gap-y-4 text-lg font-semibold text-primary/60"><span>Airbnb</span><span>Booking.com</span><span>Agoda</span><span>VRBO</span><span>Direct booking</span></div></div></section>
 
-      {/* ============== PROBLEM ============== */}
-      <section id="services" className="py-24 sm:py-32 bg-accent/40 scroll-mt-24">
-        <div className="container mx-auto px-5 md:px-8 max-w-7xl">
-          <div className="grid lg:grid-cols-12 gap-16 items-start">
-            
-            <div className="lg:col-span-5 lg:sticky lg:top-32">
-              <FadeUp>
-                <h2 className="text-3xl sm:text-5xl font-serif text-primary tracking-tight leading-[1.1] mb-6">
-                  You own a villa in Bali.<br />
-                  But is it actually <span className="italic text-secondary">profitable?</span>
-                </h2>
-                <p className="text-lg text-foreground/75 leading-relaxed font-sans mb-8">
-                  Managing a Bali villa remotely often means relying on a manager's WhatsApp summary. You receive payouts, but deductions remain a mystery. You have zero confidence in the numbers.
-                </p>
-                <div className="hidden lg:block">
-                  <WAButton label="Fix Your Books" message="Hi Abel, my villa books need a professional review." variant="primary" />
-                </div>
-              </FadeUp>
-            </div>
+    <section id="services" className="bg-accent/40 py-24 sm:py-32"><div className="container mx-auto max-w-7xl px-5 md:px-8"><div className="grid gap-14 lg:grid-cols-12"><div className="lg:col-span-5"><FadeUp><span className={eyebrow}>The visibility gap</span><h2 className="mb-6 text-4xl leading-tight text-primary sm:text-5xl">A payout is not a profit report.</h2><p className="text-lg leading-relaxed text-foreground/75">A villa can look busy and still be difficult to understand financially. Owners often receive a manager summary, a bank balance, and several platform deposits without a consistent bridge between them. That makes it hard to separate revenue from timing, operating cost from owner draw, or a one-off repair from a recurring obligation.</p><p className="mt-5 text-lg leading-relaxed text-foreground/75">Our account management for Bali villas creates that bridge. Every month has a record, a review, and a concise explanation of what changed.</p></FadeUp></div><div className="flex flex-col gap-5 lg:col-span-7"><FadeUp delay={.08}><div className="rounded-3xl border border-border/60 bg-white p-7 shadow-sm"><AlertTriangle className="mb-5 h-6 w-6 text-secondary" /><h3 className="mb-2 text-2xl text-primary">Money arrives in fragments</h3><p className="leading-relaxed text-foreground/70">Airbnb, Booking.com, Agoda, VRBO, and direct bookings use different payout dates, currencies, commissions, refunds, and adjustments. Without OTA payout reconciliation, deposits cannot be confidently matched to stays.</p></div></FadeUp><FadeUp delay={.14}><div className="rounded-3xl border border-border/60 bg-white p-7 shadow-sm"><Eye className="mb-5 h-6 w-6 text-secondary" /><h3 className="mb-2 text-2xl text-primary">Small expenses become invisible</h3><p className="leading-relaxed text-foreground/70">Electricity tokens, maintenance, linen, banjar contributions, supplier advances, and staff reimbursements add up. Bali property expense tracking gives each cost a source, date, category, and supporting document.</p></div></FadeUp><FadeUp delay={.2}><div className="rounded-3xl border border-border/60 bg-white p-7 shadow-sm"><FileText className="mb-5 h-6 w-6 text-secondary" /><h3 className="mb-2 text-2xl text-primary">A tax adviser needs usable records</h3><p className="leading-relaxed text-foreground/70">We prepare organized schedules and supporting files for your licensed Indonesian Konsultan Pajak. We do not provide tax advice or file official returns; we make the underlying records easier for your adviser to review.</p></div></FadeUp></div></div></div></section>
 
-            <div className="lg:col-span-7">
-              <Stagger className="flex flex-col gap-6">
-                {[
-                  {
-                    icon: AlertTriangle,
-                    title: "OTA Payout Reconciliation",
-                    text: "Airbnb and Booking.com send money with deductions you can't trace. We reconcile commissions, cancellations, and adjustments so you know what is actually yours.",
-                  },
-                  {
-                    icon: Eye,
-                    title: "Unverifiable Expenses",
-                    text: "Banjar fees, pool maintenance, BPJS for staff, electricity tokens. Without a dedicated villa accountant in Bali, you can't verify if expenses are legitimate or inflated.",
-                  },
-                  {
-                    icon: FileText,
-                    title: "Tax Season Crisis",
-                    text: "Your Konsultan Pajak needs documents you don't have. We provide full financial reporting to prevent scrambling through emails, risking penalties, or overpaying due to messy records.",
-                  },
-                ].map((p, i) => (
-                  <Item key={p.title}>
-                    <div className="group bg-white rounded-3xl p-8 sm:p-10 shadow-sm border border-border/50 hover:shadow-xl hover:border-secondary/30 transition-all duration-500">
-                      <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center mb-6 group-hover:bg-secondary group-hover:text-white transition-colors duration-500 text-secondary">
-                        <p.icon className="w-6 h-6" />
-                      </div>
-                      <h3 className="text-2xl font-serif text-primary mb-3">{p.title}</h3>
-                      <p className="text-foreground/70 leading-relaxed font-sans text-base">{p.text}</p>
-                    </div>
-                  </Item>
-                ))}
-              </Stagger>
-              
-              <div className="mt-10 lg:hidden text-center">
-                <WAButton label="Fix Your Books" message="Hi Abel, my villa books need a professional review." variant="primary" />
-              </div>
-            </div>
+    <section className="bg-primary py-24 text-primary-foreground sm:py-32"><div className="container mx-auto max-w-7xl px-5 md:px-8"><div className="grid items-center gap-14 lg:grid-cols-12"><FadeUp className="lg:col-span-5"><span className={eyebrow}>Monthly bookkeeping scope</span><h2 className="mb-6 text-4xl leading-tight sm:text-5xl">A practical back office for a property business.</h2><p className="leading-relaxed text-primary-foreground/70">Bali villa bookkeeping services are most useful when they follow the real operating cycle. We work from source documents and agreed responsibilities, not assumptions about what a villa should spend.</p></FadeUp><FadeUp delay={.1} className="lg:col-span-7"><div className="grid gap-4 sm:grid-cols-2">{["Transaction coding and monthly ledger maintenance","Bank, cash, and owner-funding checks","Airbnb, Booking.com, Agoda, VRBO, and direct-booking reconciliation","Supplier records, invoice filing, and payable follow-up","Staff payroll schedules and BPJS record tracking","Monthly close, P&L, balance schedules, and questions list"].map((item, i) => <div key={item} className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5"><span className="font-serif text-2xl text-secondary">0{i + 1}</span><span className="text-sm leading-relaxed text-primary-foreground/80">{item}</span></div>)}</div></FadeUp></div></div></section>
 
-          </div>
-        </div>
-      </section>
+    <section className="bg-white py-20 sm:py-28"><div className="container mx-auto max-w-7xl px-5 md:px-8"><div className="grid gap-10 lg:grid-cols-3"><FadeUp><span className={eyebrow}>Who this is for</span><h2 className="text-4xl leading-tight text-primary">A financial partner for the people responsible for the numbers.</h2></FadeUp><FadeUp delay={.08}><h3 className="mb-3 text-xl text-primary">Remote villa owners</h3><p className="leading-relaxed text-foreground/70">If you live outside Bali, a consistent monthly pack gives you a way to review operations without treating a bank balance or a chat summary as the full answer. You can see what has been received, what has been spent, and what still needs documentation.</p></FadeUp><FadeUp delay={.16}><h3 className="mb-3 text-xl text-primary">Operators and growing portfolios</h3><p className="leading-relaxed text-foreground/70">Managers and operators need records that can be handed between people and properties. Clear categories, channel reconciliation, supplier files, and payroll schedules reduce dependence on informal personal systems as responsibilities change.</p></FadeUp></div><div className="mt-10 border-t border-border/70 pt-8"><p className="max-w-4xl text-lg leading-relaxed text-foreground/70">We also work with owners preparing PT PMA villa records for review, operators who are moving away from spreadsheets, and established properties that want a one-time cleanup before starting a regular close. The first conversation is about fit and scope, not a presumption that every villa needs the same process.</p></div></div></section>
 
-      {/* ============== HOW IT WORKS ============== */}
-      <section className="py-24 sm:py-32 bg-primary text-primary-foreground relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 mix-blend-overlay">
-          <img src="/images/bali-villa-bookkeeping-reconciliation.jpg" alt="Bali villa bookkeeping and reconciliation process" width="1024" height="1024" loading="lazy" className="w-full h-full object-cover" />
-        </div>
-        
-        <div className="container mx-auto px-5 md:px-8 max-w-7xl relative z-10">
-          <FadeUp className="text-center mb-16 sm:mb-20">
-            <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4 block font-sans">The Process</span>
-            <h2 className="text-3xl sm:text-5xl font-serif tracking-tight leading-[1.1] max-w-2xl mx-auto">
-              Three simple steps to <span className="italic text-secondary">financial clarity.</span>
-            </h2>
-          </FadeUp>
+    <section className="bg-background py-24 sm:py-32"><div className="container mx-auto max-w-7xl px-5 md:px-8"><div className="mb-14 grid gap-10 lg:grid-cols-12 lg:items-end"><div className="lg:col-span-6"><span className={eyebrow}>How the numbers are checked</span><h2 className="text-4xl leading-tight text-primary sm:text-5xl">Reconciliation that follows the money.</h2></div><p className="text-lg leading-relaxed text-foreground/70 lg:col-span-5 lg:col-start-8">We compare platform statements, booking detail, deposits, and agreed operating records. Differences are documented instead of silently absorbed into a summary total.</p></div><div className="grid gap-10 lg:grid-cols-2 lg:items-center"><FadeUp><img src="/images/bali-villa-bookkeeping-reconciliation.jpg" alt="Bali villa bookkeeping professional comparing receipts with a financial dashboard" width="1024" height="1024" loading="lazy" className="aspect-square w-full rounded-[2rem] object-cover shadow-xl" /></FadeUp><FadeUp delay={.1}><div className="space-y-8">{[{t:"Revenue is matched to the stay",d:"Reservation dates, gross booking value, platform commission, refunds, and net payout are considered together so the reported revenue is explainable."},{t:"Timing differences are made visible",d:"A payout received in a different month is not mistaken for new performance. We keep the operating period and cash movement legible."},{t:"Exceptions become a useful list",d:"Missing receipts, duplicate charges, unusual deductions, and unreconciled deposits are surfaced for the owner or manager to resolve."}].map(x=><div key={x.t} className="border-l-2 border-secondary pl-6"><h3 className="mb-2 text-xl text-primary">{x.t}</h3><p className="leading-relaxed text-foreground/70">{x.d}</p></div>)}</div></FadeUp></div></div></section>
 
-          <Stagger className="grid md:grid-cols-3 gap-8 sm:gap-12 relative">
-            {/* Connecting line for desktop */}
-            <div className="hidden md:block absolute top-12 left-1/6 right-1/6 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-            
-            {[
-              {
-                n: "01",
-                title: "Upload Documents",
-                text: "Drop receipts and manager summaries into your private Google Drive. We pull Airbnb/Booking.com reports directly.",
-              },
-              {
-                n: "02",
-                title: "We Reconcile",
-                text: "We cross-check every transaction. Banjar fees, BPJS, payroll, and OTA commissions. We WhatsApp you if anything is missing.",
-              },
-              {
-                n: "03",
-                title: "Report Delivered",
-                text: "By the 15th of every month, you receive a clean P&L. Abel personally reviews every figure before it reaches your inbox.",
-              },
-            ].map((s) => (
-              <Item key={s.n} className="relative z-10 flex flex-col items-center text-center">
-                <div className="w-24 h-24 rounded-full bg-primary-foreground/5 border border-white/10 backdrop-blur-sm flex items-center justify-center mb-8 shrink-0">
-                  <span className="text-3xl font-serif text-secondary">{s.n}</span>
-                </div>
-                <h3 className="text-2xl font-serif mb-4">{s.title}</h3>
-                <p className="text-primary-foreground/70 leading-relaxed font-sans text-sm sm:text-base max-w-sm">
-                  {s.text}
-                </p>
-              </Item>
-            ))}
-          </Stagger>
-        </div>
-      </section>
+    <section className="bg-white py-24 sm:py-32"><div className="container mx-auto max-w-7xl px-5 md:px-8"><div className="grid gap-14 lg:grid-cols-2 lg:items-center"><FadeUp><span className={eyebrow}>Owner reporting</span><h2 className="mb-6 text-4xl leading-tight text-primary sm:text-5xl">Reports that support a decision, not just a filing cabinet.</h2><p className="text-lg leading-relaxed text-foreground/75">Villa financial reporting should help an owner ask better questions. Our monthly pack can show revenue by channel, operating expenses by category, payroll and BPJS tracking, cash movement, owner funding, and items requiring attention. The format is designed for remote owners who need a concise read before a review call.</p><p className="mt-5 text-lg leading-relaxed text-foreground/75">Depending on your package and records, we can also maintain forecast-versus-actual views and an annual position summary. These are management tools, not promises about future performance.</p><div className="mt-8"><WAButton label="Discuss a reporting pack" variant="outline" message="Hello Client Advisory, I would like to discuss monthly villa financial reporting." /></div></FadeUp><FadeUp delay={.1}><div className="rounded-[2rem] bg-accent/60 p-8 sm:p-10"><div className="mb-7 flex items-center justify-between border-b border-primary/10 pb-5"><span className="font-serif text-2xl text-primary">Monthly owner view</span><TrendingUp className="h-6 w-6 text-secondary" /></div>{["Gross booking revenue by channel","Net payout and reconciliation notes","Operating expense movement","Payroll and BPJS record status","Open documentation questions","Management commentary for the period"].map((x, i)=><div key={x} className="flex items-center gap-3 border-b border-primary/10 py-4 text-sm text-foreground/75"><CheckCircle2 className="h-4 w-4 text-secondary" />{x}<span className="ml-auto font-mono text-xs text-foreground/40">0{i + 1}</span></div>)}</div></FadeUp></div></div></section>
 
-      {/* ============== ABOUT ABEL / WHY US ============== */}
-      <section id="about" className="py-24 sm:py-32 bg-background scroll-mt-24">
-        <div className="container mx-auto px-5 md:px-8 max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            
-            <FadeUp>
-              <div className="relative">
-                <div className="absolute -inset-4 bg-secondary/10 rounded-[3rem] blur-2xl -z-10" />
-                <div className="grid grid-cols-2 gap-4">
-                  <img 
-                    src="/images/bali-accountant-consultation.jpg" 
-                    alt="Bali accountant consulting with a villa owner" 
-                    width="600"
-                    height="600"
-                    loading="lazy" 
-                    className="rounded-[2rem] w-full h-[300px] object-cover shadow-lg mt-8" 
-                  />
-                  <img 
-                    src="/images/bali-account-management-team.jpg" 
-                    alt="Account management team for Bali villas working together" 
-                    width="600"
-                    height="600"
-                    loading="lazy" 
-                    className="rounded-[2rem] w-full h-[300px] object-cover shadow-lg" 
-                  />
-                </div>
-                {/* Info Card Overlay */}
-                <div className="absolute -bottom-8 -left-4 sm:left-8 glass-panel rounded-2xl p-6 shadow-xl max-w-[280px]">
-                  <div className="flex items-center gap-4 mb-3">
-                    <Building2 className="w-6 h-6 text-secondary" />
-                    <h3 className="font-serif text-lg text-primary leading-tight m-0">Denpasar Based</h3>
-                  </div>
-                  <p className="text-sm font-sans text-foreground/70">Bookkeeping services in Denpasar serving Canggu, Seminyak, Ubud, and Uluwatu.</p>
-                </div>
-              </div>
-            </FadeUp>
+    <section className="bg-accent/40 py-24 sm:py-32"><div className="container mx-auto max-w-7xl px-5 md:px-8"><div className="grid gap-12 lg:grid-cols-12 lg:items-center"><FadeUp className="lg:col-span-5"><img src="/images/bali-accountant-consultation.jpg" alt="Bali accountant discussing a villa financial report with an owner" width="1024" height="1024" loading="lazy" className="aspect-square w-full rounded-[2rem] object-cover shadow-xl" /></FadeUp><FadeUp delay={.1} className="lg:col-span-6 lg:col-start-7"><span className={eyebrow}>Built for the local context</span><h2 className="mb-6 text-4xl leading-tight text-primary sm:text-5xl">Local records. Professional distance.</h2><p className="mb-5 text-lg leading-relaxed text-foreground/75">From our Denpasar office context, we support properties in Canggu, Seminyak, Sanur, Ubud, Uluwatu, Nusa Dua, and other Bali service areas. The work can be delivered remotely through a shared document process, while local context helps us understand the kinds of records a villa operation actually produces.</p><p className="mb-7 text-lg leading-relaxed text-foreground/75">We work with independent owners, operators, leasehold structures, and PT PMA villa records. Abel Yuniartini founded Bali Accounting to bring a more accountable monthly rhythm to this part of the property business.</p><div className="flex items-start gap-3 rounded-2xl border border-primary/10 bg-white p-5 text-sm leading-relaxed text-foreground/70"><Building2 className="mt-0.5 h-5 w-5 shrink-0 text-secondary" />Jl. Tukad Barito Timur III No.16, Panjer, Denpasar Selatan, Bali 80226</div></FadeUp></div></div></section>
 
-            <FadeUp delay={0.1}>
-              <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4 block font-sans">The firm</span>
-              <h2 className="text-3xl sm:text-5xl font-serif text-primary tracking-tight leading-[1.1] mb-6">
-                A real person.<br />
-                <span className="italic">A real Bali office.</span>
-              </h2>
-              
-              <div className="space-y-6 text-lg text-foreground/75 leading-relaxed font-sans mb-10">
-                <p>
-                  Bali Accounting is run personally by <strong>Abel Yuniartini</strong> from our office in Panjer, Denpasar Selatan.
-                </p>
-                <p>
-                  You don't get handed off to a junior assistant or a nameless support ticket system. Every client works directly with Abel. One dedicated professional who knows your villa's financial history inside out.
-                </p>
-              </div>
+    <section className="bg-primary py-24 text-primary-foreground sm:py-32"><div className="container mx-auto max-w-7xl px-5 md:px-8"><div className="mb-14 max-w-2xl"><span className={eyebrow}>Delivery methodology</span><h2 className="text-4xl leading-tight sm:text-5xl">A defined month from intake to insight.</h2></div><div className="grid gap-8 md:grid-cols-4">{[{n:"01",t:"Onboard",d:"We map entities, channels, accounts, document sources, reporting preferences, and the period that needs attention."},{n:"02",t:"Collect",d:"Receipts, payout reports, bank exports, supplier invoices, payroll details, and owner funding records enter one agreed workflow."},{n:"03",t:"Close",d:"Transactions are categorized, matched, reviewed, and listed with questions where evidence is missing or inconsistent."},{n:"04",t:"Deliver",d:"You receive the agreed monthly reporting pack and a clear route for follow-up. Our target reporting date is the 15th."}].map(x=><FadeUp key={x.n}><div className="border-t border-white/20 pt-6"><span className="font-serif text-3xl text-secondary">{x.n}</span><h3 className="mt-5 mb-3 text-2xl">{x.t}</h3><p className="text-sm leading-relaxed text-primary-foreground/70">{x.d}</p></div></FadeUp>)}</div></div></section>
 
-              <div className="space-y-4 mb-10">
-                {[
-                  "Specialists in foreign-owned villas (PT PMA & Leasehold)",
-                  "We prepare tax-packs for your Konsultan Pajak",
-                  "Direct WhatsApp access to Abel — replies < 1 hour",
-                ].map((b) => (
-                  <div key={b} className="flex items-start gap-4">
-                    <div className="w-6 h-6 rounded-full bg-secondary/10 flex items-center justify-center shrink-0 mt-0.5">
-                      <CheckCircle2 className="w-4 h-4 text-secondary" />
-                    </div>
-                    <span className="text-base text-foreground/80 font-sans">{b}</span>
-                  </div>
-                ))}
-              </div>
+    <section id="pricing" className="bg-background py-24 sm:py-32"><div className="container mx-auto max-w-7xl px-5 md:px-8"><div className="mb-14 text-center"><span className={eyebrow}>Packages and scope</span><h2 className="text-4xl text-primary sm:text-5xl">Choose the level of control you need.</h2><p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-foreground/70">Monthly pricing is in IDR and depends on the agreed scope. We can confirm fit after understanding your villa, records, and booking channels.</p></div><div className="grid gap-6 lg:grid-cols-3">{[{n:"Starter",p:"Rp 2.500.000",d:"For one villa with simple operations.",f:["Monthly bookkeeping","Up to 2 booking channels","Basic monthly P&L","Private document folder"]},{n:"Professional",p:"Rp 5.000.000",d:"For owners who need full visibility.",f:["Everything in Starter","Full owner financial report","Payroll and BPJS tracking","All booking channels","Monthly review call"]},{n:"Premium",p:"Rp 8.500.000",d:"For PT PMA records and deeper review.",f:["Everything in Professional","Tax-pack for Konsultan Pajak","Forecast versus actuals","Annual position summary","Priority account review"]}].map((p, i)=><FadeUp key={p.n} delay={i*.08}><div className={`flex h-full flex-col rounded-[2rem] p-8 ${i===1?"bg-primary text-white shadow-2xl":"border border-border/70 bg-white text-primary shadow-sm"}`}><h3 className="text-2xl">{p.n}</h3><p className={`mt-2 text-sm ${i===1?"text-white/65":"text-foreground/60"}`}>{p.d}</p><p className={`my-8 text-3xl ${i===1?"text-secondary":"text-primary"}`}>{p.p}<span className={`ml-1 text-sm ${i===1?"text-white/50":"text-foreground/50"}`}>/ month</span></p><ul className="mb-8 flex-1 space-y-4 text-sm">{p.f.map(x=><li key={x} className="flex gap-3"><CheckCircle2 className="h-4 w-4 shrink-0 text-secondary" />{x}</li>)}</ul><WAButton label={`Ask about ${p.n}`} variant={i===1?"green":"outline"} message={`Hello Sales team, I would like to ask about the ${p.n} package.`} /></div></FadeUp>)}</div><div className="mx-auto mt-8 flex max-w-4xl flex-col items-start justify-between gap-6 rounded-3xl border border-secondary/20 bg-white p-8 shadow-sm sm:flex-row sm:items-center"><div><h3 className="text-2xl text-primary">One-time historical cleanup</h3><p className="mt-2 max-w-xl leading-relaxed text-foreground/70">If your existing records need rebuilding, a cleanup service starts at Rp 8.500.000 for up to 12 months, subject to review. We then recommend a sustainable monthly handover.</p></div><WAButton label="Discuss cleanup" variant="primary" message="Hello Sales team, I would like to discuss a historical bookkeeping cleanup." /></div></div></section>
 
-              <div className="flex items-center gap-6">
-                <WAButton label="Chat with Abel" message="Hi Abel, I'd like to learn more about your firm." variant="primary" />
-                <div className="hidden sm:flex flex-col">
-                  <span className="text-xs font-bold uppercase tracking-wider text-foreground/50">Direct Line</span>
-                  <span className="text-sm font-semibold text-primary">+62 812-3740-2292</span>
-                </div>
-              </div>
-            </FadeUp>
+    <section className="bg-white py-24 sm:py-32"><div className="container mx-auto max-w-7xl px-5 md:px-8"><div className="grid gap-12 lg:grid-cols-2 lg:items-center"><FadeUp><span className={eyebrow}>Why professional bookkeeping</span><h2 className="mb-6 text-4xl leading-tight text-primary sm:text-5xl">A manager summary is useful. It is not the accounting record.</h2><p className="text-lg leading-relaxed text-foreground/75">An informal summary may tell you how much was collected or spent. Professional bookkeeping goes further: it preserves source documents, applies consistent categories, separates timing from performance, and leaves an audit-friendly trail for questions. That difference matters when several people handle cash, vendors, bookings, and owner decisions.</p><p className="mt-5 text-lg leading-relaxed text-foreground/75">Our reports are for owner information and operational clarity. We do not present them as official tax filings, legal advice, or a substitute for a licensed Indonesian Konsultan Pajak.</p></FadeUp><FadeUp delay={.1}><div className="overflow-hidden rounded-[2rem] bg-accent/60"><img src="/images/bali-account-management-team.jpg" alt="Bali villa account management team reviewing financial controls together" width="1024" height="1024" loading="lazy" className="h-56 w-full object-cover" /><div className="p-8"><ShieldCheck className="mb-6 h-8 w-8 text-secondary" /><h3 className="mb-5 text-2xl text-primary">The control difference</h3>{["Consistent chart of accounts rather than ad hoc labels","Supporting documents linked to the transaction trail","Questions and exceptions recorded for resolution","A monthly pack that can be shared with your tax adviser"].map(x=><p key={x} className="flex gap-3 border-t border-primary/10 py-4 text-sm leading-relaxed text-foreground/75"><CheckCircle2 className="h-4 w-4 shrink-0 text-secondary" />{x}</p>)}</div></div></FadeUp></div></div></section>
 
-          </div>
-        </div>
-      </section>
+    <section className="bg-accent/40 py-24 sm:py-32"><div className="container mx-auto max-w-7xl px-5 md:px-8"><div className="grid gap-12 lg:grid-cols-12"><FadeUp className="lg:col-span-5"><span className={eyebrow}>Reading the monthly pack</span><h2 className="text-4xl leading-tight text-primary sm:text-5xl">The report is the beginning of a better owner conversation.</h2><p className="mt-6 text-lg leading-relaxed text-foreground/75">A monthly P&L is most valuable when it can be read alongside the story of the period. We help owners distinguish a quiet booking month from a delayed payout, a genuine cost increase from a late invoice, and a planned improvement from an unexpected repair.</p></FadeUp><FadeUp delay={.1} className="lg:col-span-7"><div className="grid gap-5 sm:grid-cols-2"><div className="rounded-3xl bg-white p-7 shadow-sm"><h3 className="mb-3 text-xl text-primary">Revenue first</h3><p className="text-sm leading-relaxed text-foreground/70">Start with channel and direct-booking activity, then check whether the net deposits agree with the supporting statements. Gross bookings, commissions, refunds, and the timing of cash are different lines of the story.</p></div><div className="rounded-3xl bg-white p-7 shadow-sm"><h3 className="mb-3 text-xl text-primary">Costs in context</h3><p className="text-sm leading-relaxed text-foreground/70">Compare recurring utilities, supplies, maintenance, staffing, and property charges with the prior period and the operating explanation. A question is more useful than a suspicious-looking total without context.</p></div><div className="rounded-3xl bg-white p-7 shadow-sm"><h3 className="mb-3 text-xl text-primary">Cash is not profit</h3><p className="text-sm leading-relaxed text-foreground/70">Owner funding, deposits held, loan movements, and late supplier payments can change the bank balance without changing the period's operating result. Keeping these movements visible protects decision quality.</p></div><div className="rounded-3xl bg-white p-7 shadow-sm"><h3 className="mb-3 text-xl text-primary">Close with actions</h3><p className="text-sm leading-relaxed text-foreground/70">The final section identifies missing documents, unusual items, and decisions for the next month. Owners can then ask a manager or supplier a specific question rather than searching through old messages.</p></div></div></FadeUp></div></div></section>
 
-      {/* ============== METRICS BAND ============== */}
-      <section className="py-16 bg-secondary text-white">
-        <div className="container mx-auto px-5 md:px-8 max-w-7xl">
-          <Stagger className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center divide-x-0 md:divide-x divide-white/20">
-            {[
-              { n: "15th", t: "Report Date Every Month" },
-              { n: "< 1 hr", t: "WhatsApp Reply Time" },
-              { n: "IDR", t: "Transparent Rupiah Pricing" },
-              { n: "100%", t: "Personal Service" },
-            ].map((m) => (
-              <Item key={m.t} className="px-4">
-                <div className="text-4xl sm:text-5xl font-serif mb-2">{m.n}</div>
-                <div className="text-sm font-sans font-medium uppercase tracking-wider text-white/80">{m.t}</div>
-              </Item>
-            ))}
-          </Stagger>
-        </div>
-      </section>
+    <section className="bg-background py-24 sm:py-32"><div className="container mx-auto max-w-7xl px-5 md:px-8"><div className="mb-14 max-w-3xl"><span className={eyebrow}>Document workflow and governance</span><h2 className="text-4xl leading-tight text-primary sm:text-5xl">Good records are a shared operating habit.</h2><p className="mt-6 text-lg leading-relaxed text-foreground/75">Bookkeeping quality depends on what enters the workflow and how consistently it is described. During onboarding, we agree who supplies each document, which folder or channel it belongs in, what the reporting period means, and who can answer an open question. That simple governance makes the monthly close less dependent on one person’s memory.</p></div><div className="grid gap-8 md:grid-cols-3"><FadeUp><div className="border-t-2 border-secondary pt-6"><h3 className="mb-4 text-2xl text-primary">Source</h3><p className="leading-relaxed text-foreground/70">Receipts, bank exports, OTA statements, supplier invoices, payroll details, and owner transactions are collected in the agreed shared location. File names and periods should make sense to someone reviewing the records later.</p></div></FadeUp><FadeUp delay={.08}><div className="border-t-2 border-secondary pt-6"><h3 className="mb-4 text-2xl text-primary">Review</h3><p className="leading-relaxed text-foreground/70">We check completeness, identify duplicates, match transactions to evidence, and keep a question list. Where a document is unavailable, the gap is recorded rather than quietly replaced with an assumption.</p></div></FadeUp><FadeUp delay={.16}><div className="border-t-2 border-secondary pt-6"><h3 className="mb-4 text-2xl text-primary">Approve</h3><p className="leading-relaxed text-foreground/70">The owner or designated contact can respond to questions through the agreed client advisory channel. The resulting notes help maintain consistent treatment in the next period and give a tax adviser a clearer starting point.</p></div></FadeUp></div><div className="mt-12 rounded-3xl border border-primary/10 bg-white p-8 sm:p-10"><h3 className="mb-4 text-2xl text-primary">Common record gaps we help surface</h3><div className="grid gap-x-10 gap-y-4 sm:grid-cols-2"><p className="flex gap-3 text-sm leading-relaxed text-foreground/70"><AlertTriangle className="h-4 w-4 shrink-0 text-secondary" />A platform deposit without its matching payout detail</p><p className="flex gap-3 text-sm leading-relaxed text-foreground/70"><AlertTriangle className="h-4 w-4 shrink-0 text-secondary" />A supplier charge without an invoice or clear description</p><p className="flex gap-3 text-sm leading-relaxed text-foreground/70"><AlertTriangle className="h-4 w-4 shrink-0 text-secondary" />Payroll changes that are not reflected in the staff schedule</p><p className="flex gap-3 text-sm leading-relaxed text-foreground/70"><AlertTriangle className="h-4 w-4 shrink-0 text-secondary" />A personal or owner payment mixed into operating expenses</p><p className="flex gap-3 text-sm leading-relaxed text-foreground/70"><AlertTriangle className="h-4 w-4 shrink-0 text-secondary" />A recurring utility or service charge that changed without context</p><p className="flex gap-3 text-sm leading-relaxed text-foreground/70"><AlertTriangle className="h-4 w-4 shrink-0 text-secondary" />A missing BPJS record or unclear period for a staff payment</p></div></div></div></section>
 
-      {/* ============== PRICING ============== */}
-      <section id="pricing" className="py-24 sm:py-32 bg-accent/30 scroll-mt-24">
-        <div className="container mx-auto px-5 md:px-8 max-w-7xl">
-          <FadeUp className="text-center mb-16 sm:mb-20">
-            <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4 block font-sans">Pricing</span>
-            <h2 className="text-3xl sm:text-5xl font-serif text-primary tracking-tight mb-6">
-              Simple monthly pricing.
-            </h2>
-            <p className="text-lg text-foreground/70 font-sans max-w-2xl mx-auto">
-              All prices in Indonesian Rupiah. No setup fees. Cancel anytime.<br/>Choose the level of clarity your villa needs.
-            </p>
-          </FadeUp>
+    <section className="bg-primary py-24 text-primary-foreground sm:py-32"><div className="container mx-auto max-w-7xl px-5 md:px-8"><div className="grid gap-12 lg:grid-cols-2 lg:items-end"><FadeUp><span className={eyebrow}>What better account management changes</span><h2 className="text-4xl leading-tight sm:text-5xl">A calmer month is useful. A more accountable business is better.</h2></FadeUp><FadeUp delay={.1}><p className="text-lg leading-relaxed text-primary-foreground/70">Professional account management does not remove the need for an owner or villa manager to make decisions. It gives those decisions a dependable base. With a consistent close, an owner can see which questions remain open, which supplier records need follow-up, and where operating activity differs from expectation.</p></FadeUp></div><div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{[{i:"01",t:"Fewer blind spots",d:"Payouts, expenses, payroll, and owner movements sit in one reviewable monthly picture."},{i:"02",t:"Clearer handovers",d:"A manager, owner, and licensed tax adviser can work from organized schedules instead of separate summaries."},{i:"03",t:"Stronger continuity",d:"The process remains understandable when a supplier, staff member, or operating contact changes."},{i:"04",t:"Better questions",d:"Reports turn vague concern into a specific follow-up about a transaction, period, or document."}].map(x=><div key={x.i} className="rounded-2xl border border-white/10 bg-white/5 p-6"><span className="font-serif text-2xl text-secondary">{x.i}</span><h3 className="mb-2 mt-5 text-xl">{x.t}</h3><p className="text-sm leading-relaxed text-primary-foreground/65">{x.d}</p></div>)}</div></div></section>
 
-          <Stagger className="grid lg:grid-cols-3 gap-8 items-center max-w-6xl mx-auto">
-            {[
-              {
-                name: "Starter",
-                price: "Rp 2.500.000",
-                tagline: "1 villa. Simple operations.",
-                msg: "Hi Abel, I want the Starter package (Rp 2.500.000/month).",
-                features: [
-                  "Monthly bookkeeping",
-                  "Up to 2 booking channels",
-                  "Basic monthly P&L",
-                  "Private Google Drive folder",
-                  "WhatsApp + email support",
-                ],
-                highlight: false,
-              },
-              {
-                name: "Professional",
-                price: "Rp 5.000.000",
-                tagline: "Most popular. Full visibility.",
-                msg: "Hi Abel, I want the Professional package (Rp 5.000.000/month).",
-                features: [
-                  "Everything in Starter",
-                  "Full Owner Financial Report",
-                  "Staff payroll + BPJS tracking",
-                  "All booking channels reconciled",
-                  "Anomaly alerts on WhatsApp",
-                  "Monthly 30-min review call",
-                ],
-                highlight: true,
-              },
-              {
-                name: "Premium",
-                price: "Rp 8.500.000",
-                tagline: "PT PMA. Tax-ready. Priority.",
-                msg: "Hi Abel, I want the Premium package (Rp 8.500.000/month).",
-                features: [
-                  "Everything in Professional",
-                  "Tax-pack for Konsultan Pajak",
-                  "Annual position summary",
-                  "Forecast vs. actuals tracking",
-                  "Priority 24-hour support",
-                  "Dedicated account review",
-                ],
-                highlight: false,
-              },
-            ].map((p) => (
-              <Item key={p.name}>
-                <div
-                  className={`relative rounded-[2rem] p-8 sm:p-10 transition-all duration-500 flex flex-col h-full ${
-                    p.highlight
-                      ? "bg-primary text-white shadow-2xl lg:scale-105 border-none"
-                      : "bg-white text-primary border border-border/60 hover:border-primary/20 shadow-md"
-                  }`}
-                >
-                  {p.highlight && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg flex items-center gap-1.5">
-                      <Star className="w-3.5 h-3.5 fill-current" /> Most Popular
-                    </div>
-                  )}
-                  
-                  <div className="mb-8">
-                    <h3 className="text-2xl font-serif mb-2">{p.name}</h3>
-                    <p className={`text-sm font-sans ${p.highlight ? "text-white/70" : "text-foreground/60"}`}>{p.tagline}</p>
-                  </div>
-                  
-                  <div className="mb-10">
-                    <div className={`text-4xl font-serif font-medium mb-1 ${p.highlight ? "text-secondary" : "text-primary"}`}>{p.price}</div>
-                    <div className={`text-sm font-sans ${p.highlight ? "text-white/60" : "text-foreground/50"}`}>per month, IDR</div>
-                  </div>
-                  
-                  <ul className="space-y-4 mb-10 flex-1 font-sans">
-                    {p.features.map((f) => (
-                      <li key={f} className="flex items-start gap-3 text-sm">
-                        <CheckCircle2 className={`w-5 h-5 shrink-0 ${p.highlight ? "text-secondary" : "text-secondary"}`} />
-                        <span className={p.highlight ? "text-white/90" : "text-foreground/80"}>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <a
-                    href={wa(p.msg)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`mt-auto inline-flex h-14 w-full items-center justify-center gap-2 rounded-full font-semibold text-sm transition-all active:scale-95 ${
-                      p.highlight
-                        ? "bg-[#25D366] hover:bg-[#1ebe5e] text-white shadow-lg shadow-[#25D366]/30"
-                        : "bg-accent hover:bg-accent/80 text-primary border border-primary/10"
-                    }`}
-                  >
-                    <MessageCircle className="w-5 h-5" /> Select {p.name}
-                  </a>
-                </div>
-              </Item>
-            ))}
-          </Stagger>
+    <section id="faq" className="bg-background py-24 sm:py-32"><div className="container mx-auto max-w-4xl px-5 md:px-8"><div className="mb-14 text-center"><span className={eyebrow}>Questions owners ask</span><h2 className="text-4xl text-primary sm:text-5xl">Useful answers before you begin.</h2></div><Accordion type="single" collapsible className="space-y-3">{[{q:"Do you provide tax advice or file Indonesian tax returns?",a:"No. Bali Accounting organizes bookkeeping records and can prepare a clean pack for your licensed Indonesian Konsultan Pajak. Your tax adviser remains responsible for tax advice and official filings."},{q:"Can you support a PT PMA villa or a leasehold operation?",a:"We can discuss PT PMA villa records, leasehold structures, and the reporting scope required. The right package depends on entities, channels, document quality, and the number of operating accounts."},{q:"What do you need each month?",a:"We agree a practical intake list during onboarding. It may include platform statements, bank exports, receipts, supplier invoices, payroll details, BPJS records, and owner-funding information."},{q:"Do you offer Airbnb bookkeeping in Bali?",a:"Yes. Airbnb bookkeeping is part of our channel reconciliation work, alongside Booking.com, Agoda, VRBO, and direct-booking records where applicable."},{q:"Where do you provide bookkeeping services?",a:"The firm is based in Denpasar and supports villa owners and operators across Bali, including Canggu, Seminyak, Sanur, Ubud, Uluwatu, and Nusa Dua. Much of the workflow is remote-friendly."},{q:"How do I start a conversation?",a:"Contact Sales on +62 812-3740-2292 through the existing WhatsApp link, or book a clarity call. We will first understand the property, current records, and the level of reporting you need."}].map((x,i)=><AccordionItem key={x.q} value={`faq-${i}`} className="rounded-2xl border border-border/60 bg-white px-6"><AccordionTrigger className="text-left text-base font-semibold text-primary hover:no-underline">{x.q}</AccordionTrigger><AccordionContent className="leading-relaxed text-foreground/70">{x.a}</AccordionContent></AccordionItem>)}</Accordion><div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row"><WAButton label="Speak with Client Advisory" message="Hello Client Advisory, I have a question about Bali villa accounting." variant="primary" /><BookCallButton /></div></div></section>
 
-          {/* Cleanup band */}
-          <FadeUp className="mt-16 max-w-4xl mx-auto">
-            <div className="rounded-[2rem] bg-white border border-secondary/20 p-8 sm:p-12 flex flex-col md:flex-row md:items-center justify-between gap-8 shadow-xl relative overflow-hidden">
-              <div className="absolute right-0 top-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-              <div className="relative z-10">
-                <h3 className="text-2xl font-serif text-primary mb-3">Are your current books a mess?</h3>
-                <p className="text-foreground/70 font-sans max-w-lg">
-                  We offer a one-time cleanup starting at <span className="font-semibold text-primary">Rp 8.500.000</span>. We will rebuild up to 12 months of historical records, then transition you to a clean monthly service.
-                </p>
-              </div>
-              <WAButton label="Get Cleanup Quote" message="Hi Abel, my villa books are a mess. I need a cleanup quote." variant="primary" className="relative z-10 shrink-0" />
-            </div>
-          </FadeUp>
-        </div>
-      </section>
+    <section className="bg-accent/40 py-24 sm:py-32"><div className="container mx-auto max-w-7xl px-5 md:px-8"><div className="mb-12 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"><div><span className={eyebrow}>Latest guidance</span><h2 className="text-4xl text-primary sm:text-5xl">Notes for better villa records.</h2></div><Link href="/blog" data-testid="link-home-blog" onClick={() => trackEvent("blog_view", { location: "home_preview" })} className="inline-flex items-center gap-2 text-sm font-bold text-secondary">Read the journal <ArrowRight className="h-4 w-4" /></Link></div>{latestPosts?.length ? <div className="grid gap-6 md:grid-cols-3">{latestPosts.map((post, i) => <BlogCard key={post.slug} post={post} featured={i === 0} />)}</div> : isBlogError ? <div className="rounded-3xl bg-white p-8 text-center text-sm text-foreground/60">Our latest guides are being refreshed. <Link href="/blog" className="font-semibold text-secondary underline">Visit the journal</Link>.</div> : <div className="grid gap-6 md:grid-cols-3"><div className="h-64 animate-pulse rounded-3xl bg-white/60" /><div className="h-64 animate-pulse rounded-3xl bg-white/60" /><div className="h-64 animate-pulse rounded-3xl bg-white/60" /></div>}</div></section>
 
-      {/* ============== FAQ ============== */}
-      <section id="faq" className="py-24 sm:py-32 bg-background scroll-mt-24">
-        <div className="container mx-auto px-5 md:px-8 max-w-3xl">
-          <FadeUp className="text-center mb-16">
-            <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4 block font-sans">FAQ</span>
-            <h2 className="text-3xl sm:text-5xl font-serif text-primary tracking-tight">
-              Real questions.<br/>
-              <span className="italic">Plain answers.</span>
-            </h2>
-          </FadeUp>
-
-          <FadeUp>
-            <Accordion type="single" collapsible className="w-full space-y-4 font-sans">
-              {[
-                {
-                  q: "What does a villa accountant actually do?",
-                  a: "We manage your villa's complete monthly bookkeeping. We collect receipts, reconcile Airbnb and Booking.com payouts, track payroll, and provide one clear monthly report detailing revenue, expenses, and true profit.",
-                },
-                {
-                  q: "Do you file my Indonesian taxes?",
-                  a: "No. We organize your financial records and prepare a clean document pack. A licensed Indonesian Konsultan Pajak (registered with DJP) then handles your official filings. We coordinate directly with your chosen tax consultant to make the process seamless.",
-                },
-                {
-                  q: "I don't live in Bali. Can you still help?",
-                  a: "Yes, our service is 100% remote-friendly. Most of our clients reside in Australia, Europe, or Singapore. All communication happens via WhatsApp, email, and shared Google Drive folders.",
-                },
-                {
-                  q: "How do you handle staff payroll and BPJS?",
-                  a: "Our Professional and Premium packages include payroll tracking. You send us the attendance or salary details, and we calculate the correct payouts including BPJS (health and employment social security) deductions, ensuring your staff are paid correctly.",
-                },
-                {
-                  q: "Can I upgrade or downgrade my package?",
-                  a: "Absolutely. There are no lock-in contracts. You can change your package month-to-month based on your villa's operational needs. Just send Abel a message on WhatsApp.",
-                },
-              ].map((faq, i) => (
-                <AccordionItem 
-                  key={i} 
-                  value={`item-${i}`}
-                  className="bg-white border border-border/60 rounded-2xl px-6 py-2 shadow-sm data-[state=open]:border-primary/30 transition-colors"
-                >
-                  <AccordionTrigger className="text-left font-semibold text-primary text-base sm:text-lg hover:no-underline hover:text-secondary py-4">
-                    {faq.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-foreground/70 leading-relaxed pb-4 text-base">
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </FadeUp>
-          
-          <FadeUp className="mt-16 text-center">
-            <p className="text-foreground/60 font-sans mb-6">Still have questions?</p>
-            <WAButton label="Ask Abel Directly" message="Hi Abel, I have a specific question about your accounting services." variant="outline" />
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* ============== CTA ============== */}
-      <section className="py-24 sm:py-32 bg-primary relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="/images/bali-account-management-team.jpg"
-            alt="Bali villa account management team working on financial records"
-            width="1024"
-            height="1024"
-            loading="lazy"
-            className="w-full h-full object-cover opacity-20 mix-blend-luminosity"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/90 to-primary/60" />
-        </div>
-        
-        <div className="container mx-auto px-5 md:px-8 max-w-4xl relative z-10 text-center">
-          <FadeUp>
-            <h2 className="text-4xl sm:text-6xl font-serif text-white tracking-tight mb-8">
-              Stop guessing your profits.<br/>
-              <span className="italic text-secondary">Start with clear books.</span>
-            </h2>
-            <p className="text-lg sm:text-xl text-white/80 font-sans leading-relaxed mb-12 max-w-2xl mx-auto">
-              Partner with Denpasar's dedicated villa bookkeeping service. Gain total financial visibility this month.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <WAButton label="WhatsApp Abel Now" variant="green" />
-              <BookCallButton label="Schedule a Call" variant="secondary" />
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
-    </Layout>
-  );
+    <section className="relative overflow-hidden bg-primary py-24 text-center text-white sm:py-32"><div className="container relative z-10 mx-auto max-w-4xl px-5 md:px-8"><FadeUp><span className={eyebrow}>A clearer next month</span><h2 className="mb-7 text-4xl sm:text-6xl">Bring your villa books into view.</h2><p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-white/75">Tell our Sales or Client Advisory team where the records stand today. We will discuss the right starting point, whether that is monthly account management or a one-time cleanup.</p><div className="flex flex-col justify-center gap-3 sm:flex-row"><WAButton label="Contact Sales" variant="green" message="Hello Sales team, I would like to request a consultation for my Bali villa." /><BookCallButton label="Book a free clarity call" variant="secondary" /></div><p className="mt-8 flex items-center justify-center gap-2 text-sm text-white/55"><Phone className="h-4 w-4" />+62 812-3740-2292</p></FadeUp></div></section>
+  </Layout>;
 }

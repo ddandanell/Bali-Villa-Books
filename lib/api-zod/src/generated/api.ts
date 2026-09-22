@@ -14,3 +14,88 @@ import * as zod from "zod";
 export const HealthCheckResponse = zod.object({
   status: zod.string(),
 });
+
+/**
+ * @summary List published blog posts
+ */
+export const listBlogPostsQueryLimitDefault = 12;
+export const listBlogPostsQueryLimitMax = 50;
+
+export const ListBlogPostsQueryParams = zod.object({
+  limit: zod.coerce
+    .number()
+    .min(1)
+    .max(listBlogPostsQueryLimitMax)
+    .default(listBlogPostsQueryLimitDefault),
+});
+
+export const ListBlogPostsResponseItem = zod.object({
+  slug: zod.string(),
+  title: zod.string(),
+  excerpt: zod.string(),
+  primaryKeyword: zod.string(),
+  category: zod.string(),
+  readTimeMinutes: zod.number(),
+  publishedAt: zod.coerce.date(),
+});
+export const ListBlogPostsResponse = zod.array(ListBlogPostsResponseItem);
+
+/**
+ * @summary Get a published blog post
+ */
+export const GetBlogPostParams = zod.object({
+  slug: zod.coerce.string(),
+});
+
+export const GetBlogPostResponse = zod
+  .object({
+    slug: zod.string(),
+    title: zod.string(),
+    excerpt: zod.string(),
+    primaryKeyword: zod.string(),
+    category: zod.string(),
+    readTimeMinutes: zod.number(),
+    publishedAt: zod.coerce.date(),
+  })
+  .and(
+    zod.object({
+      metaTitle: zod.string(),
+      metaDescription: zod.string(),
+      contentHtml: zod.string(),
+      relatedPosts: zod.array(
+        zod.object({
+          slug: zod.string(),
+          title: zod.string(),
+          excerpt: zod.string(),
+          primaryKeyword: zod.string(),
+          category: zod.string(),
+          readTimeMinutes: zod.number(),
+          publishedAt: zod.coerce.date(),
+        }),
+      ),
+    }),
+  );
+
+/**
+ * @summary Record a privacy-safe content event
+ */
+export const RecordBlogEventBody = zod.object({
+  slug: zod.string(),
+  eventType: zod.enum([
+    "article_view",
+    "article_cta_click",
+    "article_scroll_complete",
+  ]),
+});
+
+/**
+ * @summary Get public automation status
+ */
+export const GetBlogAutomationStatusResponse = zod.object({
+  enabled: zod.boolean(),
+  cadence: zod.string(),
+  maxPostsPerRun: zod.number(),
+  publishedPosts: zod.number(),
+  lastRunAt: zod.coerce.date().nullable(),
+  nextEligibleRunAt: zod.coerce.date().nullable(),
+});

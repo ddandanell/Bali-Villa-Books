@@ -2,6 +2,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, Menu, X, Phone, MapPin } from "lucide-react";
 import { Logo } from "@/components/Logo";
+import { Link } from "wouter";
 
 const WA = "https://wa.me/6281237402292";
 const wa = (msg: string) => `${WA}?text=${encodeURIComponent(msg)}`;
@@ -75,27 +76,28 @@ export function Layout({ children }: { children: ReactNode }) {
                   {l.label}
                 </a>
               ))}
+              <Link href="/blog" data-testid="link-nav-blog" className="px-4 py-2 text-sm font-medium text-foreground/70 hover:text-primary hover:bg-black/5 rounded-full transition-all duration-300">Journal</Link>
             </div>
             
             <a
-              href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
+              href={wa("Hello Sales team, I want to discuss accounting for my Bali villa.")}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-primary hover:bg-primary/90 px-6 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 active:scale-95 transition-all duration-300"
             >
-              <MessageCircle className="w-4 h-4" /> Let's Talk
+              <MessageCircle className="w-4 h-4" /> Contact Sales
             </a>
           </nav>
 
           {/* Mobile: WhatsApp + menu */}
           <div className="md:hidden flex items-center gap-3 relative z-50">
             <a
-              href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
+              href={wa("Hello Bali Accounting team, I want to discuss accounting for my Bali villa.")}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-9 items-center justify-center gap-1.5 rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-md active:scale-95 transition-all"
             >
-               Chat
+               Contact
             </a>
             <button
               type="button"
@@ -129,6 +131,7 @@ export function Layout({ children }: { children: ReactNode }) {
                     {l.label}
                   </a>
                 ))}
+                <Link href="/blog" data-testid="link-mobile-blog" onClick={() => setOpen(false)} className="px-4 py-3 text-lg font-medium text-foreground/80 hover:bg-black/5 hover:text-primary rounded-xl transition-colors">Journal</Link>
                 
                 <div className="mt-4 pt-4 border-t border-black/5 flex flex-col gap-3">
                   <div className="flex items-start gap-3 text-sm text-foreground/60 px-4">
@@ -142,13 +145,13 @@ export function Layout({ children }: { children: ReactNode }) {
                 </div>
 
                 <a
-                  href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
+                  href={wa("Hello Bali Accounting team, I want to discuss accounting for my Bali villa.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
                   className="mt-4 mx-4 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] hover:bg-[#1ebe5e] px-4 text-base font-bold text-white shadow-lg shadow-[#25D366]/30 active:scale-95 transition-all"
                 >
-                  <MessageCircle className="w-5 h-5" /> WhatsApp Abel Now
+                   <MessageCircle className="w-5 h-5" /> WhatsApp Our Team
                 </a>
               </nav>
             </motion.div>
@@ -170,15 +173,15 @@ export function Layout({ children }: { children: ReactNode }) {
                 <Logo variant="full" onDark={true} iconClassName="w-10 h-10" textClassName="text-2xl" />
               </div>
               <p className="text-base text-primary-foreground/70 leading-relaxed mb-8 max-w-sm font-sans">
-                Professional Bali villa bookkeeping services in Denpasar. Run personally by Abel Yuniartini, delivering precise monthly financial reporting for villa owners across the island.
+                 Professional Bali villa bookkeeping services in Denpasar, with structured monthly financial reporting for villa owners, PT PMA operators, and hospitality businesses across Bali.
               </p>
               <a
-                href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
+                href={wa("Hello Bali Accounting team, I would like to request a consultation.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] hover:bg-[#1ebe5e] px-6 text-sm font-bold text-white shadow-lg shadow-[#25D366]/20 transition-all hover:-translate-y-0.5"
               >
-                <MessageCircle className="w-5 h-5" /> Chat on WhatsApp
+                 <MessageCircle className="w-5 h-5" /> Request a Consultation
               </a>
             </div>
             
@@ -186,7 +189,7 @@ export function Layout({ children }: { children: ReactNode }) {
               <h4 className="text-sm font-bold uppercase tracking-widest text-primary-foreground mb-6 font-sans">Contact</h4>
               <div className="space-y-4 text-sm font-sans">
                 <a
-                  href={wa("Hi Abel, quick question about my Bali villa.")}
+                  href={wa("Hello Client Advisory, I have a question about accounting for my Bali villa.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-3 text-primary-foreground/70 hover:text-white transition-colors group"
@@ -228,11 +231,11 @@ export function Layout({ children }: { children: ReactNode }) {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
+            href={wa("Hello Bali Accounting team, I would like to request a consultation.")}
             target="_blank"
             rel="noopener noreferrer"
             className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe5e] text-white rounded-full shadow-2xl shadow-[#25D366]/40 transition-all hover:scale-105 active:scale-95 md:hidden"
-            aria-label="Chat on WhatsApp"
+            aria-label="Contact the Bali Accounting team on WhatsApp"
           >
             <span className="flex items-center justify-center w-14 h-14">
               <MessageCircle className="w-6 h-6" />

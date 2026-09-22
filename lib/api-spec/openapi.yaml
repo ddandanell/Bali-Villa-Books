@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: blog
+    description: SEO blog content and automation
 paths:
   /healthz:
     get:
@@ -24,6 +26,74 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /blog/posts:
+    get:
+      operationId: listBlogPosts
+      tags: [blog]
+      summary: List published blog posts
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 50
+            default: 12
+      responses:
+        "200":
+          description: Published posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/BlogPostSummary"
+  /blog/posts/{slug}:
+    get:
+      operationId: getBlogPost
+      tags: [blog]
+      summary: Get a published blog post
+      parameters:
+        - in: path
+          name: slug
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Published post
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogPost"
+        "404":
+          description: Post not found
+  /blog/events:
+    post:
+      operationId: recordBlogEvent
+      tags: [blog]
+      summary: Record a privacy-safe content event
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BlogEventInput"
+      responses:
+        "204":
+          description: Event recorded
+  /blog/automation/status:
+    get:
+      operationId: getBlogAutomationStatus
+      tags: [blog]
+      summary: Get public automation status
+      responses:
+        "200":
+          description: Automation status
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogAutomationStatus"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +103,66 @@ components:
           type: string
       required:
         - status
+    BlogPostSummary:
+      type: object
+      properties:
+        slug:
+          type: string
+        title:
+          type: string
+        excerpt:
+          type: string
+        primaryKeyword:
+          type: string
+        category:
+          type: string
+        readTimeMinutes:
+          type: integer
+        publishedAt:
+          type: string
+          format: date-time
+      required: [slug, title, excerpt, primaryKeyword, category, readTimeMinutes, publishedAt]
+    BlogPost:
+      allOf:
+        - $ref: "#/components/schemas/BlogPostSummary"
+        - type: object
+          properties:
+            metaTitle:
+              type: string
+            metaDescription:
+              type: string
+            contentHtml:
+              type: string
+            relatedPosts:
+              type: array
+              items:
+                $ref: "#/components/schemas/BlogPostSummary"
+          required: [metaTitle, metaDescription, contentHtml, relatedPosts]
+    BlogEventInput:
+      type: object
+      properties:
+        slug:
+          type: string
+        eventType:
+          type: string
+          enum: [article_view, article_cta_click, article_scroll_complete]
+      required: [slug, eventType]
+    BlogAutomationStatus:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        cadence:
+          type: string
+        maxPostsPerRun:
+          type: integer
+        publishedPosts:
+          type: integer
+        lastRunAt:
+          type: [string, "null"]
+          format: date-time
+        nextEligibleRunAt:
+          type: [string, "null"]
+          format: date-time
+      required: [enabled, cadence, maxPostsPerRun, publishedPosts, lastRunAt, nextEligibleRunAt]
 

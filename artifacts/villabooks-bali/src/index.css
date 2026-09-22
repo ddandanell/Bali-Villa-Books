@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
@@ -52,38 +52,38 @@
 
 :root {
   /* Tropical Modernism Palette */
-  --background: 42 20% 97%; /* Warm Sand */
-  --foreground: 163 15% 15%; /* Deep Jungle Charcoal */
+  --background: 39 24% 96%; /* Warm paper */
+  --foreground: 162 22% 16%; /* Institutional green-black */
   
-  --card: 0 0% 100%;
-  --card-foreground: 163 15% 15%;
-  --card-border: 42 15% 90%;
+  --card: 40 30% 99%;
+  --card-foreground: 162 22% 16%;
+  --card-border: 39 16% 87%;
   
-  --popover: 0 0% 100%;
-  --popover-foreground: 163 15% 15%;
-  --popover-border: 42 15% 90%;
+  --popover: 40 30% 99%;
+  --popover-foreground: 162 22% 16%;
+  --popover-border: 39 16% 87%;
   
-  --primary: 165 58% 12%; /* Deep Bali Green */
-  --primary-foreground: 42 20% 97%;
+  --primary: 162 42% 15%; /* Deep firm green */
+  --primary-foreground: 39 24% 96%;
   
-  --secondary: 20 62% 48%; /* Terracotta / Clay */
+  --secondary: 17 58% 47%; /* Restrained terracotta */
   --secondary-foreground: 0 0% 100%;
   
-  --muted: 42 20% 90%;
-  --muted-foreground: 163 10% 45%;
+  --muted: 39 17% 89%;
+  --muted-foreground: 162 11% 44%;
   
-  --accent: 42 30% 93%;
-  --accent-foreground: 165 58% 12%;
+  --accent: 38 30% 91%;
+  --accent-foreground: 162 42% 15%;
   
   --destructive: 0 70% 50%;
   --destructive-foreground: 0 0% 100%;
   
-  --border: 42 15% 90%;
-  --input: 42 15% 90%;
-  --ring: 165 58% 12%;
+  --border: 39 16% 87%;
+  --input: 39 16% 87%;
+  --ring: 162 42% 15%;
   
-  --app-font-sans: 'Plus Jakarta Sans', sans-serif;
-  --app-font-serif: 'Fraunces', serif;
+  --app-font-sans: 'DM Sans', sans-serif;
+  --app-font-serif: 'Instrument Serif', serif;
   --app-font-mono: Menlo, monospace;
   --radius: 0.5rem;
 }

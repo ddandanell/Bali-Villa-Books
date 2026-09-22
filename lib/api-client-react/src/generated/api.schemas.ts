@@ -8,3 +8,53 @@
 export interface HealthStatus {
   status: string;
 }
+
+export interface BlogPostSummary {
+  slug: string;
+  title: string;
+  excerpt: string;
+  primaryKeyword: string;
+  category: string;
+  readTimeMinutes: number;
+  publishedAt: string;
+}
+
+export type BlogPost = BlogPostSummary & {
+  metaTitle: string;
+  metaDescription: string;
+  contentHtml: string;
+  relatedPosts: BlogPostSummary[];
+};
+
+export type BlogEventInputEventType =
+  (typeof BlogEventInputEventType)[keyof typeof BlogEventInputEventType];
+
+export const BlogEventInputEventType = {
+  article_view: "article_view",
+  article_cta_click: "article_cta_click",
+  article_scroll_complete: "article_scroll_complete",
+} as const;
+
+export interface BlogEventInput {
+  slug: string;
+  eventType: BlogEventInputEventType;
+}
+
+export interface BlogAutomationStatus {
+  enabled: boolean;
+  cadence: string;
+  maxPostsPerRun: number;
+  publishedPosts: number;
+  /** @nullable */
+  lastRunAt: string | null;
+  /** @nullable */
+  nextEligibleRunAt: string | null;
+}
+
+export type ListBlogPostsParams = {
+  /**
+   * @minimum 1
+   * @maximum 50
+   */
+  limit?: number;
+};
