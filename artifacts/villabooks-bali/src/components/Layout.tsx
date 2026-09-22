@@ -3,14 +3,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, Menu, X, Phone, MapPin } from "lucide-react";
 import { Logo } from "@/components/Logo";
 
-const WA = "https://wa.me/6282323011656";
+const WA = "https://wa.me/6281237402292";
 const wa = (msg: string) => `${WA}?text=${encodeURIComponent(msg)}`;
 
 const NAV_LINKS = [
-  { label: "How It Works", href: "#how" },
+  { label: "Services", href: "#services" },
   { label: "Pricing", href: "#pricing" },
+  { label: "About", href: "#about" },
   { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
 ];
 
 function smoothScroll(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
@@ -18,7 +18,7 @@ function smoothScroll(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
   e.preventDefault();
   const el = document.querySelector(href);
   if (el) {
-    const top = (el as HTMLElement).getBoundingClientRect().top + window.scrollY - 70;
+    const top = (el as HTMLElement).getBoundingClientRect().top + window.scrollY - 80;
     window.scrollTo({ top, behavior: "smooth" });
   }
 }
@@ -44,92 +44,66 @@ export function Layout({ children }: { children: ReactNode }) {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#0b1f1c]/95 backdrop-blur-md shadow-lg shadow-black/20"
-            : "bg-[#0b1f1c]/80 backdrop-blur-sm"
+            ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-black/5 py-3"
+            : "bg-transparent py-5"
         }`}
       >
-        {/* Top info bar — desktop only, hidden on scroll */}
-        <div
-          className={`hidden md:block overflow-hidden transition-all duration-300 ${
-            scrolled ? "max-h-0 opacity-0" : "max-h-10 opacity-100"
-          } bg-[#071611] border-b border-white/10`}
-        >
-          <div className="container mx-auto px-4 sm:px-6 h-9 flex items-center justify-between text-xs text-white/50">
-            <a
-              href="https://maps.google.com/?q=Jl.+Tukad+Barito+Timur+III+No.16,+Panjer,+Denpasar+Selatan,+Bali"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-white/75 transition-colors"
-            >
-              <MapPin className="w-3 h-3 text-secondary shrink-0" />
-              Jl. Tukad Barito Timur III No.16, Panjer, Denpasar Selatan, Bali 80226
-            </a>
-            <a
-              href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-white/75 transition-colors"
-            >
-              <Phone className="w-3 h-3 text-secondary shrink-0" />
-              +62 823-2301-1656
-            </a>
-          </div>
-        </div>
-
-        {/* Main nav */}
-        <div className="container mx-auto px-4 sm:px-6 h-16 sm:h-[72px] flex items-center justify-between">
+        <div className="container mx-auto px-5 md:px-8 max-w-7xl flex items-center justify-between">
           <a
             href="#top"
             onClick={(e) => smoothScroll(e, "#top")}
-            className="flex items-center group"
+            className="flex items-center group relative z-50"
             aria-label="Bali Accounting — home"
           >
             <Logo
               variant="full"
-              onDark
-              iconClassName="w-9 h-9 sm:w-10 sm:h-10 group-hover:scale-105 transition-transform"
+              onDark={false}
+              iconClassName="w-8 h-8 sm:w-10 sm:h-10 group-hover:scale-105 transition-transform duration-500 ease-out"
             />
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
-            {NAV_LINKS.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={(e) => smoothScroll(e, l.href)}
-                className="px-3 py-2 text-sm font-medium text-white/80 hover:text-white hover:bg-white/5 rounded-md transition-all"
-              >
-                {l.label}
-              </a>
-            ))}
+          <nav className="hidden md:flex items-center gap-6">
+            <div className="flex items-center gap-1 bg-white/50 backdrop-blur-md rounded-full px-2 py-1.5 border border-black/5 shadow-sm">
+              {NAV_LINKS.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={(e) => smoothScroll(e, l.href)}
+                  className="px-4 py-2 text-sm font-medium text-foreground/70 hover:text-primary hover:bg-black/5 rounded-full transition-all duration-300"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </div>
+            
             <a
               href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-3 inline-flex h-10 items-center justify-center gap-1.5 rounded-lg bg-[#25D366] hover:bg-[#1ebe5e] px-4 text-sm font-bold text-white shadow-md hover:shadow-lg active:scale-95 transition-all"
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-primary hover:bg-primary/90 px-6 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 active:scale-95 transition-all duration-300"
             >
-              <MessageCircle className="w-4 h-4" /> WhatsApp Abel
+              <MessageCircle className="w-4 h-4" /> Let's Talk
             </a>
           </nav>
 
           {/* Mobile: WhatsApp + menu */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="md:hidden flex items-center gap-3 relative z-50">
             <a
               href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-10 items-center justify-center gap-1.5 rounded-lg bg-[#25D366] hover:bg-[#1ebe5e] px-3 text-sm font-bold text-white shadow-md active:scale-95 transition-all"
+              className="inline-flex h-9 items-center justify-center gap-1.5 rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-md active:scale-95 transition-all"
             >
-              <MessageCircle className="w-4 h-4" /> Chat
+               Chat
             </a>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
               aria-label={open ? "Close menu" : "Open menu"}
-              className="w-10 h-10 inline-flex items-center justify-center rounded-lg text-white hover:bg-white/10 transition-colors"
+              className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-black/5 text-foreground hover:bg-black/10 transition-colors"
             >
-              {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -138,33 +112,41 @@ export function Layout({ children }: { children: ReactNode }) {
         <AnimatePresence>
           {open && (
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-              className="md:hidden bg-[#0b1f1c] border-t border-white/10"
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute top-full left-0 right-0 md:hidden bg-white/95 backdrop-blur-xl border-b border-black/5 shadow-xl origin-top"
             >
-              <nav className="container mx-auto px-4 py-4 flex flex-col gap-1">
+              <nav className="container mx-auto px-5 py-6 flex flex-col gap-2">
                 {NAV_LINKS.map((l) => (
                   <a
                     key={l.href}
                     href={l.href}
                     onClick={(e) => { smoothScroll(e, l.href); setOpen(false); }}
-                    className="px-3 py-3 text-base font-medium text-white/85 hover:bg-white/5 hover:text-white rounded-lg transition-colors"
+                    className="px-4 py-3 text-lg font-medium text-foreground/80 hover:bg-black/5 hover:text-primary rounded-xl transition-colors"
                   >
                     {l.label}
                   </a>
                 ))}
-                <div className="mt-3 pt-3 border-t border-white/10 flex items-center gap-2 text-xs text-white/45">
-                  <MapPin className="w-3.5 h-3.5 text-secondary shrink-0" />
-                  <span>Jl. Tukad Barito Timur III No.16, Panjer, Denpasar Selatan</span>
+                
+                <div className="mt-4 pt-4 border-t border-black/5 flex flex-col gap-3">
+                  <div className="flex items-start gap-3 text-sm text-foreground/60 px-4">
+                    <MapPin className="w-4 h-4 text-secondary shrink-0 mt-0.5" />
+                    <span>Jl. Tukad Barito Timur III No.16, Panjer, Denpasar Selatan</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-foreground/60 px-4">
+                    <Phone className="w-4 h-4 text-secondary shrink-0" />
+                    <span>+62 812-3740-2292</span>
+                  </div>
                 </div>
+
                 <a
                   href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
-                  className="mt-2 inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] hover:bg-[#1ebe5e] px-4 text-base font-bold text-white shadow-md active:scale-95 transition-all"
+                  className="mt-4 mx-4 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] hover:bg-[#1ebe5e] px-4 text-base font-bold text-white shadow-lg shadow-[#25D366]/30 active:scale-95 transition-all"
                 >
                   <MessageCircle className="w-5 h-5" /> WhatsApp Abel Now
                 </a>
@@ -174,76 +156,90 @@ export function Layout({ children }: { children: ReactNode }) {
         </AnimatePresence>
       </header>
 
-      <main id="top" className="flex-1 pt-16 sm:pt-[72px]">{children}</main>
+      <main id="top" className="flex-1">{children}</main>
 
       {/* FOOTER */}
-      <footer className="bg-[#0b1f1c] text-white/80 pt-14 pb-6">
-        <div className="container mx-auto px-4 sm:px-6 grid gap-8 md:grid-cols-3 mb-10">
-          <div>
-            <div className="mb-3">
-              <Logo variant="full" onDark iconClassName="w-10 h-10" textClassName="text-xl" />
-            </div>
-            <p className="text-sm text-white/60 leading-relaxed mb-4">
-              Monthly bookkeeping for Bali villa owners. Run personally by Abel Yuniartini from our office in Denpasar.
-            </p>
-            <a
-              href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[#25D366] hover:bg-[#1ebe5e] px-5 text-sm font-bold text-white shadow-md transition-colors"
-            >
-              <MessageCircle className="w-4 h-4" /> WhatsApp Abel
-            </a>
-          </div>
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">Contact</h4>
-            <div className="space-y-3 text-sm">
+      <footer className="bg-primary text-primary-foreground pt-20 pb-8 relative overflow-hidden">
+        {/* Decorative background element */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+        
+        <div className="container mx-auto px-5 md:px-8 max-w-7xl relative z-10">
+          <div className="grid gap-12 md:grid-cols-12 mb-16">
+            <div className="md:col-span-5">
+              <div className="mb-6">
+                <Logo variant="full" onDark={true} iconClassName="w-10 h-10" textClassName="text-2xl" />
+              </div>
+              <p className="text-base text-primary-foreground/70 leading-relaxed mb-8 max-w-sm font-sans">
+                Professional Bali villa bookkeeping services in Denpasar. Run personally by Abel Yuniartini, delivering precise monthly financial clarity for villa owners across the island.
+              </p>
               <a
-                href={wa("Hi Abel, quick question about my Bali villa.")}
+                href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-2 text-white/70 hover:text-white transition-colors"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] hover:bg-[#1ebe5e] px-6 text-sm font-bold text-white shadow-lg shadow-[#25D366]/20 transition-all hover:-translate-y-0.5"
               >
-                <Phone className="w-4 h-4 shrink-0 mt-0.5 text-secondary" />
-                <span>+62 823-2301-1656 (WhatsApp)</span>
-              </a>
-              <a
-                href="https://maps.google.com/?q=Jl.+Tukad+Barito+Timur+III+No.16,+Panjer,+Denpasar+Selatan,+Bali"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-2 text-white/70 hover:text-white transition-colors"
-              >
-                <MapPin className="w-4 h-4 shrink-0 mt-0.5 text-secondary" />
-                <span>Jl. Tukad Barito Timur III No.16,<br />Panjer, Denpasar Selatan,<br />Bali 80226</span>
+                <MessageCircle className="w-5 h-5" /> Chat on WhatsApp
               </a>
             </div>
+            
+            <div className="md:col-span-3">
+              <h4 className="text-sm font-bold uppercase tracking-widest text-primary-foreground mb-6 font-sans">Contact</h4>
+              <div className="space-y-4 text-sm font-sans">
+                <a
+                  href={wa("Hi Abel, quick question about my Bali villa.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 text-primary-foreground/70 hover:text-white transition-colors group"
+                >
+                  <Phone className="w-4 h-4 shrink-0 mt-0.5 text-secondary group-hover:scale-110 transition-transform" />
+                  <span>+62 812-3740-2292<br/><span className="text-xs opacity-70">(WhatsApp & Call)</span></span>
+                </a>
+                <a
+                  href="https://maps.google.com/?q=Jl.+Tukad+Barito+Timur+III+No.16,+Panjer,+Denpasar+Selatan,+Bali"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 text-primary-foreground/70 hover:text-white transition-colors group"
+                >
+                  <MapPin className="w-4 h-4 shrink-0 mt-0.5 text-secondary group-hover:scale-110 transition-transform" />
+                  <span>Jl. Tukad Barito Timur III No.16,<br />Panjer, Denpasar Selatan,<br />Bali 80226</span>
+                </a>
+              </div>
+            </div>
+            
+            <div className="md:col-span-4">
+              <h4 className="text-sm font-bold uppercase tracking-widest text-primary-foreground mb-6 font-sans">Compliance & Trust</h4>
+              <p className="text-sm text-primary-foreground/50 leading-relaxed font-sans">
+                Bali Accounting provides bookkeeping and financial reporting services. We organize your financial records for clarity and operational health. Our reports are for owner information and do not constitute official tax filings or legal advice. For formal Indonesian tax filings, we coordinate directly with licensed Konsultan Pajak registered with DJP.
+              </p>
+            </div>
           </div>
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">Compliance</h4>
-            <p className="text-xs text-white/50 leading-relaxed">
-              Bali Accounting is a bookkeeping and financial reporting service. We organize your financial records and prepare them for review by a licensed professional. Our reports are for owner information only and do not constitute official tax filings or legal advice. For Indonesian tax filings we coordinate with licensed Konsultan Pajak registered with DJP.
-            </p>
+          
+          <div className="pt-8 border-t border-primary-foreground/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm font-sans text-primary-foreground/40">
+            <span>© {new Date().getFullYear()} Bali Accounting. All rights reserved.</span>
+            <span>Made in Denpasar, Bali.</span>
           </div>
-        </div>
-        <div className="container mx-auto px-4 sm:px-6 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/40">
-          <span>© 2025 Bali Accounting. All rights reserved.</span>
-          <span>Made in Denpasar, Bali 🌴</span>
         </div>
       </footer>
 
-      {/* FLOATING WHATSAPP — mobile-prominent */}
-      <a
-        href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe5e] text-white rounded-full shadow-2xl shadow-[#25D366]/40 transition-all hover:scale-105 active:scale-95"
-        aria-label="Chat on WhatsApp"
-      >
-        <span className="flex items-center gap-2 px-4 py-3 sm:px-5 sm:py-3.5 text-sm font-bold">
-          <MessageCircle className="w-5 h-5" />
-          <span className="hidden sm:inline">WhatsApp Abel</span>
-        </span>
-      </a>
+      {/* FLOATING WHATSAPP — visible mostly on mobile when scrolled */}
+      <AnimatePresence>
+        {scrolled && (
+          <motion.a
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe5e] text-white rounded-full shadow-2xl shadow-[#25D366]/40 transition-all hover:scale-105 active:scale-95 md:hidden"
+            aria-label="Chat on WhatsApp"
+          >
+            <span className="flex items-center justify-center w-14 h-14">
+              <MessageCircle className="w-6 h-6" />
+            </span>
+          </motion.a>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

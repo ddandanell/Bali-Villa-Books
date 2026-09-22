@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
@@ -51,72 +51,74 @@
 }
 
 :root {
-  --background: 40 30% 95%; /* warm sand */
-  --foreground: 210 20% 15%; /* dark slate */
+  /* Tropical Modernism Palette */
+  --background: 42 20% 97%; /* Warm Sand */
+  --foreground: 163 15% 15%; /* Deep Jungle Charcoal */
   
-  --card: 40 20% 98%;
-  --card-foreground: 210 20% 15%;
-  --card-border: 40 20% 90%;
+  --card: 0 0% 100%;
+  --card-foreground: 163 15% 15%;
+  --card-border: 42 15% 90%;
   
-  --popover: 40 30% 95%;
-  --popover-foreground: 210 20% 15%;
-  --popover-border: 40 20% 90%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 163 15% 15%;
+  --popover-border: 42 15% 90%;
   
-  --primary: 184 50% 25%; /* deep ocean teal */
-  --primary-foreground: 0 0% 100%;
+  --primary: 165 58% 12%; /* Deep Bali Green */
+  --primary-foreground: 42 20% 97%;
   
-  --secondary: 45 80% 50%; /* gold accent */
-  --secondary-foreground: 210 20% 15%;
+  --secondary: 20 62% 48%; /* Terracotta / Clay */
+  --secondary-foreground: 0 0% 100%;
   
-  --muted: 40 20% 90%;
-  --muted-foreground: 210 10% 40%;
+  --muted: 42 20% 90%;
+  --muted-foreground: 163 10% 45%;
   
-  --accent: 40 20% 90%;
-  --accent-foreground: 210 20% 15%;
+  --accent: 42 30% 93%;
+  --accent-foreground: 165 58% 12%;
   
-  --destructive: 0 84% 60%;
+  --destructive: 0 70% 50%;
   --destructive-foreground: 0 0% 100%;
   
-  --border: 40 20% 90%;
-  --input: 40 20% 90%;
-  --ring: 184 50% 25%;
+  --border: 42 15% 90%;
+  --input: 42 15% 90%;
+  --ring: 165 58% 12%;
   
-  --app-font-sans: 'Inter', sans-serif;
-  --app-font-serif: 'Playfair Display', serif;
+  --app-font-sans: 'Plus Jakarta Sans', sans-serif;
+  --app-font-serif: 'Fraunces', serif;
   --app-font-mono: Menlo, monospace;
   --radius: 0.5rem;
 }
 
 .dark {
-  --background: 210 20% 10%;
-  --foreground: 40 30% 95%;
+  /* Minimal dark mode fallback, though default to light is requested */
+  --background: 165 58% 8%; 
+  --foreground: 42 20% 97%;
   
-  --card: 210 20% 12%;
-  --card-foreground: 40 30% 95%;
-  --card-border: 210 20% 18%;
+  --card: 165 50% 12%;
+  --card-foreground: 42 20% 97%;
+  --card-border: 165 40% 18%;
   
-  --popover: 210 20% 10%;
-  --popover-foreground: 40 30% 95%;
-  --popover-border: 210 20% 18%;
+  --popover: 165 50% 12%;
+  --popover-foreground: 42 20% 97%;
+  --popover-border: 165 40% 18%;
   
-  --primary: 184 50% 35%;
-  --primary-foreground: 0 0% 100%;
+  --primary: 42 30% 93%;
+  --primary-foreground: 165 58% 8%;
   
-  --secondary: 45 80% 50%;
-  --secondary-foreground: 210 20% 15%;
+  --secondary: 20 62% 58%;
+  --secondary-foreground: 0 0% 100%;
   
-  --muted: 210 20% 18%;
-  --muted-foreground: 210 10% 60%;
+  --muted: 165 40% 18%;
+  --muted-foreground: 42 15% 70%;
   
-  --accent: 210 20% 18%;
-  --accent-foreground: 40 30% 95%;
+  --accent: 165 40% 18%;
+  --accent-foreground: 42 20% 97%;
   
-  --destructive: 0 62% 30%;
+  --destructive: 0 60% 40%;
   --destructive-foreground: 0 0% 100%;
   
-  --border: 210 20% 18%;
-  --input: 210 20% 18%;
-  --ring: 184 50% 35%;
+  --border: 165 40% 18%;
+  --input: 165 40% 18%;
+  --ring: 42 30% 93%;
 }
 
 @layer base {
@@ -124,9 +126,17 @@
     @apply border-border;
   }
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased bg-background text-foreground selection:bg-secondary/20 selection:text-foreground;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    @apply font-serif font-normal;
   }
+}
+
+/* Custom Utilities */
+.glass-panel {
+  @apply bg-white/70 backdrop-blur-md border border-white/50 shadow-sm;
+}
+.image-mask {
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
