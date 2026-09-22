@@ -170,7 +170,7 @@ export function Layout({ children }: { children: ReactNode }) {
                 <Logo variant="full" onDark={true} iconClassName="w-10 h-10" textClassName="text-2xl" />
               </div>
               <p className="text-base text-primary-foreground/70 leading-relaxed mb-8 max-w-sm font-sans">
-                Professional Bali villa bookkeeping services in Denpasar. Run personally by Abel Yuniartini, delivering precise monthly financial clarity for villa owners across the island.
+                Professional Bali villa bookkeeping services in Denpasar. Run personally by Abel Yuniartini, delivering precise monthly financial reporting for villa owners across the island.
               </p>
               <a
                 href={wa("Hi Abel, I want to talk about accounting for my Bali villa.")}

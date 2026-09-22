@@ -214,7 +214,7 @@ export default function Home() {
 
               <FadeUp delay={0.2}>
                 <p className="text-lg sm:text-xl text-foreground/80 leading-relaxed mb-10 max-w-lg font-sans">
-                  Professional Bali villa accounting and bookkeeping services. We handle every receipt, Airbnb payout, and staff cost — delivering one clear, accurate report by the 15th of every month.
+                  Professional Bali villa accounting and bookkeeping services. Expert account management for Bali villas handling every receipt, Airbnb bookkeeping, and OTA payout reconciliation—delivering clear financial reporting by the 15th of every month.
                 </p>
               </FadeUp>
 
@@ -248,8 +248,10 @@ export default function Home() {
                 
                 <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-white/50 aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5]">
                   <img
-                    src="/images/hero.jpg"
-                    alt="Luxury Bali villa pool with tropical surroundings"
+                    src="/images/bali-villa-accounting-services-hero.jpg"
+                    alt="Professional Bali villa accountant working on financial reporting"
+                    width="800"
+                    height="1000"
                     className="w-full h-full object-cover"
                     fetchPriority="high"
                   />
@@ -258,7 +260,7 @@ export default function Home() {
                   {/* Floating Trust Badge */}
                   <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 glass-panel rounded-2xl p-5 sm:p-6 flex items-center gap-5">
                     <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm shrink-0">
-                      <img src="/images/team-accountant.png" alt="Abel Yuniartini" className="w-10 h-10 rounded-full object-cover" />
+                      <img src="/images/bali-accountant-consultation.jpg" alt="Abel Yuniartini, Villa Accountant in Bali" width="48" height="48" className="w-10 h-10 rounded-full object-cover" />
                     </div>
                     <div>
                       <p className="text-primary font-bold text-sm sm:text-base font-serif">Run personally by Abel</p>
@@ -314,18 +316,18 @@ export default function Home() {
                 {[
                   {
                     icon: AlertTriangle,
-                    title: "Mystery OTA Payouts",
-                    text: "Airbnb and Booking.com send money with deductions you can't trace. Commissions, cancellations, adjustments — what is actually yours?",
+                    title: "OTA Payout Reconciliation",
+                    text: "Airbnb and Booking.com send money with deductions you can't trace. We reconcile commissions, cancellations, and adjustments so you know what is actually yours.",
                   },
                   {
                     icon: Eye,
                     title: "Unverifiable Expenses",
-                    text: "Banjar fees, pool maintenance, BPJS for staff, electricity tokens. Without a dedicated accountant, you can't verify if expenses are legitimate or inflated.",
+                    text: "Banjar fees, pool maintenance, BPJS for staff, electricity tokens. Without a dedicated villa accountant in Bali, you can't verify if expenses are legitimate or inflated.",
                   },
                   {
                     icon: FileText,
                     title: "Tax Season Crisis",
-                    text: "Your Konsultan Pajak needs documents you don't have. You scramble through emails, risk penalties, or overpay due to messy records.",
+                    text: "Your Konsultan Pajak needs documents you don't have. We provide full financial reporting to prevent scrambling through emails, risking penalties, or overpaying due to messy records.",
                   },
                 ].map((p, i) => (
                   <Item key={p.title}>
@@ -352,7 +354,7 @@ export default function Home() {
       {/* ============== HOW IT WORKS ============== */}
       <section className="py-24 sm:py-32 bg-primary text-primary-foreground relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 mix-blend-overlay">
-          <img src="/images/hero.jpg" alt="" className="w-full h-full object-cover" />
+          <img src="/images/bali-villa-bookkeeping-reconciliation.jpg" alt="Bali villa bookkeeping and reconciliation process" width="1024" height="1024" loading="lazy" className="w-full h-full object-cover" />
         </div>
         
         <div className="container mx-auto px-5 md:px-8 max-w-7xl relative z-10">
@@ -408,14 +410,18 @@ export default function Home() {
                 <div className="absolute -inset-4 bg-secondary/10 rounded-[3rem] blur-2xl -z-10" />
                 <div className="grid grid-cols-2 gap-4">
                   <img 
-                    src="/images/team-bookkeeper.png" 
-                    alt="Bali villa accounting professional reviewing reports" 
+                    src="/images/bali-accountant-consultation.jpg" 
+                    alt="Bali accountant consulting with a villa owner" 
+                    width="600"
+                    height="600"
                     loading="lazy" 
                     className="rounded-[2rem] w-full h-[300px] object-cover shadow-lg mt-8" 
                   />
                   <img 
-                    src="/images/team-manager.png" 
-                    alt="Villa management in Bali" 
+                    src="/images/bali-account-management-team.jpg" 
+                    alt="Account management team for Bali villas working together" 
+                    width="600"
+                    height="600"
                     loading="lazy" 
                     className="rounded-[2rem] w-full h-[300px] object-cover shadow-lg" 
                   />
@@ -424,9 +430,9 @@ export default function Home() {
                 <div className="absolute -bottom-8 -left-4 sm:left-8 glass-panel rounded-2xl p-6 shadow-xl max-w-[280px]">
                   <div className="flex items-center gap-4 mb-3">
                     <Building2 className="w-6 h-6 text-secondary" />
-                    <h4 className="font-serif text-lg text-primary leading-tight">Denpasar Based</h4>
+                    <h3 className="font-serif text-lg text-primary leading-tight m-0">Denpasar Based</h3>
                   </div>
-                  <p className="text-sm font-sans text-foreground/70">Local knowledge, serving villas across Canggu, Seminyak, Ubud, and Uluwatu.</p>
+                  <p className="text-sm font-sans text-foreground/70">Bookkeeping services in Denpasar serving Canggu, Seminyak, Ubud, and Uluwatu.</p>
                 </div>
               </div>
             </FadeUp>
@@ -682,8 +688,11 @@ export default function Home() {
       <section className="py-24 sm:py-32 bg-primary relative overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/images/team-villa-staff.png"
-            alt="Balinese hospitality"
+            src="/images/bali-account-management-team.jpg"
+            alt="Bali villa account management team working on financial records"
+            width="1024"
+            height="1024"
+            loading="lazy"
             className="w-full h-full object-cover opacity-20 mix-blend-luminosity"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/90 to-primary/60" />
