@@ -64,9 +64,10 @@ Required guarantees:
 
 ### Supply Chain / Third-Party Script Trust
 
-The landing page depends on third-party services outside the repository, especially Calendly assets loaded directly in `artifacts/villabooks-bali/index.html` and outbound CTA flows to WhatsApp/Calendly. Any third-party script included in the page executes with the same privileges as first-party frontend code, so external integrations must be added sparingly and reviewed carefully.
+The landing page depends on third-party services outside the repository, especially Calendly assets loaded directly in `artifacts/villabooks-bali/index.html` and outbound CTA flows to WhatsApp/Calendly. Any third-party script included in the page executes with the same privileges as first-party frontend code, so external integrations must be added sparingly and reviewed carefully. This is a live concern rather than a hypothetical future one: the current frontend globally loads Calendly's widget script on every page load even though `Home.tsx` can fall back to opening the Calendly URL in a new tab if that script is unavailable.
 
 Required guarantees:
 - Third-party scripts and embeds MUST be limited to business-critical integrations and reviewed as trusted code execution.
+- If a third-party booking or analytics flow can function without executing remote script in the page origin, the lower-trust option SHOULD be preferred.
 - New third-party frontend dependencies SHOULD be minimized and pinned where practical.
 - If the site later handles user sessions, forms, or sensitive data in-browser, third-party script usage MUST be re-evaluated with stronger hardening expectations.
