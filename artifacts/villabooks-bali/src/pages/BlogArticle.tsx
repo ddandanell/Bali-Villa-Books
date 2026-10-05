@@ -17,6 +17,12 @@ export default function BlogArticle() {
   useEffect(() => {
     if (!post) return;
     document.title = `${post.metaTitle || post.title} | Bali Accounting`;
+    complete.current = false;
+    const canonical = `https://bali-villa-accounting-service.com/blog/${encodeURIComponent(slug)}`;
+    document.querySelector('link[rel="canonical"]')?.setAttribute("href", canonical);
+    for (const [property, value] of Object.entries({ "og:title": post.metaTitle, "og:description": post.metaDescription, "og:url": canonical, "og:image": `https://bali-villa-accounting-service.com${post.imageUrl}`, "og:type": "article" })) {
+      document.querySelector(`meta[property="${property}"]`)?.setAttribute("content", value);
+    }
     const description = document.querySelector('meta[name="description"]');
     description?.setAttribute("content", post.metaDescription || post.excerpt);
     event.mutate({ data: { slug, eventType: "article_view" } });
@@ -27,7 +33,11 @@ export default function BlogArticle() {
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.metaDescription, image: `https://bali-villa-accounting-service.com${post.imageUrl}`, datePublished: post.publishedAt, dateModified: post.updatedAt, author: { "@type": "Organization", name: "Bali Accounting" }, mainEntityOfPage: canonical });
+    document.head.appendChild(schema);
+    return () => { window.removeEventListener("scroll", onScroll); schema.remove(); };
   }, [post, slug]);
   if (isLoading) return <Layout><main className="container mx-auto max-w-4xl px-5 pb-24 pt-40"><div className="h-8 w-32 animate-pulse rounded bg-primary/10" /><div className="mt-8 h-28 animate-pulse rounded bg-primary/10" /><div className="mt-10 space-y-3"><div className="h-4 animate-pulse rounded bg-primary/10" /><div className="h-4 animate-pulse rounded bg-primary/10" /><div className="h-4 w-2/3 animate-pulse rounded bg-primary/10" /></div></main></Layout>;
   if (isError || !post) return <Layout><main className="container mx-auto max-w-3xl px-5 pb-24 pt-40 text-center"><p className="font-serif text-3xl text-primary">This guide could not be found.</p><button data-testid="button-article-retry" onClick={() => refetch()} className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-white"><RefreshCw className="h-4 w-4" /> Try again</button></main></Layout>;
@@ -36,6 +46,7 @@ export default function BlogArticle() {
     <header className="container mx-auto max-w-5xl px-5 pb-14 pt-36 md:px-8">
       <Link href="/blog" data-testid="link-back-blog" className="inline-flex items-center gap-2 text-sm font-semibold text-secondary"><ArrowLeft className="h-4 w-4" /> All guides</Link>
       <div className="mt-10 max-w-4xl"><p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">{post.category}</p><h1 data-testid="text-article-title" className="mt-5 text-4xl leading-[1.05] text-primary sm:text-6xl">{post.title}</h1><p className="mt-7 max-w-3xl text-lg leading-8 text-foreground/65">{post.excerpt}</p><div className="mt-7 flex items-center gap-3 text-sm text-foreground/45"><Clock3 className="h-4 w-4" /> {post.readTimeMinutes} minute read <span>·</span> {new Date(post.publishedAt).toLocaleDateString("en-US", { dateStyle: "long" })}</div></div>
+      <img src={post.imageUrl} alt={post.imageAlt} width="1024" height="1024" fetchPriority="high" className="mt-10 aspect-[16/9] w-full rounded-[2rem] object-cover" />
     </header>
     <div className="container mx-auto grid max-w-7xl gap-14 px-5 pb-24 md:grid-cols-[minmax(0,760px)_280px] md:px-8">
       <article data-testid="article-content" className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:font-normal prose-headings:text-primary prose-p:leading-8 prose-p:text-foreground/75 prose-a:text-secondary prose-strong:text-primary" dangerouslySetInnerHTML={{ __html: post.contentHtml }} />

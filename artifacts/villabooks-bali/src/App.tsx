@@ -1,5 +1,7 @@
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { getGetBlogPostQueryKey, getListBlogPostsQueryKey, type BlogPost, type BlogPostSummary } from "@workspace/api-client-react";
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
@@ -8,6 +10,11 @@ import Blog from "@/pages/Blog";
 import BlogArticle from "@/pages/BlogArticle";
 
 const queryClient = new QueryClient();
+if (typeof window !== "undefined") {
+  const bootstrap = (window as Window & { __BLOG_INITIAL__?: { post?: BlogPost; posts?: BlogPostSummary[] } }).__BLOG_INITIAL__;
+  if (bootstrap?.post) queryClient.setQueryData(getGetBlogPostQueryKey(bootstrap.post.slug), bootstrap.post);
+  if (bootstrap?.posts) queryClient.setQueryData(getListBlogPostsQueryKey({ limit: 50 }), bootstrap.posts);
+}
 
 function Router() {
   return (
@@ -27,6 +34,7 @@ function Router() {
 }
 
 function App() {
+  useEffect(() => { document.getElementById("journal-server-content")?.remove(); }, []);
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>

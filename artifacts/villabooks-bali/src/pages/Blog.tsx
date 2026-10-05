@@ -13,7 +13,7 @@ export default function Blog() {
     document.querySelector('meta[name="description"]')?.setAttribute("content", "Practical Bali villa accounting guides from Denpasar: OTA reconciliation, payroll, reporting, and profitable villa operations.");
   }, []);
   const { data: posts, isLoading, isError, refetch } = useListBlogPosts({ limit: 50 });
-  useGetBlogAutomationStatus({ query: { queryKey: ["/api/blog/automation/status"] } });
+  const { data: automation } = useGetBlogAutomationStatus({ query: { queryKey: ["/api/blog/automation/status"], refetchInterval: 60000 } });
   const filtered = useMemo(() => (posts ?? []).filter((post) =>
     `${post.title} ${post.excerpt} ${post.category} ${post.primaryKeyword}`.toLowerCase().includes(search.toLowerCase())
   ), [posts, search]);
@@ -29,6 +29,7 @@ export default function Blog() {
               <p className="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-secondary">The Bali villa ledger</p>
               <h1 data-testid="text-blog-heading" className="text-5xl leading-[1.02] sm:text-7xl">Clear thinking for <span className="italic text-secondary">better villas.</span></h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-primary-foreground/70">Practical guidance on villa bookkeeping, OTA payouts, payroll, and the numbers behind a healthy Bali hospitality business.</p>
+              {automation && <div className="mt-6 text-sm text-primary-foreground/60" data-testid="text-publication-schedule"><p>Two new guides every Monday–Friday · 9:00 a.m. Bali time · 1,000+ words with images · Weekly editorial review</p><p className="mt-2">{automation.lastRunStatus === "failed" ? "The last automated run needs attention; existing guides remain available." : automation.lastRunStatus === "running" ? "An editorial run is in progress." : "Automatic editorial schedule configured."}{automation.nextEligibleRunAt && ` Next eligible run: ${new Date(automation.nextEligibleRunAt).toLocaleString("en-GB", { timeZone: "Asia/Makassar", dateStyle: "medium", timeStyle: "short" })} Bali time.`}</p></div>}
             </div>
           </div>
         </section>

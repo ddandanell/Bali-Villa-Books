@@ -11,6 +11,13 @@ export interface BlogAutomationStatus {
   cadence: string;
   maxPostsPerRun: number;
   publishedPosts: number;
+  timezone: string;
+  scheduledHour: number;
+  minimumWords: number;
+  /** @nullable */
+  lastRunStatus: string | null;
+  /** @nullable */
+  lastReviewAt: Date | null;
   /** @nullable */
   lastRunAt: Date | null;
   /** @nullable */

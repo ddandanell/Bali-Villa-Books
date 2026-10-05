@@ -1,0 +1,1 @@
+- [Content automation](content-automation.md) — Bali weekday publishing, firm-led voice, and unattended hosting constraints.

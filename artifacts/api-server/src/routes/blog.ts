@@ -1,8 +1,11 @@
 import { Router, type IRouter } from "express";
-import { desc, eq, gte, sql } from "drizzle-orm";
+import { desc, eq, sql } from "drizzle-orm";
 import { db, blogEvents, blogPosts, automationConfig, automationRuns } from "@workspace/db";
 import { ListBlogPostsQueryParams, ListBlogPostsResponse, GetBlogPostParams, GetBlogPostResponse, RecordBlogEventBody, GetBlogAutomationStatusResponse } from "@workspace/api-zod";
 import { logger } from "../lib/logger";
+import { cleanHtml } from "../lib/blog-content";
+import { baliClock, countWords, imageLibrary, nextPublication, TIMEZONE, SCHEDULED_HOUR, MIN_WORDS } from "../lib/blog-policy";
+export { startBlogAutomation } from "../lib/blog-automation";
 
 const router: IRouter = Router();
 const now = new Date();
@@ -36,12 +39,13 @@ const launchPosts = [
   }
 ];
 
-const summary = (post: { slug: string; title: string; excerpt: string; primaryKeyword: string; category: string; readTimeMinutes: number; publishedAt?: Date | null }) => ({ slug: post.slug, title: post.title, excerpt: post.excerpt, primaryKeyword: post.primaryKeyword, category: post.category, readTimeMinutes: post.readTimeMinutes, publishedAt: post.publishedAt ?? now });
+const summary = (post: { slug: string; title: string; excerpt: string; primaryKeyword: string; category: string; readTimeMinutes: number; publishedAt?: Date | null; imageUrl: string; imageAlt: string }) => ({ slug: post.slug, title: post.title, excerpt: post.excerpt, primaryKeyword: post.primaryKeyword, category: post.category, readTimeMinutes: post.readTimeMinutes, publishedAt: post.publishedAt ?? now, imageUrl: post.imageUrl, imageAlt: post.imageAlt });
 
 export async function seedBlogPosts(): Promise<void> {
   let inserted = 0;
-  for (const post of launchPosts) {
-    const created = await db.insert(blogPosts).values({ ...post, publishedAt: now }).onConflictDoNothing({ target: blogPosts.slug }).returning({ id: blogPosts.id });
+  for (const [index, post] of launchPosts.entries()) {
+    const image = imageLibrary[index % imageLibrary.length];
+    const created = await db.insert(blogPosts).values({ ...post, publishedAt: now, wordCount: countWords(post.contentHtml), imageUrl: image.url, imageAlt: image.alt }).onConflictDoNothing({ target: blogPosts.slug }).returning({ id: blogPosts.id });
     inserted += created.length;
   }
   if (inserted > 0) {
@@ -62,7 +66,7 @@ router.get("/blog/posts/:slug", async (req, res): Promise<void> => {
   const [post] = await db.select().from(blogPosts).where(eq(blogPosts.slug, parsed.data.slug));
   if (!post) { res.status(404).json({ error: "Post not found" }); return; }
   const related = await db.select().from(blogPosts).where(sql`${blogPosts.slug} <> ${post.slug}`).orderBy(desc(blogPosts.publishedAt)).limit(3);
-  res.json(GetBlogPostResponse.parse({ ...post, relatedPosts: related.map(summary) }));
+  res.json(GetBlogPostResponse.parse({ ...post, contentHtml: cleanHtml(post.contentHtml), relatedPosts: related.map(summary) }));
 });
 
 router.post("/blog/events", async (req, res): Promise<void> => {
@@ -76,75 +80,17 @@ router.get("/blog/automation/status", async (_req, res): Promise<void> => {
   const [config] = await db.select().from(automationConfig).limit(1);
   const [latest] = await db.select().from(automationRuns).orderBy(desc(automationRuns.startedAt)).limit(1);
   const published = await db.select({ count: sql<number>`count(*)` }).from(blogPosts);
+  const [daily] = await db.select().from(automationRuns).where(eq(automationRuns.runKey, `weekday:${baliClock().dateKey}`));
+  const [review] = await db.select().from(automationRuns).where(sql`${automationRuns.runKey} like 'review:%' AND ${automationRuns.status} = 'completed'`).orderBy(desc(automationRuns.completedAt)).limit(1);
   const last = latest?.completedAt ?? config?.lastRunAt ?? null;
-  const next = last ? new Date(last.getTime() + 7 * 86400000) : null;
-  res.json(GetBlogAutomationStatusResponse.parse({ enabled: config?.enabled ?? true, cadence: "weekly", maxPostsPerRun: 10, publishedPosts: Number(published[0]?.count ?? 0), lastRunAt: last, nextEligibleRunAt: next }));
+  const next = daily && daily.status !== "completed" && baliClock().eligible
+    ? new Date(Date.now() + 5 * 60000) : nextPublication(new Date(), daily?.status === "completed");
+  res.json(GetBlogAutomationStatusResponse.parse({
+    enabled: config?.enabled ?? true, cadence: "Monday–Friday, two journals daily; weekly SEO review",
+    maxPostsPerRun: 2, publishedPosts: Number(published[0]?.count ?? 0), lastRunAt: last,
+    nextEligibleRunAt: next, timezone: TIMEZONE, scheduledHour: SCHEDULED_HOUR,
+    minimumWords: MIN_WORDS, lastRunStatus: latest?.status ?? null, lastReviewAt: review?.completedAt ?? null,
+  }));
 });
-
-export function startBlogAutomation(): void {
-  const check = async () => {
-    try {
-      await seedBlogPosts();
-      const [config] = await db.select().from(automationConfig).limit(1);
-      const [latest] = await db.select().from(automationRuns).orderBy(desc(automationRuns.startedAt)).limit(1);
-      const lastRunAt = latest?.completedAt ?? config?.lastRunAt ?? null;
-      if (lastRunAt && Date.now() - lastRunAt.getTime() < 7 * 86400000) return;
-      const runKey = new Date().toISOString().slice(0, 10);
-      const [run] = await db.insert(automationRuns)
-        .values({ runKey, status: "running", publishedCount: 0 })
-        .onConflictDoNothing({ target: automationRuns.runKey })
-        .returning();
-      if (!run) return;
-      try {
-        const { openai } = await import("@workspace/integrations-openai-ai-server");
-        const existing = await db.select({ title: blogPosts.title, primaryKeyword: blogPosts.primaryKeyword }).from(blogPosts);
-        const engagement = await db
-          .select({
-            slug: blogEvents.slug,
-            eventType: blogEvents.eventType,
-            count: sql<number>`count(*)`,
-          })
-          .from(blogEvents)
-          .where(gte(blogEvents.occurredAt, new Date(Date.now() - 30 * 86400000)))
-          .groupBy(blogEvents.slug, blogEvents.eventType);
-        const response = await openai.chat.completions.create({
-          model: "gpt-5.6-luna", max_completion_tokens: 8192, response_format: { type: "json_object" },
-          messages: [{ role: "system", content: "You write factual, useful Bali villa bookkeeping guides. Return JSON with a posts array of at most 3 objects containing slug,title,excerpt,metaTitle,metaDescription,primaryKeyword,category,readTimeMinutes,contentHtml. Use only semantic HTML (h2,h3,p,ul,ol,li,strong,em,a), no scripts. Each article must link to two existing posts and one homepage anchor. Do not provide tax or legal conclusions." },
-            { role: "user", content: `Existing titles and keywords: ${JSON.stringify(existing)}. Privacy-safe engagement totals from the last 30 days: ${JSON.stringify(engagement)}. Use stronger engagement only as a topic-direction signal; do not repeat existing topics. Create distinct high-intent topics for villa owners. Every post must be at least 450 words and metaTitle <=60 chars, metaDescription <=160 chars.` }]
-        });
-        const value = JSON.parse(response.choices[0]?.message?.content ?? "{}") as { posts?: Array<Record<string, unknown>> };
-        const posts = (value.posts ?? []).filter((post) =>
-          typeof post.slug === "string" && typeof post.title === "string" && typeof post.excerpt === "string" &&
-          typeof post.contentHtml === "string" && post.contentHtml.length >= 1800 &&
-          typeof post.metaTitle === "string" && post.metaTitle.length <= 60 &&
-          typeof post.metaDescription === "string" && post.metaDescription.length <= 160 &&
-          !existing.some((old) => old.title.toLowerCase() === String(post.title).toLowerCase()),
-        ).slice(0, 3);
-        let publishedCount = 0;
-        for (const post of posts) {
-          const html = String(post.contentHtml)
-            .replace(/<(?!\/?(?:h2|h3|p|ul|ol|li|strong|em|a)(?:\s[^>]*)?>)[^>]*>/gi, "")
-            .replace(/\s(?:on\w+|style)\s*=\s*["'][^"']*["']/gi, "")
-            .replace(/(href\s*=\s*["'])\s*javascript:[^"']*(["'])/gi, "$1#$2");
-          await db.insert(blogPosts).values({
-            slug: String(post.slug), title: String(post.title), excerpt: String(post.excerpt),
-            metaTitle: String(post.metaTitle), metaDescription: String(post.metaDescription),
-            primaryKeyword: String(post.primaryKeyword), category: String(post.category),
-            contentHtml: html, readTimeMinutes: Number(post.readTimeMinutes) || 8, publishedAt: new Date(),
-          }).onConflictDoNothing({ target: blogPosts.slug });
-          publishedCount++;
-        }
-        await db.update(automationRuns).set({ status: "completed", completedAt: new Date(), publishedCount }).where(eq(automationRuns.id, run.id));
-        await db.update(automationConfig).set({ lastRunAt: new Date(), updatedAt: new Date() });
-        logger.info({ publishedCount }, "Blog automation completed");
-      } catch (error) {
-        await db.update(automationRuns).set({ status: "failed", completedAt: new Date(), errorMessage: error instanceof Error ? error.message : String(error) }).where(eq(automationRuns.id, run.id));
-        logger.error({ err: error }, "Blog automation generation failed");
-      }
-    } catch (error) { logger.error({ err: error }, "Blog automation check failed"); }
-  };
-  void check();
-  setInterval(() => void check(), 3600000).unref();
-}
 
 export default router;

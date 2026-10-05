@@ -14,6 +14,8 @@ export interface BlogPostSummary {
   title: string;
   excerpt: string;
   primaryKeyword: string;
+  imageUrl: string;
+  imageAlt: string;
   category: string;
   readTimeMinutes: number;
   publishedAt: string;
@@ -23,6 +25,8 @@ export type BlogPost = BlogPostSummary & {
   metaTitle: string;
   metaDescription: string;
   contentHtml: string;
+  updatedAt: string;
+  wordCount: number;
   relatedPosts: BlogPostSummary[];
 };
 
@@ -45,6 +49,13 @@ export interface BlogAutomationStatus {
   cadence: string;
   maxPostsPerRun: number;
   publishedPosts: number;
+  timezone: string;
+  scheduledHour: number;
+  minimumWords: number;
+  /** @nullable */
+  lastRunStatus: string | null;
+  /** @nullable */
+  lastReviewAt: string | null;
   /** @nullable */
   lastRunAt: string | null;
   /** @nullable */

@@ -29,51 +29,60 @@ id = "7ybegaG7sYw8i3f5mnvHw"
 uri = "file://artifacts/villabooks-bali/public/images/hero.jpg"
 type = "image"
 title = "luxury bali villa architecture beautiful pool sunny modern"
+logical_id = "589d0d72-4e5f-4495-bc2c-6a67bce74e90"
 
 [[outputs]]
 id = "OJgyOAh7eRdNjNhGTMBjw"
 uri = "file://attached_assets/stock_images/indonesian-accountant_1.jpg"
 type = "image"
 title = "Indonesian Balinese woman professional with laptop, warm friendly portrait, natural lighting"
+logical_id = "4fa39326-e40d-42b5-b50d-fe2a37312e22"
 
 [[outputs]]
 id = "mVYLi3muoZdrSHiu6xpT6"
 uri = "file://attached_assets/stock_images/indonesian-accountant_2.jpg"
 type = "image"
 title = "Indonesian Balinese woman professional with laptop, warm friendly portrait, natural lighting"
+logical_id = "2c9e472c-92e1-4262-a64b-3f8b334e0735"
 
 [[outputs]]
 id = "yksD_hzVW2laLIvUAcOAK"
 uri = "file://attached_assets/stock_images/balinese-staff_1.jpg"
 type = "image"
 title = "Balinese hospitality villa staff in uniform welcoming guests, smiling, tropical setting"
+logical_id = "72a82d46-0e37-4d94-b944-ef897dc98c84"
 
 [[outputs]]
 id = "EXQ-mn__mo6W5bqW8U60l"
 uri = "file://attached_assets/stock_images/balinese-staff_2.jpg"
 type = "image"
 title = "Balinese hospitality villa staff in uniform welcoming guests, smiling, tropical setting"
+logical_id = "ec3305e4-7618-413b-a1c5-6e1b471e173e"
 
 [[outputs]]
 id = "Ui0aswTHsIA9UXMfJ8vB8"
 uri = "file://attached_assets/stock_images/indonesian-bookkeeper_1.jpg"
 type = "image"
 title = "Indonesian person reviewing documents at desk, modern office, Bali"
+logical_id = "1f40c5dc-d35a-43d7-99a0-eddc8d95ea0b"
 
 [[outputs]]
 id = "uDmUB6m1fBb-QhDyb9DH6"
 uri = "file://attached_assets/stock_images/indonesian-bookkeeper_2.jpg"
 type = "image"
 title = "Indonesian person reviewing documents at desk, modern office, Bali"
+logical_id = "b6a70190-fe6d-4cb9-a1f7-8082547a2835"
 
 [[outputs]]
 id = "AtOD_tB5FkroxLkIlYY55"
 uri = "file://attached_assets/stock_images/balinese-woman-portrait_1.jpg"
 type = "image"
 title = "Balinese woman portrait outdoors tropical, smiling, natural"
+logical_id = "438eb2bf-196f-4d18-b6a5-214648e3b2bc"
 
 [[outputs]]
 id = "zt4g3P98Ak_ZPvwp3l5x7"
 uri = "file://attached_assets/stock_images/balinese-woman-portrait_2.jpg"
 type = "image"
 title = "Balinese woman portrait outdoors tropical, smiling, natural"
+logical_id = "e7e241f8-5ae9-4775-84e5-3f9d70470b40"

@@ -11,6 +11,8 @@ export interface BlogPostSummary {
   title: string;
   excerpt: string;
   primaryKeyword: string;
+  imageUrl: string;
+  imageAlt: string;
   category: string;
   readTimeMinutes: number;
   publishedAt: Date;

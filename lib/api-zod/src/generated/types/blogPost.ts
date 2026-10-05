@@ -11,5 +11,7 @@ export type BlogPost = BlogPostSummary & {
   metaTitle: string;
   metaDescription: string;
   contentHtml: string;
+  updatedAt: Date;
+  wordCount: number;
   relatedPosts: BlogPostSummary[];
 };

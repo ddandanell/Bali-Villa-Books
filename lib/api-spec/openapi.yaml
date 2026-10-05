@@ -114,6 +114,10 @@ components:
           type: string
         primaryKeyword:
           type: string
+        imageUrl:
+          type: string
+        imageAlt:
+          type: string
         category:
           type: string
         readTimeMinutes:
@@ -121,7 +125,7 @@ components:
         publishedAt:
           type: string
           format: date-time
-      required: [slug, title, excerpt, primaryKeyword, category, readTimeMinutes, publishedAt]
+      required: [slug, title, excerpt, primaryKeyword, category, readTimeMinutes, publishedAt, imageUrl, imageAlt]
     BlogPost:
       allOf:
         - $ref: "#/components/schemas/BlogPostSummary"
@@ -133,11 +137,16 @@ components:
               type: string
             contentHtml:
               type: string
+            updatedAt:
+              type: string
+              format: date-time
+            wordCount:
+              type: integer
             relatedPosts:
               type: array
               items:
                 $ref: "#/components/schemas/BlogPostSummary"
-          required: [metaTitle, metaDescription, contentHtml, relatedPosts]
+          required: [metaTitle, metaDescription, contentHtml, relatedPosts, updatedAt, wordCount]
     BlogEventInput:
       type: object
       properties:
@@ -158,11 +167,22 @@ components:
           type: integer
         publishedPosts:
           type: integer
+        timezone:
+          type: string
+        scheduledHour:
+          type: integer
+        minimumWords:
+          type: integer
+        lastRunStatus:
+          type: [string, "null"]
+        lastReviewAt:
+          type: [string, "null"]
+          format: date-time
         lastRunAt:
           type: [string, "null"]
           format: date-time
         nextEligibleRunAt:
           type: [string, "null"]
           format: date-time
-      required: [enabled, cadence, maxPostsPerRun, publishedPosts, lastRunAt, nextEligibleRunAt]
+      required: [enabled, cadence, maxPostsPerRun, publishedPosts, lastRunAt, nextEligibleRunAt, timezone, scheduledHour, minimumWords, lastRunStatus, lastReviewAt]
 

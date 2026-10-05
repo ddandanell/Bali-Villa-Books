@@ -1,6 +1,6 @@
 import app from "./app";
 import { logger } from "./lib/logger";
-import { startBlogAutomation } from "./routes/blog";
+import { startBlogAutomation, seedBlogPosts } from "./routes/blog";
 
 const rawPort = process.env["PORT"];
 
@@ -23,5 +23,5 @@ app.listen(port, (err) => {
   }
 
   logger.info({ port }, "Server listening");
-  startBlogAutomation();
+  void seedBlogPosts().then(startBlogAutomation).catch(err => logger.error({ err }, "Blog initialization failed"));
 });
