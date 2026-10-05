@@ -1,1 +1,2 @@
 - [Content automation](content-automation.md) — Bali weekday publishing, firm-led voice, and unattended hosting constraints.
+- [Domain management](domain-management.md) — The site's custom domain was bought through Replit; use its domain DNS editor.
