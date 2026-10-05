@@ -1,10 +1,9 @@
-import React from "react";
 import { renderToString } from "react-dom/server";
-import Home from "./pages/Home";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Router } from "wouter";
-import { TooltipProvider } from "./components/ui/tooltip";
+import App from "./App";
+export { pageDocument } from "./lib/page-document";
+export { sitePages } from "./lib/site-pages";
 
-export function render(): string {
-  return renderToString(<QueryClientProvider client={new QueryClient()}><TooltipProvider><Router ssrPath="/"><Home /></Router></TooltipProvider></QueryClientProvider>);
+export function render(pathname = "/"): string {
+  const path = pathname.replace(/\/+$/, "") || "/";
+  return renderToString(<App ssrPath={path} />);
 }

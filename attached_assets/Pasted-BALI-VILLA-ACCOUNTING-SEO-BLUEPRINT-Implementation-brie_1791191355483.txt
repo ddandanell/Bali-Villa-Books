@@ -1,0 +1,713 @@
+BALI VILLA ACCOUNTING SEO BLUEPRINT
+Implementation brief for bali-villa-accounting-service.com
+Audit date: 5 October 2026
+Prepared for David Dandanell
+
+Purpose
+
+Increase qualified enquiries from Bali villa owners and operators by fixing the current website failures, making useful content reliably crawlable, and building a focused set of service and evidence pages. Keep the site's English language and its current bookkeeping scope. Treat the proposed keywords as intent hypotheses until Search Console and keyword research validate demand. This is an implementation plan, not a forecast of rankings or leads.
+
+The largest opportunity is a stronger website structure and a working conversion path. The existing homepage already has a relevant title, a substantial amount of topical copy, prices, contact information, and AccountingService structured data. Adding more synonyms to that page alone is a low priority.
+
+1. OBSERVED BASELINE
+
+Evidence comes from the public homepage and blog, a desktop browser inspection, the initial HTTP responses, robots.txt, sitemap.xml, public JavaScript delivered to the browser, and selected competitor pages. Tests were read-only; no messages or bookings were submitted. Article content could not be audited because the public article-list request failed. No Search Console, analytics, backlink database, local rank grid, or mobile field-performance data was available. Do not turn a public search-result sample into a claim about exact Google rankings, keyword volume, or all indexed URLs.
+
+Working foundations to preserve
+
+- The homepage returns HTTP 200 over HTTPS.
+- Title: Bali Villa Accounting & Bookkeeping | Bali Accounting
+- Meta description: Bali Accounting provides structured villa bookkeeping, financial reporting, account management, and OTA payout reconciliation from Denpasar.
+- Homepage canonical: https://bali-villa-accounting-service.com/
+- Robots meta: index, follow. The public robots.txt allows crawling and references the correct sitemap host.
+- One visible H1: Bali villa accounting for owners who need the whole picture.
+- The rendered homepage contains approximately 2,323 words, including navigation and footer. This is a descriptive observation, not a target word count.
+- The page covers channel reconciliation, operating costs, owner reporting, payroll records, onboarding, pricing, and tax-adviser handover.
+- Published packages are Starter Rp 2,500,000/month, Professional Rp 5,000,000/month, and Premium Rp 8,500,000/month. Historical cleanup starts at Rp 8,500,000 for up to 12 months, subject to review.
+- The visible phone is +62 812-3740-2292. The address is Jl. Tukad Barito Timur III No.16, Panjer, Denpasar Selatan, Bali 80226. These are website statements and should be checked against actual business records before expanding citations.
+- The page states that it provides bookkeeping and financial reporting, and does not provide tax advice or file official Indonesian returns. Preserve that distinction throughout the new content.
+- The homepage hero image loaded and the social image URL returned a JPEG. The lower images are lazy-loaded; an image outside the viewport not yet loaded is not proof of a broken image.
+
+Confirmed defects and priorities
+
+P0  Broken booking destination
+Where: All buttons using the shared clarity-call handler.
+Evidence: Clicking the hero booking button opened https://calendly.com/villabooksbali/clarity-call in a new tab. That tab displayed Calendly's 404 page. The deployed handler uses this same destination for the clarity-call buttons.
+Action: Replace the destination with an active event owned by the business. Until the correct event is available, offer a clear consultation request through the existing verified contact channel. Prefer a normal anchor link for navigation to an external booking page.
+Acceptance: A customer can reach an active event, see availability, select an appropriate timezone, and reach the booking form. Staff validate final test submission internally; do not create a real customer appointment without authorization.
+Owner: Developer and business owner. Effort: small after the correct link is supplied.
+
+P0  Blog content fails to load
+Where: /blog and the homepage latest-guidance section.
+Evidence: /blog displayed an error state and retry did not restore the list. The public GET /api/blog/posts?limit=50 returned HTTP 500. The homepage displayed its refreshed-guides fallback.
+Action: Diagnose the real backend exception, deployment configuration, database/query access, and response contract. Do not conceal the problem by substituting invented articles. Serve the last successfully published public content where possible. Keep private configuration and error details out of public responses.
+Acceptance: The article list returns the expected data; real published articles render, refresh successfully at their direct URLs, and link to related services. An empty state is distinguishable from a server failure. A temporary outage does not erase previously published content from the public site.
+Owner: Developer. Effort: requires backend diagnosis.
+
+P0  Blog canonical points at the homepage
+Where: /blog.
+Evidence: Both the initial HTML and rendered DOM had canonical https://bali-villa-accounting-service.com/. JavaScript updated the blog title and description but left this canonical unchanged. The initial HTML response for /blog was byte-identical to the homepage response.
+Action: Generate the correct metadata per route in the initial HTML. /blog must self-canonicalize to /blog. Every published article must have its own canonical, title, description, and social URL. Use one normalized slash policy.
+Acceptance: Fetching each route without running JavaScript returns the correct head tags, and rendering does not change the canonical to a different URL. Test article routes once the blog works.
+Owner: Developer. Effort: medium with the rendering work below.
+
+P0  Navigation targets are missing
+Where: Homepage About link and shared navigation on /blog.
+Evidence: Homepage About links to #about, but that ID does not exist. On /blog, Services, Pricing, About, and FAQ use local fragments whose target sections do not exist on that page. The blog logo uses #top, so it is not a reliable return-to-home link.
+Action: Make the logo href="/". Use real destination URLs for new pages. For retained homepage sections, use /#pricing, /#services, and /#faq from other pages. Link About to the real /about page once built. Set scroll-margin-top on anchor sections to account for the sticky header.
+Acceptance: Every header, footer, and mobile-menu link works from the homepage, blog, an article, a service page, and the 404 page. No missing fragment targets remain.
+Owner: Developer. Effort: small.
+
+P1  Primary content depends on client-side rendering
+Where: Initial HTML.
+Evidence: The initial body contains an empty <div id="root"></div>. Content and navigation are generated by JavaScript. The downloaded app JavaScript was approximately 521 KB before transfer compression; this is not a measured Core Web Vitals result.
+Action: Pre-render or server-render public marketing and article routes. Keep interactive components where useful. The goal is useful HTML with headings, content, links, and metadata, not a framework migration for its own sake.
+Acceptance: Initial responses contain the main content and crawlable links. Rendered content matches the initial public content. Search Console URL Inspection can render each representative template without essential resource errors.
+Owner: Developer. Effort: medium to large, depending on the current platform.
+
+P1  Sitemap only lists the homepage
+Where: /sitemap.xml.
+Evidence: One <loc> was present. /blog is linked from the site but absent from the sitemap.
+Action: Generate the sitemap from live, canonical, indexable routes and published articles. Include /blog after it works and has useful content. Exclude API endpoints, drafts, redirects, error pages, filter URLs, and duplicate aliases. Add truthful lastmod dates when substantive content changes. Changing priority or changefreq values will not substitute for discovery and content fixes.
+Acceptance: Every intended indexable canonical page appears once, returns 200, and has at least one internal link. Submit the sitemap in Search Console and review processing results.
+Owner: Developer and SEO lead. Effort: small to medium.
+
+P1  Placeholder routes reuse the homepage
+Where: /services, /sample-report, /get-started, /faq, /about.
+Evidence: The public deployed route configuration maps these paths to the same homepage component. This is not evidence of substantive separate pages.
+Action: Audit Search Console, incoming links, and traffic before removing or redirecting them. Build useful content at /services, /sample-report, and /about. Use /get-started as the actual enquiry page if that route has value. Either build a genuinely useful FAQ page or redirect its old alias to the relevant homepage section. Choose one contact/enquiry URL; do not leave both /get-started and /contact as duplicates.
+Acceptance: Each retained route has a distinct purpose, body, H1, metadata, and self-canonical. Retired routes have a relevant single-hop permanent redirect.
+Owner: Developer and content lead. Effort: medium.
+
+P1  Unknown paths return a successful HTTP response
+Where: A deliberately nonexistent audit URL.
+Evidence: /seo-audit-nonexistent-20261005 returned HTTP 200 and the same app HTML. The client code contains a visual Page not found component. Displaying 404 text does not itself set an HTTP 404 status.
+Action: Return an actual 404 or 410 for missing resources as appropriate. Preserve valid application routes. Do not route every invalid path to the homepage with status 200.
+Acceptance: Unknown pages and missing articles return real 404 responses. Valid deep links continue to return 200. This is a soft-404 risk, not a confirmed Search Console classification.
+Owner: Developer. Effort: small to medium.
+
+P1  Inconsistent host behavior
+Evidence: The www HTTPS version returned HTTP 404 during this check. An HTTP request reached HTTPS. The homepage declares the non-www HTTPS host as canonical.
+Action: Configure a permanent redirect from the www host to the matching non-www HTTPS URL, preserving paths and legitimate query strings. Confirm the HTTP redirect chain and eliminate unnecessary hops. Keep TLS valid on both host variants.
+Acceptance: Both common hostname variants reach the canonical page predictably. Canonical tags, internal URLs, schema URLs, and the sitemap use the same host.
+Owner: Hosting administrator. Effort: small.
+
+P2  Price schema needs validation and correction
+Evidence: The AccountingService JSON-LD uses @type RecurringCharge within priceSpecification. This is not the documented Schema.org price specification type used for this purpose.
+Action: Replace it with a valid UnitPriceSpecification that accurately expresses the actual pricing unit. Do not use billingDuration to invent a contractual commitment. Validate the complete graph with Schema.org Validator, then check supported Google features with Rich Results Test.
+Owner: Developer. Effort: small.
+
+P2  Contact and measurement gaps
+Evidence: The footer label says WhatsApp & Call, but its link opens WhatsApp. The rendered homepage had no contact form or visible privacy/terms links. The deployed click helper calls window.umami?.track; the existence of that call does not verify that an analytics provider receives it.
+Action: Provide separate WhatsApp and tel links. Add a real consultation form and privacy information. Verify the existing analytics installation and event delivery before adding another provider. Track completed enquiries separately from CTA clicks.
+Owner: Developer and marketing lead. Effort: small to medium.
+
+2. DOMAIN AND BRAND REVIEW
+
+A public related domain, https://bali-villa-management-service.com/, names Abel Yuniartini and the same street address. Its raw metadata advertises packages from Rp 3.5m, uses a different phone, and canonicalizes to https://bali-villa-account.replit.app/. This suggests a relationship but does not establish ownership or a duplicate-business relationship.
+
+If David controls both domains and they represent the same bookkeeping service:
+
+- Inventory all public URLs, existing traffic, links, and business listings before changing anything.
+- Choose one primary domain. The accounting domain is a reasonable candidate for this positioning, subject to existing performance and business plans.
+- Map each old URL to the closest genuinely equivalent destination with a permanent redirect. Do not send every old article to the homepage.
+- Fix canonical, internal-link, sitemap, schema, and social-URL references to the chosen domain. Handle accessible preview hosts as duplicate environments; do not leave them competing as separate businesses.
+- Update owned listings and links to the chosen name, phone, address, and offer. Use Search Console's domain-move guidance and Change of Address where applicable.
+- Preserve working redirect infrastructure for at least a year and preferably longer for valuable old links.
+
+If the domains are independent businesses, retain separate identities and explain their relationship only if it is real. Do not redirect a domain without verified control and an approved migration scope.
+
+There is also a separate business at baliaccounting.com using the name Bali Accounting. This is a practical brand-disambiguation issue, not a trademark conclusion. Use the verified company name, named founder, actual office details, and consistent visual identity to make this business distinguishable. Do not change domains or invent a new company name solely to add keywords.
+
+3. SEARCH POSITIONING AND KEYWORD OWNERSHIP
+
+Recommended positioning
+
+Bookkeeping and financial reporting for Bali villa owners and operators, including booking-channel reconciliation and an organized handover to licensed tax advisers.
+
+The commercial audience includes remote villa owners, owners with more than one property, and villa operators handling bookings, suppliers, staff records, and owner reporting. Prioritize these qualified buyers over broad informational traffic unrelated to the service.
+
+Search-result and competitor observations
+
+- Emerhub presents a local accounting hub with links to detailed services. Its wider tax and corporate-service offer is not identical to this business. Borrow the clarity of the information structure, not unverified service claims.
+- Bali Estate Manager has a dedicated owner-reporting page describing reporting contents and operating-account workflows. A specialist reporting page and a real sample report would make this site's offer easier to assess.
+- BaliAccounting.com covers a wider accounting and tax audience. This site's strongest differentiation is specific expertise in villa records and independent monthly owner visibility, where supported by actual operating practice.
+- These are examples found in a search sample, not proof of fixed ranking positions or audited competitor quality. Do not copy their tax rates, deadlines, or legal explanations.
+
+Keyword map
+
+Homepage /
+Primary intent: bali villa accounting
+Related terms: villa accounting services bali; bali villa bookkeeping; bookkeeping for villa owners bali; accountant for villa owners bali where qualifications and service wording are accurate.
+Role: Broad commercial entry point. Keep accounting and bookkeeping synonyms together rather than creating near-duplicate pages for each spelling or word order.
+
+/airbnb-bookkeeping-bali/
+Primary intent: airbnb bookkeeping bali
+Related terms: booking.com reconciliation bali; OTA payout reconciliation; vacation rental bookkeeping bali; short-term rental accounting bali.
+Role: Detailed channel-reconciliation service. Include Airbnb, Booking.com, Agoda, VRBO, and direct bookings on this page first. Create platform-specific child pages only if demand and genuinely different workflows justify them.
+
+/villa-financial-reporting-bali/
+Primary intent: villa financial reporting bali
+Related terms: villa owner reports bali; villa profit and loss report; monthly villa financial statements.
+Role: Explain the reporting service and decision value. Link to the separate sample-report resource.
+
+/villa-bookkeeping-cleanup-bali/
+Primary intent: bookkeeping cleanup bali
+Related terms: catch-up bookkeeping bali; historical villa bookkeeping; missing villa accounting records.
+Role: One-time reconstruction and cleanup offer, with evidence requirements and limits.
+
+/pt-pma-villa-bookkeeping/
+Primary intent: PT PMA villa bookkeeping
+Related terms: bookkeeping for foreign-owned villas bali; PT PMA villa financial records.
+Role: Entity-level record organization and accountant/tax-adviser handover. Keep company formation, tax advice, and formal filings outside the offer unless the business actually adds them through a qualified provider.
+
+/villa-payroll-records-bali/
+Primary intent: villa payroll records bali
+Related terms: villa staff cost tracking; BPJS record tracking bali; payroll bookkeeping for villas.
+Role: Payroll schedules and documentation, reflecting the current stated offer. Do not target full outsourced payroll administration or BPJS registration as if those were already included.
+
+/pricing/
+Primary intent: villa accounting cost bali
+Related terms: villa bookkeeping prices bali; monthly accounting packages bali.
+Role: Compare package inclusions, limits, add-ons, and buyer fit.
+
+/sample-report
+Primary intent: villa financial report sample
+Related terms: villa P&L example; monthly villa owner report example.
+Role: An ungated, readable example with an optional downloadable version. Clearly identify demonstration figures or redact a real report with permission.
+
+/services
+Intent: Browse the scope of the service.
+Role: A useful service directory. It should help navigation and comparison rather than duplicate the homepage.
+
+/about and /get-started
+Intent: Verify the business and contact it.
+Role: Trust and conversion. These pages do not need aggressive keyword repetition.
+
+/blog
+Intent: Learn about villa bookkeeping problems and workflows.
+Role: An article hub with meaningful categories and links to the corresponding commercial services.
+
+Priority order
+
+First build pricing, sample report, About, and the three service pages for channel reconciliation, owner reporting, and cleanup. Add PT PMA and payroll-record pages when there is enough distinct, reviewed substance to justify them. This is a backlog, not a requirement to publish all pages at once.
+
+Use Search Console query-by-page data to identify overlapping intents. If two pages repeatedly answer the same need, improve their distinction or consolidate them. Two pages mentioning a related term is not automatically keyword cannibalization.
+
+4. READY TO USE METADATA AND HEADINGS
+
+These are English drafts. Keep the verified brand spelling and current prices. Approximately 50 to 60 title characters and 140 to 160 description characters can be useful editing guides, but Google truncates by available display space and may generate a different title or snippet. Do not force every draft to fit an arbitrary exact length.
+
+Homepage /
+Title: Bali Villa Accounting & Bookkeeping | Bali Accounting
+Meta description: Monthly bookkeeping for Bali villa owners, with OTA reconciliation and clear financial reports. From Rp 2.5m/month. Book a free consultation.
+H1: Bali Villa Accounting & Bookkeeping Services
+Canonical: https://bali-villa-accounting-service.com/
+Note: The current title is already relevant. Retain it initially so structural fixes can be measured without changing everything at once. Test a price-led title later only if impressions and CTR warrant it.
+
+/airbnb-bookkeeping-bali/
+Title: Airbnb Bookkeeping Bali & OTA Payout Reconciliation
+Meta description: Match Airbnb, Booking.com and direct-booking payouts to your Bali villa records. Track fees, refunds and timing differences. Discuss your setup.
+H1: Airbnb Bookkeeping and OTA Reconciliation in Bali
+
+/villa-financial-reporting-bali/
+Title: Villa Financial Reporting Bali | Monthly Owner Reports
+Meta description: Understand your Bali villa's revenue, expenses and cash movements with clear monthly owner reports. See the reporting scope and request a consultation.
+H1: Monthly Financial Reports for Bali Villa Owners
+
+/villa-bookkeeping-cleanup-bali/
+Title: Villa Bookkeeping Cleanup Bali | Catch-Up Accounting
+Meta description: Bring incomplete Bali villa books into order with historical reconciliation and documented gaps. Cleanup from Rp 8.5m, subject to a records review.
+H1: Bookkeeping Cleanup for Bali Villas
+
+/pt-pma-villa-bookkeeping/
+Title: PT PMA Villa Bookkeeping Bali | Bali Accounting
+Meta description: Organize your PT PMA villa's transactions, owner funding and monthly reports. Prepare clear records for review by your licensed Indonesian tax adviser.
+H1: PT PMA Villa Bookkeeping and Financial Records
+
+/villa-payroll-records-bali/
+Title: Villa Payroll Records & BPJS Tracking | Bali Accounting
+Meta description: Keep villa payroll schedules, staff costs and BPJS documents organized within your monthly books. Discuss the record tracking included in your package.
+H1: Payroll Records and BPJS Tracking for Bali Villas
+
+/pricing/
+Title: Bali Villa Accounting Prices | From Rp 2.5m per Month
+Meta description: Compare Bali villa bookkeeping packages from Rp 2.5m/month. Review reporting, booking-channel and payroll-record coverage, plus historical cleanup options.
+H1: Bali Villa Accounting Packages and Prices
+
+/sample-report
+Title: Sample Villa Financial Report | Bali Accounting
+Meta description: See how a monthly villa report can present revenue, operating costs, cash movements and unresolved items. Explore a clearly labelled reporting example.
+H1: See a Sample Monthly Villa Financial Report
+
+/services
+Title: Villa Bookkeeping Services | Bali Accounting
+Meta description: Explore bookkeeping, OTA reconciliation, owner reporting and historical cleanup for Bali villas. Find the service and reporting scope your property needs.
+H1: Bookkeeping Services for Bali Villa Owners
+
+/about
+Title: About Bali Accounting | Our Denpasar Bookkeeping Team
+Meta description: Meet the people responsible for your villa bookkeeping. Learn about our Denpasar team, monthly review process and approach to clear financial records.
+H1: The Team Behind Your Villa Books
+
+/get-started
+Title: Contact Bali Accounting | Villa Bookkeeping Consultation
+Meta description: Discuss your villa bookkeeping with our Denpasar team. Tell us about your properties, booking channels and records to find the right monthly service.
+H1: Discuss Your Bali Villa Bookkeeping
+
+/blog
+Title: Bali Villa Bookkeeping Guides | Bali Accounting
+Meta description: Practical guides to Bali villa bookkeeping, OTA payouts, owner reports and record keeping. Understand the numbers and improve your monthly process.
+H1: Bali Villa Bookkeeping Guides
+
+On every indexable route
+
+- One clear, visually dominant H1 and a logical H2/H3 structure.
+- A unique title and description that reflect the actual visible content.
+- A self-canonical using the chosen URL policy, not the homepage URL everywhere.
+- Consistent og:title, og:description, og:url, og:image, and Twitter card metadata.
+- A real relevant social image. A 1200 x 630 image is a practical sharing format, not a Google ranking requirement.
+- Correct document language. Add translations only when complete and maintained.
+- Use keyword terms naturally in the opening explanation, relevant headings, and link text. No keyword-density target and no meta-keywords task.
+
+5. HOMEPAGE CONTENT AND CONVERSION BLUEPRINT
+
+The homepage should explain the offer, show proof, answer buying questions, and direct people to the right service. Repeated abstract sections can be shortened and moved into detailed service pages. Do not remove useful indexed material without mapping where it will live.
+
+Recommended order
+
+1) Hero
+H1: Bali Villa Accounting & Bookkeeping Services
+Supporting copy: Understand your villa's income, expenses and cash flow with structured monthly bookkeeping. Our Denpasar team reconciles booking payouts, organizes operating records and prepares clear owner reports, with packages from Rp 2.5m per month.
+Primary CTA: Book a Free Consultation
+Secondary CTA: View a Sample Report
+Supporting line: Based in Denpasar. English and Indonesian support. Scope agreed before work begins.
+Only promise a free consultation if the business continues to offer it. The existing page already uses free-call wording.
+
+2) A short trust introduction
+Identify the verified business and people responsible for the work. Link to About. Include genuine qualifications and relevant experience only when evidenced. Use actual people and office photography for identity claims.
+
+3) What is included in our villa bookkeeping service
+Show short service cards for monthly records, booking-channel reconciliation, monthly owner reporting, payroll-record tracking, and historical cleanup. Each card links to the appropriate detailed page. State inclusions and exclusions plainly.
+
+4) A sample monthly owner report
+Show an accessible HTML preview, not only an image or gated PDF. Include an explanation of gross revenue, channel fees, operating costs, owner movements, and unresolved items. Clearly mark fictional demonstration data. Real data requires permission and redaction.
+
+5) Packages and prices
+Bring prices higher up the page than they are now. Preserve Rp 2.5m, Rp 5m, and Rp 8.5m unless the owner changes the offer. Link to a comparison page.
+Clarify whether prices are per villa, per entity, or subject to transaction volume; bank-account and staff limits; channel limits; software costs; onboarding fees; tax inclusion/exclusion; contract terms; cleanup scope; and extra-property charges. These details must come from operations, not from the copywriter.
+Preserve the existing 15th-of-the-month reporting target as a target. State the document-submission conditions and exception process rather than turning it into an unsupported guarantee.
+
+6) How onboarding and the monthly close work
+Explain intake, source documents, reconciliation, review, and report delivery. Make clear who handles unresolved questions and who authorizes payments. Do not imply the service controls bank accounts or pays suppliers unless that is part of the actual agreement.
+
+7) Why villa owners choose this service
+Use concrete evidence: one reconciled statement example, one before-and-after record workflow, and one genuine client case. Avoid unsupported superlatives or claims that owners always save money.
+
+8) Villa owner and operator use cases
+Explain remote ownership, multiple properties, and PT PMA records using distinct examples. This should help a buyer recognize their situation, not repeat the same benefits in new language.
+
+9) About the people and the local service area
+Give Abel's actual role, a short verified biography, links to qualified reviewers where relevant, and the real office/contact details. Describe service coverage in Canggu, Seminyak, Sanur, Ubud, Uluwatu, and Nusa Dua only where actually served.
+
+10) Frequently asked questions
+Retain helpful existing questions and add buying questions: cost, what the owner receives, working with an existing manager, missing receipts, onboarding time, supporting documents, multiple villas, software/export formats, data access, and how tax-adviser handover works.
+Use short direct answers followed by relevant service links. Render the answers in the page HTML, even if an accessible accordion controls their visual display.
+
+11) Relevant guides
+Show a small selection of real, working articles that support the service. Avoid a prominent empty section when the backend is unavailable.
+
+12) Consultation and footer
+Offer WhatsApp, a separate telephone link, and a short enquiry form. Suggested fields: name, email or WhatsApp contact, property count, location, and main bookkeeping issue. Booking platforms and preferred package can be optional. Do not request bank statements or sensitive financial uploads in the first public enquiry form.
+Explain what happens next and the business's verified response hours. Provide privacy and terms pages and the verified legal entity details.
+
+Use the current green and cream visual identity if desired. The main design change is better information order and clearer proof. Test the complete mobile experience at 360 px, 390 px, and tablet widths, including the menu, pricing cards, report preview, form, and sticky CTA. These are implementation acceptance checks; mobile performance was not measured in this audit.
+
+6. SERVICE PAGE CONTENT BRIEFS
+
+Every commercial service page should answer: who this is for; the problem it solves; exactly what is included; what the owner supplies; an example; workflow and timing; price basis; exclusions; relevant FAQs; and the next step. Add substantial original detail, not a fixed word count.
+
+OTA and Airbnb bookkeeping
+Show an illustrative reconciliation from gross booking value through commission, adjustments, refunds, and bank receipts. Explain timing differences and direct bookings. Identify which exports or statements are required and whether work is manual or integrated. Do not imply official platform partnerships or direct integrations without evidence. Link to the reporting service, relevant package, and payout guide.
+
+Financial reporting
+Describe the actual deliverables by package: P&L, balance schedules, cash movements, channel views, payroll records, and open questions. Explain a report using an HTML example. Distinguish cash in the bank from operating profit without making tax-accounting determinations. Link to /sample-report and /pricing/.
+
+Historical cleanup
+Explain what must be reviewed before quoting, what up to 12 months means, transaction complexity, missing documents, opening balances, agreed start date, and what happens when evidence cannot be reconstructed. Preserve the stated starting price and subject-to-review condition. Link to an onboarding checklist and recurring service.
+
+PT PMA villa records
+Explain entity and owner-funding records, multiple accounts, document ownership, and schedules provided to a qualified adviser. Describe responsibilities precisely. State what is outside scope. Have a qualified Indonesian professional review any legal or tax statements before publication; do not turn competitor copy into legal advice.
+
+Payroll records
+Explain staff schedules, salary changes, supporting payroll documents, BPJS record status, and expense reconciliation. Distinguish bookkeeping records from payroll execution, employment advice, contribution calculations, registration, and filing. List only the duties actually provided.
+
+Sample report
+Build the existing /sample-report route into an actual example. Offer ungated HTML with an optional PDF export. If the PDF duplicates the HTML and should not compete in search, prefer the HTML version using an appropriate HTTP canonical or an X-Robots-Tag noindex policy that leaves the file crawlable. Choose one deliberate policy rather than contradictory directives.
+
+7. INTERNAL LINKING PLAN
+
+Navigation
+Logo -> /
+Services -> /services with links to the live service pages
+Pricing -> /pricing/
+Sample Report -> /sample-report
+About -> /about
+Guides -> /blog
+Contact or Consultation -> /get-started
+
+Do not create menu links to unpublished or placeholder pages. Keep the navigation compact on mobile and usable with a keyboard.
+
+Contextual link mapping
+
+Source: Homepage channel-reconciliation card
+Destination: /airbnb-bookkeeping-bali/
+Example anchor: Airbnb and OTA bookkeeping
+
+Source: Homepage reporting section
+Destination: /villa-financial-reporting-bali/
+Example anchor: monthly villa financial reports
+
+Source: Homepage cleanup section
+Destination: /villa-bookkeeping-cleanup-bali/
+Example anchor: historical bookkeeping cleanup
+
+Source: Homepage reporting preview
+Destination: /sample-report
+Example anchor: view a sample owner report
+
+Source: Reporting service
+Destination: /sample-report and /pricing/
+Example anchors: sample monthly report; compare reporting packages
+
+Source: Airbnb payout guide
+Destination: /airbnb-bookkeeping-bali/
+Example anchor: help reconciling your Airbnb payouts
+
+Source: Cash versus profit guide
+Destination: /villa-financial-reporting-bali/
+Example anchor: monthly financial reporting for villa owners
+
+Source: Monthly records checklist
+Destination: /villa-bookkeeping-cleanup-bali/ where relevant and /get-started
+Example anchors: catch up on incomplete records; discuss your bookkeeping setup
+
+Source: PT PMA document guide
+Destination: /pt-pma-villa-bookkeeping/
+Example anchor: bookkeeping support for PT PMA villa records
+
+Source: Every substantial service page
+Destination: /pricing/, /get-started, and a relevant evidence page
+Example anchors: package inclusions; request a consultation; see the report example
+
+Source: Genuine case study
+Destination: the service used and its evidence resource
+Example anchors: booking-channel reconciliation; monthly owner reporting
+
+Implementation rules
+
+- Use real <a href> links; buttons that navigate should not be the only discovery mechanism.
+- Each intended indexable page needs at least one relevant internal inbound link. Important services should be reachable quickly from the homepage and main navigation.
+- Link from relevant sentences. Do not link every occurrence of a keyword or place a list of all services under every paragraph.
+- Use clear, varied anchor language that fits the sentence. Do not mechanically repeat one exact-match phrase everywhere.
+- Do not nofollow ordinary internal links.
+- Add visible breadcrumbs and matching BreadcrumbList markup to deeper service and article pages where useful.
+- Link from service pages to their best guides as well as from guides back to services.
+- Check for broken paths, missing fragments, redirect chains, orphan pages, and empty anchors after publication.
+- Home-page fragments such as #pricing are useful navigation within one page; they do not create separate pages capable of satisfying distinct search intents on their own.
+
+8. CONTENT AND EVIDENCE BACKLOG
+
+Start with one strong, reviewed article per week after the technical repairs. This is a production suggestion, not a scheduled automation. Increase output only if the team can supply useful original material and maintain it.
+
+Article 1
+Title: What a Monthly Bali Villa Financial Report Should Include
+Suggested URL: /blog/bali-villa-financial-report-checklist
+Intent: Understand the report and compare providers.
+Original value: Annotated report pages and a downloadable checklist derived from the team's real workflow.
+Internal destination: Reporting service and sample report.
+
+Article 2
+Title: How to Reconcile Airbnb Payouts for a Bali Villa
+Suggested URL: /blog/reconcile-airbnb-payouts-bali-villa
+Intent: Solve payout mismatches.
+Original value: A clearly labelled worked example including fees, refunds, stay dates, and the bank deposit.
+Internal destination: Airbnb and OTA bookkeeping service.
+
+Article 3
+Title: Villa Revenue, Profit and Cash Flow Explained
+Suggested URL: /blog/villa-revenue-profit-cash-flow
+Intent: Understand why a full booking calendar does not equal available cash.
+Original value: A small numerical example with transparent assumptions and no investment-return claims.
+Internal destination: Reporting service and sample report.
+
+Article 4
+Title: Bookkeeping Documents Bali Villa Owners Should Keep Each Month
+Suggested URL: /blog/bali-villa-bookkeeping-documents
+Intent: Prepare for the monthly close.
+Original value: Actual intake checklist with responsibilities, acceptable formats, and missing-document handling.
+Internal destination: Services and cleanup service.
+
+Article 5
+Title: How Much Does Villa Bookkeeping Cost in Bali
+Suggested URL: /blog/villa-bookkeeping-cost-bali
+Intent: Understand cost drivers.
+Original value: Explain this business's package scope and variables. Do not invent market averages or competitor comparisons.
+Internal destination: Pricing. Keep this explanatory guide distinct from the transactional pricing page; consolidate if demand and content do not justify both.
+
+Article 6
+Title: Villa Manager Reports and Bookkeeping Records Compared
+Suggested URL: /blog/villa-manager-report-vs-bookkeeping
+Intent: Decide whether additional accounting support is useful.
+Original value: A neutral comparison of responsibilities and sample document types, avoiding claims that managers are dishonest.
+Internal destination: Reporting service and sample report.
+
+Article 7
+Title: How to Catch Up on Incomplete Villa Books
+Suggested URL: /blog/catch-up-villa-bookkeeping
+Intent: Recover from a backlog.
+Original value: A real process with triage, document gaps, scope assessment, and handover steps.
+Internal destination: Cleanup service.
+
+Article 8
+Title: Preparing Villa Records for Your Indonesian Tax Adviser
+Suggested URL: /blog/villa-records-indonesian-tax-adviser
+Intent: Organize records before professional review.
+Original value: A handover checklist reviewed by the actual qualified adviser where tax matters are discussed.
+Internal destination: PT PMA records page, if relevant, and services.
+
+Further topics after demand validation
+
+- Booking.com payouts and bank reconciliation.
+- Owner funding versus villa operating income.
+- Supplier invoices, petty cash, and receipt controls.
+- Tracking maintenance costs across several properties.
+- Payroll and BPJS record checklist for villa operators.
+- What to ask before hiring a villa bookkeeper.
+
+Editorial requirements
+
+Every article needs a real author, a useful answer near the beginning, concrete examples, accurate publication and substantive update dates, an appropriate reviewer where needed, and relevant contextual links. Cite official DJP, BPJS, OSS, or local authority material for any regulatory claims and confirm currency before publication. Do not publish fixed tax rates or filing deadlines without a qualified review. Do not change the displayed date just to make an unchanged article look fresh.
+
+Keep pages focused on real questions. Do not create near-identical Canggu, Seminyak, Ubud, Sanur, Uluwatu, and Nusa Dua pages by swapping place names. Begin with a single useful coverage section. Add an area page only if there is distinct local evidence, service delivery information, genuine examples, and sufficient demand.
+
+The current homepage links to myCHEF, Private Tutoring Bali, and Bali Pool Service as client examples. Replace general statements about what a process can do with verified accounts of the work actually performed, subject to client approval. Clearly describe related-party relationships where relevant. Do not invent independent testimonials, savings, client counts, qualifications, or performance data. A real villa-owner case would be particularly relevant to this site's primary audience.
+
+9. TRUST, LOCAL VISIBILITY AND EXTERNAL LINKS
+
+Build a proper About page
+
+- Verified operating company and business name.
+- Actual staff names, roles, relevant qualifications, and professional biographies.
+- Real team and office photos. Illustrative AI or stock photos should not imply that the pictured person is a named employee or client.
+- Who prepares the books, who reviews them, and how exceptions are resolved.
+- Clear relationship with any licensed tax adviser, without implying a license held by the bookkeeping business.
+- Contact details, service hours, coverage, and an explanation of the document-handling process.
+- Accurate privacy and engagement terms. Do not invent absolute security promises or certifications.
+
+Google Business Profile
+
+Audit the real existing profile before creating a new one. Use the genuine business name, appropriate categories for the actual service, correct contact details, service descriptions, actual office hours, and original photos. Link to the canonical website with suitable campaign tracking. Verify that the business qualifies through real in-person customer contact. Do not use a virtual office or fabricated location to gain local visibility. If customers are not served at the listed office, configure the eligible service-area setup correctly rather than presenting a storefront.
+
+Ask actual clients for honest reviews after a meaningful service milestone. Do not offer incentives, filter out unhappy clients, or manufacture reviews. Reply factually and avoid revealing client financial information.
+
+Useful external authority opportunities
+
+- Genuine partner or supplier directories maintained by relevant villa-management and hospitality organizations.
+- An original report template that property managers find useful enough to reference.
+- A real case study co-published with a consenting client.
+- Contributions to relevant local business publications based on actual operational experience.
+- A software partner directory only if the business genuinely qualifies.
+
+The homepage's links to the user's other businesses are outbound links, not internal links and not backlinks into this website. A relevant editorial reference from one of those sites can help users discover the accounting service when the relationship is real. Avoid repetitive keyword-rich footer links across a group of sites, paid ranking links, mass directory submissions, and reciprocal-link quotas.
+
+10. TECHNICAL IMPLEMENTATION REQUIREMENTS
+
+Rendering and routing
+
+- Prefer static generation or server rendering for stable marketing pages and published articles, with progressive enhancement for interaction.
+- Main page content, navigation, canonical, and metadata must be available in the initial HTML.
+- Use clean route URLs, valid status codes, and a deliberate host/trailing-slash policy.
+- Use a stable last-good public article version if the editorial backend temporarily fails. For a genuinely unavailable page without a fallback, serve an appropriate temporary failure response instead of a successful empty article.
+- Do not block required CSS, JavaScript, or images in robots.txt.
+- Keep private client areas out of public discovery and protect them with authentication. A robots rule is not access control.
+- Canonicalize or otherwise manage parameters and filters deliberately. Keep site-search result URLs out of the sitemap and avoid indexable empty or duplicate search pages.
+
+Schema
+
+The site already contains AccountingService markup, so improve it rather than pretending it is absent. Use one coherent business identity with stable @id references. Add a WebSite and WebPage entity where useful, and connect service and article entities to the real business. Include only verified properties visible or supported on the website.
+
+- AccountingService: actual name, URL, phone, address, logo/image, service area, and genuine opening hours if published.
+- Service: the actual offer on each service page, with the provider reference and accurate scope.
+- BreadcrumbList: match visible breadcrumb navigation.
+- Article or BlogPosting: real author, headline, canonical page identity, original publication date, truthful modification date, and relevant image.
+- Offer and UnitPriceSpecification: only for accurate visible package prices and conditions.
+
+Illustrative monthly price component for the current Starter price
+
+"priceSpecification": {
+  "@type": "UnitPriceSpecification",
+  "price": 2500000,
+  "priceCurrency": "IDR",
+  "unitText": "month"
+}
+
+Confirm the final modeling against the actual contract and the validator. Do not add invented opening hours, registration numbers, coordinates, profiles, reviews, or aggregate ratings. Do not expect a special Google rich result for every valid Schema.org type.
+
+FAQ update relevant to this audit date
+
+Google's current documentation says FAQ rich results stopped appearing in Search on 7 May 2026, and the feature documentation was removed in June. Keep useful visible FAQs, but do not sell FAQPage markup as a route to expanded Google FAQ listings.
+
+AI search
+
+Clear factual explanations, readable HTML, genuine evidence, useful source citations, and consistent business details also help retrieval and understanding. Google does not require special AI schema or an llms.txt file for inclusion in AI Overviews or AI Mode. Such additions are not a priority over the actual faults in this site. No ranking or AI citation can be guaranteed.
+
+Performance and accessibility
+
+Measure representative pages using PageSpeed Insights and field data where available. Separate laboratory diagnostics from real-user results. A small or new site may not have enough field data yet.
+
+Target the good Core Web Vitals thresholds at the 75th percentile: LCP at or below 2.5 seconds, INP at or below 200 ms, and CLS at or below 0.1. These are targets, not this site's measured scores.
+
+- Provide correctly sized responsive images and modern compression where helpful.
+- Do not lazy-load the primary hero image if it is the largest content element.
+- Set image width and height or aspect ratio to reserve space.
+- Keep off-screen images lazy-loaded with usable src/srcset and descriptive, honest alt text; decorative images can have empty alt.
+- Audit JavaScript, animations, font requests, and third-party widgets. Load what each route actually needs.
+- Use an appropriate public caching policy for static marketing assets and content, while excluding private or personalized responses. The sampled responses used Cache-Control: private; review suitability rather than caching everything indiscriminately.
+- Ensure a usable page if an animation fails or a user prefers reduced motion.
+- Test keyboard navigation, visible focus, sufficient contrast, form labels, error messages, and accordion states.
+- Verify that the sticky header and mobile contact button do not cover content or controls.
+
+11. MEASUREMENT AND DECISION RULES
+
+Baseline before implementation
+
+1) Verify ownership in Google Search Console and review indexing, sitemaps, security/manual-action notices, and representative URL Inspection results.
+2) Export query and page performance for the longest useful available period, ideally including up to 16 months for seasonality.
+3) Separate brand searches from non-brand service searches. Review countries and device types because foreign villa owners may search from outside Indonesia.
+4) Record current organic enquiries, qualified enquiries, booked consultations, and signed clients if the business tracks them.
+5) Audit the current analytics tool. The deployed Umami call is not proof that events are collected. Retain or repair a suitable existing system instead of automatically installing duplicate trackers.
+
+Recommended event model
+
+whatsapp_click: page, placement, and relevant service or package.
+phone_click: page and placement.
+consultation_click: page and CTA destination.
+consultation_booked: successful booking, only if confirmed by the booking system or an approved integration.
+enquiry_submitted: successful form submission, not merely pressing the button.
+sample_report_view or download: engagement with the actual report resource.
+qualified_lead: staff-verified relevant enquiry in the CRM or lead log.
+client_won: actual signed client and attributable source where available.
+
+Do not include names, emails, phone numbers, bank details, or message bodies in analytics events. Preserve source attribution through forms and booking flows without putting personal data into URLs. WhatsApp clicks are useful intent signals; they are not confirmed conversations or qualified leads.
+
+Review logic
+
+- Not indexed: investigate crawlability, response, canonical, rendering, content value, and discovery.
+- Indexed with few impressions: reassess intent, demand, usefulness, relevance, and authority.
+- Impressions with low CTR: compare the page's query mix and search presentation before testing title and description changes.
+- Traffic with few enquiries: improve offer clarity, proof, price explanation, contact reliability, and form friction.
+- Many enquiries but weak fit: tighten the audience, qualifications, package scope, and CTA wording.
+- Pages overlapping: inspect query-by-page performance and content purpose before consolidating.
+
+Review 28-day trends together with longer windows and seasonality where possible. Annotate release dates. Avoid assigning causal credit to one title change when a full site rebuild occurred at the same time. Judge success primarily on relevant enquiries and clients, supported by discovery, impressions, clicks, CTR, and page-level query coverage.
+
+12. DELIVERY ROADMAP
+
+Days 1 to 7
+Fix the Calendly destination, blog API failure, blog canonical, missing anchors, logo navigation, host redirect, and status-code behavior. Review the related domain if owned. Establish Search Console and lead-measurement baselines. Save the current production configuration before migration work.
+
+Days 8 to 21
+Implement reliable rendering and route metadata. Reorder the homepage, publish the real pricing and sample-report pages, and complete About and the enquiry page. Build the first three distinct service pages. Generate the sitemap from real published routes. Validate schema, links, booking access, and analytics delivery.
+
+Days 22 to 45
+Publish the first four reviewed guides and one genuine case study. Complete relevant internal links and the real Business Profile work. Add PT PMA and payroll-record pages only when the service team can supply differentiated substance. Monitor indexing and any migration effects.
+
+Days 46 to 90
+Expand the next useful guides, improve pages using query and lead evidence, seek relevant editorial references, and test conversion changes. Consider a complete Indonesian version only when there is business capacity and demand. If introduced, use dedicated /id/ URLs, appropriate self-canonicals, reciprocal hreflang en/id, a visible language switch, and translated metadata. Do not publish partially translated duplicate pages or force automatic geographic redirects.
+
+The schedule is an execution sequence, not a promise of ranking improvements within 90 days.
+
+13. IMPLEMENTATION INSTRUCTION FOR THE DEVELOPER OR AI CODING AGENT
+
+Use this blueprint as the specification for improving bali-villa-accounting-service.com. Begin with a fresh audit of the actual repository and live deployment because this report is a point-in-time observation. Read the project's instructions, identify the framework, hosting, content backend, and existing publishing workflow, then reproduce the defects before editing.
+
+Preserve the verified brand, actual business scope, current package prices, phone, address, and valid client relationships unless the owner supplies changes. Do not invent qualifications, testimonials, client results, team members, tax services, legal claims, or stock-image identities. Treat unverified business details as questions for the owner, while completing all independent engineering work.
+
+Implement the P0 fixes first, then correct public rendering, per-route metadata, canonical handling, sitemap generation, routing/status codes, and coherent structured data. Build the agreed priority pages with genuinely distinct content and connect them through normal HTML links. Replace placeholder routes deliberately, checking their existing traffic and incoming links first. Do not create dozens of keyword or location variants.
+
+Make the homepage clearer and more conversion-focused using the specified section order, service links, pricing comparison, real sample report, evidence, and working contact options. Implement a short accessible form with reliable success and error states. Check the actual event destination and analytics delivery; do not count a click as a confirmed booking.
+
+Never publish secrets, expose private client records, or upload actual financial documents as demonstration data. Use clearly labelled example numbers or approved redacted evidence. Regulatory text requires an appropriate qualified review and current primary sources.
+
+Use the project's ordinary review and deployment process. A request for this audit is not authorization to modify a separate related domain, merge businesses, or send messages to clients. Make any required approval the final step after preparing a concrete, reviewable change.
+
+Required completion evidence
+
+- Before-and-after route inventory with status, title, description, H1, canonical, indexability, and internal inbound links.
+- Initial-HTML and rendered checks for the homepage, blog, a real article, service pages, sample report, enquiry page, and 404.
+- No broken navigation targets, placeholder destinations, orphan priority pages, or unintended duplicate canonicals.
+- Working published blog content and correct API responses.
+- Active booking destination with a verified usable form, plus an internal test plan for final booking receipt.
+- Successful form delivery, useful error states, spam controls, and privacy information.
+- Evidence that the intended analytics events reach the configured provider without personal data.
+- Desktop and mobile screenshots of the key purchase and enquiry journeys.
+- Schema validation, sitemap checks, and representative Search Console inspection where access is available.
+- A factual change log, unresolved business questions, remaining limitations, and rollback instructions.
+
+Stop optional testing after the required paths and specific identified risks are sufficiently verified. Report implemented, verified, and outstanding work separately.
+
+14. SOURCES AND VERIFICATION REFERENCES
+
+Public site evidence inspected on 5 October 2026
+
+https://bali-villa-accounting-service.com/
+https://bali-villa-accounting-service.com/blog
+https://bali-villa-accounting-service.com/robots.txt
+https://bali-villa-accounting-service.com/sitemap.xml
+https://bali-villa-accounting-service.com/api/blog/posts?limit=50
+https://bali-villa-accounting-service.com/assets/index-BoDdUCJl.js
+https://calendly.com/villabooksbali/clarity-call
+https://bali-villa-management-service.com/
+
+Competitor structure examples, not legal or tax authorities
+
+https://emerhub.com/bali/accounting/
+https://baliaccounting.com/
+https://baliestatemanager.com/villa-owner-reporting-bali/
+
+Primary SEO and technical references checked during this audit
+
+Domain and URL migrations
+https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes
+
+JavaScript rendering, canonical handling, and status codes
+https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics
+
+Titles and search snippets
+https://developers.google.com/search/docs/appearance/title-link
+https://developers.google.com/search/docs/appearance/snippet
+
+Internal links
+https://developers.google.com/search/docs/crawling-indexing/links-crawlable
+
+Local business markup
+https://developers.google.com/search/docs/appearance/structured-data/local-business
+
+Price specification vocabulary
+https://schema.org/UnitPriceSpecification
+
+Spam policies including scaled content, doorway pages, and link abuse
+https://developers.google.com/search/docs/essentials/spam-policies
+
+Business Profile eligibility and representation
+https://support.google.com/business/answer/3038177
+
+Core Web Vitals thresholds
+https://web.dev/articles/vitals
+
+Google AI search requirements
+https://developers.google.com/search/docs/appearance/ai-features
+
+Current search-feature changes including FAQ rich-result retirement
+https://developers.google.com/search/updates

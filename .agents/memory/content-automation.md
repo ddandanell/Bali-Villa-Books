@@ -20,3 +20,9 @@ The website should sound like a serious company. Sales contacts are Sales / Clie
 **Why:** The user explicitly requested company-led positioning.
 
 **How to apply:** Keep founder references in leadership context only. Never invent third-party client relationships, endorsements or results.
+
+The user does not use Calendly. All booking and consultation actions must open WhatsApp.
+
+**Why:** The user explicitly repeated this requirement while requesting the full SEO blueprint update.
+
+**How to apply:** Do not add calendar integrations, embed calendar widgets, or retain placeholder booking links for this site. Keep the verified WhatsApp number.

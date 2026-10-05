@@ -12,4 +12,8 @@ export type ListBlogPostsParams = {
    * @maximum 50
    */
   limit?: number;
+  /**
+   * @minimum 0
+   */
+  offset?: number;
 };

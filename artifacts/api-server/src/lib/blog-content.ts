@@ -1,6 +1,17 @@
 import sanitizeHtml from "sanitize-html";
 import { countWords, imageLibrary, MIN_WORDS, similarTitle } from "./blog-policy";
 
+// Hand-researched news may cite these verified official and public-news sources.
+const sourceHosts = new Set(["kemenimipas.go.id", "www.imigrasi.go.id", "evisa.imigrasi.go.id", "peraturan.bpk.go.id", "en.antaranews.com", "allindonesia.imigrasi.go.id", "oss.go.id"]);
+function safeArticleLink(href?: string) {
+  if (!href) return false;
+  if (href.startsWith("/") && !href.startsWith("//")) return true;
+  try {
+    const url = new URL(href);
+    return url.protocol === "https:" && !url.username && !url.password && !url.port && sourceHosts.has(url.hostname);
+  } catch { return false; }
+}
+
 export function cleanHtml(html: string): string {
   return sanitizeHtml(html, {
     allowedTags: ["h2", "h3", "p", "ul", "ol", "li", "strong", "em", "a", "blockquote"],
@@ -10,13 +21,15 @@ export function cleanHtml(html: string): string {
     transformTags: {
       a: (_tag, attributes): sanitizeHtml.Tag => ({
         tagName: "a",
-        attribs: attributes.href?.startsWith("/") && !attributes.href.startsWith("//") ? { href: attributes.href } : {},
+        attribs: safeArticleLink(attributes.href) ? { href: attributes.href } : {},
       }),
     },
   });
 }
 
 type Existing = { slug: string; title: string; primaryKeyword: string };
+export const serviceLinks = ["/services", "/airbnb-bookkeeping-bali", "/villa-financial-reporting-bali", "/villa-bookkeeping-cleanup-bali", "/pt-pma-villa-bookkeeping", "/villa-payroll-records-bali"];
+export const publicLinks = ["/", "/#services", "/#pricing", "/#faq", "/blog", "/pricing", "/sample-report", "/about", "/get-started", "/faq", ...serviceLinks];
 export function validateArticle(value: unknown, existing: Existing[], revisionSlug?: string) {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Article must be a JSON object");
   const data = value as Record<string, unknown>;
@@ -39,8 +52,8 @@ export function validateArticle(value: unknown, existing: Existing[], revisionSl
   if ((contentHtml.match(/<h2>/g) ?? []).length < 4) throw new Error("Article needs at least four meaningful sections");
   const links = [...contentHtml.matchAll(/href="([^"]+)"/g)].map(m => m[1]);
   const blogLinks = new Set(links.filter(link => existing.some(p => link === `/blog/${p.slug}` && p.slug !== slug)));
-  if (blogLinks.size < 2 || !links.includes("/#services")) throw new Error("Missing required service and related-journal links");
-  if (links.some(link => !["/#services", "/#pricing", "/#faq", "/blog", "/"].includes(link) && !existing.some(p => link === `/blog/${p.slug}`))) {
+  if (blogLinks.size < 2 || !links.some(link => serviceLinks.includes(link) || link === "/#services")) throw new Error("Missing required service and related-journal links");
+  if (links.some(link => !publicLinks.includes(link) && !existing.some(p => link === `/blog/${p.slug}`))) {
     throw new Error("Unknown internal link");
   }
   const imageUrl = string("imageUrl", 8, 200);

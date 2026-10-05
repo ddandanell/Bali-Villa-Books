@@ -11,12 +11,12 @@ export const imageLibrary = [
 ];
 
 export const keywordClusters = [
-  { keyword: "Bali villa bookkeeping services", focus: "monthly close, record collection, bookkeeping cleanup", page: "/#services" },
-  { keyword: "Airbnb bookkeeping Bali", focus: "Airbnb, Booking.com, Agoda, VRBO, direct booking and OTA payout reconciliation", page: "/#services" },
-  { keyword: "villa financial reporting Bali", focus: "owner reporting, cash flow, management packs and monthly variance review", page: "/#services" },
-  { keyword: "account management for Bali villas", focus: "supplier invoices, expense controls, payroll schedules and BPJS records", page: "/#services" },
-  { keyword: "bookkeeping services Denpasar", focus: "remote owners, villa management companies and multi-property record workflows", page: "/#services" },
-  { keyword: "PT PMA villa records", focus: "documentation handover to a licensed Konsultan Pajak; never tax advice", page: "/#faq" },
+  { keyword: "Bali villa bookkeeping services", focus: "monthly close, record collection, bookkeeping cleanup", page: "/villa-bookkeeping-cleanup-bali" },
+  { keyword: "Airbnb bookkeeping Bali", focus: "Airbnb, Booking.com, Agoda, VRBO, direct booking and OTA payout reconciliation", page: "/airbnb-bookkeeping-bali" },
+  { keyword: "villa financial reporting Bali", focus: "owner reporting, cash flow, management packs and monthly variance review", page: "/villa-financial-reporting-bali" },
+  { keyword: "account management for Bali villas", focus: "supplier invoices, expense controls, payroll schedules and BPJS records", page: "/villa-payroll-records-bali" },
+  { keyword: "bookkeeping services Denpasar", focus: "remote owners, villa management companies and multi-property record workflows", page: "/services" },
+  { keyword: "PT PMA villa records", focus: "documentation handover to a licensed Konsultan Pajak; never tax advice", page: "/pt-pma-villa-bookkeeping" },
 ];
 
 /** Bali has UTC+8 year-round. The schedule is independent of the server timezone. */

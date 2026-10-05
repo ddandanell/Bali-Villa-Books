@@ -21,8 +21,11 @@ import type {
   BlogEventInput,
   BlogPost,
   BlogPostSummary,
+  EnquiryInput,
+  EnquiryReceipt,
   HealthStatus,
   ListBlogPostsParams,
+  SiteEventInput,
 } from "./api.schemas";
 
 import { customFetch } from "../custom-fetch";
@@ -33,6 +36,178 @@ type AwaitedInput<T> = PromiseLike<T> | T;
 type Awaited<O> = O extends AwaitedInput<infer T> ? T : never;
 
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+
+/**
+ * @summary Save an enquiry and prepare a WhatsApp message
+ */
+export const getSubmitEnquiryUrl = () => {
+  return `/api/enquiries`;
+};
+
+export const submitEnquiry = async (
+  enquiryInput: EnquiryInput,
+  options?: RequestInit,
+): Promise<EnquiryReceipt> => {
+  return customFetch<EnquiryReceipt>(getSubmitEnquiryUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(enquiryInput),
+  });
+};
+
+export const getSubmitEnquiryMutationOptions = <
+  TError = ErrorType<void>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof submitEnquiry>>,
+    TError,
+    { data: BodyType<EnquiryInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof submitEnquiry>>,
+  TError,
+  { data: BodyType<EnquiryInput> },
+  TContext
+> => {
+  const mutationKey = ["submitEnquiry"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof submitEnquiry>>,
+    { data: BodyType<EnquiryInput> }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return submitEnquiry(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type SubmitEnquiryMutationResult = NonNullable<
+  Awaited<ReturnType<typeof submitEnquiry>>
+>;
+export type SubmitEnquiryMutationBody = BodyType<EnquiryInput>;
+export type SubmitEnquiryMutationError = ErrorType<void>;
+
+/**
+ * @summary Save an enquiry and prepare a WhatsApp message
+ */
+export const useSubmitEnquiry = <
+  TError = ErrorType<void>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof submitEnquiry>>,
+    TError,
+    { data: BodyType<EnquiryInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof submitEnquiry>>,
+  TError,
+  { data: BodyType<EnquiryInput> },
+  TContext
+> => {
+  return useMutation(getSubmitEnquiryMutationOptions(options));
+};
+
+/**
+ * @summary Record a privacy-safe website interaction
+ */
+export const getRecordSiteEventUrl = () => {
+  return `/api/site-events`;
+};
+
+export const recordSiteEvent = async (
+  siteEventInput: SiteEventInput,
+  options?: RequestInit,
+): Promise<void> => {
+  return customFetch<void>(getRecordSiteEventUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(siteEventInput),
+  });
+};
+
+export const getRecordSiteEventMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof recordSiteEvent>>,
+    TError,
+    { data: BodyType<SiteEventInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof recordSiteEvent>>,
+  TError,
+  { data: BodyType<SiteEventInput> },
+  TContext
+> => {
+  const mutationKey = ["recordSiteEvent"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof recordSiteEvent>>,
+    { data: BodyType<SiteEventInput> }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return recordSiteEvent(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type RecordSiteEventMutationResult = NonNullable<
+  Awaited<ReturnType<typeof recordSiteEvent>>
+>;
+export type RecordSiteEventMutationBody = BodyType<SiteEventInput>;
+export type RecordSiteEventMutationError = ErrorType<unknown>;
+
+/**
+ * @summary Record a privacy-safe website interaction
+ */
+export const useRecordSiteEvent = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof recordSiteEvent>>,
+    TError,
+    { data: BodyType<SiteEventInput> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof recordSiteEvent>>,
+  TError,
+  { data: BodyType<SiteEventInput> },
+  TContext
+> => {
+  return useMutation(getRecordSiteEventMutationOptions(options));
+};
 
 /**
  * Returns server health status

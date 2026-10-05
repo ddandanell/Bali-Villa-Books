@@ -36,6 +36,30 @@ export const blogEvents = pgTable("blog_events", {
   occurredAt: timestamp("occurred_at", { withTimezone: true }).defaultNow().notNull(),
 }, (table) => [index("blog_events_slug_time_idx").on(table.slug, table.occurredAt)]);
 
+export const siteEvents = pgTable("site_events", {
+  id: serial("id").primaryKey(),
+  eventType: text("event_type").notNull(),
+  page: text("page").notNull(),
+  placement: text("placement").notNull(),
+  service: text("service"),
+  occurredAt: timestamp("occurred_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
+export const enquiries = pgTable("enquiries", {
+  id: serial("id").primaryKey(),
+  reference: text("reference").notNull(),
+  name: text("name").notNull(),
+  contact: text("contact").notNull(),
+  propertyCount: integer("property_count").notNull(),
+  location: text("location").notNull(),
+  issue: text("issue").notNull(),
+  bookingChannels: text("booking_channels"),
+  preferredPackage: text("preferred_package"),
+  sourcePage: text("source_page"),
+  consentAt: timestamp("consent_at", { withTimezone: true }).defaultNow().notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+}, table => [uniqueIndex("enquiries_reference_idx").on(table.reference)]);
+
 export const automationRuns = pgTable("blog_automation_runs", {
   id: serial("id").primaryKey(),
   runKey: text("run_key").notNull(),

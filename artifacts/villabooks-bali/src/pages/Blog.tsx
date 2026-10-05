@@ -1,49 +1,77 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
-import { Search, ArrowRight, BookOpen, RefreshCw } from "lucide-react";
-import { useListBlogPosts, useGetBlogAutomationStatus, type BlogPostSummary } from "@workspace/api-client-react";
+import { Search, ArrowRight, BookOpen, RefreshCw, ChevronLeft, ChevronRight } from "lucide-react";
+import { getGetBlogAutomationStatusQueryKey, useListBlogPosts, useGetBlogAutomationStatus, type BlogPostSummary } from "@workspace/api-client-react";
 import { Layout } from "@/components/Layout";
 import { BlogCard } from "@/components/BlogCard";
 import { trackEvent } from "@/lib/analytics";
+import { SITE_ORIGIN } from "@/lib/site-pages";
 
 export default function Blog() {
   const [search, setSearch] = useState("");
+  const [page] = useState(() => {
+    if (typeof window === "undefined") return 1;
+    const requested = Number(new URLSearchParams(window.location.search).get("page") ?? "1");
+    return Number.isInteger(requested) && requested > 0 ? requested : 1;
+  });
   useEffect(() => {
-    document.title = "Bali Villa Accounting Guides | Bali Accounting";
-    document.querySelector('meta[name="description"]')?.setAttribute("content", "Practical Bali villa accounting guides from Denpasar: OTA reconciliation, payroll, reporting, and profitable villa operations.");
+    const title = "Bali Villa Bookkeeping Guides | Bali Accounting";
+    const description = "Practical guides to Bali villa bookkeeping, OTA payouts, owner reports and record keeping. Understand the numbers and improve your monthly process.";
+    document.title = title;
+    const canonical = `${SITE_ORIGIN}/blog`;
+    let link = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!link) { link = document.createElement("link"); link.rel = "canonical"; document.head.appendChild(link); }
+    link.href = canonical;
+    for (const [selector, value, key] of [
+      ['meta[name="description"]', description, "name"],
+      ['meta[property="og:title"]', title, "property"],
+      ['meta[property="og:description"]', description, "property"],
+      ['meta[property="og:url"]', canonical, "property"],
+      ['meta[name="twitter:title"]', title, "name"],
+      ['meta[name="twitter:description"]', description, "name"],
+    ]) {
+      let meta = document.querySelector<HTMLMetaElement>(selector);
+      if (!meta) { meta = document.createElement("meta"); meta.setAttribute(key, selector.match(/(?:name|property)="([^"]+)"/)?.[1] ?? ""); document.head.appendChild(meta); }
+      meta.content = value;
+    }
+    trackEvent("blog_view", { page: "/blog", placement: "journal_page" });
   }, []);
-  const { data: posts, isLoading, isError, refetch } = useListBlogPosts({ limit: 50 });
-  const { data: automation } = useGetBlogAutomationStatus({ query: { queryKey: ["/api/blog/automation/status"], refetchInterval: 60000 } });
+  const offset = (page - 1) * 50;
+  const params = page === 1 ? { limit: 50 } : { limit: 50, offset };
+  const { data: posts, isLoading, isError, refetch } = useListBlogPosts(params);
+  const { data: automation } = useGetBlogAutomationStatus({ query: { queryKey: getGetBlogAutomationStatusQueryKey(), refetchInterval: 60000 } });
   const filtered = useMemo(() => (posts ?? []).filter((post) =>
     `${post.title} ${post.excerpt} ${post.category} ${post.primaryKeyword}`.toLowerCase().includes(search.toLowerCase())
   ), [posts, search]);
 
   return (
     <Layout>
-      <main className="bg-background">
+      <section className="bg-background">
         <section className="relative overflow-hidden bg-primary pb-20 pt-36 text-primary-foreground sm:pb-28">
           <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-secondary/20 blur-3xl" />
           <div className="container relative mx-auto max-w-7xl px-5 md:px-8">
             <Link href="/" data-testid="link-blog-home" className="mb-10 inline-flex items-center gap-2 text-sm text-primary-foreground/60 transition-colors hover:text-white">Bali Accounting <ArrowRight className="h-4 w-4" /> Journal</Link>
             <div className="max-w-3xl">
               <p className="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-secondary">The Bali villa ledger</p>
-              <h1 data-testid="text-blog-heading" className="text-5xl leading-[1.02] sm:text-7xl">Clear thinking for <span className="italic text-secondary">better villas.</span></h1>
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-primary-foreground/70">Practical guidance on villa bookkeeping, OTA payouts, payroll, and the numbers behind a healthy Bali hospitality business.</p>
-              {automation && <div className="mt-6 text-sm text-primary-foreground/60" data-testid="text-publication-schedule"><p>Two new guides every Monday–Friday · 9:00 a.m. Bali time · 1,000+ words with images · Weekly editorial review</p><p className="mt-2">{automation.lastRunStatus === "failed" ? "The last automated run needs attention; existing guides remain available." : automation.lastRunStatus === "running" ? "An editorial run is in progress." : "Automatic editorial schedule configured."}{automation.nextEligibleRunAt && ` Next eligible run: ${new Date(automation.nextEligibleRunAt).toLocaleString("en-GB", { timeZone: "Asia/Makassar", dateStyle: "medium", timeStyle: "short" })} Bali time.`}</p></div>}
+              <h1 data-testid="text-blog-heading" className="text-5xl leading-[1.02] sm:text-7xl">Bali Villa Bookkeeping Guides</h1>
+              <p className="mt-7 max-w-2xl text-lg leading-8 text-primary-foreground/70">Practical explanations of villa bookkeeping, booking payouts, monthly reporting and the documents that make the close easier to understand.</p>
+              {automation && <div className="mt-6 text-sm text-primary-foreground/60" data-testid="text-publication-schedule"><p>{automation.enabled ? "Editorial automation is enabled." : "Editorial automation is currently paused."} Cadence: {automation.cadence}; up to {automation.maxPostsPerRun} article(s) per run. {automation.timezone} time.</p><p className="mt-2">{automation.lastRunStatus === "failed" ? "The last automated run needs attention; published guides remain available." : automation.lastRunStatus === "running" ? "An editorial run is in progress." : automation.lastRunAt ? `Last run: ${new Date(automation.lastRunAt).toLocaleString("en-GB", { timeZone: automation.timezone, dateStyle: "medium", timeStyle: "short" })}.` : "No completed run is reported yet."}{automation.nextEligibleRunAt && ` Next eligible run: ${new Date(automation.nextEligibleRunAt).toLocaleString("en-GB", { timeZone: automation.timezone, dateStyle: "medium", timeStyle: "short" })}.`}</p></div>}
             </div>
           </div>
         </section>
         <section className="container mx-auto max-w-7xl px-5 py-14 md:px-8 sm:py-20">
           <div className="mb-12 flex flex-col gap-5 border-b border-primary/10 pb-8 sm:flex-row sm:items-center sm:justify-between">
-            <div><p className="text-sm font-semibold text-secondary">Expert guides from Denpasar</p><h2 className="mt-2 text-3xl text-primary sm:text-4xl">The latest thinking</h2></div>
-            <label className="relative block sm:w-80"><span className="sr-only">Search articles</span><Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/40" /><input data-testid="input-blog-search" value={search} onChange={(e) => { setSearch(e.target.value); trackEvent("blog_view", { location: "blog_search" }); }} placeholder="Search the journal" className="h-12 w-full rounded-full border border-primary/15 bg-white pl-11 pr-5 text-sm outline-none transition-shadow focus:border-secondary focus:ring-4 focus:ring-secondary/10" /></label>
+             <div><p className="text-sm font-semibold text-secondary">Practical guides from Bali Accounting</p><h2 className="mt-2 text-3xl text-primary sm:text-4xl">Browse the journal</h2></div>
+              <label className="relative block sm:w-80"><span className="sr-only">Search articles</span><Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/40" /><input data-testid="input-blog-search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search the journal" className="h-12 w-full rounded-full border border-primary/15 bg-background pl-11 pr-5 text-sm outline-none transition-shadow focus:border-secondary focus:ring-4 focus:ring-secondary/10" /></label>
           </div>
           {isLoading && <div data-testid="status-blog-loading" className="grid gap-6 md:grid-cols-2"><div className="h-64 animate-pulse rounded-[1.75rem] bg-primary/5" /><div className="h-64 animate-pulse rounded-[1.75rem] bg-primary/5" /></div>}
           {isError && <div data-testid="status-blog-error" className="rounded-3xl border border-secondary/20 bg-white p-10 text-center"><p className="font-serif text-2xl text-primary">The journal is taking a short pause.</p><p className="mt-2 text-foreground/60">Please try again in a moment.</p><button data-testid="button-blog-retry" onClick={() => refetch()} className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-white"><RefreshCw className="h-4 w-4" /> Try again</button></div>}
-          {!isLoading && !isError && filtered.length === 0 && <div data-testid="status-blog-empty" className="rounded-3xl border border-primary/10 bg-white p-16 text-center"><BookOpen className="mx-auto h-8 w-8 text-secondary" /><p className="mt-5 font-serif text-2xl text-primary">No guides match that search.</p><button data-testid="button-blog-clear-search" onClick={() => setSearch("")} className="mt-5 text-sm font-semibold text-secondary underline underline-offset-4">Clear search</button></div>}
-          <div className="grid gap-6 md:grid-cols-2">{filtered.map((post: BlogPostSummary, index) => <BlogCard key={post.slug} post={post} featured={index === 0} />)}</div>
+           {!isLoading && !isError && filtered.length === 0 && <div data-testid="status-blog-empty" className="rounded-3xl border border-primary/10 bg-white p-16 text-center"><BookOpen className="mx-auto h-8 w-8 text-secondary" /><p className="mt-5 font-serif text-2xl text-primary">{search ? "No guides match that search." : "No published guides are available yet."}</p>{search && <button data-testid="button-blog-clear-search" onClick={() => setSearch("")} className="mt-5 text-sm font-semibold text-secondary underline underline-offset-4">Clear search</button>}</div>}
+           <div className="grid gap-6 md:grid-cols-2">{filtered.map((post: BlogPostSummary, index) => <BlogCard key={post.slug} post={post} featured={index === 0} />)}</div>
+            {!isLoading && !isError && !search && (page > 1 || (posts?.length ?? 0) === 50) && <nav aria-label="Journal pages" className="mt-12 flex items-center justify-between border-t border-primary/10 pt-6"><span>{page > 1 ? <a href={`/blog?page=${page - 1}`} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-primary/15 px-5 text-sm font-semibold text-primary"><ChevronLeft className="h-4 w-4" />Newer articles</a> : <span aria-disabled="true" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-primary/10 px-5 text-sm text-foreground/35"><ChevronLeft className="h-4 w-4" />Newer articles</span>}</span><span className="text-xs text-foreground/50">Articles {offset + 1}–{offset + (posts?.length ?? 0)}</span>{(posts?.length ?? 0) === 50 ? <a href={`/blog?page=${page + 1}`} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-primary/15 px-5 text-sm font-semibold text-primary">Older articles<ChevronRight className="h-4 w-4" /></a> : <span aria-disabled="true" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-primary/10 px-5 text-sm text-foreground/35">Older articles<ChevronRight className="h-4 w-4" /></span>}</nav>}
+           <div className="mt-12 border-t border-primary/10 pt-7"><p className="text-xs font-bold uppercase tracking-[.18em] text-secondary">Explore the service pages</p><div className="mt-4 flex flex-wrap gap-x-7 gap-y-3 text-sm">{[["OTA payout reconciliation","/airbnb-bookkeeping-bali"],["Owner reporting","/villa-financial-reporting-bali"],["Pricing","/pricing"]].map(([label,href])=><Link key={href} href={href} className="font-semibold text-primary underline underline-offset-4">{label}</Link>)}</div></div>
         </section>
-      </main>
+      </section>
     </Layout>
   );
 }

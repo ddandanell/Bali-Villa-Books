@@ -8,6 +8,91 @@
 import * as zod from "zod";
 
 /**
+ * @summary Save an enquiry and prepare a WhatsApp message
+ */
+export const submitEnquiryBodyNameMin = 2;
+export const submitEnquiryBodyNameMax = 100;
+
+export const submitEnquiryBodyContactMin = 5;
+export const submitEnquiryBodyContactMax = 150;
+
+export const submitEnquiryBodyPropertyCountMax = 100;
+
+export const submitEnquiryBodyLocationMin = 2;
+export const submitEnquiryBodyLocationMax = 100;
+
+export const submitEnquiryBodyIssueMin = 10;
+export const submitEnquiryBodyIssueMax = 2000;
+
+export const submitEnquiryBodyBookingChannelsMax = 200;
+
+export const submitEnquiryBodyPreferredPackageMax = 80;
+
+export const submitEnquiryBodySourcePageMax = 150;
+
+export const submitEnquiryBodyWebsiteMax = 200;
+
+export const SubmitEnquiryBody = zod.object({
+  name: zod
+    .string()
+    .min(submitEnquiryBodyNameMin)
+    .max(submitEnquiryBodyNameMax),
+  contact: zod
+    .string()
+    .min(submitEnquiryBodyContactMin)
+    .max(submitEnquiryBodyContactMax),
+  propertyCount: zod.number().min(1).max(submitEnquiryBodyPropertyCountMax),
+  location: zod
+    .string()
+    .min(submitEnquiryBodyLocationMin)
+    .max(submitEnquiryBodyLocationMax),
+  issue: zod
+    .string()
+    .min(submitEnquiryBodyIssueMin)
+    .max(submitEnquiryBodyIssueMax),
+  bookingChannels: zod
+    .string()
+    .max(submitEnquiryBodyBookingChannelsMax)
+    .optional(),
+  preferredPackage: zod
+    .string()
+    .max(submitEnquiryBodyPreferredPackageMax)
+    .optional(),
+  sourcePage: zod.string().max(submitEnquiryBodySourcePageMax).optional(),
+  consent: zod.boolean(),
+  website: zod
+    .string()
+    .max(submitEnquiryBodyWebsiteMax)
+    .optional()
+    .describe("Leave blank; spam detection field"),
+});
+
+/**
+ * @summary Record a privacy-safe website interaction
+ */
+export const recordSiteEventBodyPageMax = 150;
+
+export const recordSiteEventBodyPlacementMax = 80;
+
+export const recordSiteEventBodyServiceMax = 80;
+
+export const RecordSiteEventBody = zod.object({
+  eventType: zod.enum([
+    "whatsapp_click",
+    "phone_click",
+    "consultation_click",
+    "enquiry_submitted",
+    "sample_report_view",
+    "sample_report_download",
+    "blog_view",
+    "article_completion",
+  ]),
+  page: zod.string().max(recordSiteEventBodyPageMax),
+  placement: zod.string().max(recordSiteEventBodyPlacementMax),
+  service: zod.string().max(recordSiteEventBodyServiceMax).optional(),
+});
+
+/**
  * Returns server health status
  * @summary Health check
  */
@@ -21,12 +106,19 @@ export const HealthCheckResponse = zod.object({
 export const listBlogPostsQueryLimitDefault = 12;
 export const listBlogPostsQueryLimitMax = 50;
 
+export const listBlogPostsQueryOffsetDefault = 0;
+export const listBlogPostsQueryOffsetMin = 0;
+
 export const ListBlogPostsQueryParams = zod.object({
   limit: zod.coerce
     .number()
     .min(1)
     .max(listBlogPostsQueryLimitMax)
     .default(listBlogPostsQueryLimitDefault),
+  offset: zod.coerce
+    .number()
+    .min(listBlogPostsQueryOffsetMin)
+    .default(listBlogPostsQueryOffsetDefault),
 });
 
 export const ListBlogPostsResponseItem = zod.object({

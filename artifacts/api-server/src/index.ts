@@ -1,6 +1,9 @@
 import app from "./app";
 import { logger } from "./lib/logger";
 import { startBlogAutomation, seedBlogPosts } from "./routes/blog";
+import { startEnquiryRetention } from "./routes/enquiries";
+import { applyBlueprintGuideUpdates } from "./lib/blueprint-guides";
+import { publishResearchedNews } from "./lib/researched-news";
 
 const rawPort = process.env["PORT"];
 
@@ -23,5 +26,6 @@ app.listen(port, (err) => {
   }
 
   logger.info({ port }, "Server listening");
-  void seedBlogPosts().then(startBlogAutomation).catch(err => logger.error({ err }, "Blog initialization failed"));
+  startEnquiryRetention();
+  void seedBlogPosts().then(applyBlueprintGuideUpdates).then(publishResearchedNews).then(startBlogAutomation).catch(err => logger.error({ err }, "Blog initialization failed"));
 });

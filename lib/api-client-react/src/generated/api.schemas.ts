@@ -5,6 +5,76 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+export interface EnquiryInput {
+  /**
+   * @minLength 2
+   * @maxLength 100
+   */
+  name: string;
+  /**
+   * @minLength 5
+   * @maxLength 150
+   */
+  contact: string;
+  /**
+   * @minimum 1
+   * @maximum 100
+   */
+  propertyCount: number;
+  /**
+   * @minLength 2
+   * @maxLength 100
+   */
+  location: string;
+  /**
+   * @minLength 10
+   * @maxLength 2000
+   */
+  issue: string;
+  /** @maxLength 200 */
+  bookingChannels?: string;
+  /** @maxLength 80 */
+  preferredPackage?: string;
+  /** @maxLength 150 */
+  sourcePage?: string;
+  consent: boolean;
+  /**
+   * Leave blank; spam detection field
+   * @maxLength 200
+   */
+  website?: string;
+}
+
+export interface EnquiryReceipt {
+  reference: string;
+  whatsappUrl: string;
+  message: string;
+}
+
+export type SiteEventInputEventType =
+  (typeof SiteEventInputEventType)[keyof typeof SiteEventInputEventType];
+
+export const SiteEventInputEventType = {
+  whatsapp_click: "whatsapp_click",
+  phone_click: "phone_click",
+  consultation_click: "consultation_click",
+  enquiry_submitted: "enquiry_submitted",
+  sample_report_view: "sample_report_view",
+  sample_report_download: "sample_report_download",
+  blog_view: "blog_view",
+  article_completion: "article_completion",
+} as const;
+
+export interface SiteEventInput {
+  eventType: SiteEventInputEventType;
+  /** @maxLength 150 */
+  page: string;
+  /** @maxLength 80 */
+  placement: string;
+  /** @maxLength 80 */
+  service?: string;
+}
+
 export interface HealthStatus {
   status: string;
 }
@@ -68,4 +138,8 @@ export type ListBlogPostsParams = {
    * @maximum 50
    */
   limit?: number;
+  /**
+   * @minimum 0
+   */
+  offset?: number;
 };

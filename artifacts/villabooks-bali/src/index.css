@@ -140,3 +140,18 @@
 .image-mask {
   mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
+
+html { scroll-behavior: smooth; scroll-padding-top: 6.5rem; }
+section[id] { scroll-margin-top: 6.5rem; }
+:focus-visible { outline: 3px solid hsl(var(--secondary)); outline-offset: 3px; }
+::selection { background: hsl(var(--secondary) / .22); }
+.editorial-rule { border-color: hsl(var(--primary) / .13); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+@media print {
+  header, footer, button { display: none !important; }
+  body { background: white !important; color: #18241e !important; }
+  section { break-inside: avoid; }
+}

@@ -56,7 +56,7 @@ export async function seedBlogPosts(): Promise<void> {
 router.get("/blog/posts", async (req, res): Promise<void> => {
   const parsed = ListBlogPostsQueryParams.safeParse(req.query);
   if (!parsed.success) { res.status(400).json({ error: parsed.error.message }); return; }
-  const posts = await db.select().from(blogPosts).orderBy(desc(blogPosts.publishedAt)).limit(parsed.data.limit);
+  const posts = await db.select().from(blogPosts).orderBy(desc(blogPosts.publishedAt)).limit(parsed.data.limit).offset(parsed.data.offset ?? 0);
   res.json(ListBlogPostsResponse.parse(posts.map(summary)));
 });
 
