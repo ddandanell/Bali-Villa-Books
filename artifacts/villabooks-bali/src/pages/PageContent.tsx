@@ -5,6 +5,7 @@ import { ArrowRight, ArrowUpRight, Check, ChevronRight, MapPin } from "lucide-re
 import { Layout } from "@/components/Layout";
 import { ConsultationForm } from "@/components/ConsultationForm";
 import { MonthlyVillaReport } from "@/components/finance-report/MonthlyVillaReport";
+import { BookkeepingDecisionGuide } from "@/components/BookkeepingDecisionGuide";
 import { PHONE, SITE_ORIGIN, sitePages, whatsapp } from "@/lib/site-pages";
 import { trackEvent } from "@/lib/analytics";
 
@@ -12,17 +13,17 @@ const wrap = "mx-auto max-w-7xl px-5 md:px-8";
 const eyebrow = "text-xs font-bold uppercase tracking-[.2em] text-secondary";
 const linkClass = "inline-flex items-center gap-2 font-semibold text-primary underline decoration-secondary/50 underline-offset-4 transition-colors hover:text-secondary";
 const serviceLinks = [
-  ["/airbnb-bookkeeping-bali", "Booking-channel bookkeeping"],
-  ["/villa-financial-reporting-bali", "Monthly owner reporting"],
-  ["/villa-bookkeeping-cleanup-bali", "Historical cleanup"],
-  ["/pt-pma-villa-bookkeeping", "PT PMA records"],
-  ["/villa-payroll-records-bali", "Payroll records"],
+  ["/airbnb-bookkeeping-bali", "Airbnb bookkeeping and OTA reconciliation"],
+  ["/villa-financial-reporting-bali", "Monthly villa financial reporting"],
+  ["/villa-bookkeeping-cleanup-bali", "Bookkeeping cleanup and catch-up records"],
+  ["/pt-pma-villa-bookkeeping", "PT PMA villa bookkeeping"],
+  ["/villa-payroll-records-bali", "Villa payroll and BPJS records"],
 ];
 
 type ServiceInfo = { intro: string; audience: string; problem: string; included: string[]; inputs: string[]; exampleTitle: string; example: string; steps: string[]; timing: string; price: string; excludes: string[]; faqs: [string, string][]; guide: string };
 const serviceDetails: Record<string, ServiceInfo> = {
   "/airbnb-bookkeeping-bali": {
-    intro: "A platform deposit is the end of a calculation, not the starting point. We organize booking activity and payout statements from Airbnb, Booking.com, Agoda, VRBO and direct bookings so gross activity, fees, adjustments and bank receipts can be reviewed together.",
+    intro: "Airbnb bookkeeping connects each short-term rental booking with its fees, refunds and eventual bank deposit. We reconcile records supplied from Airbnb, Booking.com, Agoda, VRBO and direct bookings, keeping gross rental income and payout timing visible in your Bali villa books.",
     audience: "Remote villa owners and operators using one or more booking channels who need to understand how a stay became a bank deposit.",
     problem: "Payouts can land on different dates, combine several reservations, include deductions or refunds, and cross a reporting month. Looking only at deposits can make revenue and cash timing difficult to explain.",
     included: ["Record and categorize booking revenue using the source information supplied", "Compare OTA statements or exports with booking detail and bank deposits", "Record platform commissions, adjustments, refunds and unresolved differences", "Include direct-booking schedules where those records are supplied", "Carry documented exceptions into the agreed monthly report"],
@@ -37,7 +38,7 @@ const serviceDetails: Record<string, ServiceInfo> = {
     guide: "Visit the journal for practical notes on payout reconciliation and monthly records.",
   },
   "/villa-financial-reporting-bali": {
-    intro: "A useful villa report makes it possible to distinguish operating activity from cash timing. Bali Accounting prepares an agreed monthly bookkeeping pack with clear income, expenses, supporting schedules and a list of questions still open.",
+    intro: "Monthly villa financial reporting explains rental income, operating expenses, profit and cash flow—not just the closing bank balance. Bali Accounting prepares a management pack from your supplied records, with profit-and-loss reporting, agreed schedules and clearly identified questions for owner review.",
     audience: "Owners living remotely, villa managers who need a consistent handover, and operators who want period-by-period records rather than a bank balance alone.",
     problem: "A cash balance cannot explain which month earned the revenue, what costs relate to operations, or whether an open booking payout or owner movement changed cash.",
     included: ["Monthly profit-and-loss view based on the records supplied", "Relevant balance schedules and reconciled cash movements by agreed scope", "Booking-channel view and payout reconciliation where included", "Payroll schedules and BPJS record status where applicable to package scope", "Open questions and missing-document notes for owner or manager review"],
@@ -52,7 +53,7 @@ const serviceDetails: Record<string, ServiceInfo> = {
     guide: "The sample report shows the shape of the monthly pack using demonstration figures only.",
   },
   "/villa-bookkeeping-cleanup-bali": {
-    intro: "A backlog is easier to scope when its boundaries are visible. We review the periods, source records and outstanding reconciliations first, then agree which historical work can be reconstructed and how gaps will be reported.",
+    intro: "Catch-up bookkeeping brings overdue Bali villa records into an agreed review and reconciliation process. Whether the backlog sits in spreadsheets, bank statements or booking exports, we first assess the evidence, then scope the bookkeeping cleanup and explain what remains missing.",
     audience: "Villa owners and operators with incomplete, inconsistent or delayed bookkeeping who need an orderly handover into a regular monthly process.",
     problem: "Missing statements, mixed owner transactions, incomplete receipts and unmatched OTA deposits make it difficult to establish a reliable opening position. Rebuilding without evidence can create false certainty.",
     included: ["Initial records review and agreed period definition", "Transaction organization and reconciliation against records supplied", "Documented gaps, ambiguous items and assumptions requiring owner confirmation", "Opening schedules and a handover list for the recurring workflow, where agreed"],
@@ -67,7 +68,7 @@ const serviceDetails: Record<string, ServiceInfo> = {
     guide: "Browse the journal for practical record-keeping guidance before a cleanup review.",
   },
   "/pt-pma-villa-bookkeeping": {
-    intro: "PT PMA villa records benefit from a clear separation between company activity, owner funding and supporting documents. Bali Accounting organizes bookkeeping schedules and prepares a records handover for your licensed Indonesian tax adviser.",
+    intro: "PT PMA bookkeeping in Bali separates company transactions, villa operating costs and owner funding. We organize bank and booking records into agreed monthly schedules and prepare a clear handover for your licensed Indonesian tax adviser. Company formation, tax advice and filings are not part of this service.",
     audience: "Villa operators who keep records through a PT PMA and need a consistent monthly view of transactions, accounts and supporting documents.",
     problem: "Company transactions, owner advances, multiple accounts and property-level activity can become difficult to distinguish when records are stored across separate inboxes or spreadsheets.",
     included: ["Organized company transaction records using supplied source documents", "Bank and cash schedule reconciliation within the agreed bookkeeping scope", "Owner funding and company movements recorded distinctly when supported", "Period folders and schedules prepared for review by your licensed tax adviser"],
@@ -82,7 +83,7 @@ const serviceDetails: Record<string, ServiceInfo> = {
     guide: "Browse our journal for useful notes on preparing organized bookkeeping records.",
   },
   "/villa-payroll-records-bali": {
-    intro: "Keep staff-cost information legible in the monthly books with schedules and supporting documents. This service concerns payroll record organization and BPJS record tracking—not payroll execution or statutory administration.",
+    intro: "Bali villa payroll records should connect approved staff schedules with recorded salary costs, payment evidence and BPJS documents. We organize the information supplied within your monthly books; this is record tracking, not payroll execution, BPJS administration or employee-tax filing.",
     audience: "Villa owners and operators who want staff costs and supporting records reflected clearly in their bookkeeping process.",
     problem: "Salary changes, allowances, reimbursements and staff documents can arrive through different channels. Without a dated schedule and source records, monthly costs are harder to review consistently.",
     included: ["Maintain an agreed staff cost schedule from supplied records", "Record salary changes and supporting notes provided by the owner or manager", "Track receipt or status of BPJS-related records in the agreed checklist", "Reconcile payroll-related expense records to the bookkeeping period where in scope", "List missing or inconsistent payroll documents for follow-up"],
@@ -116,9 +117,10 @@ function CTA({ message, children = "Discuss your setup" }: { message: string; ch
 
 function ServicePage({ path }: { path: string }) {
   const d = serviceDetails[path];
+  const topic = ({ "/airbnb-bookkeeping-bali": "Airbnb bookkeeping", "/villa-financial-reporting-bali": "Villa financial reporting", "/villa-bookkeeping-cleanup-bali": "Catch-up bookkeeping", "/pt-pma-villa-bookkeeping": "PT PMA bookkeeping", "/villa-payroll-records-bali": "Payroll record tracking" } as Record<string, string>)[path];
   return <><Header path={path} />
     <section className={`${wrap} grid gap-14 py-16 lg:grid-cols-[.8fr_1.2fr] lg:py-20`}>
-      <div><p className={eyebrow}>Who it helps</p><h2 className="mt-3 font-serif text-3xl text-primary">A clear working scope</h2><p className="mt-5 leading-7 text-foreground/70">{d.audience}</p><h3 className="mt-9 font-serif text-2xl text-primary">The problem behind the numbers</h3><p className="mt-3 leading-7 text-foreground/70">{d.problem}</p><div className="mt-8 flex flex-wrap gap-3"><Link className={linkClass} href="/pricing">Compare package scope <ArrowRight className="h-4 w-4" /></Link><Link className={linkClass} href="/get-started">Enquire about fit <ArrowRight className="h-4 w-4" /></Link></div></div>
+      <div><p className={eyebrow}>Who it helps</p><h2 className="mt-3 font-serif text-3xl text-primary">{topic} for owners and operators</h2><p className="mt-5 leading-7 text-foreground/70">{d.audience}</p><h3 className="mt-9 font-serif text-2xl text-primary">The record problem this service addresses</h3><p className="mt-3 leading-7 text-foreground/70">{d.problem}</p><div className="mt-8 flex flex-wrap gap-3"><Link className={linkClass} href="/pricing">Compare monthly bookkeeping costs <ArrowRight className="h-4 w-4" /></Link><Link className={linkClass} href="/get-started">Discuss your bookkeeping needs <ArrowRight className="h-4 w-4" /></Link></div></div>
       <div className="rounded-[2rem] border border-primary/10 bg-white p-7 sm:p-10"><p className={eyebrow}>What may be included</p><ul className="mt-6 space-y-4">{d.included.map((x) => <li key={x} className="flex gap-3 text-sm leading-6 text-foreground/75"><Check className="mt-1 h-4 w-4 shrink-0 text-secondary" />{x}</li>)}</ul></div>
     </section>
     <section className="bg-accent/45 py-16 sm:py-20"><div className={`${wrap} grid gap-10 lg:grid-cols-2`}>
