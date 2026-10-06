@@ -6,6 +6,7 @@ import { Layout } from "@/components/Layout";
 import { ConsultationForm } from "@/components/ConsultationForm";
 import { MonthlyVillaReport } from "@/components/finance-report/MonthlyVillaReport";
 import { BookkeepingDecisionGuide } from "@/components/BookkeepingDecisionGuide";
+import { ClientShowcase, SixVillaScenario } from "@/components/ClientShowcase";
 import { PHONE, SITE_ORIGIN, sitePages, whatsapp } from "@/lib/site-pages";
 import { trackEvent } from "@/lib/analytics";
 
@@ -133,6 +134,7 @@ function ServicePage({ path }: { path: string }) {
     </section>
     <section className="border-y border-primary/10 bg-white py-16"><div className={`${wrap} grid gap-10 md:grid-cols-[.7fr_1.3fr]`}><div><p className={eyebrow}>Questions</p><h2 className="mt-3 font-serif text-3xl text-primary">Before you begin</h2></div><div className="divide-y divide-primary/10">{d.faqs.map(([q,a])=><details key={q} className="group py-5"><summary className="cursor-pointer list-none font-semibold text-primary marker:hidden">{q}<span className="float-right text-secondary">+</span></summary><p className="mt-3 max-w-3xl text-sm leading-7 text-foreground/70">{a}</p></details>)}</div></div></section>
     <section className={`${wrap} grid gap-6 py-14 sm:grid-cols-2`}><div className="rounded-2xl border border-primary/10 p-6"><h2 className="font-serif text-2xl text-primary">Evidence and examples</h2><p className="mt-3 text-sm leading-6 text-foreground/65">{d.guide}</p>{path === "/villa-financial-reporting-bali" && <Link href="/sample-report" className={`${linkClass} mt-4`}>View the sample monthly report <ArrowRight className="h-4 w-4" /></Link>}<Link href="/blog" className={`${linkClass} mt-4`}>Browse practical guides <ArrowRight className="h-4 w-4" /></Link></div><div className="rounded-2xl border border-primary/10 p-6"><h2 className="font-serif text-2xl text-primary">A useful next step</h2><p className="mt-3 text-sm leading-6 text-foreground/65">Share the property count, booking channels and record situation; we can confirm whether the service fits and discuss scope, limits and price basis.</p><Link href="/get-started" className={`${linkClass} mt-4`}>Send a short enquiry <ArrowRight className="h-4 w-4" /></Link></div></section>
+    <BookkeepingDecisionGuide path={path} />
     <section className="bg-accent/45 py-12"><div className={`${wrap} flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between`}><div><p className={eyebrow}>Client Advisory</p><h2 className="mt-2 font-serif text-3xl text-primary">Talk through your records.</h2></div><CTA message={`Hello Client Advisory, I'd like to discuss ${path.replaceAll("-", " ").replace("/", "")}.`} /></div></section>
   </>;
 }
@@ -156,19 +158,19 @@ function Pricing() {
 
 function SampleReport() {
   useEffect(() => { trackEvent("sample_report_view", { page: "/sample-report", placement: "page_view" }); }, []);
-  return <><Header path="/sample-report" /><MonthlyVillaReport /></>;
+  return <><Header path="/sample-report" /><MonthlyVillaReport /><SixVillaScenario /></>;
 }
 
 function About() {
   return <><Header path="/about" /><section className={`${wrap} grid gap-12 py-16 lg:grid-cols-[.9fr_1.1fr]`}>
-    <div><p className={eyebrow}>A Denpasar-based bookkeeping firm</p><h2 className="mt-3 font-serif text-3xl text-primary">A named founder. A specific kind of work.</h2><p className="mt-5 leading-7 text-foreground/70">Bali Accounting was founded by Abel Yuniartini. The firm is based at Jl. Tukad Barito Timur III No.16, Panjer, Denpasar Selatan, Bali 80226. The service is focused on bookkeeping and monthly financial reporting for villa owners and operators.</p><p className="mt-5 leading-7 text-foreground/70">We describe the firm's work rather than implying unverified individual credentials or a larger named team. The agreed work is to organize source records, reconcile booking and cash activity, maintain bookkeeping schedules, prepare management reports, and make missing information visible.</p></div>
+    <div><p className={eyebrow}>A Denpasar-based bookkeeping firm</p><h2 className="mt-3 font-serif text-3xl text-primary">Bookkeeping focused on Bali villa operations.</h2><p className="mt-5 leading-7 text-foreground/70">Bali Accounting was founded by Abel Yuniartini. The firm is based at Jl. Tukad Barito Timur III No.16, Panjer, Denpasar Selatan, Bali 80226. We support villa owners and operators with organized records and monthly financial reporting.</p><p className="mt-5 leading-7 text-foreground/70">Our work connects rental bookings, OTA payouts, supplier expenses and owner movements to their source documents. We prepare agreed management reports and make missing information visible so you can review your property’s numbers with your manager and licensed tax adviser.</p></div>
     <div className="rounded-[2rem] bg-primary p-8 text-primary-foreground sm:p-10"><MapPin className="h-6 w-6 text-secondary" /><p className="mt-5 text-xs font-bold uppercase tracking-[.2em] text-secondary">Office address</p><address className="mt-3 not-italic font-serif text-2xl leading-relaxed">Jl. Tukad Barito Timur III No.16<br/>Panjer, Denpasar Selatan<br/>Bali 80226</address><a href="https://maps.google.com/?q=Jl.+Tukad+Barito+Timur+III+No.16,+Panjer,+Denpasar+Selatan,+Bali" target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary-foreground/70 hover:text-white">Open map <ArrowUpRight className="h-4 w-4" /></a></div>
     <div className="lg:col-span-2"><h2 className="font-serif text-3xl text-primary">Responsibilities and boundaries</h2><div className="mt-6 grid gap-5 md:grid-cols-3">{[
       ["Organize", "Maintain agreed records from documents and schedules supplied by the owner or operator."],
       ["Reconcile", "Compare booking, payout, cash and expense information; record differences that need clarification."],
       ["Hand over", "Prepare agreed reporting and schedules for the owner, manager or licensed Indonesian tax adviser to review."],
-    ].map(([title,text])=><div key={title} className="border-t-2 border-secondary pt-5"><h3 className="font-serif text-2xl text-primary">{title}</h3><p className="mt-3 text-sm leading-6 text-foreground/65">{text}</p></div>)}</div><p className="mt-8 max-w-4xl text-sm leading-7 text-foreground/65">Bali Accounting does not provide tax advice or official filings. No staff biographies, professional credentials, response hours, client outcomes or legal-entity claims are added here without owner verification. Contact us for current service fit and to agree the document-handling process.</p><div className="mt-6"><CTA message="Hello Client Advisory, I would like to learn more about Bali Accounting's bookkeeping scope." >WhatsApp Client Advisory</CTA></div></div>
-  </section></>;
+    ].map(([title,text])=><div key={title} className="border-t-2 border-secondary pt-5"><h3 className="font-serif text-2xl text-primary">{title}</h3><p className="mt-3 text-sm leading-6 text-foreground/65">{text}</p></div>)}</div><p className="mt-8 max-w-4xl text-sm leading-7 text-foreground/65">Bali Accounting provides bookkeeping and management reporting, not tax advice or official filings. Owners retain control of bank accounts, payments and business decisions. Contact Client Advisory to confirm service fit, reporting responsibilities and the appropriate document-handling process.</p><div className="mt-6"><CTA message="Hello Client Advisory, I would like to learn more about Bali Accounting's bookkeeping scope." >WhatsApp Client Advisory</CTA></div></div>
+  </section><ClientShowcase /></>;
 }
 
 const faqs: [string,string,string?][] = [

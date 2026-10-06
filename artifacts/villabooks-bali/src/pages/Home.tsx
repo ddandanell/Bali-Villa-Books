@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Layout } from "@/components/Layout";
 import { SITE_ORIGIN, sitePages } from "@/lib/site-pages";
+import { ClientShowcase, SixVillaScenario } from "@/components/ClientShowcase";
 import {
   EvidenceSection,
   Hero,
@@ -40,6 +41,8 @@ export default function Home() {
     <WorkflowSection />
     <MidConsultation />
     <EvidenceSection />
+    <ClientShowcase />
+    <SixVillaScenario />
     <UseCasesSection />
     <LocalAbout />
     <HomeFAQ />
