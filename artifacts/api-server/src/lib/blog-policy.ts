@@ -11,12 +11,12 @@ export const imageLibrary = [
 ];
 
 export const keywordClusters = [
-  { keyword: "Bali villa bookkeeping services", focus: "monthly close, record collection, bookkeeping cleanup", page: "/villa-bookkeeping-cleanup-bali" },
+  { keyword: "bookkeeping cleanup Bali", focus: "catch-up bookkeeping, overdue villa records, missing evidence and the transition to a monthly close", page: "/villa-bookkeeping-cleanup-bali" },
   { keyword: "Airbnb bookkeeping Bali", focus: "Airbnb, Booking.com, Agoda, VRBO, direct booking and OTA payout reconciliation", page: "/airbnb-bookkeeping-bali" },
   { keyword: "villa financial reporting Bali", focus: "owner reporting, cash flow, management packs and monthly variance review", page: "/villa-financial-reporting-bali" },
-  { keyword: "account management for Bali villas", focus: "supplier invoices, expense controls, payroll schedules and BPJS records", page: "/villa-payroll-records-bali" },
-  { keyword: "bookkeeping services Denpasar", focus: "remote owners, villa management companies and multi-property record workflows", page: "/services" },
-  { keyword: "PT PMA villa records", focus: "documentation handover to a licensed Konsultan Pajak; never tax advice", page: "/pt-pma-villa-bookkeeping" },
+  { keyword: "Bali villa payroll records", focus: "supplier invoices, rental property expense controls, approved staff schedules and BPJS documents; not payroll execution", page: "/villa-payroll-records-bali" },
+  { keyword: "rental property bookkeeping Bali", focus: "remote owners, property management bookkeeping, shared-cost allocations and multi-property record workflows", page: "/services" },
+  { keyword: "PT PMA bookkeeping Bali", focus: "company records and owner funding; documentation handover to a licensed Konsultan Pajak; never tax advice or filing", page: "/pt-pma-villa-bookkeeping" },
 ];
 
 /** Bali has UTC+8 year-round. The schedule is independent of the server timezone. */

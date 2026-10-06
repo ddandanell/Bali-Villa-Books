@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Layout } from "@/components/Layout";
 import { SITE_ORIGIN, sitePages } from "@/lib/site-pages";
 import { ClientShowcase, SixVillaScenario } from "@/components/ClientShowcase";
+import { PageEducation } from "@/components/PageEducation";
 import {
   EvidenceSection,
   Hero,
@@ -47,6 +48,7 @@ export default function Home() {
     <LocalAbout />
     <HomeFAQ />
     <JournalPreview />
+    <PageEducation path="/" />
     <HomeContact />
   </Layout>;
 }

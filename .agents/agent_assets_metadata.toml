@@ -86,3 +86,17 @@ uri = "file://attached_assets/stock_images/balinese-woman-portrait_2.jpg"
 type = "image"
 title = "Balinese woman portrait outdoors tropical, smiling, natural"
 logical_id = "e7e241f8-5ae9-4775-84e5-3f9d70470b40"
+
+[[outputs]]
+id = "KZUJ3PBFyPCK9gSmPf7Ze"
+uri = "file://docs/seo-research/page-improvements.csv"
+type = "table"
+title = "SEO changes across all 28 pages"
+description = "Page-by-page content increases and verified titles and descriptions for the complete website."
+logical_id = "5de234b4-a859-4e67-83ad-e317bd6e9ae5"
+content_hash = "sha256:e55daab09096a0145c7ef95d7b7c3d346b2c384d329079c4fa96533378673c8d"
+size = 7487
+mtime_ms = 1791328583699
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:4cfad439-4f08-4f99-a7e7-eb3e620fbb8e/5de234b4-a859-4e67-83ad-e317bd6e9ae5/59c902c6-c7d5-4856-81a1-5cfb280b0683"
+storage_version_token = "1791328606557369"
+content_type = "text/csv"

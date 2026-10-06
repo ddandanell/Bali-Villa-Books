@@ -7,6 +7,8 @@ import { ConsultationForm } from "@/components/ConsultationForm";
 import { MonthlyVillaReport } from "@/components/finance-report/MonthlyVillaReport";
 import { BookkeepingDecisionGuide } from "@/components/BookkeepingDecisionGuide";
 import { ClientShowcase, SixVillaScenario } from "@/components/ClientShowcase";
+import { PageEducation } from "@/components/PageEducation";
+import { additionalFaqs } from "@/lib/additional-faqs";
 import { PHONE, SITE_ORIGIN, sitePages, whatsapp } from "@/lib/site-pages";
 import { trackEvent } from "@/lib/analytics";
 
@@ -186,6 +188,7 @@ const faqs: [string,string,string?][] = [
   ["Do you file taxes or advise on tax?","No. Bali Accounting organizes bookkeeping records for owner information and can prepare an agreed handover for a licensed Indonesian tax adviser. Advice and official filings are outside scope.","/pt-pma-villa-bookkeeping"],
   ["When are reports delivered?","The 15th is a target after complete, timely source documents arrive. It is not a guaranteed delivery date."],
   ["How do I get started?","Send a short enquiry with property count, location and the main record question, or contact us directly on the verified WhatsApp number.","/get-started"],
+  ...additionalFaqs,
 ];
 function FAQ() {
   return <><Header path="/faq" /><section className={`${wrap} max-w-5xl py-14 sm:py-20`}><p className="mb-8 max-w-3xl text-lg leading-8 text-foreground/70">Straight answers on package fit, source documents and what bookkeeping support does—and does not—cover.</p><div className="divide-y divide-primary/10 border-y border-primary/10">{faqs.map(([q,a,href])=><details key={q} className="group py-5"><summary className="cursor-pointer list-none pr-4 font-semibold text-primary marker:hidden">{q}<span className="float-right text-secondary">+</span></summary><p className="mt-3 max-w-3xl text-sm leading-7 text-foreground/70">{a}{href&&<> <Link className="font-semibold text-secondary underline underline-offset-2" href={href}>Read more</Link>.</>}</p></details>)}</div><Link href="/get-started" className="mt-9 inline-flex min-h-12 items-center gap-2 rounded-full bg-primary px-6 font-semibold text-primary-foreground">Ask about your situation <ArrowRight className="h-4 w-4" /></Link></section></>;
@@ -222,14 +225,10 @@ export default function PageContent({ path }: { path: string }) {
     setMeta('meta[name="twitter:title"]', "name", page.title);
     setMeta('meta[name="twitter:description"]', "name", page.description);
   }, [normalized]);
-  if (serviceDetails[normalized]) return <Layout><ServicePage path={normalized} /></Layout>;
-  if (normalized === "/services") return <Layout><ServicesDirectory /></Layout>;
-  if (normalized === "/pricing") return <Layout><Pricing /></Layout>;
-  if (normalized === "/sample-report") return <Layout><SampleReport /></Layout>;
-  if (normalized === "/about") return <Layout><About /></Layout>;
-  if (normalized === "/get-started") return <Layout><GetStarted /></Layout>;
-  if (normalized === "/faq") return <Layout><FAQ /></Layout>;
-  if (normalized === "/privacy") return <Layout><Privacy /></Layout>;
-  if (normalized === "/terms") return <Layout><Terms /></Layout>;
+  const content = serviceDetails[normalized] ? <ServicePage path={normalized} /> : ({
+    "/services": <ServicesDirectory />, "/pricing": <Pricing />, "/sample-report": <SampleReport />,
+    "/about": <About />, "/get-started": <GetStarted />, "/faq": <FAQ />, "/privacy": <Privacy />, "/terms": <Terms />,
+  } as Record<string, React.ReactNode>)[normalized];
+  if (content) return <Layout>{content}<PageEducation path={normalized} /></Layout>;
   return <Layout><div className={`${wrap} py-24`}><h1 className="font-serif text-4xl text-primary">This page is unavailable</h1><p className="mt-4 text-foreground/65">Choose a current service, report example or contact page.</p><Link href="/services" className={`${linkClass} mt-6`}>Browse services <ArrowRight className="h-4 w-4" /></Link></div></Layout>;
 }

@@ -1,5 +1,6 @@
 import { sitePages, SITE_ORIGIN, PHONE } from "./site-pages";
 import { prices } from "./pricing";
+import { additionalFaqs } from "./additional-faqs";
 
 const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]!));
 const json = (value: unknown) => JSON.stringify(value).replace(/</g, "\\u003c");
@@ -28,6 +29,12 @@ export function pageDocument(template: string, content: string, pathname: string
     ],
   });
   if (page.service) graph.push({ "@type": "Service", "@id": `${canonical}#service`, name: page.h1, description: page.description, url: canonical, provider: { "@id": businessId }, areaServed: "Bali, Indonesia" });
+  if (path === "/faq") graph.push({
+    "@type": "FAQPage", "@id": `${canonical}#questions`,
+    mainEntity: additionalFaqs.map(([question, answer]) => ({
+      "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer },
+    })),
+  });
   if (path === "/" || path === "/pricing") graph.push({
     "@type": "OfferCatalog", "@id": `${SITE_ORIGIN}/pricing#packages`, name: "Villa Bookkeeping Packages",
     itemListElement: [["Starter", prices.starter], ["Professional", prices.professional], ["Premium", prices.premium]].map(([name, price]) => ({

@@ -3,3 +3,4 @@
 - [Pricing positioning](pricing-positioning.md) — Market-adjusted prices: “Not too cheap, but it needs to make sense.”
 - [Named client permissions](client-permissions.md) — Six operators approved as named clients; descriptions are not endorsements and the six-villa scenario is fictional.
 - [DataForSEO authentication](dataforseo-auth.md) — Normalize a complete dashboard-encoded credential pair without double-encoding or exposing it.
+- [Site-wide SEO scope](site-wide-seo.md) — Optimize all public content pages and individual articles; retain factual boundaries and distinguish broad-term volume from niche demand.

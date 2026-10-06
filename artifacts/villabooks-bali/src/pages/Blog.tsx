@@ -6,6 +6,7 @@ import { Layout } from "@/components/Layout";
 import { BlogCard } from "@/components/BlogCard";
 import { trackEvent } from "@/lib/analytics";
 import { SITE_ORIGIN } from "@/lib/site-pages";
+import { PageEducation } from "@/components/PageEducation";
 
 export default function Blog() {
   const [search, setSearch] = useState("");
@@ -15,8 +16,8 @@ export default function Blog() {
     return Number.isInteger(requested) && requested > 0 ? requested : 1;
   });
   useEffect(() => {
-    const title = "Bali Villa Bookkeeping Guides | Bali Accounting";
-    const description = "Practical guides to Bali villa bookkeeping, OTA payouts, owner reports and record keeping. Understand the numbers and improve your monthly process.";
+    const title = "Bali Villa Bookkeeping & Airbnb Guides | Bali Accounting";
+    const description = "Practical Bali villa bookkeeping guides: Airbnb reconciliation, expense tracking, monthly owner reports and cash-flow forecasts, plus source-checked news.";
     document.title = title;
     const canonical = `${SITE_ORIGIN}/blog`;
     let link = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
@@ -54,7 +55,7 @@ export default function Blog() {
             <div className="max-w-3xl">
               <p className="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-secondary">The Bali villa ledger</p>
               <h1 data-testid="text-blog-heading" className="text-5xl leading-[1.02] sm:text-7xl">Bali Villa Bookkeeping Guides</h1>
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-primary-foreground/70">Practical explanations of villa bookkeeping, booking payouts, monthly reporting and the documents that make the close easier to understand.</p>
+              <p className="mt-7 max-w-2xl text-lg leading-8 text-primary-foreground/70">Learn how to reconcile Airbnb payouts, track rental property expenses and review monthly villa P&amp;L and cash flow. Our practical guides connect reporting questions with the source records behind them.</p>
               {automation && <div className="mt-6 text-sm text-primary-foreground/60" data-testid="text-publication-schedule"><p>{automation.enabled ? "Editorial automation is enabled." : "Editorial automation is currently paused."} Cadence: {automation.cadence}; up to {automation.maxPostsPerRun} article(s) per run. {automation.timezone} time.</p><p className="mt-2">{automation.lastRunStatus === "failed" ? "The last automated run needs attention; published guides remain available." : automation.lastRunStatus === "running" ? "An editorial run is in progress." : automation.lastRunAt ? `Last run: ${new Date(automation.lastRunAt).toLocaleString("en-GB", { timeZone: automation.timezone, dateStyle: "medium", timeStyle: "short" })}.` : "No completed run is reported yet."}{automation.nextEligibleRunAt && ` Next eligible run: ${new Date(automation.nextEligibleRunAt).toLocaleString("en-GB", { timeZone: automation.timezone, dateStyle: "medium", timeStyle: "short" })}.`}</p></div>}
             </div>
           </div>
@@ -72,6 +73,7 @@ export default function Blog() {
            <div className="mt-12 border-t border-primary/10 pt-7"><p className="text-xs font-bold uppercase tracking-[.18em] text-secondary">Explore the service pages</p><div className="mt-4 flex flex-wrap gap-x-7 gap-y-3 text-sm">{[["OTA payout reconciliation","/airbnb-bookkeeping-bali"],["Owner reporting","/villa-financial-reporting-bali"],["Pricing","/pricing"]].map(([label,href])=><Link key={href} href={href} className="font-semibold text-primary underline underline-offset-4">{label}</Link>)}</div></div>
         </section>
       </section>
+      <PageEducation path="/blog" />
     </Layout>
   );
 }
