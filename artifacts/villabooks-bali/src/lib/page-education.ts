@@ -236,6 +236,7 @@ export const pageEducation: Record<string, EducationSection[]> = {
       paragraphs: [
         "If you contact us about a privacy concern, describe the request without sending new sensitive financial material. Public enquiry submissions are retained for ninety days as described above. Contact through WhatsApp uses a separate provider, so its policies and practices also apply to that conversation.",
         "The website event records described here do not contain enquiry names, contact details or message content. They record the page and type of interaction, such as a consultation-link click. Operational infrastructure logs are distinct from those event records. Use the verified contact details to ask about the website's stated handling arrangements.",
+        "When hosted analytics is enabled for the published website, it also measures pageviews and actions such as form starts, package selections and saved enquiries. Our custom-event payloads contain the public page, interface placement and approved service or package labels, not your form text, contact details or enquiry reference. Hosted pageview measurement is separate from the application's own event records.",
       ],
       links: [["Read website terms and service boundaries", "/terms"]],
     },

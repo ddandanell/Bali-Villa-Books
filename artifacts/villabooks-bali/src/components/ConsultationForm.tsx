@@ -1,10 +1,10 @@
 import { prices, priceText } from "@/lib/pricing";
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { useSubmitEnquiry } from "@workspace/api-client-react";
 import { ArrowUpRight, CheckCircle2, CircleAlert, MessageCircle } from "lucide-react";
 import { Link } from "wouter";
 import { PHONE, whatsapp } from "@/lib/site-pages";
-import { trackEvent } from "@/lib/analytics";
+import { enquiryPlan, trackEvent } from "@/lib/analytics";
 
 const inputClass = "mt-2 block min-h-12 w-full rounded-xl border border-primary/15 bg-background px-4 text-sm text-foreground placeholder:text-foreground/40 focus:border-secondary focus:outline-none focus:ring-4 focus:ring-secondary/10";
 
@@ -13,6 +13,8 @@ export function ConsultationForm({ compact = false }: { compact?: boolean }) {
   const [receipt, setReceipt] = useState<{ reference: string; whatsappUrl: string; message: string } | null>(null);
   const [formError, setFormError] = useState("");
   const [channels, setChannels] = useState("");
+  const started = useRef(false);
+  const placement = compact ? "compact_form" : "enquiry_form";
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -37,6 +39,7 @@ export function ConsultationForm({ compact = false }: { compact?: boolean }) {
         website: String(data.get("website") ?? ""),
       } });
       setReceipt(saved);
+      trackEvent("enquiry_submitted", { placement, plan: enquiryPlan(String(data.get("preferredPackage") ?? "")) });
       form.reset();
       setChannels("");
     } catch {
@@ -52,7 +55,11 @@ export function ConsultationForm({ compact = false }: { compact?: boolean }) {
     <p className="mt-3 max-w-lg text-xs leading-5 text-foreground/55">WhatsApp opens a prepared message. Please review and press Send there if you want to contact us; opening it does not send a message or confirm a booking.</p>
   </div>;
 
-  return <form onSubmit={onSubmit} className="space-y-5" noValidate>
+  return <form onSubmit={onSubmit} onChange={() => {
+    if (started.current) return;
+    started.current = true;
+    trackEvent("enquiry_form_started", { placement });
+  }} className="space-y-5" noValidate>
     <div className="grid gap-5 sm:grid-cols-2">
       <label className="block text-sm font-semibold text-primary">Your name<input data-testid="input-enquiry-name" className={inputClass} name="name" autoComplete="name" minLength={2} maxLength={100} required placeholder="Name" /></label>
       <label className="block text-sm font-semibold text-primary">Email or WhatsApp contact<input data-testid="input-enquiry-contact" className={inputClass} name="contact" autoComplete="email" minLength={5} maxLength={150} required placeholder="Email address or phone" /></label>
@@ -60,7 +67,7 @@ export function ConsultationForm({ compact = false }: { compact?: boolean }) {
       <label className="block text-sm font-semibold text-primary">Villa location<input data-testid="input-enquiry-location" className={inputClass} name="location" minLength={2} maxLength={100} required placeholder="Area or areas in Bali" /></label>
       <label className="block text-sm font-semibold text-primary sm:col-span-2">Booking channels <span className="font-normal text-foreground/50">(optional)</span><input data-testid="input-enquiry-channels" className={inputClass} value={channels} onChange={(e) => setChannels(e.target.value)} maxLength={200} placeholder="Airbnb, Booking.com, direct…" /></label>
       <label className="block text-sm font-semibold text-primary sm:col-span-2">What would you like help with?<textarea data-testid="input-enquiry-issue" className={`${inputClass} min-h-28 resize-y py-3`} name="issue" minLength={10} maxLength={2000} required placeholder="For example: matching booking payouts, monthly owner reports, or catching up on older records." /></label>
-      <label className="block text-sm font-semibold text-primary sm:col-span-2">Package of interest <span className="font-normal text-foreground/50">(optional)</span><select data-testid="input-enquiry-package" className={inputClass} name="preferredPackage" defaultValue=""><option value="">Not sure yet</option><option>Starter — {priceText(prices.starter)}/month</option><option>Professional — {priceText(prices.professional)}/month</option><option>Premium — {priceText(prices.premium)}/month</option><option>One-time cleanup</option></select></label>
+      <label className="block text-sm font-semibold text-primary sm:col-span-2">Package of interest <span className="font-normal text-foreground/50">(optional)</span><select data-testid="input-enquiry-package" className={inputClass} name="preferredPackage" defaultValue="" onChange={event => trackEvent("plan_selected", { placement, plan: enquiryPlan(event.currentTarget.value) })}><option value="">Not sure yet</option><option>Starter — {priceText(prices.starter)}/month</option><option>Professional — {priceText(prices.professional)}/month</option><option>Premium — {priceText(prices.premium)}/month</option><option>One-time cleanup</option></select></label>
     </div>
     <div className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true"><label>Leave this empty<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
     <label className="flex items-start gap-3 text-sm leading-6 text-foreground/70"><input data-testid="input-enquiry-consent" className="mt-1 h-4 w-4 accent-primary" type="checkbox" name="consent" required /><span>I agree that Bali Accounting may use these enquiry details to respond to me. See the <Link href="/privacy" className="font-semibold text-secondary underline underline-offset-2">privacy information</Link>. Please do not upload or send financial documents through this form.</span></label>
