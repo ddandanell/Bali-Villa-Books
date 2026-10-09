@@ -1,13 +1,15 @@
 import { prices, priceShort } from "./pricing";
+import { expandedServices } from "./expanded-services";
 
 export const SITE_ORIGIN = "https://bali-villa-accounting-service.com";
 export const WHATSAPP_NUMBER = "6281237402292";
 export const PHONE = "+62 812-3740-2292";
-export const whatsapp = (message = "Hello Client Advisory, I would like a free consultation about my Bali villa bookkeeping.") => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+export const whatsapp = (message = "Hello Client Advisory, I would like a free consultation about your Bali accounting and business-support services.") => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
 export const sitePages: Record<string, { title: string; description: string; h1: string; service?: boolean }> = {
+  ...Object.fromEntries(expandedServices.map(service => [service.path, service.meta])),
   "/": { title: "Bali Accounting & Villa Bookkeeping | Bali Accounting", description: `Bali accounting for villa owners: monthly bookkeeping, Airbnb payout reconciliation and clear owner reports. From ${priceShort(prices.starter)}/month. Discuss your setup.`, h1: "Bali Accounting & Bookkeeping for Villa Owners" },
-  "/services": { title: "Bookkeeping Services in Bali | Villa Owner Support", description: "Bookkeeping services in Bali for rental properties: bank reconciliation, expense tracking, monthly owner reports and catch-up books. Compare your options.", h1: "Bookkeeping Services in Bali for Rental Properties" },
+  "/services": { title: "Bali Accounting Services | Company, Tax & Visa Support", description: "Explore Bali bookkeeping, PT PMA company setup, OSS licensing, tax compliance and visa support. Compare deliverables and discuss a separately scoped quote.", h1: "Bookkeeping, Company, Tax and Visa Services in Bali" },
   "/airbnb-bookkeeping-bali": { title: "Airbnb Bookkeeping Bali | OTA Payout Reconciliation", description: "Airbnb bookkeeping for Bali villas: reconcile Booking.com and OTA payouts, fees, refunds and bank deposits. Keep short-term rental records clear.", h1: "Airbnb Bookkeeping for Bali Villas", service: true },
   "/villa-financial-reporting-bali": { title: "Villa Financial Reporting Bali | P&L & Cash Flow", description: "Monthly villa financial reporting in Bali with profit and loss, rental income, expense tracking and cash-flow explanations. Explore a sample owner report.", h1: "Villa Financial Reporting in Bali: P&L and Cash Flow", service: true },
   "/villa-bookkeeping-cleanup-bali": { title: "Bookkeeping Cleanup Bali | Catch-Up Villa Books", description: `Catch-up bookkeeping for Bali villas: organize overdue records, reconcile transactions and document missing evidence. Cleanup from ${priceShort(prices.cleanup)} after review.`, h1: "Bookkeeping Cleanup and Catch-Up Books for Bali Villas", service: true },

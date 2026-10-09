@@ -28,6 +28,14 @@ function Router() {
       <Route path="/villa-financial-reporting-bali"><PageContent path="/villa-financial-reporting-bali" /></Route>
       <Route path="/villa-bookkeeping-cleanup-bali"><PageContent path="/villa-bookkeeping-cleanup-bali" /></Route>
       <Route path="/pt-pma-villa-bookkeeping"><PageContent path="/pt-pma-villa-bookkeeping" /></Route>
+      <Route path="/company-formation-bali"><PageContent path="/company-formation-bali" /></Route>
+      <Route path="/business-licensing-bali"><PageContent path="/business-licensing-bali" /></Route>
+      <Route path="/tax-registration-bali"><PageContent path="/tax-registration-bali" /></Route>
+      <Route path="/tax-compliance-bali"><PageContent path="/tax-compliance-bali" /></Route>
+      <Route path="/tax-planning-bali"><PageContent path="/tax-planning-bali" /></Route>
+      <Route path="/business-visa-bali"><PageContent path="/business-visa-bali" /></Route>
+      <Route path="/investor-kitas-bali"><PageContent path="/investor-kitas-bali" /></Route>
+      <Route path="/company-compliance-bali"><PageContent path="/company-compliance-bali" /></Route>
       <Route path="/villa-payroll-records-bali"><PageContent path="/villa-payroll-records-bali" /></Route>
       <Route path="/pricing"><PageContent path="/pricing" /></Route>
       <Route path="/sample-report"><PageContent path="/sample-report" /></Route>

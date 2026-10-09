@@ -29,7 +29,7 @@ export function cleanHtml(html: string): string {
 }
 
 type Existing = { slug: string; title: string; primaryKeyword: string };
-export const serviceLinks = ["/services", "/airbnb-bookkeeping-bali", "/villa-financial-reporting-bali", "/villa-bookkeeping-cleanup-bali", "/pt-pma-villa-bookkeeping", "/villa-payroll-records-bali"];
+export const serviceLinks = ["/services", "/airbnb-bookkeeping-bali", "/villa-financial-reporting-bali", "/villa-bookkeeping-cleanup-bali", "/pt-pma-villa-bookkeeping", "/villa-payroll-records-bali", "/company-formation-bali", "/business-licensing-bali", "/tax-registration-bali", "/tax-compliance-bali", "/tax-planning-bali", "/business-visa-bali", "/investor-kitas-bali", "/company-compliance-bali"];
 export const publicLinks = ["/", "/#services", "/#pricing", "/#faq", "/blog", "/pricing", "/sample-report", "/about", "/get-started", "/faq", ...serviceLinks];
 export function validateArticle(value: unknown, existing: Existing[], revisionSlug?: string) {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Article must be a JSON object");

@@ -4,3 +4,4 @@
 - [Named client permissions](client-permissions.md) — Six operators approved as named clients; descriptions are not endorsements and the six-villa scenario is fictional.
 - [DataForSEO authentication](dataforseo-auth.md) — Normalize a complete dashboard-encoded credential pair without double-encoding or exposing it.
 - [Site-wide SEO scope](site-wide-seo.md) — Optimize all public content pages and individual articles; retain factual boundaries and distinguish broad-term volume from niche demand.
+- [Expanded service scope](service-scope.md) — User confirmed in-house company, tax and visa support, separate from monthly bookkeeping-package inclusions.

@@ -2,9 +2,9 @@ import blueprint from "../../../../attached_assets/Pasted--100-Blog-Content-Blue
 
 export type BlueprintTopic = { id: number; cluster: string; workingTitle: string; keyword: string; service: string };
 const services: Record<string, string> = {
-  A: "/services", B: "/pt-pma-villa-bookkeeping", C: "/pt-pma-villa-bookkeeping",
-  D: "/pt-pma-villa-bookkeeping", E: "/services", F: "/pt-pma-villa-bookkeeping",
-  G: "/services", H: "/villa-financial-reporting-bali",
+  A: "/services", B: "/tax-compliance-bali", C: "/tax-compliance-bali",
+  D: "/company-compliance-bali", E: "/company-formation-bali", F: "/tax-planning-bali",
+  G: "/business-licensing-bali", H: "/villa-financial-reporting-bali",
 };
 const topics: BlueprintTopic[] = [];
 let cluster = "";

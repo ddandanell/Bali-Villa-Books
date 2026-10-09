@@ -6,6 +6,7 @@ import { ConsultationForm } from "@/components/ConsultationForm";
 import { PHONE, sitePages, whatsapp } from "@/lib/site-pages";
 import { prices, priceText, priceShort } from "@/lib/pricing";
 import { trackEvent } from "@/lib/analytics";
+import { expandedServices } from "@/lib/expanded-services";
 
 const wrap = "mx-auto max-w-7xl px-5 md:px-8";
 const eyebrow = "text-xs font-bold uppercase tracking-[.2em] text-secondary";
@@ -25,6 +26,7 @@ export function Hero() {
         <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-secondary/20 bg-accent px-4 py-2 text-xs font-bold uppercase tracking-[.12em] text-primary"><MapPin className="h-4 w-4 text-secondary" /> Denpasar, Bali · Professional services</div>
         <h1 className="max-w-3xl font-serif text-5xl leading-[.99] tracking-tight text-primary sm:text-7xl">{sitePages["/"].h1}</h1>
         <p className="mt-7 max-w-xl text-lg leading-8 text-foreground/75">Monthly bookkeeping for Bali villas and short-term rental properties. Our Denpasar team reconciles Airbnb and other booking payouts, tracks operating expenses and prepares clear owner financial reports. Understand your income and cash flow, with packages from {priceShort(prices.starter)} per month.</p>
+        <p className="mt-4 max-w-xl text-sm leading-7 text-foreground/70">Our qualified in-house team also supports <Link href="/company-formation-bali" className="font-semibold text-primary underline underline-offset-4">company setup</Link>, <Link href="/tax-compliance-bali" className="font-semibold text-primary underline underline-offset-4">tax compliance</Link> and <Link href="/business-visa-bali" className="font-semibold text-primary underline underline-offset-4">visa applications</Link>, with separate scopes and quotations.</p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row"><WhatsAppCTA place="home_hero" /><Link href="/sample-report" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-primary/20 px-6 text-sm font-semibold text-primary transition-colors hover:bg-accent">View a sample report <ArrowRight className="h-4 w-4" /></Link></div>
         <p className="mt-7 max-w-xl text-sm leading-6 text-foreground/55">Based in Denpasar. English and Indonesian support. Scope agreed before work begins.</p>
       </div>
@@ -52,10 +54,11 @@ const services = [
   { n: "03", title: "Villa owner financial reports", desc: "Read your profit and loss, cash movements and outstanding questions—not just a bank balance.", href: "/villa-financial-reporting-bali", link: "Review financial report scope" },
   { n: "04", title: "Payroll records", desc: "Track supplied staff schedules and BPJS document status in the agreed bookkeeping scope.", href: "/villa-payroll-records-bali", link: "See record tracking" },
   { n: "05", title: "Catch-up bookkeeping", desc: "Bring overdue villa records into an agreed cleanup process. Reconcile what the evidence supports and list remaining gaps.", href: "/villa-bookkeeping-cleanup-bali", link: "Understand bookkeeping cleanup" },
+  ...expandedServices.map((service, index) => ({ n: String(index + 6).padStart(2, "0"), title: service.label, desc: service.summary, href: service.path, link: "Explore scope and documents" })),
 ];
 export function ServicesSection() {
   return <section id="services" className="bg-background py-16 sm:py-24"><div className={wrap}>
-    <div className="grid gap-8 md:grid-cols-[.8fr_1.2fr] md:items-end"><Heading label="Bookkeeping services in Bali" title="Monthly records for villa owners and operators." body="Rental property bookkeeping connects bookings, bank deposits, supplier invoices, staff costs and owner movements. Choose the support your records actually need." /><Link href="/services" className="inline-flex items-center gap-2 pb-1 font-semibold text-primary underline decoration-secondary/50 underline-offset-4">Compare villa bookkeeping services <ArrowRight className="h-4 w-4" /></Link></div>
+    <div className="grid gap-8 md:grid-cols-[.8fr_1.2fr] md:items-end"><Heading label="Accounting and business services in Bali" title="From company setup to clearer monthly records." body="Our in-house team connects bookkeeping with separately scoped company formation, OSS licensing, tax registration, tax-compliance and planning support, and visa applications. Explore the deliverables and documents for each service." /><Link href="/services" className="inline-flex items-center gap-2 pb-1 font-semibold text-primary underline decoration-secondary/50 underline-offset-4">Compare all service scopes <ArrowRight className="h-4 w-4" /></Link></div>
     <div className="mt-10 grid gap-px overflow-hidden rounded-3xl border border-primary/10 bg-primary/10 sm:grid-cols-2 lg:grid-cols-3">{services.map((s) => <Link key={s.n} href={s.href} className="group min-h-56 bg-background p-6 transition-colors hover:bg-accent/50 sm:p-7"><span className="font-mono text-xs text-secondary">{s.n} / SCOPE</span><h3 className="mt-5 font-serif text-2xl text-primary">{s.title}</h3><p className="mt-3 text-sm leading-6 text-foreground/65">{s.desc}</p><span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-secondary">{s.link}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span></Link>)}</div>
   </div></section>;
 }
@@ -125,7 +128,7 @@ export function LocalAbout() {
 
 const homeFaq: [string,string][] = [
   ["What is the monthly price?",`Starter is ${priceText(prices.starter)}, Professional ${priceText(prices.professional)} and Premium ${priceText(prices.premium)} per month. Confirm price basis and applicable limits before agreement.`],
-  ["Do you provide tax advice or file returns?","No. The service organizes bookkeeping records and can prepare a handover for your licensed Indonesian tax adviser. Tax advice and official filings are outside scope."],
+  ["Do you provide tax and company support?","Yes. Our in-house team supports company setup, tax registration, tax-compliance and planning engagements, plus visa application administration. These services are separately scoped and quoted; they are not automatically included in monthly bookkeeping prices."],
   ["Can you reconcile Airbnb and other OTA payouts?","Yes, from records and exports supplied and within the agreed package scope. Direct integrations are not promised."],
   ["When will I receive my report?","The 15th is a target after complete and timely source documents are received—not a guaranteed date."],
   ["What should I do if my books are behind?",`A cleanup starts at ${priceText(prices.cleanup)} for up to 12 months, subject to records review and a scoped agreement.`],

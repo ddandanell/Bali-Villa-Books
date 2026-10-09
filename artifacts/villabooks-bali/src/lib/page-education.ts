@@ -272,7 +272,7 @@ export const pageEducation: Record<string, EducationSection[]> = {
       heading: "Keep expense controls and cash planning connected",
       paragraphs: [
         "Expense tracking starts with the document behind a cost, the property it belongs to and the person responsible for clarification. A management pack brings those records together with booking and cash views. A forecast then makes future receipt and payment assumptions visible; it is not evidence that the projected amount will be received.",
-        "Dated Indonesia news is published separately from the bookkeeping guides. Read its cited sources and current-status limitations before using it in a travel or business decision. Bali Accounting does not provide immigration, tax or legal advice. A news headline is context for a professional discussion, not permission to operate or work.",
+        "Dated Indonesia news is published separately from the practical guides. Articles are general information, not individual tax, legal or immigration advice. Our in-house team offers separately scoped company, tax and visa support; a news headline is not an eligibility assessment or permission to operate or work.",
       ],
       links: [["Villa expense tracking guide", "/blog/bali-villa-expense-tracking-system"], ["Villa cash-flow forecast guide", "/blog/bali-villa-cash-flow-forecast"], ["Explore monthly bookkeeping services", "/services"]],
     },

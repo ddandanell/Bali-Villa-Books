@@ -35,9 +35,9 @@ The user does not use Calendly. All booking and consultation actions must open W
 
 The 100-topic blueprint is a topic and structure plan, not verified evidence of tax rates, deadlines, permissions or new professional services.
 
-**Why:** Its blanket factual claims and proposed tax audits, health checks, guarantee offers and lead magnets conflict with the firm's confirmed bookkeeping-only scope.
+**Why:** Its blanket factual claims are unverified. The user subsequently confirmed expanded in-house company, tax and visa support, but did not confirm audits, health checks, guarantee offers or lead magnets.
 
-**How to apply:** Use practical evidence-preparation angles and real service/contact links. Hold unsupported regulatory claims, including in headlines and metadata. Do not invent a named licensed reviewer.
+**How to apply:** Use practical evidence-preparation angles and real service/contact links, including the expanded scope described in service-scope.md. Hold unsupported regulatory claims, including in headlines and metadata. Do not invent a named licensed reviewer.
 
 Supply mandatory links and the exact service disclaimer deterministically rather than relying entirely on generated HTML.
 
