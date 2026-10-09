@@ -10,6 +10,7 @@ import { ClientShowcase, SixVillaScenario } from "@/components/ClientShowcase";
 import { PageEducation } from "@/components/PageEducation";
 import { additionalFaqs } from "@/lib/additional-faqs";
 import { PHONE, SITE_ORIGIN, sitePages, whatsapp } from "@/lib/site-pages";
+import { updateShareImage } from "@/lib/social-images";
 import { trackEvent } from "@/lib/analytics";
 
 const wrap = "mx-auto max-w-7xl px-5 md:px-8";
@@ -224,6 +225,7 @@ export default function PageContent({ path }: { path: string }) {
     setMeta('meta[property="og:url"]', "property", canonical);
     setMeta('meta[name="twitter:title"]', "name", page.title);
     setMeta('meta[name="twitter:description"]', "name", page.description);
+    updateShareImage(normalized);
   }, [normalized]);
   const content = serviceDetails[normalized] ? <ServicePage path={normalized} /> : ({
     "/services": <ServicesDirectory />, "/pricing": <Pricing />, "/sample-report": <SampleReport />,

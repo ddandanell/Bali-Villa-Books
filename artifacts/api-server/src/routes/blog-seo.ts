@@ -4,11 +4,14 @@ import { db, blogPosts } from "@workspace/db";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { cleanHtml } from "../lib/blog-content";
+import { articleFaqs } from "../lib/editorial-blueprint";
 import { GetBlogPostResponse, ListBlogPostsResponse } from "@workspace/api-zod";
 
 const router = Router();
 // Verified custom domain returned by deployment metadata, not a development domain.
 const origin = "https://bali-villa-accounting-service.com";
+const defaultShareImage = "/bali-accounting-share-2026-10.jpg";
+const journalShareImage = "/bali-accounting-journal-share-2026-10.jpg";
 const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]!));
 const safeJson = (value: unknown) => JSON.stringify(value).replace(/</g, "\\u003c");
 const lastGood = new Map<string, { html: string; savedAt: number }>();
@@ -34,8 +37,14 @@ async function template() {
   return readFile(path.resolve("artifacts/villabooks-bali/dist/public/index.html"), "utf8");
 }
 
-async function documentHtml(title: string, description: string, canonicalPath: string, content: string, bootstrap: unknown, image: string, schema: unknown) {
+async function documentHtml(title: string, description: string, canonicalPath: string, content: string, bootstrap: unknown, image: string, schema: unknown, imageAlt?: string, imageVersion?: string) {
   const raw = await template();
+  const parsedImage = new URL(image, origin);
+  if (imageVersion && parsedImage.origin === origin) parsedImage.searchParams.set("v", imageVersion);
+  const imageUrl = parsedImage.href;
+  const socialAlt = imageAlt ?? (canonicalPath === "/blog" ? "Bali Accounting Journal — practical guides for better villa records" : "Bali Accounting — villa bookkeeping and clear owner reports");
+  const branded = [defaultShareImage, journalShareImage].includes(parsedImage.pathname);
+  const faqs = articleFaqs(content);
   const scriptsAndStyles = [
     ...(raw.match(/<script\b[^>]*type="module"[\s\S]*?<\/script>/gi) ?? []),
     ...(raw.match(/<script\b[^>]*>[\s\S]*?@react-refresh[\s\S]*?<\/script>/gi) ?? []),
@@ -46,11 +55,16 @@ async function documentHtml(title: string, description: string, canonicalPath: s
 <link rel="canonical" href="${origin}${escape(canonicalPath)}">
 <meta property="og:type" content="${canonicalPath === "/blog" ? "website" : "article"}"><meta property="og:title" content="${escape(title)}">
 <meta property="og:description" content="${escape(description)}"><meta property="og:url" content="${origin}${escape(canonicalPath)}">
-<meta property="og:image" content="${origin}${escape(image)}"><meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${escape(title)}"><meta name="twitter:description" content="${escape(description)}"><meta name="twitter:image" content="${origin}${escape(image)}">
+<meta property="og:image" content="${escape(imageUrl)}"><meta property="og:image:secure_url" content="${escape(imageUrl)}"><meta property="og:image:alt" content="${escape(socialAlt)}">
+${branded ? '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/jpeg">' : ""}
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image:alt" content="${escape(socialAlt)}">
+<meta name="twitter:title" content="${escape(title)}"><meta name="twitter:description" content="${escape(description)}"><meta name="twitter:image" content="${escape(imageUrl)}">
 <script type="application/ld+json">${safeJson({
   "@context": "https://schema.org", "@graph": [
     { ...schema as Record<string, unknown>, "@context": undefined },
+    ...(faqs.length ? [{ "@type": "FAQPage", "@id": `${origin}${canonicalPath}#faq`,
+      mainEntity: faqs.map(faq => ({ "@type": "Question", name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }] : []),
     { "@type": "AccountingService", "@id": `${origin}/#business`, name: "Bali Accounting", url: `${origin}/`, telephone: "+6281237402292" },
     { "@type": "BreadcrumbList", itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: `${origin}/` },
@@ -82,7 +96,7 @@ router.get("/blog", async (req, res) => {
 <p>Expense tracking starts with the document behind a cost, the property it belongs to and the person responsible for clarification. A management pack brings those records together with booking and cash views. A forecast then makes future receipt and payment assumptions visible; it is not evidence that the projected amount will be received.</p>
 <p>Dated Indonesia news is published separately from the bookkeeping guides. Read its cited sources and current-status limitations before using it in a travel or business decision. Bali Accounting does not provide immigration, tax or legal advice. A news headline is context for a professional discussion, not permission to operate or work.</p>
 <ul><li><a href="/blog/bali-villa-expense-tracking-system">Villa expense tracking guide</a></li><li><a href="/blog/bali-villa-cash-flow-forecast">Villa cash-flow forecast guide</a></li><li><a href="/services">Explore monthly bookkeeping services</a></li></ul></section>`;
-  sendPage(res, req.originalUrl, await documentHtml("Bali Villa Bookkeeping & Airbnb Guides", "Practical Bali villa bookkeeping guides: Airbnb reconciliation, expense tracking, monthly owner reports and cash-flow forecasts, plus source-checked news.", "/blog", content, { posts, listParams: page === 1 ? { limit: 50 } : { limit: 50, offset: (page - 1) * 50 } }, "/images/bali-account-management-team.jpg", {
+  sendPage(res, req.originalUrl, await documentHtml("Bali Villa Bookkeeping & Airbnb Guides", "Practical Bali villa bookkeeping guides: Airbnb reconciliation, expense tracking, monthly owner reports and cash-flow forecasts, plus source-checked news.", "/blog", content, { posts, listParams: page === 1 ? { limit: 50 } : { limit: 50, offset: (page - 1) * 50 } }, journalShareImage, {
     "@context": "https://schema.org", "@type": "CollectionPage", name: "Bali Villa Bookkeeping Guides",
     url: `${origin}/blog`, hasPart: posts.map(post => ({ "@type": "BlogPosting", headline: post.title, url: `${origin}/blog/${post.slug}` })),
   }));
@@ -92,7 +106,7 @@ router.get("/blog/:slug", async (req, res) => {
   const [row] = await db.select().from(blogPosts).where(eq(blogPosts.slug, req.params.slug));
   if (!row) {
     const html = await documentHtml("Guide Not Found", "This guide could not be found. Browse the Bali villa bookkeeping journal or contact Client Advisory.", `/blog/${req.params.slug}`,
-      '<h1>Guide not found</h1><p>This guide does not exist. <a href="/blog">Browse the journal</a> or <a href="/services">explore our services</a>.</p>', {}, "/opengraph.jpg",
+      '<h1>Guide not found</h1><p>This guide does not exist. <a href="/blog">Browse the journal</a> or <a href="/services">explore our services</a>.</p>', {}, defaultShareImage,
       { "@type": "WebPage", name: "Guide not found" });
     res.status(404).set({ "Cache-Control": "no-store", "X-Robots-Tag": "noindex" }).type("html").send(html.replace("</head>", '<meta name="robots" content="noindex,follow"></head>')); return;
   }
@@ -106,13 +120,14 @@ router.get("/blog/:slug", async (req, res) => {
   const servicePath = /airbnb|payout|booking|ota/i.test(post.slug) ? "/airbnb-bookkeeping-bali" : /cleanup|catch-up|incomplete/i.test(post.slug) ? "/villa-bookkeeping-cleanup-bali" : /pt-pma|tax-adviser/i.test(post.slug) ? "/pt-pma-villa-bookkeeping" : "/villa-financial-reporting-bali";
   const content = `<article><p>${escape(post.category)}</p><h1>${escape(post.title)}</h1><p>${escape(post.excerpt)}</p><time datetime="${post.publishedAt.toISOString()}">${post.publishedAt.toISOString().slice(0, 10)}</time>
 <img src="${escape(post.imageUrl)}" alt="${escape(post.imageAlt)}" width="1024" height="1024" fetchpriority="high">
+<p>By Bali Accounting editorial desk · Editorial updated ${post.updatedAt.toISOString().slice(0,10)}. General information, not a claim of licensed professional review.</p>
 ${post.contentHtml}<p><a href="https://wa.me/6281237402292">Speak with Client Advisory</a></p><h2>Related guides</h2><ul>${post.relatedPosts.map(p => `<li><a href="/blog/${escape(p.slug)}">${escape(p.title)}</a></li>`).join("")}</ul></article>`;
   sendPage(res, req.originalUrl, await documentHtml(post.metaTitle, post.metaDescription, `/blog/${post.slug}`, content.replace("</article>", `<p>Need help applying this process? Explore our <a href="${servicePath}">villa bookkeeping service</a>, <a href="/sample-report">sample owner report</a> and <a href="/pricing">package inclusions</a>.</p></article>`), { post }, post.imageUrl, {
     "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.metaDescription,
-    image: `${origin}${post.imageUrl}`, datePublished: post.publishedAt, dateModified: post.updatedAt,
+    image: new URL(post.imageUrl, origin).href, datePublished: post.publishedAt, dateModified: post.updatedAt,
     wordCount: post.wordCount, author: { "@id": `${origin}/#business` },
     publisher: { "@id": `${origin}/#business` }, mainEntityOfPage: `${origin}/blog/${post.slug}`,
-  }));
+  }, post.imageAlt, String(post.updatedAt.getTime())));
 });
 
 router.get("/sitemap.xml", async (_req, res) => {

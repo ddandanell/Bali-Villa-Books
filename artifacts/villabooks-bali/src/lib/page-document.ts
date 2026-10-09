@@ -1,6 +1,7 @@
 import { sitePages, SITE_ORIGIN, PHONE } from "./site-pages";
 import { prices } from "./pricing";
 import { additionalFaqs } from "./additional-faqs";
+import { DEFAULT_SHARE_IMAGE, shareImage, shareImageAlt } from "./social-images";
 
 const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]!));
 const json = (value: unknown) => JSON.stringify(value).replace(/</g, "\\u003c");
@@ -11,12 +12,14 @@ export function pageDocument(template: string, content: string, pathname: string
     title: "Page Not Found | Bali Accounting", description: "This page could not be found. Browse our villa bookkeeping services or contact Client Advisory.", h1: "Page not found",
   };
   const canonical = `${SITE_ORIGIN}${path}`;
+  const socialImage = `${SITE_ORIGIN}${shareImage(path)}`;
+  const socialAlt = shareImageAlt(path);
   const businessId = `${SITE_ORIGIN}/#business`;
   const webId = `${SITE_ORIGIN}/#website`;
   const graph: unknown[] = [{
     "@type": "AccountingService", "@id": businessId, name: "Bali Accounting", url: `${SITE_ORIGIN}/`,
     description: "Villa bookkeeping, OTA reconciliation and monthly financial reporting, with organized handover to a licensed tax adviser.",
-    telephone: PHONE, image: `${SITE_ORIGIN}/opengraph.jpg`,
+    telephone: PHONE, image: `${SITE_ORIGIN}${DEFAULT_SHARE_IMAGE}`,
     founder: { "@type": "Person", name: "Abel Yuniartini" },
     address: { "@type": "PostalAddress", streetAddress: "Jl. Tukad Barito Timur III No.16, Panjer", addressLocality: "Denpasar Selatan", addressRegion: "Bali", postalCode: "80226", addressCountry: "ID" },
     areaServed: { "@type": "Place", name: "Bali, Indonesia" },
@@ -50,9 +53,12 @@ ${sitePages[path] ? "" : '<meta name="robots" content="noindex,follow">'}
 <link rel="canonical" href="${escape(canonical)}">
 <meta property="og:type" content="website"><meta property="og:title" content="${escape(page.title)}">
 <meta property="og:description" content="${escape(page.description)}"><meta property="og:url" content="${escape(canonical)}">
-<meta property="og:image" content="${SITE_ORIGIN}/opengraph.jpg"><meta property="og:image:alt" content="Bali Accounting villa bookkeeping services">
+<meta property="og:image" content="${socialImage}"><meta property="og:image:secure_url" content="${socialImage}">
+<meta property="og:image:alt" content="${escape(socialAlt)}"><meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escape(page.title)}">
-<meta name="twitter:description" content="${escape(page.description)}"><meta name="twitter:image" content="${SITE_ORIGIN}/opengraph.jpg">
+<meta name="twitter:description" content="${escape(page.description)}"><meta name="twitter:image" content="${socialImage}">
+<meta name="twitter:image:alt" content="${escape(socialAlt)}">
 <script type="application/ld+json" id="site-schema">${json({ "@context": "https://schema.org", "@graph": graph })}</script>`;
   return template
     .replace(/<title>[\s\S]*?<\/title>/gi, "")

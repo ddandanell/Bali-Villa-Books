@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Layout } from "@/components/Layout";
 import { SITE_ORIGIN, sitePages } from "@/lib/site-pages";
+import { updateShareImage } from "@/lib/social-images";
 import { ClientShowcase, SixVillaScenario } from "@/components/ClientShowcase";
 import { PageEducation } from "@/components/PageEducation";
 import {
@@ -32,6 +33,7 @@ export default function Home() {
     document.querySelector('meta[property="og:url"]')?.setAttribute("content", canonical);
     document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", page.title);
     document.querySelector('meta[name="twitter:description"]')?.setAttribute("content", page.description);
+    updateShareImage("/");
   }, []);
   return <Layout>
     <Hero />

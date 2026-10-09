@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { updateShareImage } from "@/lib/social-images";
 import { Link } from "wouter";
 import { Search, ArrowRight, BookOpen, RefreshCw, ChevronLeft, ChevronRight } from "lucide-react";
 import { getGetBlogAutomationStatusQueryKey, useListBlogPosts, useGetBlogAutomationStatus, type BlogPostSummary } from "@workspace/api-client-react";
@@ -16,6 +17,7 @@ export default function Blog() {
     return Number.isInteger(requested) && requested > 0 ? requested : 1;
   });
   useEffect(() => {
+    updateShareImage("/blog");
     const title = "Bali Villa Bookkeeping & Airbnb Guides | Bali Accounting";
     const description = "Practical Bali villa bookkeeping guides: Airbnb reconciliation, expense tracking, monthly owner reports and cash-flow forecasts, plus source-checked news.";
     document.title = title;

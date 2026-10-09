@@ -1,6 +1,6 @@
 export const TIMEZONE = "Asia/Makassar";
 export const SCHEDULED_HOUR = 9;
-export const MIN_WORDS = 1000;
+export const MIN_WORDS = 1500;
 export const DAILY_POSTS = 2;
 
 export const imageLibrary = [
@@ -28,7 +28,7 @@ export function baliClock(at = new Date()) {
   monday.setUTCDate(local.getUTCDate() - ((day + 6) % 7));
   return {
     dateKey, weekKey: monday.toISOString().slice(0, 10),
-    eligible: day >= 1 && day <= 5 && local.getUTCHours() >= SCHEDULED_HOUR,
+    eligible: local.getUTCHours() >= SCHEDULED_HOUR,
   };
 }
 
@@ -36,9 +36,6 @@ export function nextPublication(at: Date, todayFinished: boolean): Date {
   const local = new Date(at.getTime() + 8 * 3600000);
   const candidate = new Date(Date.UTC(local.getUTCFullYear(), local.getUTCMonth(), local.getUTCDate(), SCHEDULED_HOUR - 8));
   if (todayFinished || candidate < at) candidate.setUTCDate(candidate.getUTCDate() + 1);
-  while ([0, 6].includes(new Date(candidate.getTime() + 8 * 3600000).getUTCDay())) {
-    candidate.setUTCDate(candidate.getUTCDate() + 1);
-  }
   return candidate;
 }
 

@@ -1,0 +1,11 @@
+{
+  "name": "bali-accounting-journal-worker",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "start": "node worker.mjs",
+    "build": "node worker.mjs --offline-check",
+    "check": "node worker.mjs --check"
+  }
+}

@@ -3,15 +3,18 @@ import { db, pool, blogPosts, blogEvents, blogRevisions, automationConfig, autom
 import { openai } from "@workspace/integrations-openai-ai-server";
 import { batchProcess } from "@workspace/integrations-openai-ai-server/batch";
 import { logger } from "./logger";
-import { validateArticle, cleanHtml, publicLinks, serviceLinks } from "./blog-content";
+import { validateArticle, cleanHtml, publicLinks, serviceLinks, safeArticleLink } from "./blog-content";
 import { baliClock, countWords, DAILY_POSTS, imageLibrary, keywordClusters, MIN_WORDS } from "./blog-policy";
+import { nextBlueprintTopic } from "./editorial-blueprint";
+import { createBlueprintArticle } from "./journal-writer";
+import { isJournalImage } from "./journal-images";
 
 const guidance = `You write for Bali Accounting, a serious Denpasar-based bookkeeping firm for villa owners and operators.
 Create useful, original English guides, not SEO filler. No invented testimonials, client outcomes, credentials, statistics, tax rates or legal conclusions.
 Never present bookkeeping as tax advice; licensed Indonesian Konsultan Pajak handles advice and official filings.
 Use Sales / Client Advisory language, never personal founder-led CTAs.
 Return exactly one JSON article object: slug,title,excerpt,metaTitle,metaDescription,primaryKeyword,category,contentHtml,imageUrl,imageAlt.
-Aim for 1200–1500 visible words; ABSOLUTE MINIMUM 1000. Include at least four h2 sections, practical examples explicitly marked illustrative, and useful checklists.
+Aim for 1800–2200 visible words; ABSOLUTE MINIMUM 1500. Include at least four h2 sections, practical examples explicitly marked illustrative, and useful checklists.
 Use semantic h2,h3,p,ul,ol,li,strong,em,a HTML only. No h1, scripts, styles or inline event handlers.
 Meta title 20–60 characters; meta description 90–160; excerpt 60–350; descriptive natural image alt 20–180.
 Use a distinct long-tail primaryKeyword related to the provided service cluster, not a primary keyword already covered.
@@ -34,7 +37,7 @@ const keywordResearch = {
 
 async function context() {
   const existing = await db.select({
-    slug: blogPosts.slug, title: blogPosts.title, primaryKeyword: blogPosts.primaryKeyword,
+    slug: blogPosts.slug, title: blogPosts.title, primaryKeyword: blogPosts.primaryKeyword, imageUrl: blogPosts.imageUrl,
   }).from(blogPosts).orderBy(desc(blogPosts.publishedAt));
   const engagement = await db.select({
     slug: blogEvents.slug, eventType: blogEvents.eventType, count: sql<number>`count(*)`,
@@ -76,28 +79,32 @@ async function openRun(runKey: string) {
   return retried;
 }
 
-async function publishDay(dateKey: string) {
-  const run = await openRun(`weekday:${dateKey}`);
+async function publishDay(dateKey: string, firstOnly = false, retries = 2) {
+  const run = await openRun(`daily:${dateKey}`);
   if (!run) return;
   try {
-    await batchProcess([0, 1], async slot => {
+    await batchProcess(firstOnly ? [0] : Array.from({ length: DAILY_POSTS }, (_, slot) => slot), async slot => {
       const automationKey = `${dateKey}:${slot}`;
       const [already] = await db.select({ id: blogPosts.id }).from(blogPosts).where(eq(blogPosts.automationKey, automationKey));
       if (already) return;
       const cluster = keywordClusters[(Math.floor(Date.parse(dateKey) / 86400000) * DAILY_POSTS + slot) % keywordClusters.length];
-      const post = await generateArticle(
-        `Create one new article for publication ${dateKey}, slot ${slot + 1}. Service cluster: ${JSON.stringify(cluster)}.
-Choose an underserved practical angle; use engagement to prioritize usefulness, not to claim performance gains.`
-      );
+      const details = await context();
+      const topic = nextBlueprintTopic(details.existing, firstOnly ? 1 : undefined);
+      const post = await createBlueprintArticle(topic, details, cluster).catch(err => {
+        logger.warn({ reason: err instanceof Error ? err.message : String(err), topicId: topic?.id }, "Article attempt held by publication quality checks");
+        throw err;
+      });
       await db.insert(blogPosts).values({ ...post, publishedAt: new Date(), automationKey })
         .onConflictDoNothing({ target: blogPosts.automationKey });
-    }, { concurrency: 1, retries: 2 });
+    }, { concurrency: 1, retries });
     const count = await db.select({ count: sql<number>`count(*)` }).from(blogPosts).where(sql`${blogPosts.automationKey} like ${`${dateKey}:%`}`);
     const publishedCount = Number(count[0].count);
-    if (publishedCount !== DAILY_POSTS) throw new Error(`Published ${publishedCount} of ${DAILY_POSTS} articles`);
-    await db.update(automationRuns).set({ status: "completed", completedAt: new Date(), publishedCount }).where(eq(automationRuns.id, run.id));
+    if (!firstOnly && publishedCount !== DAILY_POSTS) throw new Error(`Published ${publishedCount} of ${DAILY_POSTS} articles`);
+    await db.update(automationRuns).set({ status: publishedCount === DAILY_POSTS ? "completed" : "partial", completedAt: publishedCount === DAILY_POSTS ? new Date() : null, publishedCount,
+      metadata: { attempts: publishedCount === DAILY_POSTS ? Number((run.metadata as { attempts?: number })?.attempts ?? 1) : 0 },
+    }).where(eq(automationRuns.id, run.id));
     await db.update(automationConfig).set({ lastRunAt: new Date(), updatedAt: new Date() });
-    logger.info({ dateKey, publishedCount }, "Weekday journal publication completed");
+    logger.info({ dateKey, publishedCount, firstOnly }, "Daily journal publication completed");
   } catch (err) {
     const count = await db.select({ count: sql<number>`count(*)` }).from(blogPosts).where(sql`${blogPosts.automationKey} like ${`${dateKey}:%`}`);
     await db.update(automationRuns).set({
@@ -105,6 +112,7 @@ Choose an underserved practical angle; use engagement to prioritize usefulness, 
       errorMessage: err instanceof Error ? err.message : String(err),
     }).where(eq(automationRuns.id, run.id));
     logger.error({ err, dateKey }, "Weekday journal publication failed; valid published slots will not be duplicated on retry");
+    throw err;
   }
 }
 
@@ -118,9 +126,9 @@ async function reviewWeek(weekKey: string) {
       const problems: string[] = [];
       if (countWords(post.contentHtml) < MIN_WORDS) problems.push("short-content");
       if (post.metaTitle.length > 60 || post.metaDescription.length > 160) problems.push("metadata-length");
-      if (!imageLibrary.some(image => image.url === post.imageUrl) || !post.imageAlt) problems.push("image");
+      if (!isJournalImage(post.imageUrl) || !post.imageAlt) problems.push("image");
       const links = [...post.contentHtml.matchAll(/href="([^"]+)"/g)].map(m => m[1]);
-      if (links.some(link => !knownLinks.has(link) && !publicLinks.includes(link))) problems.push("broken-internal-link");
+      if (links.some(link => !knownLinks.has(link) && !publicLinks.includes(link) && !(link.startsWith("https://") && safeArticleLink(link)))) problems.push("broken-internal-link");
       if (!links.some(link => serviceLinks.includes(link) || link === "/#services")) problems.push("missing-service-link");
       return { slug: post.slug, problems };
     });
@@ -163,19 +171,20 @@ Existing article: ${JSON.stringify({ title: post.title, primaryKeyword: post.pri
   }
 }
 
-export async function runBlogAutomation(at = new Date()): Promise<void> {
+export async function runBlogAutomation(at = new Date(), options: { force?: boolean; firstOnly?: boolean; scheduled?: boolean } = {}): Promise<"completed" | "before-hour" | "disabled" | "busy"> {
   const clock = baliClock(at);
-  if (!clock.eligible) return;
+  if (!clock.eligible && !options.force) return "before-hour";
   const [config] = await db.select().from(automationConfig).limit(1);
-  if (config?.enabled === false) return;
+  if (config?.enabled === false) return "disabled";
   // Hold the advisory lock on ONE dedicated connection, and always release it.
   // A pooled db.execute lock would leak across connections and cannot protect the whole job.
   const connection = await pool.connect();
   try {
     const lock = await connection.query("SELECT pg_try_advisory_lock(74192832) AS locked");
-    if (!lock.rows[0]?.locked) return;
-    await publishDay(clock.dateKey);
-    await reviewWeek(clock.weekKey);
+    if (!lock.rows[0]?.locked) return "busy";
+    await publishDay(clock.dateKey, options.firstOnly, options.scheduled ? 0 : 2);
+    if (!options.firstOnly) await reviewWeek(clock.weekKey);
+    return "completed";
   } finally {
     try { await connection.query("SELECT pg_advisory_unlock(74192832)"); }
     finally { connection.release(); }
@@ -184,12 +193,16 @@ export async function runBlogAutomation(at = new Date()): Promise<void> {
 
 export function startBlogAutomation(): void {
   if (process.env.NODE_ENV !== "production") {
-    logger.info("Unattended AI publication is disabled in development; the production weekday schedule runs after publishing");
+    logger.info("Unattended AI publication is disabled in development; the production daily schedule runs after publishing");
+    return;
+  }
+  if (process.env.JOURNAL_SCHEDULER_MODE === "external") {
+    logger.info("Independent scheduled worker owns publication; the website timer is disabled");
     return;
   }
   const check = () => void runBlogAutomation().catch(err => logger.error({ err }, "Content scheduler check failed"));
   check();
-  // 5-minute checks tolerate restarts; database keys guarantee two slots per Bali weekday.
+  // Every calendar day, including weekends. Requires a continuously running host or independent worker.
   setInterval(check, 5 * 60000).unref();
-  logger.info({ timezone: "Asia/Makassar", hour: 9, weekdays: "Mon–Fri", postsPerDay: 2 }, "Content publishing scheduler started");
+  logger.info({ timezone: "Asia/Makassar", hour: 9, days: "Every day", postsPerDay: DAILY_POSTS }, "Content publishing scheduler started");
 }

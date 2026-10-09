@@ -1,9 +1,10 @@
 import sanitizeHtml from "sanitize-html";
 import { countWords, imageLibrary, MIN_WORDS, similarTitle } from "./blog-policy";
+import { isJournalImage } from "./journal-images";
 
 // Hand-researched news may cite these verified official and public-news sources.
-const sourceHosts = new Set(["kemenimipas.go.id", "www.imigrasi.go.id", "evisa.imigrasi.go.id", "peraturan.bpk.go.id", "en.antaranews.com", "allindonesia.imigrasi.go.id", "oss.go.id"]);
-function safeArticleLink(href?: string) {
+const sourceHosts = new Set(["kemenimipas.go.id", "www.imigrasi.go.id", "evisa.imigrasi.go.id", "peraturan.bpk.go.id", "en.antaranews.com", "allindonesia.imigrasi.go.id", "oss.go.id", "www.pajak.go.id", "pajak.go.id", "commons.wikimedia.org", "creativecommons.org"]);
+export function safeArticleLink(href?: string) {
   if (!href) return false;
   if (href.startsWith("/") && !href.startsWith("//")) return true;
   try {
@@ -14,7 +15,7 @@ function safeArticleLink(href?: string) {
 
 export function cleanHtml(html: string): string {
   return sanitizeHtml(html, {
-    allowedTags: ["h2", "h3", "p", "ul", "ol", "li", "strong", "em", "a", "blockquote"],
+    allowedTags: ["h2", "h3", "p", "ul", "ol", "li", "strong", "em", "a", "blockquote", "table", "thead", "tbody", "tr", "th", "td", "caption"],
     allowedAttributes: { a: ["href"] },
     allowedSchemes: ["https"],
     allowProtocolRelative: false,
@@ -53,11 +54,11 @@ export function validateArticle(value: unknown, existing: Existing[], revisionSl
   const links = [...contentHtml.matchAll(/href="([^"]+)"/g)].map(m => m[1]);
   const blogLinks = new Set(links.filter(link => existing.some(p => link === `/blog/${p.slug}` && p.slug !== slug)));
   if (blogLinks.size < 2 || !links.some(link => serviceLinks.includes(link) || link === "/#services")) throw new Error("Missing required service and related-journal links");
-  if (links.some(link => !publicLinks.includes(link) && !existing.some(p => link === `/blog/${p.slug}`))) {
+  if (links.some(link => !publicLinks.includes(link) && !existing.some(p => link === `/blog/${p.slug}`) && !(link.startsWith("https://") && safeArticleLink(link)))) {
     throw new Error("Unknown internal link");
   }
-  const imageUrl = string("imageUrl", 8, 200);
-  if (!imageLibrary.some(image => image.url === imageUrl)) throw new Error("Image must be from the verified accounting image library");
+  const imageUrl = string("imageUrl", 8, 1000);
+  if (!isJournalImage(imageUrl)) throw new Error("Image must be an approved local illustration or an openly licensed Commons photograph");
   return {
     slug, title, primaryKeyword, contentHtml, wordCount,
     excerpt: string("excerpt", 60, 350),

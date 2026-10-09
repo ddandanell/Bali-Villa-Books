@@ -100,3 +100,31 @@ mtime_ms = 1791328583699
 storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:4cfad439-4f08-4f99-a7e7-eb3e620fbb8e/5de234b4-a859-4e67-83ad-e317bd6e9ae5/59c902c6-c7d5-4856-81a1-5cfb280b0683"
 storage_version_token = "1791328606557369"
 content_type = "text/csv"
+
+[[outputs]]
+id = "S53tN7b47-v_Omolnd9rA"
+uri = "file://artifacts/villabooks-bali/public/bali-accounting-share-2026-10.jpg"
+type = "image"
+title = "Website link preview"
+description = "Current Bali Accounting branding, sized for social sharing."
+logical_id = "f98068c9-5911-403a-b9d1-df1ce1a9f5b7"
+content_hash = "sha256:57471f8addf3f6ce630a05ca103fefd305435e950d1ccb307dfbd5d18ee67ae1"
+size = 76853
+mtime_ms = 1791504624350
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:4cfad439-4f08-4f99-a7e7-eb3e620fbb8e/f98068c9-5911-403a-b9d1-df1ce1a9f5b7/04870e05-0de3-448d-b232-49e3f7b65073"
+storage_version_token = "1791504952829615"
+content_type = "image/jpeg"
+
+[[outputs]]
+id = "Z92DThnGbUw5hxD2InuFb"
+uri = "file://artifacts/villabooks-bali/public/bali-accounting-journal-share-2026-10.jpg"
+type = "image"
+title = "Journal link preview"
+description = "Updated Journal artwork for shared links."
+logical_id = "1cacec2c-fba3-4d8b-857b-f6d77b174d8b"
+content_hash = "sha256:f2a020e31d75df4ff2ad4bacf57f59ca59911aa0702f4333f315e89ebb1e3add"
+size = 73205
+mtime_ms = 1791504625866
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:4cfad439-4f08-4f99-a7e7-eb3e620fbb8e/1cacec2c-fba3-4d8b-857b-f6d77b174d8b/177c2896-214f-46e4-a7fe-8de611397164"
+storage_version_token = "1791504954508956"
+content_type = "image/jpeg"

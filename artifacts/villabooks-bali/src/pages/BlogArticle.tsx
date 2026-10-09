@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { updateShareImage } from "@/lib/social-images";
 import { Link, useParams } from "wouter";
 import { ArrowLeft, ArrowRight, Clock3, MessageCircle, RefreshCw } from "lucide-react";
 import { getGetBlogPostQueryKey, useGetBlogPost, useRecordBlogEvent } from "@workspace/api-client-react";
@@ -20,13 +21,14 @@ export default function BlogArticle() {
     complete.current = false;
     const canonical = `https://bali-villa-accounting-service.com/blog/${encodeURIComponent(slug)}`;
     document.querySelector('link[rel="canonical"]')?.setAttribute("href", canonical);
-    for (const [property, value] of Object.entries({ "og:title": post.metaTitle, "og:description": post.metaDescription, "og:url": canonical, "og:image": `https://bali-villa-accounting-service.com${post.imageUrl}`, "og:type": "article" })) {
+    for (const [property, value] of Object.entries({ "og:title": post.metaTitle, "og:description": post.metaDescription, "og:url": canonical, "og:image": new URL(post.imageUrl, "https://bali-villa-accounting-service.com").href, "og:type": "article" })) {
       document.querySelector(`meta[property="${property}"]`)?.setAttribute("content", value);
     }
-    for (const [name, value] of Object.entries({ "twitter:title": post.metaTitle, "twitter:description": post.metaDescription, "twitter:url": canonical })) {
+    for (const [name, value] of Object.entries({ "twitter:title": post.metaTitle, "twitter:description": post.metaDescription, "twitter:url": canonical, "twitter:image": new URL(post.imageUrl, "https://bali-villa-accounting-service.com").href })) {
       document.querySelector(`meta[name="${name}"]`)?.setAttribute("content", value);
     }
     const description = document.querySelector('meta[name="description"]');
+    updateShareImage(`/blog/${slug}`, post);
     description?.setAttribute("content", post.metaDescription || post.excerpt);
     event.mutate({ data: { slug, eventType: "article_view" } });
       trackEvent("blog_view", { page: `/blog/${slug}`, placement: "article" });
@@ -61,12 +63,13 @@ export default function BlogArticle() {
   return <Layout><div className="bg-background">
     <header className="container mx-auto max-w-5xl px-5 pb-14 pt-36 md:px-8">
       <Link href="/blog" data-testid="link-back-blog" className="inline-flex items-center gap-2 text-sm font-semibold text-secondary"><ArrowLeft className="h-4 w-4" /> All guides</Link>
-      <div className="mt-10 max-w-4xl"><p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">{post.category}</p><h1 data-testid="text-article-title" className="mt-5 text-4xl leading-[1.05] text-primary sm:text-6xl">{post.title}</h1><p className="mt-7 max-w-3xl text-lg leading-8 text-foreground/65">{post.excerpt}</p><div className="mt-7 flex items-center gap-3 text-sm text-foreground/45"><Clock3 className="h-4 w-4" /> {post.readTimeMinutes} minute read <span>·</span> {new Date(post.publishedAt).toLocaleDateString("en-US", { dateStyle: "long" })}</div></div>
+      <div className="mt-10 max-w-4xl"><p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">{post.category}</p><h1 data-testid="text-article-title" className="mt-5 text-4xl leading-[1.05] text-primary sm:text-6xl">{post.title}</h1><p className="mt-7 max-w-3xl text-lg leading-8 text-foreground/65">{post.excerpt}</p><div className="mt-7 flex items-center gap-3 text-sm text-foreground/45"><Clock3 className="h-4 w-4" /> {post.readTimeMinutes} minute read <span>·</span> {new Date(post.publishedAt).toLocaleDateString("en-US", { dateStyle: "long", timeZone: "Asia/Makassar" })}</div></div>
       <img src={post.imageUrl} alt={post.imageAlt} width="1024" height="1024" fetchPriority="high" className="mt-10 aspect-[16/9] w-full rounded-[2rem] object-cover" />
+      <p className="mt-5 text-sm leading-6 text-foreground/60">By Bali Accounting editorial desk · Editorial updated {new Date(post.updatedAt).toLocaleDateString("en-US", { dateStyle: "long", timeZone: "Asia/Makassar" })}. General information, not a claim of licensed professional review.</p>
     </header>
     <div className="container mx-auto grid max-w-7xl gap-14 px-5 pb-24 md:grid-cols-[minmax(0,760px)_280px] md:px-8">
        <div className="min-w-0">
-         <article data-testid="article-content" className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:font-normal prose-headings:text-primary prose-p:leading-8 prose-p:text-foreground/75 prose-a:text-secondary prose-strong:text-primary" dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+         <article data-testid="article-content" className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:font-normal prose-headings:text-primary prose-p:leading-8 prose-p:text-foreground/75 prose-a:text-secondary prose-strong:text-primary prose-table:block prose-table:overflow-x-auto" dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
          <nav aria-label="Related bookkeeping services" className="mt-10 rounded-2xl border border-primary/10 bg-white p-6 sm:p-8"><p className="text-xs font-bold uppercase tracking-[.18em] text-secondary">Related support</p><h2 className="mt-2 font-serif text-2xl text-primary">Put this guide into practice</h2><div className="mt-5 flex flex-wrap gap-x-7 gap-y-3">{contextualServices.map(([label, href]) => <Link key={href} href={href} className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline decoration-secondary/50 underline-offset-4 hover:text-secondary">{label}<ArrowRight className="h-4 w-4" /></Link>)}</div></nav>
        </div>
       <aside className="md:pt-3"><div className="sticky top-28 rounded-[1.75rem] bg-primary p-7 text-primary-foreground shadow-xl"><MessageCircle className="mb-6 h-6 w-6 text-secondary" /><h2 className="text-2xl leading-tight">Build a clearer monthly view.</h2><p className="mt-3 text-sm leading-6 text-primary-foreground/65">Speak with Client Advisory about a structured bookkeeping and reporting process for your property.</p><a data-testid="link-article-whatsapp" onClick={clickWhatsApp} href={wa(`Hello Client Advisory, I just read "${post.title}" and have a question about my villa books.`)} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#25D366] text-sm font-bold text-white transition-transform hover:-translate-y-0.5"><MessageCircle className="h-4 w-4" /> Request a Consultation</a></div></aside>

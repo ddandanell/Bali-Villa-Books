@@ -80,13 +80,13 @@ router.get("/blog/automation/status", async (_req, res): Promise<void> => {
   const [config] = await db.select().from(automationConfig).limit(1);
   const [latest] = await db.select().from(automationRuns).orderBy(desc(automationRuns.startedAt)).limit(1);
   const published = await db.select({ count: sql<number>`count(*)` }).from(blogPosts);
-  const [daily] = await db.select().from(automationRuns).where(eq(automationRuns.runKey, `weekday:${baliClock().dateKey}`));
+  const [daily] = await db.select().from(automationRuns).where(eq(automationRuns.runKey, `daily:${baliClock().dateKey}`));
   const [review] = await db.select().from(automationRuns).where(sql`${automationRuns.runKey} like 'review:%' AND ${automationRuns.status} = 'completed'`).orderBy(desc(automationRuns.completedAt)).limit(1);
   const last = latest?.completedAt ?? config?.lastRunAt ?? null;
   const next = daily && daily.status !== "completed" && baliClock().eligible
     ? new Date(Date.now() + 5 * 60000) : nextPublication(new Date(), daily?.status === "completed");
   res.json(GetBlogAutomationStatusResponse.parse({
-    enabled: config?.enabled ?? true, cadence: "Monday–Friday, two journals daily; weekly SEO review",
+    enabled: config?.enabled ?? true, cadence: "Every day, including weekends: two journals daily; weekly SEO review",
     maxPostsPerRun: 2, publishedPosts: Number(published[0]?.count ?? 0), lastRunAt: last,
     nextEligibleRunAt: next, timezone: TIMEZONE, scheduledHour: SCHEDULED_HOUR,
     minimumWords: MIN_WORDS, lastRunStatus: latest?.status ?? null, lastReviewAt: review?.completedAt ?? null,
