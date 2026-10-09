@@ -13,6 +13,8 @@ import { PHONE, SITE_ORIGIN, sitePages, whatsapp } from "@/lib/site-pages";
 import { updateShareImage } from "@/lib/social-images";
 import { trackEvent } from "@/lib/analytics";
 import { expandedServices, relatedServicePaths, type ServiceInfo } from "@/lib/expanded-services";
+import { getPageImagery } from "@/lib/page-imagery";
+import { PageVisual } from "@/components/PageVisual";
 
 const wrap = "mx-auto max-w-7xl px-5 md:px-8";
 const eyebrow = "text-xs font-bold uppercase tracking-[.2em] text-secondary";
@@ -107,12 +109,16 @@ const serviceDetails: Record<string, ServiceInfo> = {
 
 function Header({ path }: { path: string }) {
   const page = sitePages[path];
-  return <section className="bg-primary pb-16 pt-36 text-primary-foreground sm:pb-20">
-    <div className={wrap}>
+  const imagery = getPageImagery(path);
+  return <section className="bg-primary pb-12 pt-36 text-primary-foreground sm:pb-16">
+    <div className={`${wrap} grid items-center gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-14`}>
+      <div>
       <nav aria-label="Breadcrumb" className="mb-9 flex flex-wrap items-center gap-2 text-xs text-primary-foreground/55"><Link href="/" className="hover:text-white">Home</Link>{(page?.service || path === "/services") && <><ChevronRight className="h-3 w-3" /><Link href="/services" className="hover:text-white">Services</Link></>}{path !== "/services" && <><ChevronRight className="h-3 w-3" /><span className="text-primary-foreground/85">{page?.h1}</span></>}</nav>
       <p className={eyebrow}>{page?.service ? "Professional service · Denpasar, Bali" : "Bali Accounting · Denpasar"}</p>
       <h1 className="mt-4 max-w-4xl text-4xl leading-[1.05] sm:text-6xl">{page?.h1}</h1>
       <p className="mt-6 max-w-3xl text-base leading-7 text-primary-foreground/70 sm:text-lg">{serviceDetails[path]?.intro ?? page?.description}</p>
+      </div>
+      {imagery && <PageVisual imagery={imagery} priority className="w-full" />}
     </div>
   </section>;
 }

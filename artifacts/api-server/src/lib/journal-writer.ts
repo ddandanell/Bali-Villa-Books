@@ -39,7 +39,8 @@ export async function createBlueprintArticle(topic: BlueprintTopic | undefined, 
     await reviewArticle(post, topic);
     return post;
   }
-  const image = await findJournalImage(new Set(context.existing.map(p => p.imageUrl)), topic?.id ?? context.existing.length);
+  const image = await findJournalImage(new Set(context.existing.map(p => p.imageUrl)), topic?.id ?? context.existing.length,
+    `${topic?.workingTitle ?? ""} ${topic?.keyword ?? JSON.stringify(fallback)}`);
   const references: { url: string; retrievedAt: string; text: string }[] = [];
   if (topic && !"AH".includes(topic.cluster)) {
     const url = "https://www.pajak.go.id/en";

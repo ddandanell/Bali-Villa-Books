@@ -7,6 +7,7 @@ import { PHONE, sitePages, whatsapp } from "@/lib/site-pages";
 import { prices, priceText, priceShort } from "@/lib/pricing";
 import { trackEvent } from "@/lib/analytics";
 import { expandedServices } from "@/lib/expanded-services";
+import { getPageImagery } from "@/lib/page-imagery";
 
 const wrap = "mx-auto max-w-7xl px-5 md:px-8";
 const eyebrow = "text-xs font-bold uppercase tracking-[.2em] text-secondary";
@@ -20,6 +21,7 @@ function WhatsAppCTA({ place, text = "Book a free consultation", message = "Hell
 }
 
 export function Hero() {
+  const imagery = getPageImagery("/");
   return <section id="top" className="overflow-hidden bg-background pb-16 pt-32 sm:pb-24 sm:pt-40">
     <div className={`${wrap} grid items-center gap-10 lg:grid-cols-12 lg:gap-14`}>
       <div className="lg:col-span-6">
@@ -32,10 +34,10 @@ export function Hero() {
       </div>
       <div className="relative lg:col-span-6">
         <div className="absolute -inset-5 rounded-[4rem] bg-secondary/10 blur-3xl" />
-        <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-primary/10 shadow-xl sm:aspect-[5/4]">
-          <img src="/images/bali-villa-accounting-services-hero.jpg" alt="Illustrative Bali bookkeeping workspace with records and laptop" width="1024" height="1024" fetchPriority="high" className="h-full w-full object-cover" />
-          <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-white/50 bg-background/95 p-5 shadow-lg backdrop-blur sm:inset-x-6 sm:bottom-6"><p className="font-serif text-xl text-primary">A report that shows how the money moved.</p><p className="mt-1 text-sm text-foreground/60">Gross booking activity · costs · cash timing</p></div>
-        </div>
+        <figure className="relative overflow-hidden rounded-[2rem] border border-primary/10 shadow-xl">
+          <img src={imagery?.imageUrl ?? "/images/bali-villa-accounting-services-hero.jpg"} alt={imagery?.imageAlt ?? "Illustrative Bali bookkeeping workspace with records and laptop"} width={imagery?.width ?? 1024} height={imagery?.height ?? 1024} fetchPriority="high" loading="eager" className="aspect-[4/3] h-full w-full object-cover sm:aspect-[5/4]" />
+          <figcaption className="absolute inset-x-4 bottom-4 rounded-2xl border border-white/50 bg-background/95 p-5 shadow-lg backdrop-blur sm:inset-x-6 sm:bottom-6"><p className="font-serif text-xl text-primary">A report that shows how the money moved.</p><p className="mt-1 text-sm text-foreground/60">{imagery?.caption ?? "Gross booking activity · costs · cash timing"}</p></figcaption>
+        </figure>
       </div>
     </div>
   </section>;

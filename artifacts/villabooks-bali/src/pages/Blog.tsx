@@ -8,8 +8,10 @@ import { BlogCard } from "@/components/BlogCard";
 import { trackEvent } from "@/lib/analytics";
 import { SITE_ORIGIN } from "@/lib/site-pages";
 import { PageEducation } from "@/components/PageEducation";
+import { getPageImagery } from "@/lib/page-imagery";
 
 export default function Blog() {
+  const imagery = getPageImagery("/blog");
   const [search, setSearch] = useState("");
   const [page] = useState(() => {
     if (typeof window === "undefined") return 1;
@@ -52,14 +54,20 @@ export default function Blog() {
       <section className="bg-background">
         <section className="relative overflow-hidden bg-primary pb-20 pt-36 text-primary-foreground sm:pb-28">
           <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-secondary/20 blur-3xl" />
-          <div className="container relative mx-auto max-w-7xl px-5 md:px-8">
-            <Link href="/" data-testid="link-blog-home" className="mb-10 inline-flex items-center gap-2 text-sm text-primary-foreground/60 transition-colors hover:text-white">Bali Accounting <ArrowRight className="h-4 w-4" /> Journal</Link>
-            <div className="max-w-3xl">
+           <div className="container relative mx-auto grid max-w-7xl items-center gap-10 px-5 md:px-8 lg:grid-cols-[1fr_.8fr] lg:gap-14">
+             <div>
+             <Link href="/" data-testid="link-blog-home" className="mb-10 inline-flex items-center gap-2 text-sm text-primary-foreground/60 transition-colors hover:text-white">Bali Accounting <ArrowRight className="h-4 w-4" /> Journal</Link>
+             <div className="max-w-3xl">
               <p className="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-secondary">The Bali villa ledger</p>
               <h1 data-testid="text-blog-heading" className="text-5xl leading-[1.02] sm:text-7xl">Bali Villa Bookkeeping Guides</h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-primary-foreground/70">Learn how to reconcile Airbnb payouts, track rental property expenses and review monthly villa P&amp;L and cash flow. Our practical guides connect reporting questions with the source records behind them.</p>
               {automation && <div className="mt-6 text-sm text-primary-foreground/60" data-testid="text-publication-schedule"><p>{automation.enabled ? "Editorial automation is enabled." : "Editorial automation is currently paused."} Cadence: {automation.cadence}; up to {automation.maxPostsPerRun} article(s) per run. {automation.timezone} time.</p><p className="mt-2">{automation.lastRunStatus === "failed" ? "The last automated run needs attention; published guides remain available." : automation.lastRunStatus === "running" ? "An editorial run is in progress." : automation.lastRunAt ? `Last run: ${new Date(automation.lastRunAt).toLocaleString("en-GB", { timeZone: automation.timezone, dateStyle: "medium", timeStyle: "short" })}.` : "No completed run is reported yet."}{automation.nextEligibleRunAt && ` Next eligible run: ${new Date(automation.nextEligibleRunAt).toLocaleString("en-GB", { timeZone: automation.timezone, dateStyle: "medium", timeStyle: "short" })}.`}</p></div>}
             </div>
+             </div>
+             {imagery && <figure className="overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/5 shadow-xl">
+               <img src={imagery.imageUrl} alt={imagery.imageAlt} width={imagery.width} height={imagery.height} fetchPriority="high" loading="eager" className="aspect-[8/5] w-full object-cover" />
+               {imagery.caption && <figcaption className="px-4 py-3 text-xs leading-5 text-primary-foreground/60 sm:px-5">{imagery.caption}</figcaption>}
+             </figure>}
           </div>
         </section>
         <section className="container mx-auto max-w-7xl px-5 py-14 md:px-8 sm:py-20">

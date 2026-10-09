@@ -3,6 +3,7 @@ import { prices } from "./pricing";
 import { additionalFaqs } from "./additional-faqs";
 import { DEFAULT_SHARE_IMAGE, shareImage, shareImageAlt } from "./social-images";
 import { expandedServices } from "./expanded-services";
+import { getPageImagery } from "./page-imagery";
 
 const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]!));
 const json = (value: unknown) => JSON.stringify(value).replace(/</g, "\\u003c");
@@ -32,7 +33,13 @@ export function pageDocument(template: string, content: string, pathname: string
       { "@type": "ListItem", position: 2, name: page.h1, item: canonical },
     ],
   });
-  if (page.service) graph.push({ "@type": "Service", "@id": `${canonical}#service`, name: page.h1, description: page.description, url: canonical, provider: { "@id": businessId }, areaServed: "Bali, Indonesia" });
+  const visual = getPageImagery(path);
+  if (visual) graph.push({
+    "@type": "ImageObject", "@id": `${canonical}#primary-image`,
+    contentUrl: `${SITE_ORIGIN}${visual.imageUrl}`, caption: visual.imageAlt,
+    width: visual.width, height: visual.height,
+  });
+  if (page.service) graph.push({ "@type": "Service", "@id": `${canonical}#service`, name: page.h1, description: page.description, image: visual ? `${SITE_ORIGIN}${visual.imageUrl}` : undefined, url: canonical, provider: { "@id": businessId }, areaServed: "Bali, Indonesia" });
   const service = expandedServices.find(item => item.path === path);
   if (service) graph.push({
     "@type": "FAQPage", "@id": `${canonical}#questions`,

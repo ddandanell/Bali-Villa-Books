@@ -1,0 +1,209 @@
+{
+  "/": {
+    "imageUrl": "/images/bali-villa-accounting-services-hero.jpg",
+    "imageAlt": "An illustrative Bali bookkeeping workspace with records and a laptop",
+    "shareImage": "/images/share/home-2026-10.jpg",
+    "width": 1024,
+    "height": 1024,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/services": {
+    "imageUrl": "/images/pages/services-2026-10.webp",
+    "imageAlt": "Illustrative a thoughtfully organised Balinese office table with separate company records, accounting ledger and closed travel document folders, reflecting connected business servi",
+    "shareImage": "/images/share/services-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/airbnb-bookkeeping-bali": {
+    "imageUrl": "/images/pages/airbnb-bookkeeping-bali-2026-10.webp",
+    "imageAlt": "Illustrative overhead view of reservation schedules, booking receipts and a bank statement being matched on a teak desk, calculator and small tropical courtyard visible",
+    "shareImage": "/images/share/airbnb-bookkeeping-bali-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/villa-financial-reporting-bali": {
+    "imageUrl": "/images/pages/villa-financial-reporting-bali-2026-10.webp",
+    "imageAlt": "Illustrative a composed monthly financial reporting workspace with an open abstract chart notebook, calculator and three carefully separated report sheets beside a Bali villa court",
+    "shareImage": "/images/share/villa-financial-reporting-bali-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/villa-bookkeeping-cleanup-bali": {
+    "imageUrl": "/images/pages/villa-bookkeeping-cleanup-bali-2026-10.webp",
+    "imageAlt": "Illustrative a realistic before-and-after document organisation desk: a modest stack of old receipts beside carefully organised date folders and a ledger in a quiet Balinese workro",
+    "shareImage": "/images/share/villa-bookkeeping-cleanup-bali-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/pt-pma-villa-bookkeeping": {
+    "imageUrl": "/images/pages/pt-pma-villa-bookkeeping-2026-10.webp",
+    "imageAlt": "Illustrative separate company and owner funding record folders, a ledger and a villa key on a carved teak worktable, with understated Balinese architectural details",
+    "shareImage": "/images/share/pt-pma-villa-bookkeeping-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/villa-payroll-records-bali": {
+    "imageUrl": "/images/pages/villa-payroll-records-bali-2026-10.webp",
+    "imageAlt": "Illustrative carefully arranged staff cost schedule, neutral payment envelopes and supporting record folders on a Balinese hospitality office desk",
+    "shareImage": "/images/share/villa-payroll-records-bali-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/company-formation-bali": {
+    "imageUrl": "/images/pages/company-formation-bali-2026-10.webp",
+    "imageAlt": "Illustrative a new company planning workspace: a small architectural villa model, abstract business planning notebook, blank registration folder and fountain pen on teak",
+    "shareImage": "/images/share/company-formation-bali-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/business-licensing-bali": {
+    "imageUrl": "/images/pages/business-licensing-bali-2026-10.webp",
+    "imageAlt": "Illustrative a hospitality operating-permission review desk with an architectural floor plan, business activity checklist and organised application folders overlooking a Bali court",
+    "shareImage": "/images/share/business-licensing-bali-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/tax-registration-bali": {
+    "imageUrl": "/images/pages/tax-registration-bali-2026-10.webp",
+    "imageAlt": "Illustrative a laptop showing intentionally unreadable abstract account fields beside an identity-document folder and organised company registration records in a Balinese office",
+    "shareImage": "/images/share/tax-registration-bali-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/tax-compliance-bali": {
+    "imageUrl": "/images/pages/tax-compliance-bali-2026-10.webp",
+    "imageAlt": "Illustrative a professional review of invoices, reconciled ledger sheets and an approval checklist with a calculator, in a calm teak and linen Bali workspace",
+    "shareImage": "/images/share/tax-compliance-bali-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/tax-planning-bali": {
+    "imageUrl": "/images/pages/tax-planning-bali-2026-10.webp",
+    "imageAlt": "Illustrative a careful financial decision-review still life: two business scenario folders, documented renovation invoices, calculator and planning notebook, no promises of savings",
+    "shareImage": "/images/share/tax-planning-bali-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/business-visa-bali": {
+    "imageUrl": "/images/pages/business-visa-bali-2026-10.webp",
+    "imageAlt": "Illustrative a business travel preparation still life: plain closed passport-like navy booklet without text or emblems, meeting agenda notebook and travel document folder in a Bali",
+    "shareImage": "/images/share/business-visa-bali-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/investor-kitas-bali": {
+    "imageUrl": "/images/pages/investor-kitas-bali-2026-10.webp",
+    "imageAlt": "Illustrative an investor residence application preparation desk with a plain closed travel booklet, company document folder and a tasteful small Bali villa model",
+    "shareImage": "/images/share/investor-kitas-bali-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/company-compliance-bali": {
+    "imageUrl": "/images/pages/company-compliance-bali-2026-10.webp",
+    "imageAlt": "Illustrative an organised ongoing company responsibility register: several dated-looking but unreadable folders, neutral desktop calendar and tidy checklist in a Bali office",
+    "shareImage": "/images/share/company-compliance-bali-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/pricing": {
+    "imageUrl": "/images/pages/pricing-2026-10.webp",
+    "imageAlt": "Illustrative three thoughtfully arranged accounting scope folders of different sizes, a calculator and blank quotation notebook on a Bali teak desk",
+    "shareImage": "/images/share/pricing-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/sample-report": {
+    "imageUrl": "/images/pages/sample-report-2026-10.webp",
+    "imageAlt": "Illustrative a close view of an illustrative owner-report pack with abstract charts and a calculator, framed by a Bali villa pool courtyard in soft focus",
+    "shareImage": "/images/share/sample-report-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/about": {
+    "imageUrl": "/images/pages/about-2026-10.webp",
+    "imageAlt": "Illustrative a welcoming unoccupied Balinese professional office with teak furniture, woven linen chairs, organised books and natural tropical courtyard light",
+    "shareImage": "/images/share/about-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/get-started": {
+    "imageUrl": "/images/pages/get-started-2026-10.webp",
+    "imageAlt": "Illustrative an inviting consultation desk with two empty seats, a fresh notebook, pen and neat records folder, in a calm Balinese office",
+    "shareImage": "/images/share/get-started-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/faq": {
+    "imageUrl": "/images/pages/faq-2026-10.webp",
+    "imageAlt": "Illustrative an open neutral question-and-answer notebook and bookmarked reference folders on a warm teak desk, tropical greenery outside a Bali window",
+    "shareImage": "/images/share/faq-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/privacy": {
+    "imageUrl": "/images/pages/privacy-2026-10.webp",
+    "imageAlt": "Illustrative a tasteful still life of a closed document folder with a small physical lock and a face-down phone on a Bali office desk, illustrating careful handling of private reco",
+    "shareImage": "/images/share/privacy-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/terms": {
+    "imageUrl": "/images/pages/terms-2026-10.webp",
+    "imageAlt": "Illustrative an open generic engagement scope folder with unreadable agreement pages, pen and clearly separated document tabs on a Balinese desk, not an official contract",
+    "shareImage": "/images/share/terms-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/blog": {
+    "imageUrl": "/images/pages/journal-2026-10.webp",
+    "imageAlt": "Illustrative an editorial reading table with an open accounting notebook, reference books and folded unbranded journal pages in a warm Bali workspace",
+    "shareImage": "/images/share/journal-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-09T10:26:04.626Z",
+    "caption": "Illustrative visual, not an actual client engagement or an official document."
+  }
+}

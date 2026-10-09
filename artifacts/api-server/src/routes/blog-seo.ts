@@ -6,16 +6,17 @@ import path from "node:path";
 import { cleanHtml } from "../lib/blog-content";
 import { articleFaqs } from "../lib/editorial-blueprint";
 import { GetBlogPostResponse, ListBlogPostsResponse } from "@workspace/api-zod";
+import { pageImagery, journalImagery, publicPagePaths } from "@workspace/site-content";
 
 const router = Router();
 // Verified custom domain returned by deployment metadata, not a development domain.
 const origin = "https://bali-villa-accounting-service.com";
-const defaultShareImage = "/bali-accounting-share-2026-10.jpg";
-const journalShareImage = "/bali-accounting-journal-share-2026-10.jpg";
+const defaultShareImage = pageImagery["/"].shareImage;
+const journalShareImage = pageImagery["/blog"].shareImage;
 const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]!));
 const safeJson = (value: unknown) => JSON.stringify(value).replace(/</g, "\\u003c");
 const lastGood = new Map<string, { html: string; savedAt: number }>();
-const marketingPaths = ["/", "/services", "/airbnb-bookkeeping-bali", "/villa-financial-reporting-bali", "/villa-bookkeeping-cleanup-bali", "/pt-pma-villa-bookkeeping", "/villa-payroll-records-bali", "/pricing", "/sample-report", "/about", "/get-started", "/faq", "/privacy", "/terms", "/blog", "/company-formation-bali", "/business-licensing-bali", "/tax-registration-bali", "/tax-compliance-bali", "/tax-planning-bali", "/business-visa-bali", "/investor-kitas-bali", "/company-compliance-bali"];
+const marketingPaths = publicPagePaths;
 router.use((req, res, next) => {
   const normalized = req.path.replace(/\/+$/, "") || "/";
   if (normalized !== req.path) { res.redirect(308, `${normalized}${req.originalUrl.slice(req.path.length)}`); return; }
@@ -38,12 +39,16 @@ async function template() {
 }
 
 async function documentHtml(title: string, description: string, canonicalPath: string, content: string, bootstrap: unknown, image: string, schema: unknown, imageAlt?: string, imageVersion?: string) {
+  if (canonicalPath === "/blog") {
+    const visual = pageImagery["/blog"];
+    content = content.replace("</h1>", `</h1><figure><img src="${visual.imageUrl}" alt="${escape(visual.imageAlt)}" width="${visual.width}" height="${visual.height}" fetchpriority="high"><figcaption>${escape(visual.caption)}</figcaption></figure>`);
+  }
   const raw = await template();
   const parsedImage = new URL(image, origin);
   if (imageVersion && parsedImage.origin === origin) parsedImage.searchParams.set("v", imageVersion);
   const imageUrl = parsedImage.href;
   const socialAlt = imageAlt ?? (canonicalPath === "/blog" ? "Bali Accounting Journal — practical guides for better villa records" : "Bali Accounting — villa bookkeeping and clear owner reports");
-  const branded = [defaultShareImage, journalShareImage].includes(parsedImage.pathname);
+  const branded = parsedImage.pathname.startsWith("/images/share/");
   const faqs = articleFaqs(content);
   const scriptsAndStyles = [
     ...(raw.match(/<script\b[^>]*type="module"[\s\S]*?<\/script>/gi) ?? []),
@@ -119,10 +124,12 @@ router.get("/blog/:slug", async (req, res) => {
   const post = GetBlogPostResponse.parse({ ...row, contentHtml: cleanHtml(row.contentHtml), relatedPosts: peers.slice(0, 3) });
   const servicePath = /airbnb|payout|booking|ota/i.test(post.slug) ? "/airbnb-bookkeeping-bali" : /cleanup|catch-up|incomplete/i.test(post.slug) ? "/villa-bookkeeping-cleanup-bali" : /pt-pma|tax-adviser/i.test(post.slug) ? "/pt-pma-villa-bookkeeping" : "/villa-financial-reporting-bali";
   const content = `<article><p>${escape(post.category)}</p><h1>${escape(post.title)}</h1><p>${escape(post.excerpt)}</p><time datetime="${post.publishedAt.toISOString()}">${post.publishedAt.toISOString().slice(0, 10)}</time>
-<img src="${escape(post.imageUrl)}" alt="${escape(post.imageAlt)}" width="1024" height="1024" fetchpriority="high">
+<img src="${escape(post.imageUrl)}" alt="${escape(post.imageAlt)}" width="${journalImagery[post.slug]?.width ?? 1024}" height="${journalImagery[post.slug]?.height ?? 1024}" fetchpriority="high">
 <p>By Bali Accounting editorial desk · Editorial updated ${post.updatedAt.toISOString().slice(0,10)}. General information, not a claim of licensed professional review.</p>
 ${post.contentHtml}<p><a href="https://wa.me/6281237402292">Speak with Client Advisory</a></p><h2>Related guides</h2><ul>${post.relatedPosts.map(p => `<li><a href="/blog/${escape(p.slug)}">${escape(p.title)}</a></li>`).join("")}</ul></article>`;
-  sendPage(res, req.originalUrl, await documentHtml(post.metaTitle, post.metaDescription, `/blog/${post.slug}`, content.replace("</article>", `<p>Need help applying this process? Explore our <a href="${servicePath}">villa bookkeeping service</a>, <a href="/sample-report">sample owner report</a> and <a href="/pricing">package inclusions</a>.</p></article>`), { post }, post.imageUrl, {
+  const articleVisual = journalImagery[post.slug];
+  const articleShare = articleVisual?.imageUrl === post.imageUrl ? articleVisual.shareImage : post.imageUrl;
+  sendPage(res, req.originalUrl, await documentHtml(post.metaTitle, post.metaDescription, `/blog/${post.slug}`, content.replace("</article>", `<p>Need help applying this process? Explore the <a href="${servicePath}">relevant service scope</a>, <a href="/sample-report">sample owner report</a> and <a href="/pricing">bookkeeping package inclusions</a>.</p></article>`), { post }, articleShare, {
     "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.metaDescription,
     image: new URL(post.imageUrl, origin).href, datePublished: post.publishedAt, dateModified: post.updatedAt,
     wordCount: post.wordCount, author: { "@id": `${origin}/#business` },
@@ -131,10 +138,11 @@ ${post.contentHtml}<p><a href="https://wa.me/6281237402292">Speak with Client Ad
 });
 
 router.get("/sitemap.xml", async (_req, res) => {
-  const posts = await db.select({ slug: blogPosts.slug, updatedAt: blogPosts.updatedAt }).from(blogPosts);
-  const entries = [...marketingPaths.map(url => `<url><loc>${origin}${url}</loc></url>`),
-    ...posts.map(post => `<url><loc>${origin}/blog/${escape(post.slug)}</loc><lastmod>${post.updatedAt.toISOString()}</lastmod></url>`)];
-  res.set("Cache-Control", "public, max-age=300").type("application/xml").send(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${entries.join("")}</urlset>`);
+  const posts = await db.select({ slug: blogPosts.slug, updatedAt: blogPosts.updatedAt, imageUrl: blogPosts.imageUrl }).from(blogPosts);
+  const imageEntry = (url: string) => `<image:image><image:loc>${escape(new URL(url, origin).href)}</image:loc></image:image>`;
+  const entries = [...marketingPaths.map(url => `<url><loc>${origin}${url}</loc><lastmod>${pageImagery[url].updatedAt}</lastmod>${imageEntry(pageImagery[url].imageUrl)}</url>`),
+    ...posts.map(post => `<url><loc>${origin}/blog/${escape(post.slug)}</loc><lastmod>${post.updatedAt.toISOString()}</lastmod>${imageEntry(post.imageUrl)}</url>`)];
+  res.set("Cache-Control", "public, max-age=60").type("application/xml").send(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${entries.join("")}</urlset>`);
 });
 router.use((error: unknown, req: import("express").Request, res: import("express").Response, _next: import("express").NextFunction) => {
   req.log.error({ errorName: error instanceof Error ? error.name : "UnknownError" }, "Public journal response failed");

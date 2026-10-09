@@ -6,6 +6,7 @@ import { getGetBlogPostQueryKey, useGetBlogPost, useRecordBlogEvent } from "@wor
 import { Layout } from "@/components/Layout";
 import { BlogCard } from "@/components/BlogCard";
 import { trackEvent } from "@/lib/analytics";
+import { journalImagery } from "@/lib/page-imagery";
 
 const WA = "https://wa.me/6281237402292";
 const wa = (message: string) => `${WA}?text=${encodeURIComponent(message)}`;
@@ -13,6 +14,7 @@ const wa = (message: string) => `${WA}?text=${encodeURIComponent(message)}`;
 export default function BlogArticle() {
   const { slug = "" } = useParams<{ slug: string }>();
   const { data: post, isLoading, isError, refetch } = useGetBlogPost(slug, { query: { queryKey: getGetBlogPostQueryKey(slug), enabled: !!slug } });
+  const imagery = journalImagery[slug]?.imageUrl === post?.imageUrl ? journalImagery[slug] : undefined;
   const event = useRecordBlogEvent();
   const complete = useRef(false);
   useEffect(() => {
@@ -40,7 +42,7 @@ export default function BlogArticle() {
     window.addEventListener("scroll", onScroll, { passive: true });
     const schema = document.createElement("script");
     schema.type = "application/ld+json";
-    schema.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.metaDescription, image: `https://bali-villa-accounting-service.com${post.imageUrl}`, datePublished: post.publishedAt, dateModified: post.updatedAt, author: { "@type": "Organization", name: "Bali Accounting" }, mainEntityOfPage: canonical });
+    schema.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.metaDescription, image: new URL(post.imageUrl, "https://bali-villa-accounting-service.com").href, datePublished: post.publishedAt, dateModified: post.updatedAt, author: { "@type": "Organization", name: "Bali Accounting" }, mainEntityOfPage: canonical });
     document.head.appendChild(schema);
     return () => { window.removeEventListener("scroll", onScroll); schema.remove(); };
   }, [post, slug]);
@@ -64,7 +66,10 @@ export default function BlogArticle() {
     <header className="container mx-auto max-w-5xl px-5 pb-14 pt-36 md:px-8">
       <Link href="/blog" data-testid="link-back-blog" className="inline-flex items-center gap-2 text-sm font-semibold text-secondary"><ArrowLeft className="h-4 w-4" /> All guides</Link>
       <div className="mt-10 max-w-4xl"><p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">{post.category}</p><h1 data-testid="text-article-title" className="mt-5 text-4xl leading-[1.05] text-primary sm:text-6xl">{post.title}</h1><p className="mt-7 max-w-3xl text-lg leading-8 text-foreground/65">{post.excerpt}</p><div className="mt-7 flex items-center gap-3 text-sm text-foreground/45"><Clock3 className="h-4 w-4" /> {post.readTimeMinutes} minute read <span>·</span> {new Date(post.publishedAt).toLocaleDateString("en-US", { dateStyle: "long", timeZone: "Asia/Makassar" })}</div></div>
-      <img src={post.imageUrl} alt={post.imageAlt} width="1024" height="1024" fetchPriority="high" className="mt-10 aspect-[16/9] w-full rounded-[2rem] object-cover" />
+       <figure className="mt-10 overflow-hidden rounded-[2rem]">
+       <img src={imagery?.imageUrl ?? post.imageUrl} alt={imagery?.imageAlt ?? post.imageAlt} width={imagery?.width ?? 1024} height={imagery?.height ?? 1024} fetchPriority="high" loading="eager" className="aspect-[16/9] w-full object-cover" />
+       {imagery?.caption && <figcaption className="px-1 pt-4 text-sm leading-6 text-foreground/60">{imagery.caption}</figcaption>}
+       </figure>
       <p className="mt-5 text-sm leading-6 text-foreground/60">By Bali Accounting editorial desk · Editorial updated {new Date(post.updatedAt).toLocaleDateString("en-US", { dateStyle: "long", timeZone: "Asia/Makassar" })}. General information, not a claim of licensed professional review.</p>
     </header>
     <div className="container mx-auto grid max-w-7xl gap-14 px-5 pb-24 md:grid-cols-[minmax(0,760px)_280px] md:px-8">

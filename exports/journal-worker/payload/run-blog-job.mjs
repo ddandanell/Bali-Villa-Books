@@ -50963,11 +50963,476 @@ function similarTitle(a, b) {
   return intersection2 / Math.max(1, (/* @__PURE__ */ new Set([...left, ...right])).size) >= 0.75;
 }
 
+// ../../lib/site-content/src/page-imagery.json
+var page_imagery_default = {
+  "/": {
+    imageUrl: "/images/bali-villa-accounting-services-hero.jpg",
+    imageAlt: "An illustrative Bali bookkeeping workspace with records and a laptop",
+    shareImage: "/images/share/home-2026-10.jpg",
+    width: 1024,
+    height: 1024,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/services": {
+    imageUrl: "/images/pages/services-2026-10.webp",
+    imageAlt: "Illustrative a thoughtfully organised Balinese office table with separate company records, accounting ledger and closed travel document folders, reflecting connected business servi",
+    shareImage: "/images/share/services-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/airbnb-bookkeeping-bali": {
+    imageUrl: "/images/pages/airbnb-bookkeeping-bali-2026-10.webp",
+    imageAlt: "Illustrative overhead view of reservation schedules, booking receipts and a bank statement being matched on a teak desk, calculator and small tropical courtyard visible",
+    shareImage: "/images/share/airbnb-bookkeeping-bali-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/villa-financial-reporting-bali": {
+    imageUrl: "/images/pages/villa-financial-reporting-bali-2026-10.webp",
+    imageAlt: "Illustrative a composed monthly financial reporting workspace with an open abstract chart notebook, calculator and three carefully separated report sheets beside a Bali villa court",
+    shareImage: "/images/share/villa-financial-reporting-bali-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/villa-bookkeeping-cleanup-bali": {
+    imageUrl: "/images/pages/villa-bookkeeping-cleanup-bali-2026-10.webp",
+    imageAlt: "Illustrative a realistic before-and-after document organisation desk: a modest stack of old receipts beside carefully organised date folders and a ledger in a quiet Balinese workro",
+    shareImage: "/images/share/villa-bookkeeping-cleanup-bali-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/pt-pma-villa-bookkeeping": {
+    imageUrl: "/images/pages/pt-pma-villa-bookkeeping-2026-10.webp",
+    imageAlt: "Illustrative separate company and owner funding record folders, a ledger and a villa key on a carved teak worktable, with understated Balinese architectural details",
+    shareImage: "/images/share/pt-pma-villa-bookkeeping-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/villa-payroll-records-bali": {
+    imageUrl: "/images/pages/villa-payroll-records-bali-2026-10.webp",
+    imageAlt: "Illustrative carefully arranged staff cost schedule, neutral payment envelopes and supporting record folders on a Balinese hospitality office desk",
+    shareImage: "/images/share/villa-payroll-records-bali-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/company-formation-bali": {
+    imageUrl: "/images/pages/company-formation-bali-2026-10.webp",
+    imageAlt: "Illustrative a new company planning workspace: a small architectural villa model, abstract business planning notebook, blank registration folder and fountain pen on teak",
+    shareImage: "/images/share/company-formation-bali-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/business-licensing-bali": {
+    imageUrl: "/images/pages/business-licensing-bali-2026-10.webp",
+    imageAlt: "Illustrative a hospitality operating-permission review desk with an architectural floor plan, business activity checklist and organised application folders overlooking a Bali court",
+    shareImage: "/images/share/business-licensing-bali-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/tax-registration-bali": {
+    imageUrl: "/images/pages/tax-registration-bali-2026-10.webp",
+    imageAlt: "Illustrative a laptop showing intentionally unreadable abstract account fields beside an identity-document folder and organised company registration records in a Balinese office",
+    shareImage: "/images/share/tax-registration-bali-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/tax-compliance-bali": {
+    imageUrl: "/images/pages/tax-compliance-bali-2026-10.webp",
+    imageAlt: "Illustrative a professional review of invoices, reconciled ledger sheets and an approval checklist with a calculator, in a calm teak and linen Bali workspace",
+    shareImage: "/images/share/tax-compliance-bali-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/tax-planning-bali": {
+    imageUrl: "/images/pages/tax-planning-bali-2026-10.webp",
+    imageAlt: "Illustrative a careful financial decision-review still life: two business scenario folders, documented renovation invoices, calculator and planning notebook, no promises of savings",
+    shareImage: "/images/share/tax-planning-bali-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/business-visa-bali": {
+    imageUrl: "/images/pages/business-visa-bali-2026-10.webp",
+    imageAlt: "Illustrative a business travel preparation still life: plain closed passport-like navy booklet without text or emblems, meeting agenda notebook and travel document folder in a Bali",
+    shareImage: "/images/share/business-visa-bali-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/investor-kitas-bali": {
+    imageUrl: "/images/pages/investor-kitas-bali-2026-10.webp",
+    imageAlt: "Illustrative an investor residence application preparation desk with a plain closed travel booklet, company document folder and a tasteful small Bali villa model",
+    shareImage: "/images/share/investor-kitas-bali-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/company-compliance-bali": {
+    imageUrl: "/images/pages/company-compliance-bali-2026-10.webp",
+    imageAlt: "Illustrative an organised ongoing company responsibility register: several dated-looking but unreadable folders, neutral desktop calendar and tidy checklist in a Bali office",
+    shareImage: "/images/share/company-compliance-bali-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/pricing": {
+    imageUrl: "/images/pages/pricing-2026-10.webp",
+    imageAlt: "Illustrative three thoughtfully arranged accounting scope folders of different sizes, a calculator and blank quotation notebook on a Bali teak desk",
+    shareImage: "/images/share/pricing-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/sample-report": {
+    imageUrl: "/images/pages/sample-report-2026-10.webp",
+    imageAlt: "Illustrative a close view of an illustrative owner-report pack with abstract charts and a calculator, framed by a Bali villa pool courtyard in soft focus",
+    shareImage: "/images/share/sample-report-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/about": {
+    imageUrl: "/images/pages/about-2026-10.webp",
+    imageAlt: "Illustrative a welcoming unoccupied Balinese professional office with teak furniture, woven linen chairs, organised books and natural tropical courtyard light",
+    shareImage: "/images/share/about-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/get-started": {
+    imageUrl: "/images/pages/get-started-2026-10.webp",
+    imageAlt: "Illustrative an inviting consultation desk with two empty seats, a fresh notebook, pen and neat records folder, in a calm Balinese office",
+    shareImage: "/images/share/get-started-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/faq": {
+    imageUrl: "/images/pages/faq-2026-10.webp",
+    imageAlt: "Illustrative an open neutral question-and-answer notebook and bookmarked reference folders on a warm teak desk, tropical greenery outside a Bali window",
+    shareImage: "/images/share/faq-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/privacy": {
+    imageUrl: "/images/pages/privacy-2026-10.webp",
+    imageAlt: "Illustrative a tasteful still life of a closed document folder with a small physical lock and a face-down phone on a Bali office desk, illustrating careful handling of private reco",
+    shareImage: "/images/share/privacy-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/terms": {
+    imageUrl: "/images/pages/terms-2026-10.webp",
+    imageAlt: "Illustrative an open generic engagement scope folder with unreadable agreement pages, pen and clearly separated document tabs on a Balinese desk, not an official contract",
+    shareImage: "/images/share/terms-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/blog": {
+    imageUrl: "/images/pages/journal-2026-10.webp",
+    imageAlt: "Illustrative an editorial reading table with an open accounting notebook, reference books and folded unbranded journal pages in a warm Bali workspace",
+    shareImage: "/images/share/journal-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-09T10:26:04.626Z",
+    caption: "Illustrative visual, not an actual client engagement or an official document."
+  }
+};
+
+// ../../lib/site-content/src/journal-imagery.json
+var journal_imagery_default = {
+  "bali-villa-accounting-specialist-vs-general-accountant": {
+    imageUrl: "/images/journal/bali-villa-accounting-specialist-vs-general-accountant-2026-10.webp",
+    imageAlt: "Illustrative specialist villa accounting review: distinct booking schedules, bank records and owner reports arranged beside a small Bali villa model",
+    shareImage: "/images/share/bali-villa-accounting-specialist-vs-general-accountant-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client property, official document or photograph of a reported event.",
+    updatedAt: "2026-10-09T10:26:04.626Z"
+  },
+  "bali-remote-worker-visa-compliance-october-2026": {
+    imageUrl: "/images/journal/bali-remote-worker-visa-compliance-october-2026-2026-10.webp",
+    imageAlt: "Illustrative a quiet remote-work desk overlooking a Bali courtyard with laptop, plain closed travel booklet and purpose-of-stay document folder",
+    shareImage: "/images/share/bali-remote-worker-visa-compliance-october-2026-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client property, official document or photograph of a reported event.",
+    updatedAt: "2026-10-09T10:26:04.626Z"
+  },
+  "indonesia-foreign-worker-permits-oss-september-2026": {
+    imageUrl: "/images/journal/indonesia-foreign-worker-permits-oss-september-2026-2026-10.webp",
+    imageAlt: "Illustrative an employment administration workspace with an abstract staff record folder, company document folder and a business activity checklist in Bali",
+    shareImage: "/images/share/indonesia-foreign-worker-permits-oss-september-2026-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client property, official document or photograph of a reported event.",
+    updatedAt: "2026-10-09T10:26:04.626Z"
+  },
+  "indonesia-emergency-stay-permits-krakatau-september-2026": {
+    imageUrl: "/images/journal/indonesia-emergency-stay-permits-krakatau-september-2026-2026-10.webp",
+    imageAlt: "Illustrative illustrative disrupted-travel preparation: packed cabin bag, neutral closed travel booklet and revised itinerary notebook beside a Bali office window",
+    shareImage: "/images/share/indonesia-emergency-stay-permits-krakatau-september-2026-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client property, official document or photograph of a reported event.",
+    updatedAt: "2026-10-09T10:26:04.626Z"
+  },
+  "indonesia-visa-free-entry-july-2026-passport-list": {
+    imageUrl: "/images/journal/indonesia-visa-free-entry-july-2026-passport-list-2026-10.webp",
+    imageAlt: "Illustrative a careful travel eligibility review: several plain closed travel booklets with no emblems and a checklist beside a subtle Bali travel map without text",
+    shareImage: "/images/share/indonesia-visa-free-entry-july-2026-passport-list-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client property, official document or photograph of a reported event.",
+    updatedAt: "2026-10-09T10:26:04.626Z"
+  },
+  "bali-foreign-investment-18-business-categories-2026": {
+    imageUrl: "/images/journal/bali-foreign-investment-18-business-categories-2026-2026-10.webp",
+    imageAlt: "Illustrative a business activity assessment workspace: multiple unlabeled business planning folders and a small hospitality architectural model in a Balinese office",
+    shareImage: "/images/share/bali-foreign-investment-18-business-categories-2026-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client property, official document or photograph of a reported event.",
+    updatedAt: "2026-10-09T10:26:04.626Z"
+  },
+  "bali-villa-supplier-invoice-payroll-bpjs-control-calendar": {
+    imageUrl: "/images/journal/bali-villa-supplier-invoice-payroll-bpjs-control-calendar-2026-10.webp",
+    imageAlt: "Illustrative a monthly control calendar desk with separate supplier receipts, staff cost envelopes and document-status folders in a Bali hospitality workroom",
+    shareImage: "/images/share/bali-villa-supplier-invoice-payroll-bpjs-control-calendar-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client property, official document or photograph of a reported event.",
+    updatedAt: "2026-10-09T10:26:04.626Z"
+  },
+  "bali-villa-monthly-management-reporting-pack": {
+    imageUrl: "/images/journal/bali-villa-monthly-management-reporting-pack-2026-10.webp",
+    imageAlt: "Illustrative a multi-document villa management report pack showing abstract profit-and-loss rows, cash movement chart and a clearly separated unresolved-item notebook",
+    shareImage: "/images/share/bali-villa-monthly-management-reporting-pack-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client property, official document or photograph of a reported event.",
+    updatedAt: "2026-10-09T10:26:04.626Z"
+  },
+  "bali-villa-owner-monthly-report": {
+    imageUrl: "/images/journal/bali-villa-owner-monthly-report-2026-10.webp",
+    imageAlt: "Illustrative a monthly villa owner review: a neat summary report, abstract rental income chart and calculator on a table overlooking a peaceful Bali pool",
+    shareImage: "/images/share/bali-villa-owner-monthly-report-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client property, official document or photograph of a reported event.",
+    updatedAt: "2026-10-09T10:26:04.626Z"
+  },
+  "bali-villa-expense-tracking-system": {
+    imageUrl: "/images/journal/bali-villa-expense-tracking-system-2026-10.webp",
+    imageAlt: "Illustrative an overhead expense organisation scene with supplier invoices, maintenance receipts and separate owner reimbursement folders on a Bali teak desk",
+    shareImage: "/images/share/bali-villa-expense-tracking-system-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client property, official document or photograph of a reported event.",
+    updatedAt: "2026-10-09T10:26:04.626Z"
+  },
+  "bali-villa-cash-flow-forecast": {
+    imageUrl: "/images/journal/bali-villa-cash-flow-forecast-2026-10.webp",
+    imageAlt: "Illustrative a financial planning workspace with an abstract timeline of expected booking receipts, a cash forecast notebook and a calendar beside a tropical Bali window",
+    shareImage: "/images/share/bali-villa-cash-flow-forecast-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client property, official document or photograph of a reported event.",
+    updatedAt: "2026-10-09T10:26:04.626Z"
+  },
+  "reconciling-airbnb-booking-payouts": {
+    imageUrl: "/images/journal/reconciling-airbnb-booking-payouts-2026-10.webp",
+    imageAlt: "Illustrative close-up of booking receipts being reconciled to platform payout schedules and a bank deposit ledger, calculator and teak desk in a Bali villa office",
+    shareImage: "/images/share/reconciling-airbnb-booking-payouts-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client property, official document or photograph of a reported event.",
+    updatedAt: "2026-10-09T10:26:04.626Z"
+  },
+  "preparing-villa-records-indonesian-tax-consultant": {
+    imageUrl: "/images/journal/preparing-villa-records-indonesian-tax-consultant-2026-10.webp",
+    imageAlt: "Illustrative a professionally organised accountant handover pack: invoice folders, ledger schedules and owner funding records arranged in a Bali office",
+    shareImage: "/images/share/preparing-villa-records-indonesian-tax-consultant-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client property, official document or photograph of a reported event.",
+    updatedAt: "2026-10-09T10:26:04.626Z"
+  },
+  "monthly-bali-villa-bookkeeping-checklist": {
+    imageUrl: "/images/journal/monthly-bali-villa-bookkeeping-checklist-2026-10.webp",
+    imageAlt: "Illustrative an orderly month-end closing desk: open checklist notebook, bank record folder, receipts and calculator, tropical green courtyard beyond",
+    shareImage: "/images/share/monthly-bali-villa-bookkeeping-checklist-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client property, official document or photograph of a reported event.",
+    updatedAt: "2026-10-09T10:26:04.626Z"
+  },
+  "pt-pma-owner-funding-records-bali": {
+    imageUrl: "/images/journal/pt-pma-owner-funding-records-bali-2026-10.webp",
+    imageAlt: "Illustrative editorial workspace for PT PMA Owner Funding Records in Bali: A Practical Documentation Workflow",
+    shareImage: "/images/share/pt-pma-owner-funding-records-bali-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client engagement or official document.",
+    updatedAt: "2026-10-09T10:33:54.397Z"
+  },
+  "shared-cost-allocation-bali-rental-property-bookkeeping": {
+    imageUrl: "/images/journal/shared-cost-allocation-bali-rental-property-bookkeeping-2026-10.webp",
+    imageAlt: "Illustrative editorial workspace for Shared-Cost Allocation for Bali Rental Property Bookkeeping",
+    shareImage: "/images/share/shared-cost-allocation-bali-rental-property-bookkeeping-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client engagement or official document.",
+    updatedAt: "2026-10-09T10:33:54.397Z"
+  },
+  "bali-villa-payroll-supplier-invoice-control-workflow": {
+    imageUrl: "/images/journal/bali-villa-payroll-supplier-invoice-control-workflow-2026-10.webp",
+    imageAlt: "Illustrative editorial workspace for A Practical Control Workflow for Bali Villa Payroll and Supplier Accounts",
+    shareImage: "/images/share/bali-villa-payroll-supplier-invoice-control-workflow-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client engagement or official document.",
+    updatedAt: "2026-10-09T10:33:54.397Z"
+  },
+  "bali-villa-owner-management-pack-cash-flow-bridge": {
+    imageUrl: "/images/journal/bali-villa-owner-management-pack-cash-flow-bridge-2026-10.webp",
+    imageAlt: "Illustrative editorial workspace for The Bali Villa Owner Management Pack: Linking Profit, Cash and Decisions",
+    shareImage: "/images/share/bali-villa-owner-management-pack-cash-flow-bridge-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client engagement or official document.",
+    updatedAt: "2026-10-09T10:33:54.397Z"
+  },
+  "bali-villa-ota-payout-reconciliation-workflow": {
+    imageUrl: "/images/journal/bali-villa-ota-payout-reconciliation-workflow-2026-10.webp",
+    imageAlt: "Illustrative editorial workspace for A Reliable OTA Payout Reconciliation Workflow for Bali Villas",
+    shareImage: "/images/share/bali-villa-ota-payout-reconciliation-workflow-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client engagement or official document.",
+    updatedAt: "2026-10-09T10:33:54.397Z"
+  },
+  "bali-villa-month-end-close-record-collection-workflow": {
+    imageUrl: "/images/journal/bali-villa-month-end-close-record-collection-workflow-2026-10.webp",
+    imageAlt: "Illustrative editorial workspace for A Practical Record-Collection Workflow for the Bali Villa Month-End Close",
+    shareImage: "/images/share/bali-villa-month-end-close-record-collection-workflow-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client engagement or official document.",
+    updatedAt: "2026-10-09T10:33:54.397Z"
+  },
+  "pt-pma-villa-records-konsultan-pajak-handover-checklist": {
+    imageUrl: "/images/journal/pt-pma-villa-records-konsultan-pajak-handover-checklist-2026-10.webp",
+    imageAlt: "Illustrative editorial workspace for PT PMA Villa Records: A Better Handover to Your Konsultan Pajak",
+    shareImage: "/images/share/pt-pma-villa-records-konsultan-pajak-handover-checklist-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client engagement or official document.",
+    updatedAt: "2026-10-09T10:33:54.397Z"
+  },
+  "multi-property-bookkeeping-workflow-bali-villa-management-companies": {
+    imageUrl: "/images/journal/multi-property-bookkeeping-workflow-bali-villa-management-companies-2026-10.webp",
+    imageAlt: "Illustrative editorial workspace for A Multi-Property Bookkeeping Workflow for Bali Villa Managers",
+    shareImage: "/images/share/multi-property-bookkeeping-workflow-bali-villa-management-companies-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client engagement or official document.",
+    updatedAt: "2026-10-09T10:33:54.397Z"
+  },
+  "bali-villa-supplier-invoice-payroll-control-calendar": {
+    imageUrl: "/images/journal/bali-villa-supplier-invoice-payroll-control-calendar-2026-10.webp",
+    imageAlt: "Illustrative editorial workspace for A Practical Control Calendar for Bali Villa Accounts",
+    shareImage: "/images/share/bali-villa-supplier-invoice-payroll-control-calendar-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client engagement or official document.",
+    updatedAt: "2026-10-09T10:33:54.397Z"
+  },
+  "bali-villa-monthly-variance-reporting": {
+    imageUrl: "/images/journal/bali-villa-monthly-variance-reporting-2026-10.webp",
+    imageAlt: "Illustrative editorial workspace for How to Use Monthly Variance Reviews in Bali Villa Reporting",
+    shareImage: "/images/share/bali-villa-monthly-variance-reporting-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client engagement or official document.",
+    updatedAt: "2026-10-09T10:33:54.397Z"
+  },
+  "bali-villa-owner-statement-template": {
+    imageUrl: "/images/journal/bali-villa-owner-statement-template-2026-10.webp",
+    imageAlt: "Illustrative editorial workspace for What to Include in a Bali Villa Owner Statement",
+    shareImage: "/images/share/bali-villa-owner-statement-template-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client engagement or official document.",
+    updatedAt: "2026-10-09T10:33:54.397Z"
+  },
+  "bali-villa-chart-of-accounts": {
+    imageUrl: "/images/journal/bali-villa-chart-of-accounts-2026-10.webp",
+    imageAlt: "Illustrative editorial workspace for How to Build a Practical Chart of Accounts for a Bali Villa",
+    shareImage: "/images/share/bali-villa-chart-of-accounts-2026-10.jpg",
+    width: 1200,
+    height: 750,
+    caption: "AI-generated editorial illustration, not an actual client engagement or official document.",
+    updatedAt: "2026-10-09T10:33:54.397Z"
+  }
+};
+
+// ../../lib/site-content/src/index.ts
+var pageImagery = page_imagery_default;
+var journalImagery = journal_imagery_default;
+var publicPagePaths = Object.keys(pageImagery);
+function photoKey(value) {
+  try {
+    const url2 = new URL(value, "https://bali-villa-accounting-service.com");
+    if (url2.pathname.startsWith("/images/")) return url2.pathname;
+    const pathname = url2.pathname.replace(/\/wikipedia\/commons\/thumb\/([^/]+\/[^/]+\/[^/]+)\/[^/]+$/, "/wikipedia/commons/$1");
+    const host = /^(?:upload|thumb)\.wikimedia\.org$/.test(url2.hostname) ? "wikimedia" : url2.hostname;
+    return `${host}${decodeURIComponent(pathname)}`;
+  } catch {
+    return value.split(/[?#]/)[0];
+  }
+}
+
 // src/lib/journal-images.ts
 var plain = (value) => value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 var escape3 = (s) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 function isJournalImage(url2) {
-  if (imageLibrary.some((image) => image.url === url2)) return true;
+  if (imageLibrary.some((image) => image.url === url2) || Object.values(journalImagery).some((image) => image.imageUrl === url2)) return true;
   try {
     const parsed = new URL(url2);
     return parsed.protocol === "https:" && ["upload.wikimedia.org", "thumb.wikimedia.org"].includes(parsed.hostname) && parsed.pathname.startsWith("/wikipedia/commons/") && !parsed.username && !parsed.password && !parsed.port;
@@ -50975,53 +51440,65 @@ function isJournalImage(url2) {
     return false;
   }
 }
-async function findJournalImage(used, seed) {
-  try {
-    const endpoint = new URL("https://commons.wikimedia.org/w/api.php");
-    endpoint.search = new URLSearchParams({
-      action: "query",
-      format: "json",
-      generator: "search",
-      gsrnamespace: "6",
-      gsrlimit: "10",
-      gsrsearch: "Bali villa filetype:bitmap -Crete -Greece",
-      prop: "imageinfo",
-      iiprop: "url|extmetadata|size",
-      iiurlwidth: "1200"
-    }).toString();
-    const response = await fetch(endpoint, {
-      signal: AbortSignal.timeout(15e3),
-      headers: { "User-Agent": "BaliAccountingJournal/1.0 (https://bali-villa-accounting-service.com)" }
-    });
-    if (!response.ok) throw new Error(`Commons image search returned ${response.status}`);
-    const body = await response.json();
-    const candidates = Object.values(body.query?.pages ?? {}).filter((page) => {
-      const image2 = page.imageinfo?.[0];
-      return image2?.thumburl && isJournalImage(image2.thumburl) && (image2.width ?? 0) >= 900 && /villa|hotel|resort|residence|house|pool|lodge/i.test(page.title) && !/Crete|Greece/i.test(page.title) && /^(?:CC BY(?:-SA)? [234]\.0|CC0|Public domain)$/i.test(plain(image2.extmetadata?.LicenseShortName?.value ?? ""));
-    }).sort((a, b) => Number(used.has(a.imageinfo[0].thumburl.split("?")[0])) - Number(used.has(b.imageinfo[0].thumburl.split("?")[0])));
-    const candidate = candidates[0];
-    if (!candidate) throw new Error("No suitable openly licensed Bali villa photo found");
-    const image = candidate.imageinfo[0];
-    const url2 = image.thumburl.split("?")[0];
-    const check2 = await fetch(url2, { method: "HEAD", signal: AbortSignal.timeout(1e4) });
-    if (!check2.ok || !check2.headers.get("content-type")?.startsWith("image/")) throw new Error("Selected photo is not reachable");
-    const artist = plain(image.extmetadata?.Artist?.value ?? "See source for photographer").slice(0, 180);
-    const license = plain(image.extmetadata?.LicenseShortName?.value ?? "");
-    const source = new URL(image.descriptionurl);
-    if (source.hostname !== "commons.wikimedia.org") throw new Error("Invalid photo attribution URL");
-    const licenseUrl = image.extmetadata?.LicenseUrl?.value;
-    const approvedLicense = licenseUrl && /^https:\/\/creativecommons\.org\/(?:licenses|publicdomain)\//.test(licenseUrl) ? licenseUrl : null;
-    logger.info({ source: source.href, license }, "Open-license journal image selected");
-    return {
-      url: url2,
-      alt: `Illustrative photo: ${plain(candidate.title.replace(/^File:/, "").replace(/\.[a-z]+$/i, "").replace(/[-_]/g, " ")).slice(0, 150)}`,
-      creditHtml: `<p><em>Illustrative photo, not a client property. Photo credit: ${escape3(artist)}. ${escape3(license)}. <a href="${escape3(source.href)}">Original image and attribution</a>${approvedLicense ? ` \xB7 <a href="${escape3(approvedLicense)}">License terms</a>` : ""}. Displayed in a cropped layout; no endorsement implied.</em></p>`
-    };
-  } catch (err) {
-    logger.warn({ err }, "Live image search unavailable; using the approved local illustration library instead");
-    const image = imageLibrary[seed % imageLibrary.length];
-    return { url: image.url, alt: image.alt, creditHtml: "<p><em>Illustrative accounting image; not a photograph of a client engagement.</em></p>" };
+function journalPhotoTopic(topic) {
+  if (/visa|passport|immigration|stay permit|travel|entry|remote.work/i.test(topic))
+    return { queries: ["passport cover", "travel documents", "immigration airport"], match: /passport|document|immigration|airport/i };
+  if (/company|pma|licen[cs]|registration|investment/i.test(topic))
+    return { queries: ["business documents", "accounting ledger", "office paperwork"], match: /document|ledger|account|paperwork|office/i };
+  return { queries: ["accounting calculator", "bookkeeping ledger", "invoice receipt"], match: /account|calculat|ledger|bookkeep|invoice|receipt/i };
+}
+async function findJournalImage(used, seed, topic = "villa bookkeeping") {
+  const usedKeys = new Set([
+    ...used,
+    ...imageLibrary.map((image) => image.url),
+    ...Object.values(pageImagery).map((image) => image.imageUrl),
+    ...Object.values(journalImagery).map((image) => image.imageUrl)
+  ].map(photoKey));
+  const selection = journalPhotoTopic(topic);
+  for (const query of selection.queries) {
+    try {
+      const endpoint = new URL("https://commons.wikimedia.org/w/api.php");
+      endpoint.search = new URLSearchParams({
+        action: "query",
+        format: "json",
+        generator: "search",
+        gsrnamespace: "6",
+        gsrlimit: "30",
+        gsrsearch: `${query} filetype:bitmap`,
+        prop: "imageinfo",
+        iiprop: "url|extmetadata|size",
+        iiurlwidth: "1200"
+      }).toString();
+      const response = await fetch(endpoint, {
+        signal: AbortSignal.timeout(15e3),
+        headers: { "User-Agent": "BaliAccountingJournal/1.0 (https://bali-villa-accounting-service.com)" }
+      });
+      if (!response.ok) throw new Error(`Image search returned ${response.status}`);
+      const body = await response.json();
+      const candidates = Object.values(body.query?.pages ?? {}).filter((page) => {
+        const image2 = page.imageinfo?.[0];
+        return image2?.thumburl && isJournalImage(image2.thumburl) && !usedKeys.has(photoKey(image2.thumburl)) && (image2.width ?? 0) >= 900 && selection.match.test(page.title) && !/portrait|conference|politician|logo|flag|coat.of.arms/i.test(page.title) && /^(?:CC BY(?:-SA)? [234]\.0|CC0|Public domain)$/i.test(plain(image2.extmetadata?.LicenseShortName?.value ?? ""));
+      });
+      if (!candidates.length) continue;
+      const candidate = candidates[seed % candidates.length];
+      const image = candidate.imageinfo[0];
+      const source = new URL(image.descriptionurl);
+      if (source.hostname !== "commons.wikimedia.org") continue;
+      const license = plain(image.extmetadata?.LicenseShortName?.value ?? "");
+      const artist = plain(image.extmetadata?.Artist?.value ?? "See original attribution");
+      const licenseUrl = image.extmetadata?.LicenseUrl?.value;
+      const approvedLicense = licenseUrl && /^https:\/\/creativecommons\.org\/(?:licenses|publicdomain)\//.test(licenseUrl) ? licenseUrl : null;
+      logger.info({ source: source.href, query, license }, "Unique topic-related journal image selected");
+      return {
+        url: image.thumburl,
+        alt: `Illustrative photo: ${plain(candidate.title.replace(/^File:/, "").replace(/\.[a-z]+$/i, "").replace(/[-_]/g, " ")).slice(0, 150)}`,
+        creditHtml: `<p><em>Illustrative photo, not a client engagement. Photo credit: ${escape3(artist)}. ${escape3(license)}. <a href="${escape3(source.href)}">Original image and attribution</a>${approvedLicense ? ` \xB7 <a href="${escape3(approvedLicense)}">License terms</a>` : ""}. Cropped for display; no endorsement implied.</em></p>`
+      };
+    } catch (err) {
+      logger.warn({ err, query }, "Topic-related image search unavailable; trying the next query");
+    }
   }
+  throw new Error("Publication held: no unused, topic-related licensed image was available; shared generic covers are not a fallback");
 }
 
 // src/lib/blog-content.ts
@@ -51405,7 +51882,11 @@ async function createBlueprintArticle(topic, context2, fallback) {
     await reviewArticle(post2, topic);
     return post2;
   }
-  const image = await findJournalImage(new Set(context2.existing.map((p) => p.imageUrl)), topic?.id ?? context2.existing.length);
+  const image = await findJournalImage(
+    new Set(context2.existing.map((p) => p.imageUrl)),
+    topic?.id ?? context2.existing.length,
+    `${topic?.workingTitle ?? ""} ${topic?.keyword ?? JSON.stringify(fallback)}`
+  );
   const references = [];
   if (topic && !"AH".includes(topic.cluster)) {
     const url2 = "https://www.pajak.go.id/en";

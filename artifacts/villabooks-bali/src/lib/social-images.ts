@@ -1,21 +1,22 @@
 import { SITE_ORIGIN } from "./site-pages";
+import { getPageImagery, journalImagery } from "./page-imagery";
 
 // New filenames intentionally replace the cached, old VillaBooks screenshot.
-export const DEFAULT_SHARE_IMAGE = "/bali-accounting-share-2026-10.jpg";
-export const JOURNAL_SHARE_IMAGE = "/bali-accounting-journal-share-2026-10.jpg";
+export const DEFAULT_SHARE_IMAGE = getPageImagery("/")!.shareImage;
+export const JOURNAL_SHARE_IMAGE = getPageImagery("/blog")!.shareImage;
 
 export function shareImage(pathname: string) {
-  return pathname.replace(/\/+$/, "") === "/blog" ? JOURNAL_SHARE_IMAGE : DEFAULT_SHARE_IMAGE;
+  return getPageImagery(pathname)?.shareImage ?? DEFAULT_SHARE_IMAGE;
 }
 
 export function shareImageAlt(pathname: string) {
-  return pathname.replace(/\/+$/, "") === "/blog"
-    ? "Bali Accounting Journal — practical guides for better villa records"
-    : "Bali Accounting — villa bookkeeping and clear owner reports";
+  return getPageImagery(pathname)?.imageAlt ?? "Bali Accounting — villa bookkeeping and business support";
 }
 
-export function updateShareImage(pathname: string, article?: { imageUrl: string; imageAlt: string; updatedAt: string | Date }) {
-  const url = new URL(article?.imageUrl ?? shareImage(pathname), SITE_ORIGIN);
+export function updateShareImage(pathname: string, article?: { slug?: string; imageUrl: string; imageAlt: string; updatedAt: string | Date }) {
+  const candidate = article?.slug ? journalImagery[article.slug] : undefined;
+  const articleVisual = candidate?.imageUrl === article?.imageUrl ? candidate : undefined;
+  const url = new URL(articleVisual?.shareImage ?? article?.imageUrl ?? shareImage(pathname), SITE_ORIGIN);
   if (article && url.origin === SITE_ORIGIN) {
     const version = new Date(typeof article.updatedAt === "string" ? article.updatedAt : article.updatedAt.getTime()).getTime();
     if (Number.isFinite(version)) url.searchParams.set("v", String(version));
@@ -42,7 +43,7 @@ export function updateShareImage(pathname: string, article?: { imageUrl: string;
   else document.querySelector('meta[property="og:image:type"]')?.remove();
   for (const dimension of ["width", "height"]) {
     const key = `og:image:${dimension}`;
-    if (article) document.querySelector(`meta[property="${key}"]`)?.remove();
+    if (article && !articleVisual) document.querySelector(`meta[property="${key}"]`)?.remove();
     else setMeta("property", key, dimension === "width" ? "1200" : "630");
   }
 }
