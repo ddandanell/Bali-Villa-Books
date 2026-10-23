@@ -33,5 +33,7 @@ try {
 const automation = await readFile(new URL("../../artifacts/api-server/src/lib/blog-automation.ts", import.meta.url), "utf8");
 assert.ok(automation.includes('JOURNAL_SCHEDULER_MODE === "external"'));
 assert.ok(automation.includes('return "busy"'));
-assert.ok(automation.includes('options.scheduled ? 0 : 2'));
+assert.ok(automation.includes("for (const slot of"));
+assert.ok(automation.includes("pg_advisory_xact_lock(74192833)"));
+assert.ok(automation.includes("attempts >= 4"));
 console.log("PASS: production-only explicit database, no fallback, secure AI endpoint, bundle integrity, external timer mode and bounded worker retries; no network or generation used.");

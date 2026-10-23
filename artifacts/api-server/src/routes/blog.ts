@@ -1,5 +1,6 @@
 import { Router, type IRouter } from "express";
-import { desc, eq, sql } from "drizzle-orm";
+import { desc, eq, sql, notInArray } from "drizzle-orm";
+import { articleAliases } from "@workspace/site-content";
 import { db, blogEvents, blogPosts, automationConfig, automationRuns } from "@workspace/db";
 import { ListBlogPostsQueryParams, ListBlogPostsResponse, GetBlogPostParams, GetBlogPostResponse, RecordBlogEventBody, GetBlogAutomationStatusResponse } from "@workspace/api-zod";
 import { logger } from "../lib/logger";
@@ -56,11 +57,13 @@ export async function seedBlogPosts(): Promise<void> {
 router.get("/blog/posts", async (req, res): Promise<void> => {
   const parsed = ListBlogPostsQueryParams.safeParse(req.query);
   if (!parsed.success) { res.status(400).json({ error: parsed.error.message }); return; }
-  const posts = await db.select().from(blogPosts).orderBy(desc(blogPosts.publishedAt)).limit(parsed.data.limit).offset(parsed.data.offset ?? 0);
+  const posts = await db.select().from(blogPosts).where(notInArray(blogPosts.slug, Object.keys(articleAliases))).orderBy(desc(blogPosts.publishedAt)).limit(parsed.data.limit).offset(parsed.data.offset ?? 0);
   res.json(ListBlogPostsResponse.parse(posts.map(summary)));
 });
 
 router.get("/blog/posts/:slug", async (req, res): Promise<void> => {
+  const preferred = articleAliases[String(req.params.slug)];
+  if (preferred) { res.redirect(308, `/api/blog/posts/${preferred}`); return; }
   const parsed = GetBlogPostParams.safeParse(req.params);
   if (!parsed.success) { res.status(400).json({ error: parsed.error.message }); return; }
   const [post] = await db.select().from(blogPosts).where(eq(blogPosts.slug, parsed.data.slug));

@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-06T15:09:34.292Z",
+  "checkedAt": "2026-10-23T17:55:34.976Z",
   "markets": [
     "Indonesia",
     "Australia",
@@ -32,7 +32,7 @@
       "endpoint": "google/keyword_suggestions/live",
       "keyword": "accounting bali",
       "market": "Indonesia",
-      "cost": 0.01344
+      "cost": 0.01464
     },
     {
       "endpoint": "google/keyword_suggestions/live",
@@ -53,17 +53,22 @@
       "cost": 0.012
     }
   ],
-  "totalCostUsd": 0.40944,
+  "totalCostUsd": 0.41064,
   "rows": [
     {
       "market": "Indonesia",
       "language": "en",
       "keyword": "accounting bali",
       "searchVolume": 170,
-      "competition": 0.16,
+      "competition": 0.26,
       "competitionLevel": "LOW",
-      "cpc": 1.98,
+      "cpc": 4.38,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 110
+        },
         {
           "year": 2026,
           "month": 8,
@@ -118,25 +123,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 140
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 140
         }
       ],
       "source": "DataForSEO Labs suggestions",
-      "checkedAt": "2026-10-06T15:09:32.715Z"
+      "checkedAt": "2026-10-23T17:55:33.815Z"
     },
     {
       "market": "Indonesia",
       "language": "en",
       "keyword": "bali accounting",
       "searchVolume": 170,
-      "competition": 0.16,
+      "competition": 0.26,
       "competitionLevel": "LOW",
-      "cpc": 1.98,
+      "cpc": 4.38,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 110
+        },
         {
           "year": 2026,
           "month": 8,
@@ -191,15 +196,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 140
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 140
         }
       ],
       "source": "DataForSEO Labs suggestions",
-      "checkedAt": "2026-10-06T15:09:32.715Z"
+      "checkedAt": "2026-10-23T17:55:33.815Z"
     },
     {
       "market": "Indonesia",
@@ -208,8 +208,13 @@
       "searchVolume": 170,
       "competition": "LOW",
       "competitionLevel": null,
-      "cpc": 1.98,
+      "cpc": 4.38,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 110
+        },
         {
           "year": 2026,
           "month": 8,
@@ -264,15 +269,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 140
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 140
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.004Z"
     },
     {
       "market": "Indonesia",
@@ -284,7 +284,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.004Z"
     },
     {
       "market": "Indonesia",
@@ -296,7 +296,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.004Z"
     },
     {
       "market": "Indonesia",
@@ -308,7 +308,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -320,7 +320,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -332,7 +332,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -344,7 +344,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -356,7 +356,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -368,7 +368,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -380,7 +380,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -392,7 +392,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -404,7 +404,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -416,7 +416,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -428,7 +428,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -440,7 +440,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -452,7 +452,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -464,7 +464,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -476,7 +476,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -488,7 +488,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -500,7 +500,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -512,7 +512,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -524,7 +524,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.130Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -536,17 +536,22 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
       "language": "en",
       "keyword": "airbnb bookkeeping",
       "searchVolume": 10,
-      "competition": "LOW",
+      "competition": null,
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
         {
           "year": 2026,
           "month": 8,
@@ -601,15 +606,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -622,6 +622,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -674,15 +679,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -694,7 +694,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -706,7 +706,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -718,7 +718,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -731,6 +731,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -783,15 +788,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -804,6 +804,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -856,15 +861,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -876,7 +876,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -889,6 +889,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -941,15 +946,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -962,6 +962,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -1014,15 +1019,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1035,6 +1035,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -1087,15 +1092,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1108,6 +1108,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -1160,15 +1165,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1181,6 +1181,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -1233,20 +1238,161 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
       "language": "en",
       "keyword": "rental property accounting",
+      "searchVolume": 10,
+      "competition": null,
+      "competitionLevel": null,
+      "cpc": null,
+      "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ],
+      "source": "DataForSEO Google Ads search volume",
+      "checkedAt": "2026-10-23T17:55:23.005Z"
+    },
+    {
+      "market": "Indonesia",
+      "language": "en",
+      "keyword": "property management bookkeeping",
+      "searchVolume": 10,
+      "competition": "HIGH",
+      "competitionLevel": null,
+      "cpc": 0.1,
+      "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ],
+      "source": "DataForSEO Google Ads search volume",
+      "checkedAt": "2026-10-23T17:55:23.005Z"
+    },
+    {
+      "market": "Indonesia",
+      "language": "en",
+      "keyword": "bookkeeping cleanup",
       "searchVolume": 10,
       "competition": "LOW",
       "competitionLevel": null,
@@ -1254,150 +1400,9 @@
       "monthlySearches": [
         {
           "year": 2026,
-          "month": 8,
-          "search_volume": 10
-        },
-        {
-          "year": 2026,
-          "month": 7,
-          "search_volume": 0
-        },
-        {
-          "year": 2026,
-          "month": 6,
-          "search_volume": 0
-        },
-        {
-          "year": 2026,
-          "month": 5,
-          "search_volume": 0
-        },
-        {
-          "year": 2026,
-          "month": 4,
-          "search_volume": 0
-        },
-        {
-          "year": 2026,
-          "month": 3,
-          "search_volume": 10
-        },
-        {
-          "year": 2026,
-          "month": 2,
-          "search_volume": 10
-        },
-        {
-          "year": 2026,
-          "month": 1,
-          "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 12,
-          "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 11,
-          "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 10,
-          "search_volume": 0
-        },
-        {
-          "year": 2025,
           "month": 9,
-          "search_volume": 0
-        }
-      ],
-      "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
-    },
-    {
-      "market": "Indonesia",
-      "language": "en",
-      "keyword": "property management bookkeeping",
-      "searchVolume": 10,
-      "competition": null,
-      "competitionLevel": null,
-      "cpc": null,
-      "monthlySearches": [
-        {
-          "year": 2026,
-          "month": 8,
-          "search_volume": 0
-        },
-        {
-          "year": 2026,
-          "month": 7,
-          "search_volume": 0
-        },
-        {
-          "year": 2026,
-          "month": 6,
           "search_volume": 10
         },
-        {
-          "year": 2026,
-          "month": 5,
-          "search_volume": 0
-        },
-        {
-          "year": 2026,
-          "month": 4,
-          "search_volume": 10
-        },
-        {
-          "year": 2026,
-          "month": 3,
-          "search_volume": 10
-        },
-        {
-          "year": 2026,
-          "month": 2,
-          "search_volume": 10
-        },
-        {
-          "year": 2026,
-          "month": 1,
-          "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 12,
-          "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 11,
-          "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 10,
-          "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
-        }
-      ],
-      "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
-    },
-    {
-      "market": "Indonesia",
-      "language": "en",
-      "keyword": "bookkeeping cleanup",
-      "searchVolume": 10,
-      "competition": null,
-      "competitionLevel": null,
-      "cpc": null,
-      "monthlySearches": [
         {
           "year": 2026,
           "month": 8,
@@ -1452,15 +1457,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1473,6 +1473,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -1525,15 +1530,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1545,7 +1545,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1557,7 +1557,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1569,7 +1569,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1581,7 +1581,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1593,7 +1593,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1605,7 +1605,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1617,7 +1617,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1629,7 +1629,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1641,7 +1641,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1653,7 +1653,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1665,7 +1665,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1677,7 +1677,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1689,7 +1689,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1701,7 +1701,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1713,7 +1713,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1725,7 +1725,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1737,7 +1737,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1749,7 +1749,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1762,6 +1762,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -1814,15 +1819,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1834,7 +1834,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1846,7 +1846,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1858,7 +1858,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1870,7 +1870,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1882,7 +1882,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1894,7 +1894,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1906,7 +1906,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1919,6 +1919,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 10
         },
@@ -1971,15 +1976,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -1991,7 +1991,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -2003,7 +2003,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -2012,8 +2012,13 @@
       "searchVolume": 5400,
       "competition": "LOW",
       "competitionLevel": null,
-      "cpc": 3.9,
+      "cpc": 3.4,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 4400
+        },
         {
           "year": 2026,
           "month": 8,
@@ -2068,15 +2073,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 5400
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 5400
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -2085,8 +2085,13 @@
       "searchVolume": 8100,
       "competition": "LOW",
       "competitionLevel": null,
-      "cpc": 3.27,
+      "cpc": 2.49,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 8100
+        },
         {
           "year": 2026,
           "month": 8,
@@ -2141,15 +2146,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 8100
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 8100
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -2158,8 +2158,13 @@
       "searchVolume": 140,
       "competition": "MEDIUM",
       "competitionLevel": null,
-      "cpc": 1.3,
+      "cpc": 0.88,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 110
+        },
         {
           "year": 2026,
           "month": 8,
@@ -2214,15 +2219,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 140
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 110
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -2235,6 +2235,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 20
         },
@@ -2287,15 +2292,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 20
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 20
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -2306,6 +2306,11 @@
       "competitionLevel": null,
       "cpc": 0.1,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 880
+        },
         {
           "year": 2026,
           "month": 8,
@@ -2360,25 +2365,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 1000
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 1000
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
       "language": "en",
       "keyword": "bali foreign investment",
       "searchVolume": 10,
-      "competition": "HIGH",
+      "competition": "LOW",
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -2433,25 +2438,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
       "language": "en",
       "keyword": "oss indonesia",
-      "searchVolume": 6600,
+      "searchVolume": 8100,
       "competition": "LOW",
       "competitionLevel": null,
-      "cpc": 0.09,
+      "cpc": 0.1,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 12100
+        },
         {
           "year": 2026,
           "month": 8,
@@ -2506,15 +2511,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 6600
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 5400
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -2526,7 +2526,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Indonesia",
@@ -2539,6 +2539,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -2591,25 +2596,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:21.131Z"
+      "checkedAt": "2026-10-23T17:55:23.005Z"
     },
     {
       "market": "Australia",
       "language": "en",
       "keyword": "accounting bali",
       "searchVolume": 10,
-      "competition": "MEDIUM",
+      "competition": "LOW",
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -2664,25 +2669,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
       "language": "en",
       "keyword": "bali accounting",
       "searchVolume": 10,
-      "competition": "MEDIUM",
+      "competition": "LOW",
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -2737,25 +2742,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
       "language": "en",
       "keyword": "accountant bali",
       "searchVolume": 10,
-      "competition": "MEDIUM",
+      "competition": "LOW",
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -2810,15 +2815,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -2830,7 +2830,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -2842,7 +2842,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -2854,7 +2854,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -2866,7 +2866,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -2878,7 +2878,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -2890,7 +2890,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -2902,7 +2902,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -2914,7 +2914,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -2926,7 +2926,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -2938,7 +2938,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -2950,7 +2950,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -2962,7 +2962,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -2974,7 +2974,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -2986,7 +2986,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -2998,7 +2998,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3010,7 +3010,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3022,7 +3022,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3034,7 +3034,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3046,7 +3046,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3058,7 +3058,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3070,7 +3070,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3082,7 +3082,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3095,6 +3095,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -3147,25 +3152,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
       "language": "en",
       "keyword": "airbnb accounting",
       "searchVolume": 10,
-      "competition": "HIGH",
+      "competition": "MEDIUM",
       "competitionLevel": null,
-      "cpc": null,
+      "cpc": 37.61,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -3220,15 +3225,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 20
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3240,7 +3240,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3252,7 +3252,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3264,7 +3264,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3277,6 +3277,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -3329,15 +3334,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3350,6 +3350,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -3402,15 +3407,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3422,7 +3422,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3435,6 +3435,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -3487,25 +3492,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
       "language": "en",
       "keyword": "short term rental accounting",
       "searchVolume": 10,
-      "competition": null,
+      "competition": "HIGH",
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -3560,15 +3565,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3581,6 +3581,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -3633,15 +3638,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3654,6 +3654,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -3706,25 +3711,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
       "language": "en",
       "keyword": "rental property bookkeeping",
       "searchVolume": 10,
-      "competition": "MEDIUM",
+      "competition": null,
       "competitionLevel": null,
-      "cpc": 6.74,
+      "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
         {
           "year": 2026,
           "month": 8,
@@ -3779,15 +3784,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -3796,8 +3796,13 @@
       "searchVolume": 30,
       "competition": "MEDIUM",
       "competitionLevel": null,
-      "cpc": 11.79,
+      "cpc": 29.93,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -3852,25 +3857,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 20
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 90
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
       "language": "en",
       "keyword": "property management bookkeeping",
       "searchVolume": 10,
-      "competition": "HIGH",
+      "competition": "LOW",
       "competitionLevel": null,
-      "cpc": 15.99,
+      "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -3925,25 +3930,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
       "language": "en",
       "keyword": "bookkeeping cleanup",
       "searchVolume": 10,
-      "competition": "HIGH",
+      "competition": null,
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
         {
           "year": 2026,
           "month": 8,
@@ -3998,15 +4003,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4015,8 +4015,13 @@
       "searchVolume": 10,
       "competition": "MEDIUM",
       "competitionLevel": null,
-      "cpc": 8.43,
+      "cpc": 12.79,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -4071,15 +4076,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4091,7 +4091,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4103,7 +4103,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4115,7 +4115,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4127,7 +4127,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4139,7 +4139,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4151,7 +4151,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4163,7 +4163,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4175,7 +4175,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4187,7 +4187,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4199,7 +4199,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4211,7 +4211,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4223,7 +4223,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4235,7 +4235,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4247,7 +4247,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4259,7 +4259,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4271,7 +4271,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4283,7 +4283,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4295,17 +4295,22 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
       "language": "en",
       "keyword": "monthly bookkeeping cost",
-      "searchVolume": 20,
+      "searchVolume": 10,
       "competition": "HIGH",
       "competitionLevel": null,
-      "cpc": 3.34,
+      "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -4360,15 +4365,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 170
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4380,7 +4380,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4392,7 +4392,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4404,7 +4404,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4416,7 +4416,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4428,7 +4428,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4440,7 +4440,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4452,7 +4452,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4464,7 +4464,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4476,7 +4476,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4488,7 +4488,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4497,8 +4497,13 @@
       "searchVolume": 49500,
       "competition": "MEDIUM",
       "competitionLevel": null,
-      "cpc": 6.21,
+      "cpc": 5.99,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 60500
+        },
         {
           "year": 2026,
           "month": 8,
@@ -4553,15 +4558,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 49500
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 49500
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4570,8 +4570,13 @@
       "searchVolume": 14800,
       "competition": "LOW",
       "competitionLevel": null,
-      "cpc": 6.69,
+      "cpc": 6.79,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 18100
+        },
         {
           "year": 2026,
           "month": 8,
@@ -4626,15 +4631,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 14800
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 14800
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4647,6 +4647,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 90
         },
@@ -4699,15 +4704,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 110
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 90
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4720,6 +4720,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 10
         },
@@ -4772,15 +4777,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 20
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4789,8 +4789,13 @@
       "searchVolume": 110,
       "competition": "LOW",
       "competitionLevel": null,
-      "cpc": null,
+      "cpc": 0.02,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 90
+        },
         {
           "year": 2026,
           "month": 8,
@@ -4839,31 +4844,31 @@
         {
           "year": 2025,
           "month": 11,
-          "search_volume": 170
+          "search_volume": 140
         },
         {
           "year": 2025,
           "month": 10,
           "search_volume": 110
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 90
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
       "language": "en",
       "keyword": "bali foreign investment",
       "searchVolume": 10,
-      "competition": "LOW",
+      "competition": null,
       "competitionLevel": null,
-      "cpc": 0.02,
+      "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
         {
           "year": 2026,
           "month": 8,
@@ -4918,15 +4923,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -4939,6 +4939,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 40
         },
@@ -4991,15 +4996,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 30
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 20
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -5011,7 +5011,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "Australia",
@@ -5023,7 +5023,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:25.844Z"
+      "checkedAt": "2026-10-23T17:55:26.683Z"
     },
     {
       "market": "United Kingdom",
@@ -5036,6 +5036,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 10
         },
@@ -5088,15 +5093,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5109,6 +5109,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 10
         },
@@ -5161,15 +5166,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5182,6 +5182,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 10
         },
@@ -5234,15 +5239,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5254,7 +5254,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5266,7 +5266,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5278,7 +5278,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5290,7 +5290,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5302,7 +5302,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5314,7 +5314,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5326,7 +5326,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5338,7 +5338,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5350,7 +5350,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5362,7 +5362,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5374,7 +5374,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5386,7 +5386,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5398,7 +5398,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5410,7 +5410,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5422,7 +5422,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5434,7 +5434,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5446,7 +5446,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5458,7 +5458,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5470,7 +5470,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5482,7 +5482,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5494,7 +5494,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5506,17 +5506,22 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
       "language": "en",
       "keyword": "airbnb bookkeeping",
       "searchVolume": 10,
-      "competition": "HIGH",
+      "competition": null,
       "competitionLevel": null,
-      "cpc": 4.44,
+      "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
         {
           "year": 2026,
           "month": 8,
@@ -5571,15 +5576,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5588,8 +5588,13 @@
       "searchVolume": 30,
       "competition": "HIGH",
       "competitionLevel": null,
-      "cpc": 11.21,
+      "cpc": 25.91,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 20
+        },
         {
           "year": 2026,
           "month": 8,
@@ -5644,15 +5649,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 40
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 40
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5664,7 +5664,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5676,7 +5676,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5688,7 +5688,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5701,6 +5701,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -5753,25 +5758,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
       "language": "en",
       "keyword": "ota reconciliation",
       "searchVolume": 10,
-      "competition": null,
+      "competition": "HIGH",
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -5826,15 +5831,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5846,7 +5846,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5859,6 +5859,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -5911,15 +5916,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -5932,6 +5932,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -5984,15 +5989,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6005,6 +6005,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -6057,15 +6062,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6078,6 +6078,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -6130,25 +6135,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
       "language": "en",
       "keyword": "rental property bookkeeping",
       "searchVolume": 10,
-      "competition": null,
+      "competition": "HIGH",
       "competitionLevel": null,
-      "cpc": null,
+      "cpc": 22.47,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -6203,25 +6208,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 40
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
       "language": "en",
       "keyword": "rental property accounting",
-      "searchVolume": 110,
-      "competition": "HIGH",
+      "searchVolume": 70,
+      "competition": "MEDIUM",
       "competitionLevel": null,
-      "cpc": 13.19,
+      "cpc": 8.53,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 50
+        },
         {
           "year": 2026,
           "month": 8,
@@ -6276,15 +6281,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 90
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 590
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6297,6 +6297,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 10
         },
@@ -6349,25 +6354,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 30
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
       "language": "en",
       "keyword": "bookkeeping cleanup",
       "searchVolume": 10,
-      "competition": "MEDIUM",
+      "competition": "LOW",
       "competitionLevel": null,
-      "cpc": 45.24,
+      "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -6422,25 +6427,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 70
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
       "language": "en",
       "keyword": "catch up bookkeeping",
-      "searchVolume": 20,
-      "competition": "LOW",
+      "searchVolume": 10,
+      "competition": "MEDIUM",
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -6495,15 +6500,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 90
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6515,7 +6515,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6527,7 +6527,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6539,7 +6539,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6551,7 +6551,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6563,7 +6563,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6575,7 +6575,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6587,7 +6587,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6599,7 +6599,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6611,7 +6611,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6623,7 +6623,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6635,7 +6635,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6647,7 +6647,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6659,7 +6659,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6671,7 +6671,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6683,7 +6683,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6695,7 +6695,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6707,7 +6707,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6719,17 +6719,22 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
       "language": "en",
       "keyword": "monthly bookkeeping cost",
       "searchVolume": 10,
-      "competition": "HIGH",
+      "competition": "LOW",
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -6784,15 +6789,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 20
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6804,7 +6804,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6816,7 +6816,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6828,7 +6828,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6840,7 +6840,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6852,7 +6852,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6864,7 +6864,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6876,7 +6876,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6889,6 +6889,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -6941,15 +6946,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6961,7 +6961,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6973,7 +6973,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -6982,8 +6982,13 @@
       "searchVolume": 6600,
       "competition": "MEDIUM",
       "competitionLevel": null,
-      "cpc": 4.94,
+      "cpc": 4.92,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 8100
+        },
         {
           "year": 2026,
           "month": 8,
@@ -7038,15 +7043,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 5400
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 8100
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -7055,8 +7055,13 @@
       "searchVolume": 3600,
       "competition": "LOW",
       "competitionLevel": null,
-      "cpc": 6.11,
+      "cpc": 6.78,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 4400
+        },
         {
           "year": 2026,
           "month": 8,
@@ -7111,15 +7116,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 3600
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 4400
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -7132,6 +7132,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 50
         },
@@ -7184,15 +7189,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 50
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 50
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -7203,6 +7203,11 @@
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -7257,15 +7262,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -7274,8 +7274,13 @@
       "searchVolume": 170,
       "competition": "LOW",
       "competitionLevel": null,
-      "cpc": null,
+      "cpc": 0.23,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 110
+        },
         {
           "year": 2026,
           "month": 8,
@@ -7330,25 +7335,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 170
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 140
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
       "language": "en",
       "keyword": "bali foreign investment",
       "searchVolume": 10,
-      "competition": "LOW",
+      "competition": null,
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
         {
           "year": 2026,
           "month": 8,
@@ -7403,15 +7408,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -7424,6 +7424,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 10
         },
@@ -7476,15 +7481,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -7496,7 +7496,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United Kingdom",
@@ -7508,17 +7508,22 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:28.650Z"
+      "checkedAt": "2026-10-23T17:55:30.304Z"
     },
     {
       "market": "United States",
       "language": "en",
       "keyword": "accounting bali",
       "searchVolume": 10,
-      "competition": null,
+      "competition": "LOW",
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -7573,25 +7578,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
       "language": "en",
       "keyword": "bali accounting",
       "searchVolume": 10,
-      "competition": null,
+      "competition": "LOW",
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -7646,25 +7651,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
       "language": "en",
       "keyword": "accountant bali",
       "searchVolume": 10,
-      "competition": null,
+      "competition": "LOW",
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -7719,15 +7724,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7739,7 +7739,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7751,7 +7751,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7763,7 +7763,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7775,7 +7775,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7787,7 +7787,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7799,7 +7799,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7811,7 +7811,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7823,7 +7823,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7835,7 +7835,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7847,7 +7847,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7859,7 +7859,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7871,7 +7871,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7883,7 +7883,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7895,7 +7895,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7907,7 +7907,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7919,7 +7919,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7931,7 +7931,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7943,7 +7943,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7955,7 +7955,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7967,7 +7967,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7979,7 +7979,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -7991,7 +7991,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -8000,8 +8000,13 @@
       "searchVolume": 40,
       "competition": "HIGH",
       "competitionLevel": null,
-      "cpc": 9.57,
+      "cpc": 27.88,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 20
+        },
         {
           "year": 2026,
           "month": 8,
@@ -8056,15 +8061,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 90
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 40
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -8073,8 +8073,13 @@
       "searchVolume": 40,
       "competition": "MEDIUM",
       "competitionLevel": null,
-      "cpc": 27.36,
+      "cpc": 16.93,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 50
+        },
         {
           "year": 2026,
           "month": 8,
@@ -8129,15 +8134,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 70
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 50
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -8149,7 +8149,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -8161,7 +8161,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -8173,7 +8173,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -8186,6 +8186,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 10
         },
@@ -8238,25 +8243,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
       "language": "en",
       "keyword": "ota reconciliation",
       "searchVolume": 10,
-      "competition": "MEDIUM",
+      "competition": "HIGH",
       "competitionLevel": null,
-      "cpc": 19.35,
+      "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -8311,15 +8316,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -8331,17 +8331,22 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
       "language": "en",
       "keyword": "short term rental bookkeeping",
       "searchVolume": 30,
-      "competition": "HIGH",
+      "competition": "MEDIUM",
       "competitionLevel": null,
-      "cpc": 53.07,
+      "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 20
+        },
         {
           "year": 2026,
           "month": 8,
@@ -8396,25 +8401,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 30
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 30
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
       "language": "en",
       "keyword": "short term rental accounting",
       "searchVolume": 10,
-      "competition": "MEDIUM",
+      "competition": "HIGH",
       "competitionLevel": null,
-      "cpc": 29.6,
+      "cpc": 15.77,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 20
+        },
         {
           "year": 2026,
           "month": 8,
@@ -8469,25 +8474,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 20
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
       "language": "en",
       "keyword": "vacation rental bookkeeping",
       "searchVolume": 30,
-      "competition": "HIGH",
+      "competition": "MEDIUM",
       "competitionLevel": null,
-      "cpc": 8.76,
+      "cpc": 14.85,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -8542,25 +8547,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 20
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
       "language": "en",
       "keyword": "vacation rental accounting",
-      "searchVolume": 50,
+      "searchVolume": 40,
       "competition": "MEDIUM",
       "competitionLevel": null,
-      "cpc": null,
+      "cpc": 19.97,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -8615,15 +8620,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 170
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 110
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -8632,8 +8632,13 @@
       "searchVolume": 110,
       "competition": "MEDIUM",
       "competitionLevel": null,
-      "cpc": 75.46,
+      "cpc": 72.45,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 90
+        },
         {
           "year": 2026,
           "month": 8,
@@ -8688,25 +8693,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 90
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 170
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
       "language": "en",
       "keyword": "rental property accounting",
-      "searchVolume": 170,
-      "competition": "MEDIUM",
+      "searchVolume": 140,
+      "competition": "LOW",
       "competitionLevel": null,
-      "cpc": 43.25,
+      "cpc": 30.57,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 140
+        },
         {
           "year": 2026,
           "month": 8,
@@ -8761,25 +8766,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 140
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 320
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
       "language": "en",
       "keyword": "property management bookkeeping",
-      "searchVolume": 260,
+      "searchVolume": 210,
       "competition": "MEDIUM",
       "competitionLevel": null,
-      "cpc": 89.35,
+      "cpc": 62.89,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 170
+        },
         {
           "year": 2026,
           "month": 8,
@@ -8834,25 +8839,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 320
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 720
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
       "language": "en",
       "keyword": "bookkeeping cleanup",
-      "searchVolume": 320,
+      "searchVolume": 260,
       "competition": "MEDIUM",
       "competitionLevel": null,
-      "cpc": 35.87,
+      "cpc": 59.98,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 170
+        },
         {
           "year": 2026,
           "month": 8,
@@ -8907,15 +8912,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 390
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 720
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -8924,8 +8924,13 @@
       "searchVolume": 170,
       "competition": "MEDIUM",
       "competitionLevel": null,
-      "cpc": 33.39,
+      "cpc": 47.59,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 140
+        },
         {
           "year": 2026,
           "month": 8,
@@ -8980,15 +8985,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 110
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 210
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9000,7 +9000,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9012,7 +9012,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9024,7 +9024,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9036,7 +9036,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9048,7 +9048,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9060,7 +9060,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9072,7 +9072,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9084,7 +9084,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9096,7 +9096,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9108,7 +9108,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9120,7 +9120,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9132,7 +9132,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9144,7 +9144,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9156,7 +9156,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9168,7 +9168,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9180,7 +9180,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9192,7 +9192,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9204,17 +9204,22 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
       "language": "en",
       "keyword": "monthly bookkeeping cost",
       "searchVolume": 50,
-      "competition": "HIGH",
+      "competition": "MEDIUM",
       "competitionLevel": null,
-      "cpc": 12.86,
+      "cpc": 14.1,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 30
+        },
         {
           "year": 2026,
           "month": 8,
@@ -9269,15 +9274,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 40
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 30
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9289,7 +9289,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9301,7 +9301,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9313,7 +9313,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9325,7 +9325,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9337,7 +9337,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9349,7 +9349,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9361,17 +9361,22 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
       "language": "en",
       "keyword": "villa adr",
       "searchVolume": 10,
-      "competition": null,
+      "competition": "LOW",
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -9426,15 +9431,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9446,7 +9446,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9458,7 +9458,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9467,8 +9467,13 @@
       "searchVolume": 3600,
       "competition": "MEDIUM",
       "competitionLevel": null,
-      "cpc": 10,
+      "cpc": 9.23,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 3600
+        },
         {
           "year": 2026,
           "month": 8,
@@ -9523,15 +9528,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 2900
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 4400
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9540,8 +9540,13 @@
       "searchVolume": 4400,
       "competition": "LOW",
       "competitionLevel": null,
-      "cpc": 10.53,
+      "cpc": 11.68,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 4400
+        },
         {
           "year": 2026,
           "month": 8,
@@ -9596,25 +9601,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 3600
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 4400
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
       "language": "en",
       "keyword": "digital nomad visa bali",
-      "searchVolume": 50,
+      "searchVolume": 40,
       "competition": "LOW",
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 30
+        },
         {
           "year": 2026,
           "month": 8,
@@ -9669,15 +9674,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 70
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 110
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9690,6 +9690,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 20
         },
@@ -9742,15 +9747,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 20
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9761,6 +9761,11 @@
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 70
+        },
         {
           "year": 2026,
           "month": 8,
@@ -9815,15 +9820,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 110
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 110
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9834,6 +9834,11 @@
       "competitionLevel": null,
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -9888,15 +9893,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9909,6 +9909,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 30
         },
@@ -9961,15 +9966,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 40
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 20
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9981,7 +9981,7 @@
       "cpc": null,
       "monthlySearches": [],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "United States",
@@ -9994,6 +9994,11 @@
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 0
         },
@@ -10046,25 +10051,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 0
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 0
         }
       ],
       "source": "DataForSEO Google Ads search volume",
-      "checkedAt": "2026-10-06T15:09:32.185Z"
+      "checkedAt": "2026-10-23T17:55:33.547Z"
     },
     {
       "market": "Indonesia",
       "language": "en",
       "keyword": "bali accounting service",
       "searchVolume": 170,
-      "competition": 0.02,
+      "competition": 0.04,
       "competitionLevel": "LOW",
-      "cpc": null,
+      "cpc": 0.12,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 140
+        },
         {
           "year": 2026,
           "month": 8,
@@ -10119,25 +10124,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 110
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 50
         }
       ],
       "source": "DataForSEO Labs suggestions",
-      "checkedAt": "2026-10-06T15:09:32.715Z"
+      "checkedAt": "2026-10-23T17:55:33.815Z"
     },
     {
       "market": "Indonesia",
       "language": "en",
       "keyword": "lowongan kerja accounting di bali",
       "searchVolume": 170,
-      "competition": 0.02,
+      "competition": 0.03,
       "competitionLevel": "LOW",
-      "cpc": 0.01,
+      "cpc": 0.03,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 110
+        },
         {
           "year": 2026,
           "month": 8,
@@ -10192,25 +10197,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 170
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 70
         }
       ],
       "source": "DataForSEO Labs suggestions",
-      "checkedAt": "2026-10-06T15:09:32.715Z"
+      "checkedAt": "2026-10-23T17:55:33.815Z"
     },
     {
       "market": "Indonesia",
       "language": "en",
       "keyword": "hhrma bali accounting",
       "searchVolume": 110,
-      "competition": 0.01,
+      "competition": 0.02,
       "competitionLevel": "LOW",
-      "cpc": null,
+      "cpc": 0.75,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 90
+        },
         {
           "year": 2026,
           "month": 8,
@@ -10265,25 +10270,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 90
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 90
         }
       ],
       "source": "DataForSEO Labs suggestions",
-      "checkedAt": "2026-10-06T15:09:32.715Z"
+      "checkedAt": "2026-10-23T17:55:33.815Z"
     },
     {
       "market": "Indonesia",
       "language": "en",
       "keyword": "loker accounting bali",
       "searchVolume": 110,
-      "competition": 0.04,
+      "competition": 0.02,
       "competitionLevel": "LOW",
-      "cpc": 0.02,
+      "cpc": 0.06,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 90
+        },
         {
           "year": 2026,
           "month": 8,
@@ -10338,25 +10343,25 @@
           "year": 2025,
           "month": 10,
           "search_volume": 140
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 140
         }
       ],
       "source": "DataForSEO Labs suggestions",
-      "checkedAt": "2026-10-06T15:09:32.715Z"
+      "checkedAt": "2026-10-23T17:55:33.815Z"
     },
     {
       "market": "Indonesia",
       "language": "en",
       "keyword": "lowongan accounting bali",
       "searchVolume": 70,
-      "competition": 0.01,
+      "competition": 0.02,
       "competitionLevel": "LOW",
-      "cpc": 0.02,
+      "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 50
+        },
         {
           "year": 2026,
           "month": 8,
@@ -10411,27 +10416,27 @@
           "year": 2025,
           "month": 10,
           "search_volume": 70
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 50
         }
       ],
       "source": "DataForSEO Labs suggestions",
-      "checkedAt": "2026-10-06T15:09:32.715Z"
+      "checkedAt": "2026-10-23T17:55:33.815Z"
     },
     {
       "market": "Indonesia",
       "language": "en",
       "keyword": "gaji accounting di bali",
-      "searchVolume": 40,
+      "searchVolume": 30,
       "competition": 0,
       "competitionLevel": "LOW",
       "cpc": null,
       "monthlySearches": [
         {
           "year": 2026,
+          "month": 9,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
           "month": 8,
           "search_volume": 30
         },
@@ -10484,25 +10489,98 @@
           "year": 2025,
           "month": 10,
           "search_volume": 50
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 50
         }
       ],
       "source": "DataForSEO Labs suggestions",
-      "checkedAt": "2026-10-06T15:09:32.715Z"
+      "checkedAt": "2026-10-23T17:55:33.815Z"
+    },
+    {
+      "market": "Indonesia",
+      "language": "en",
+      "keyword": "freelance accounting bali",
+      "searchVolume": 20,
+      "competition": 0.19,
+      "competitionLevel": "LOW",
+      "cpc": 0.4,
+      "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ],
+      "source": "DataForSEO Labs suggestions",
+      "checkedAt": "2026-10-23T17:55:33.815Z"
     },
     {
       "market": "Indonesia",
       "language": "en",
       "keyword": "lowongan kerja accounting bali",
-      "searchVolume": 30,
-      "competition": 0.01,
+      "searchVolume": 20,
+      "competition": 0.02,
       "competitionLevel": "LOW",
       "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -10557,88 +10635,10 @@
           "year": 2025,
           "month": 10,
           "search_volume": 90
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 30
         }
       ],
       "source": "DataForSEO Labs suggestions",
-      "checkedAt": "2026-10-06T15:09:32.715Z"
-    },
-    {
-      "market": "Indonesia",
-      "language": "en",
-      "keyword": "freelance accounting bali",
-      "searchVolume": 20,
-      "competition": 0.1,
-      "competitionLevel": "LOW",
-      "cpc": 0.02,
-      "monthlySearches": [
-        {
-          "year": 2026,
-          "month": 8,
-          "search_volume": 20
-        },
-        {
-          "year": 2026,
-          "month": 7,
-          "search_volume": 20
-        },
-        {
-          "year": 2026,
-          "month": 6,
-          "search_volume": 20
-        },
-        {
-          "year": 2026,
-          "month": 5,
-          "search_volume": 40
-        },
-        {
-          "year": 2026,
-          "month": 4,
-          "search_volume": 40
-        },
-        {
-          "year": 2026,
-          "month": 3,
-          "search_volume": 10
-        },
-        {
-          "year": 2026,
-          "month": 2,
-          "search_volume": 10
-        },
-        {
-          "year": 2026,
-          "month": 1,
-          "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 12,
-          "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 11,
-          "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 10,
-          "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 20
-        }
-      ],
-      "source": "DataForSEO Labs suggestions",
-      "checkedAt": "2026-10-06T15:09:32.715Z"
+      "checkedAt": "2026-10-23T17:55:33.815Z"
     },
     {
       "market": "Indonesia",
@@ -10711,17 +10711,22 @@
         }
       ],
       "source": "DataForSEO Labs suggestions",
-      "checkedAt": "2026-10-06T15:09:32.715Z"
+      "checkedAt": "2026-10-23T17:55:33.815Z"
     },
     {
       "market": "Indonesia",
       "language": "en",
       "keyword": "lowongan kerja accounting di hotel bali",
       "searchVolume": 10,
-      "competition": 0.05,
+      "competition": 0.07,
       "competitionLevel": "LOW",
-      "cpc": 0.01,
+      "cpc": null,
       "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
         {
           "year": 2026,
           "month": 8,
@@ -10776,15 +10781,740 @@
           "year": 2025,
           "month": 10,
           "search_volume": 10
-        },
-        {
-          "year": 2025,
-          "month": 9,
-          "search_volume": 10
         }
       ],
       "source": "DataForSEO Labs suggestions",
-      "checkedAt": "2026-10-06T15:09:32.715Z"
+      "checkedAt": "2026-10-23T17:55:33.815Z"
+    },
+    {
+      "market": "Indonesia",
+      "language": "en",
+      "keyword": "accounting jobs in bali",
+      "searchVolume": null,
+      "competition": null,
+      "competitionLevel": null,
+      "cpc": null,
+      "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ],
+      "source": "DataForSEO Labs suggestions",
+      "checkedAt": "2026-10-23T17:55:33.815Z"
+    },
+    {
+      "market": "Indonesia",
+      "language": "en",
+      "keyword": "part time accounting bali",
+      "searchVolume": null,
+      "competition": null,
+      "competitionLevel": null,
+      "cpc": null,
+      "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ],
+      "source": "DataForSEO Labs suggestions",
+      "checkedAt": "2026-10-23T17:55:33.815Z"
+    },
+    {
+      "market": "Indonesia",
+      "language": "en",
+      "keyword": "lowongan kerja accounting bali 2020",
+      "searchVolume": null,
+      "competition": null,
+      "competitionLevel": null,
+      "cpc": null,
+      "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ],
+      "source": "DataForSEO Labs suggestions",
+      "checkedAt": "2026-10-23T17:55:33.815Z"
+    },
+    {
+      "market": "Indonesia",
+      "language": "en",
+      "keyword": "accounting in bali",
+      "searchVolume": null,
+      "competition": null,
+      "competitionLevel": null,
+      "cpc": null,
+      "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ],
+      "source": "DataForSEO Labs suggestions",
+      "checkedAt": "2026-10-23T17:55:33.815Z"
+    },
+    {
+      "market": "Indonesia",
+      "language": "en",
+      "keyword": "lowongan kerja admin accounting di bali",
+      "searchVolume": null,
+      "competition": null,
+      "competitionLevel": null,
+      "cpc": null,
+      "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ],
+      "source": "DataForSEO Labs suggestions",
+      "checkedAt": "2026-10-23T17:55:33.815Z"
+    },
+    {
+      "market": "Indonesia",
+      "language": "en",
+      "keyword": "lowongan kerja accounting di bali hari ini",
+      "searchVolume": null,
+      "competition": null,
+      "competitionLevel": null,
+      "cpc": null,
+      "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ],
+      "source": "DataForSEO Labs suggestions",
+      "checkedAt": "2026-10-23T17:55:33.815Z"
+    },
+    {
+      "market": "Indonesia",
+      "language": "en",
+      "keyword": "lowongan kerja accounting bali 2021",
+      "searchVolume": null,
+      "competition": null,
+      "competitionLevel": null,
+      "cpc": null,
+      "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ],
+      "source": "DataForSEO Labs suggestions",
+      "checkedAt": "2026-10-23T17:55:33.815Z"
+    },
+    {
+      "market": "Indonesia",
+      "language": "en",
+      "keyword": "accounting olx bali",
+      "searchVolume": null,
+      "competition": null,
+      "competitionLevel": null,
+      "cpc": null,
+      "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ],
+      "source": "DataForSEO Labs suggestions",
+      "checkedAt": "2026-10-23T17:55:33.815Z"
+    },
+    {
+      "market": "Indonesia",
+      "language": "en",
+      "keyword": "accounting staff bali",
+      "searchVolume": null,
+      "competition": null,
+      "competitionLevel": null,
+      "cpc": null,
+      "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ],
+      "source": "DataForSEO Labs suggestions",
+      "checkedAt": "2026-10-23T17:55:33.815Z"
+    },
+    {
+      "market": "Indonesia",
+      "language": "en",
+      "keyword": "accounting job bali",
+      "searchVolume": null,
+      "competition": null,
+      "competitionLevel": null,
+      "cpc": null,
+      "monthlySearches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ],
+      "source": "DataForSEO Labs suggestions",
+      "checkedAt": "2026-10-23T17:55:33.815Z"
     }
   ],
   "limitations": [

@@ -1,4 +1,5 @@
 import blueprint from "../../../../attached_assets/Pasted--100-Blog-Content-Blueprint-bali-villa-accounting-servi_1791500510826.txt";
+import { seoPriorityTopics } from "@workspace/site-content";
 
 export type BlueprintTopic = { id: number; cluster: string; workingTitle: string; keyword: string; service: string };
 const services: Record<string, string> = {
@@ -22,10 +23,11 @@ if (topics.length !== 100 || new Set(topics.map(t => t.id)).size !== 100)
 export const blueprintTopics = topics;
 
 export function nextBlueprintTopic(existing: { primaryKeyword: string }[], requestedId?: number) {
-  const covered = new Set(existing.map(p => p.primaryKeyword.toLowerCase()));
+  const normalize = (value: string) => value.normalize("NFKC").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  const covered = new Set(existing.map(p => normalize(p.primaryKeyword)));
   const ordered = requestedId ? topics.filter(t => t.id === requestedId)
-    : [...topics].sort((a, b) => "AHBCDEFG".indexOf(a.cluster) - "AHBCDEFG".indexOf(b.cluster) || a.id - b.id);
-  return ordered.find(t => !covered.has(t.keyword.toLowerCase()));
+    : [...seoPriorityTopics, ...[...topics].sort((a, b) => "AHBCDEFG".indexOf(a.cluster) - "AHBCDEFG".indexOf(b.cluster) || a.id - b.id)];
+  return ordered.find(t => !covered.has(normalize(t.keyword)));
 }
 
 /** Additional checks for new blueprint articles, not retroactive requirements for old guides. */

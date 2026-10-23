@@ -1,0 +1,413 @@
+{
+  "checkedAt": "2026-10-23T17:57:38.422Z",
+  "source": "DataForSEO live keyword research",
+  "limitations": "Country/language estimates, not site traffic or ranking promises. Null means unavailable. Keyword variants and countries may overlap. Ad competition is not organic difficulty. Broad accounting queries also include job-seeking intent.",
+  "demand": [
+    {
+      "keyword": "accounting bali",
+      "market": "Indonesia",
+      "estimatedMonthlySearches": 170,
+      "source": "DataForSEO Labs suggestions"
+    },
+    {
+      "keyword": "accountant bali",
+      "market": "Indonesia",
+      "estimatedMonthlySearches": 170,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "accounting services bali",
+      "market": "Indonesia",
+      "estimatedMonthlySearches": null,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "airbnb bookkeeping",
+      "market": "Indonesia",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "rental property bookkeeping",
+      "market": "Indonesia",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "property management bookkeeping",
+      "market": "Indonesia",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "bookkeeping cleanup",
+      "market": "Indonesia",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "catch up bookkeeping",
+      "market": "Indonesia",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "accounting bali",
+      "market": "Australia",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "accountant bali",
+      "market": "Australia",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "accounting services bali",
+      "market": "Australia",
+      "estimatedMonthlySearches": null,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "airbnb bookkeeping",
+      "market": "Australia",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "rental property bookkeeping",
+      "market": "Australia",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "property management bookkeeping",
+      "market": "Australia",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "bookkeeping cleanup",
+      "market": "Australia",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "catch up bookkeeping",
+      "market": "Australia",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "accounting bali",
+      "market": "United Kingdom",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "accountant bali",
+      "market": "United Kingdom",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "accounting services bali",
+      "market": "United Kingdom",
+      "estimatedMonthlySearches": null,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "airbnb bookkeeping",
+      "market": "United Kingdom",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "rental property bookkeeping",
+      "market": "United Kingdom",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "property management bookkeeping",
+      "market": "United Kingdom",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "bookkeeping cleanup",
+      "market": "United Kingdom",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "catch up bookkeeping",
+      "market": "United Kingdom",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "accounting bali",
+      "market": "United States",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "accountant bali",
+      "market": "United States",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "accounting services bali",
+      "market": "United States",
+      "estimatedMonthlySearches": null,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "airbnb bookkeeping",
+      "market": "United States",
+      "estimatedMonthlySearches": 40,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "rental property bookkeeping",
+      "market": "United States",
+      "estimatedMonthlySearches": 110,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "property management bookkeeping",
+      "market": "United States",
+      "estimatedMonthlySearches": 210,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "bookkeeping cleanup",
+      "market": "United States",
+      "estimatedMonthlySearches": 260,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "catch up bookkeeping",
+      "market": "United States",
+      "estimatedMonthlySearches": 170,
+      "source": "DataForSEO Google Ads search volume"
+    },
+    {
+      "keyword": "accounting services bali",
+      "market": "Indonesia",
+      "estimatedMonthlySearches": null,
+      "source": "DataForSEO Google Ads live"
+    },
+    {
+      "keyword": "tax consultant bali",
+      "market": "Indonesia",
+      "estimatedMonthlySearches": 70,
+      "source": "DataForSEO Google Ads live"
+    },
+    {
+      "keyword": "company registration bali",
+      "market": "Indonesia",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads live"
+    },
+    {
+      "keyword": "pt pma bali",
+      "market": "Indonesia",
+      "estimatedMonthlySearches": 90,
+      "source": "DataForSEO Google Ads live"
+    },
+    {
+      "keyword": "accountant bali",
+      "market": "Indonesia",
+      "estimatedMonthlySearches": 170,
+      "source": "DataForSEO Google Ads live"
+    },
+    {
+      "keyword": "accounting bali",
+      "market": "Indonesia",
+      "estimatedMonthlySearches": 170,
+      "source": "DataForSEO Google Ads live"
+    },
+    {
+      "keyword": "airbnb bookkeeping",
+      "market": "Indonesia",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads live"
+    },
+    {
+      "keyword": "rental property bookkeeping",
+      "market": "Indonesia",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads live"
+    },
+    {
+      "keyword": "bookkeeping cleanup",
+      "market": "Indonesia",
+      "estimatedMonthlySearches": 10,
+      "source": "DataForSEO Google Ads live"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "accountant-bali",
+      "page": "/",
+      "supportPages": [
+        "/about",
+        "/faq",
+        "/get-started"
+      ],
+      "keyword": "accountant bali",
+      "label": "Choosing an accountant in Bali",
+      "description": "Choose an accountant in Bali by the records and decisions you need: booking-to-bank reconciliation, separate owner balances, understandable monthly reports and a clear scope. These guides explain what to ask before agreeing an engagement.",
+      "guides": [
+        {
+          "href": "/blog/accounting-services-bali-monthly-deliverables",
+          "title": "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+        },
+        {
+          "href": "/blog/rental-property-bookkeeping-owner-contributions",
+          "title": "Rental Property Bookkeeping: Separating Owner Funding from Rental Income"
+        },
+        {
+          "href": "/blog/bookkeeping-cleanup-opening-balances-bali",
+          "title": "Bookkeeping Cleanup: Building an Evidence-Based Opening Balance"
+        }
+      ]
+    },
+    {
+      "id": "accounting-services-bali",
+      "page": "/services",
+      "supportPages": [
+        "/pricing",
+        "/villa-payroll-records-bali"
+      ],
+      "keyword": "accounting services bali",
+      "label": "Accounting services and monthly deliverables",
+      "description": "Compare accounting services in Bali against a written monthly scope: source records, exception handling, reports and responsibilities. Company, tax and visa projects are separately quoted, not automatically included in monthly bookkeeping.",
+      "guides": [
+        {
+          "href": "/blog/accounting-services-bali-monthly-deliverables",
+          "title": "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+        },
+        {
+          "href": "/blog/airbnb-bookkeeping-refunds-cancellations-reserves",
+          "title": "Airbnb Bookkeeping: Handling Refunds, Cancellations and Payout Reserves"
+        },
+        {
+          "href": "/blog/bookkeeping-cleanup-opening-balances-bali",
+          "title": "Bookkeeping Cleanup: Building an Evidence-Based Opening Balance"
+        }
+      ]
+    },
+    {
+      "id": "airbnb-bookkeeping",
+      "page": "/airbnb-bookkeeping-bali",
+      "supportPages": [],
+      "keyword": "airbnb bookkeeping",
+      "label": "Airbnb bookkeeping and payout reconciliation",
+      "description": "A platform payout is not guest revenue. Airbnb bookkeeping should explain bookings, cancellations, refunds, withheld reserves, fees and the eventual bank receipt without counting transfers twice.",
+      "guides": [
+        {
+          "href": "/blog/airbnb-bookkeeping-refunds-cancellations-reserves",
+          "title": "Airbnb Bookkeeping: Handling Refunds, Cancellations and Payout Reserves"
+        },
+        {
+          "href": "/blog/accounting-services-bali-monthly-deliverables",
+          "title": "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+        }
+      ]
+    },
+    {
+      "id": "rental-property-bookkeeping",
+      "page": "/villa-financial-reporting-bali",
+      "supportPages": [
+        "/sample-report"
+      ],
+      "keyword": "rental property bookkeeping",
+      "label": "Rental property bookkeeping and owner reports",
+      "description": "Useful rental property bookkeeping keeps each property and owner distinct. Read profit and loss alongside owner contributions, cash movements, refundable balances and amounts payable; a bank balance alone cannot explain the result.",
+      "guides": [
+        {
+          "href": "/blog/rental-property-bookkeeping-owner-contributions",
+          "title": "Rental Property Bookkeeping: Separating Owner Funding from Rental Income"
+        },
+        {
+          "href": "/blog/airbnb-bookkeeping-refunds-cancellations-reserves",
+          "title": "Airbnb Bookkeeping: Handling Refunds, Cancellations and Payout Reserves"
+        },
+        {
+          "href": "/blog/accounting-services-bali-monthly-deliverables",
+          "title": "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+        }
+      ]
+    },
+    {
+      "id": "bookkeeping-cleanup",
+      "page": "/villa-bookkeeping-cleanup-bali",
+      "supportPages": [],
+      "keyword": "bookkeeping cleanup",
+      "label": "Bookkeeping cleanup and opening balances",
+      "description": "Catch-up bookkeeping starts with evidence. Agree the period, reconcile bank and platform records, document unsupported items and establish opening balances before treating rebuilt spreadsheets as reliable monthly books.",
+      "guides": [
+        {
+          "href": "/blog/bookkeeping-cleanup-opening-balances-bali",
+          "title": "Bookkeeping Cleanup: Building an Evidence-Based Opening Balance"
+        },
+        {
+          "href": "/blog/accounting-services-bali-monthly-deliverables",
+          "title": "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+        }
+      ]
+    },
+    {
+      "id": "pt-pma-records",
+      "page": "/company-formation-bali",
+      "supportPages": [
+        "/company-compliance-bali",
+        "/business-licensing-bali",
+        "/pt-pma-villa-bookkeeping"
+      ],
+      "keyword": "pt pma bali",
+      "label": "PT PMA records and company responsibilities",
+      "description": "Keep company revenue, owner funding and liabilities separate. These guides prepare evidence for a separately scoped company or tax engagement; they do not determine legal structure, tax treatment or eligibility.",
+      "guides": [
+        {
+          "href": "/blog/rental-property-bookkeeping-owner-contributions",
+          "title": "Rental Property Bookkeeping: Separating Owner Funding from Rental Income"
+        },
+        {
+          "href": "/blog/accounting-services-bali-monthly-deliverables",
+          "title": "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+        },
+        {
+          "href": "/blog/bookkeeping-cleanup-opening-balances-bali",
+          "title": "Bookkeeping Cleanup: Building an Evidence-Based Opening Balance"
+        }
+      ]
+    },
+    {
+      "id": "tax-consultant-bali",
+      "page": "/tax-compliance-bali",
+      "supportPages": [
+        "/tax-registration-bali",
+        "/tax-planning-bali"
+      ],
+      "keyword": "tax consultant bali",
+      "label": "Clear records for tax consultant support in Bali",
+      "description": "Tax compliance discussions are more useful when company records, owner funding and supporting documents are clear. These guides explain the record preparation; individual advice, filings and project fees need a separately agreed scope.",
+      "guides": [
+        {
+          "href": "/blog/accounting-services-bali-monthly-deliverables",
+          "title": "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+        },
+        {
+          "href": "/blog/rental-property-bookkeeping-owner-contributions",
+          "title": "Keep owner funding separate from operating revenue"
+        }
+      ]
+    }
+  ]
+}

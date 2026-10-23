@@ -14,3 +14,9 @@ Every canonical public page needs its own subject-relevant primary picture and a
 **Why:** The user emphasised that unique pictures on every page, close relevance and visual alignment are very important.
 
 **How to apply:** Include published-only Journal articles in the inventory; the development and production article lists may differ. Check actual photo identities, not filenames or cache-busting URLs. Preserve approved later image replacements. Keep canonical routes, image inventory and sitemap coverage consistent, and validate internal links and image availability before publishing.
+
+Journal content should support the main commercial search terms through useful subtopics and contextual links to the relevant service page and the main accounting page, not pursue unrelated high-volume traffic.
+
+**Why:** The user explicitly says the whole idea of the Journals is to lift the main keywords, and asks for ongoing optimization rather than isolated posts.
+
+**How to apply:** Give each main term one preferred landing page. Use distinct supporting long-tail subjects instead of duplicating its intent across articles. Check search intent as well as estimated volume; broad accounting results can be dominated by jobs.

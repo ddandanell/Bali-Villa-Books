@@ -13,6 +13,7 @@ import { PHONE, SITE_ORIGIN, sitePages, whatsapp } from "@/lib/site-pages";
 import { updateShareImage } from "@/lib/social-images";
 import { trackEvent } from "@/lib/analytics";
 import { expandedServices, relatedServicePaths, type ServiceInfo } from "@/lib/expanded-services";
+import { SeoTopicGuides } from "@/components/SeoTopicGuides";
 import { getPageImagery } from "@/lib/page-imagery";
 import { PageVisual } from "@/components/PageVisual";
 
@@ -266,6 +267,6 @@ export default function PageContent({ path }: { path: string }) {
     "/services": <ServicesDirectory />, "/pricing": <Pricing />, "/sample-report": <SampleReport />,
     "/about": <About />, "/get-started": <GetStarted />, "/faq": <FAQ />, "/privacy": <Privacy />, "/terms": <Terms />,
   } as Record<string, React.ReactNode>)[normalized];
-  if (content) return <Layout>{content}<PageEducation path={normalized} /></Layout>;
+  if (content) return <Layout>{content}<PageEducation path={normalized} /><SeoTopicGuides path={normalized} /></Layout>;
   return <Layout><div className={`${wrap} py-24`}><h1 className="font-serif text-4xl text-primary">This page is unavailable</h1><p className="mt-4 text-foreground/65">Choose a current service, report example or contact page.</p><Link href="/services" className={`${linkClass} mt-6`}>Browse services <ArrowRight className="h-4 w-4" /></Link></div></Layout>;
 }

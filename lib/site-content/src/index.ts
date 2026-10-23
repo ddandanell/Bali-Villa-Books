@@ -1,5 +1,20 @@
 import pages from "./page-imagery.json";
 import journals from "./journal-imagery.json";
+import strategyData from "./seo-strategy.json";
+import priorityData from "./seo-priority-topics.json";
+export type SeoCluster = {
+  id: string; page: string; supportPages: string[]; keyword: string; label: string; description: string;
+  guides: { href: string; title: string }[];
+};
+export const seoStrategy: {
+  checkedAt: string; source: string; limitations: string; clusters: SeoCluster[];
+  demand: { keyword: string; market: string; estimatedMonthlySearches: number | null; source: string }[];
+} = strategyData;
+export const seoPriorityTopics: { id: number; cluster: string; workingTitle: string; keyword: string; service: string }[] = priorityData;
+/** Keep both stored articles; serve one preferred public URL for this duplicate topic. */
+export const articleAliases: Record<string, string> = {
+  "clean-books-villa-sale-price": "clean-books-villa-sale-bali",
+};
 
 export type PageImagery = {
   imageUrl: string; imageAlt: string; shareImage: string;

@@ -1,0 +1,893 @@
+{
+  "checkedAt": "2026-10-23T17:57:38.422Z",
+  "market": "Indonesia",
+  "language": "en",
+  "volumes": [
+    {
+      "keyword": "accounting services bali",
+      "spell": null,
+      "location_code": 2360,
+      "language_code": "en",
+      "search_partners": false,
+      "competition": null,
+      "competition_index": null,
+      "search_volume": null,
+      "low_top_of_page_bid": null,
+      "high_top_of_page_bid": null,
+      "cpc": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "tax consultant bali",
+      "spell": null,
+      "location_code": 2360,
+      "language_code": "en",
+      "search_partners": false,
+      "competition": "LOW",
+      "competition_index": 20,
+      "search_volume": 70,
+      "low_top_of_page_bid": 0.89,
+      "high_top_of_page_bid": 2.97,
+      "cpc": 1.26,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 70
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 70
+        }
+      ]
+    },
+    {
+      "keyword": "tax services bali",
+      "spell": null,
+      "location_code": 2360,
+      "language_code": "en",
+      "search_partners": false,
+      "competition": null,
+      "competition_index": null,
+      "search_volume": null,
+      "low_top_of_page_bid": null,
+      "high_top_of_page_bid": null,
+      "cpc": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "company registration bali",
+      "spell": null,
+      "location_code": 2360,
+      "language_code": "en",
+      "search_partners": false,
+      "competition": "LOW",
+      "competition_index": 0,
+      "search_volume": 10,
+      "low_top_of_page_bid": null,
+      "high_top_of_page_bid": null,
+      "cpc": null,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "company formation bali",
+      "spell": null,
+      "location_code": 2360,
+      "language_code": "en",
+      "search_partners": false,
+      "competition": null,
+      "competition_index": null,
+      "search_volume": null,
+      "low_top_of_page_bid": null,
+      "high_top_of_page_bid": null,
+      "cpc": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "pt pma bali",
+      "spell": null,
+      "location_code": 2360,
+      "language_code": "en",
+      "search_partners": false,
+      "competition": "MEDIUM",
+      "competition_index": 36,
+      "search_volume": 90,
+      "low_top_of_page_bid": 0.29,
+      "high_top_of_page_bid": 1.64,
+      "cpc": 0.97,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 90
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 90
+        }
+      ]
+    },
+    {
+      "keyword": "business license bali",
+      "spell": null,
+      "location_code": 2360,
+      "language_code": "en",
+      "search_partners": false,
+      "competition": null,
+      "competition_index": null,
+      "search_volume": null,
+      "low_top_of_page_bid": null,
+      "high_top_of_page_bid": null,
+      "cpc": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "investor kitas bali",
+      "spell": null,
+      "location_code": 2360,
+      "language_code": "en",
+      "search_partners": false,
+      "competition": null,
+      "competition_index": null,
+      "search_volume": null,
+      "low_top_of_page_bid": null,
+      "high_top_of_page_bid": null,
+      "cpc": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "accountant bali",
+      "spell": null,
+      "location_code": 2360,
+      "language_code": "en",
+      "search_partners": false,
+      "competition": "LOW",
+      "competition_index": 26,
+      "search_volume": 170,
+      "low_top_of_page_bid": 0.67,
+      "high_top_of_page_bid": 2.69,
+      "cpc": 4.38,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 260
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 260
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 260
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 110
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 140
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 140
+        }
+      ]
+    },
+    {
+      "keyword": "bookkeeping bali",
+      "spell": null,
+      "location_code": 2360,
+      "language_code": "en",
+      "search_partners": false,
+      "competition": null,
+      "competition_index": null,
+      "search_volume": null,
+      "low_top_of_page_bid": null,
+      "high_top_of_page_bid": null,
+      "cpc": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "accounting bali",
+      "spell": null,
+      "location_code": 2360,
+      "language_code": "en",
+      "search_partners": false,
+      "competition": "LOW",
+      "competition_index": 26,
+      "search_volume": 170,
+      "low_top_of_page_bid": 0.67,
+      "high_top_of_page_bid": 2.69,
+      "cpc": 4.38,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 260
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 260
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 260
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 110
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 140
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 140
+        }
+      ]
+    },
+    {
+      "keyword": "airbnb bookkeeping",
+      "spell": null,
+      "location_code": 2360,
+      "language_code": "en",
+      "search_partners": false,
+      "competition": null,
+      "competition_index": null,
+      "search_volume": 10,
+      "low_top_of_page_bid": null,
+      "high_top_of_page_bid": null,
+      "cpc": null,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ]
+    },
+    {
+      "keyword": "rental property bookkeeping",
+      "spell": null,
+      "location_code": 2360,
+      "language_code": "en",
+      "search_partners": false,
+      "competition": null,
+      "competition_index": null,
+      "search_volume": 10,
+      "low_top_of_page_bid": null,
+      "high_top_of_page_bid": null,
+      "cpc": null,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ]
+    },
+    {
+      "keyword": "bookkeeping cleanup",
+      "spell": null,
+      "location_code": 2360,
+      "language_code": "en",
+      "search_partners": false,
+      "competition": "LOW",
+      "competition_index": 14,
+      "search_volume": 10,
+      "low_top_of_page_bid": null,
+      "high_top_of_page_bid": null,
+      "cpc": null,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ]
+    }
+  ],
+  "ownVisibility": [
+    {
+      "se_type": "google",
+      "target": "bali-villa-accounting-service.com",
+      "location_code": 2360,
+      "language_code": "en",
+      "total_count": null,
+      "items_count": 0,
+      "metrics": null,
+      "metrics_absolute": null,
+      "items": null
+    }
+  ],
+  "searches": [
+    {
+      "keyword": "accounting bali",
+      "cost": 0.002,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://id.indeed.com/q-accounting-l-denpasar-lowongan.html",
+          "title": "Lowongan Accounting di Denpasar",
+          "description": "Temukan 121 lowongan Accounting terbaru di Denpasar hanya di Indeed.com. Dapatkan pekerjaan impian Anda sebagai Accountant, Finance Staff, Accounting ..."
+        },
+        {
+          "rank": 2,
+          "url": "https://id.jobstreet.com/id/%22accounting++-jobs/in-Denpasar-Bali",
+          "title": "Lowongan Kerja \"Accounting - di Denpasar Bali - Oktober 2026",
+          "description": "275 lowongan kerja \"Accounting - di Denpasar · Staff Accounting (Penempatan Head Office Sanur) · Chief Accounting & Finance Denpasar (DCAFD) · Accounting Admin. Read more"
+        },
+        {
+          "rank": 3,
+          "url": "https://id.linkedin.com/jobs/accounting-staff-jobs-bali",
+          "title": "39 pekerjaan Accounting Staff di Bali, Indonesia",
+          "description": "39 Pekerjaan Accounting Staff di Bali, Indonesia · Senior Accounting Staff · Accounting and Tax Staff · Bookkeeper · Accounts Payable Executive · Finance & ... Read more"
+        },
+        {
+          "rank": 4,
+          "url": "https://baliaccounting.com/",
+          "title": "Bali Accounting",
+          "description": "Bali Accounting is an expert team of accountancy and tax consultants based in Bali, Indonesia. We understand that tax and accounting can be complicated. Read more"
+        },
+        {
+          "rank": 5,
+          "url": "https://glints.com/id/find-jobs/loker-accounting-bali",
+          "title": "Lowongan Kerja Accounting Bali Oktober 2026",
+          "description": "⁠Accounting - Bali Rp 3,5jt Penuh Waktu 1–3 tahun. Income Tax +9 Dewadewi. Accounting & Accounting receivable area. Corporate Tax Tax Accounting"
+        },
+        {
+          "rank": 6,
+          "url": "https://www.instagram.com/bali_accounting/",
+          "title": "Bali Accounting (@bali_accounting)",
+          "description": "Bali Accounting is an expert team of tax and accountancy consultants based in Bali. Bookkeeping - Tax Planning - Financial Consulting. Read more"
+        },
+        {
+          "rank": 7,
+          "url": "https://kosongsatugroup.com/bali-accounting/",
+          "title": "Bali Accounting",
+          "description": "Bali Accounting is an expert team of accountancy and tax consultants based in Bali, Indonesia. We understand that accounting and tax can be complicated. Read more"
+        },
+        {
+          "rank": 8,
+          "url": "https://id.jobstreet.com/jobs-in-accounting/in-Bali",
+          "title": "Accounting Jobs in Bali - Oct 2026 | Jobstreet",
+          "description": "Find your ideal job at Jobstreet with 255 jobs found for Accounting in Bali. View all our vacancies now with new jobs added daily!"
+        },
+        {
+          "rank": 9,
+          "url": "https://balidwipa.ac.id/akuntansi",
+          "title": "Program Studi Akuntansi (S1 S.Ak)",
+          "description": "Akuntansi Umum (General Accounting) mencatat dan mengawasi transaksi sehari-hari dan mempersiapkan laporan keuangan dan informasi lain yang terkait. Sistem ... Read more"
+        }
+      ]
+    },
+    {
+      "keyword": "accounting services bali",
+      "cost": 0.002,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://baliaccounting.com/",
+          "title": "Bali's best accountant",
+          "description": "Bali Accounting is an expert team of accountancy and tax consultants based in Bali, Indonesia. We understand that tax and accounting can be complicated. Read more"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.instagram.com/baliaccountingservice/",
+          "title": "Bali Accounting Service (@baliaccountingservice)",
+          "description": "Specialist Accounting and Tax Services Based in Bali CS = 0817140700 (WA) · Good Governance bukan lagi sekadar wacana! · Gak sempat ke Kantor Pajak karena kerja ... Read more"
+        },
+        {
+          "rank": 3,
+          "url": "https://baliaccountingservice.com/",
+          "title": "Bali Accounting Service (B.A.S.)",
+          "description": "Accounting Service (B.A.S) are a financial & tax consulting office in Bali. We offer a wide range of accounting & tax services for local and foreign companies,"
+        },
+        {
+          "rank": 4,
+          "url": "https://glints.com/id/en/companies/bali-accounting-service/d980a7a9-bab5-43c5-966f-788c70d68b08",
+          "title": "Bali Accounting Service Career Information 2026",
+          "description": "Bali Accounting Service (B.A.S ) are a financial & tax consulting office in Bali. We offer a wide range of accounting & tax services for local and foreign ... Read more"
+        },
+        {
+          "rank": 5,
+          "url": "https://sasbali.com/",
+          "title": "Business Consulting, Tax & Accounting Services - Bali ...",
+          "description": "End-to-end legal, tax, accounting, and HR advisory for foreign entrepreneurs and companies operating in Indonesia."
+        },
+        {
+          "rank": 6,
+          "url": "https://id.linkedin.com/company/baliaccounting",
+          "title": "Bali Accounting",
+          "description": "Bali Accounting provides affordable, reliable, and friendly accounting and tax solutions to sole-traders, small, medium, and large businesses."
+        },
+        {
+          "rank": 7,
+          "url": "https://baliaccountants.com/bali-accounting-services-boost-tax-payroll-for-small-biz/",
+          "title": "Bali Accounting Services - Boost Tax & Payroll for Small Biz",
+          "description": "7 Oct 2025 — Simplify small business accounting in Bali with expert bookkeeping, payroll & tax compliance. Trusted Bali accountants for expats & locals."
+        },
+        {
+          "rank": 8,
+          "url": "https://baliaccountinglegends.com/",
+          "title": "Bali Accounting Legends: Bali Accounting & Tax Services",
+          "description": "Hassle‑free bookkeeping, accounting, payroll, tax solutions and financial consultancy for Bali businesses — reliable, friendly and all under one roof. PERERENAN ... Read more"
+        },
+        {
+          "rank": 9,
+          "url": "https://baliconnect.org/services/business-support/accounting-in-indonesia/",
+          "title": "Accounting in Indonesia with Bali Connect – Full Service №1",
+          "description": "Bali Connect offers #1 full service for accounting in Indonesia — reliable setup, reporting, and compliance support for your business."
+        }
+      ]
+    },
+    {
+      "keyword": "bookkeeping bali",
+      "cost": 0.002,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://baliaccounting.com/",
+          "title": "Bali Accounting",
+          "description": "We provide financial professional services, including bookkeeping, accounting, payroll, tax solutions and financial consultancy. bookkeeping paperwork over to ..."
+        },
+        {
+          "rank": 2,
+          "url": "https://www.linkedin.com/company/baliaccounting/",
+          "title": "Bali Accounting",
+          "description": "Bali Accounting provides affordable, reliable, and friendly accounting and tax solutions to sole-traders, small, medium, and large businesses."
+        },
+        {
+          "rank": 3,
+          "url": "https://id.jobstreet.com/bookkeeping-jobs/in-Bali",
+          "title": "Bookkeeping Jobs in Bali - Oct 2026 - Jobstreet",
+          "description": "Find your ideal job at Jobstreet with 147 Bookkeeping jobs found in Bali. View all our Bookkeeping vacancies now with new jobs added daily!"
+        },
+        {
+          "rank": 4,
+          "url": "https://bukubuku.co.id/",
+          "title": "BukuBuku: Xero Bookkeeping & Cloud Accounting from Bali",
+          "description": "BukuBuku is a Xero Gold Partner offering professional bookkeeping, payroll, and cloud accounting for businesses in Australia, Singapore, UK & Hong Kong."
+        },
+        {
+          "rank": 5,
+          "url": "https://kosongsatugroup.com/bali-accounting/",
+          "title": "Bali Accounting",
+          "description": "We provide financial professional services, including bookkeeping, accounting, payroll, tax solutions and financial consultancy."
+        },
+        {
+          "rank": 6,
+          "url": "https://www.instagram.com/bali_accounting/",
+          "title": "Bali Accounting (@bali_accounting)",
+          "description": "Bali Accounting is an expert team of tax and accountancy consultants based in Bali. Bookkeeping - Tax Planning - Financial Consulting. Read more"
+        },
+        {
+          "rank": 7,
+          "url": "https://baliaccountinglegends.com/",
+          "title": "Bali Accounting Legends: Bali Accounting & Tax Services",
+          "description": "Hassle‐free bookkeeping, accounting, payroll, tax solutions and financial consultancy for Bali businesses — reliable, friendly and all under one roof."
+        },
+        {
+          "rank": 8,
+          "url": "https://baliaccountants.com/contact-us/",
+          "title": "Tax, Bookkeeping & PT PMA Support",
+          "description": "Get in touch with Bali Accountants today. We provide expert support in bookkeeping, payroll, VAT, PT PMA setup, and tax compliance for expats & businesses."
+        },
+        {
+          "rank": 9,
+          "url": "https://double-m.co/2025/01/08/accounting-firm-in-bali/",
+          "title": "Accounting firm in Bali",
+          "description": "8 Jan 2025 — From bookkeeping and tax filing to payroll and regulatory support, a professional accounting firm in Bali can provide the local expertise and ... Read more"
+        },
+        {
+          "rank": 10,
+          "url": "https://sasbali.com/",
+          "title": "Business Consulting, Tax & Accounting Services - Bali ...",
+          "description": "End-to-end legal, tax, accounting, and HR advisory for foreign entrepreneurs and companies operating in Indonesia."
+        }
+      ]
+    }
+  ],
+  "costUsd": 0.108
+}

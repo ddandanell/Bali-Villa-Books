@@ -4,6 +4,7 @@ import pinoHttp from "pino-http";
 import router from "./routes";
 import blogSeo from "./routes/blog-seo";
 import { logger } from "./lib/logger";
+import { articleAliases } from "@workspace/site-content";
 
 const app: Express = express();
 app.set("trust proxy", 1);
@@ -39,6 +40,12 @@ app.use((req, res, next) => {
 });
 
 app.use("/api", router);
+app.use((req, res, next) => {
+  const match = /^\/blog\/([^/]+)\/?$/.exec(req.path);
+  const target = match ? articleAliases[match[1]] : undefined;
+  if (target) { res.redirect(308, `/blog/${target}`); return; }
+  next();
+});
 app.use(blogSeo);
 
 export default app;

@@ -1,4 +1,4 @@
-- [Content automation](content-automation.md) — Bali weekday publishing, firm-led voice, and unattended hosting constraints.
+- [Content automation](content-automation.md) — Bali daily publishing, firm-led voice, and unattended hosting constraints.
 - [Domain management](domain-management.md) — The site's custom domain was bought through Replit; use its domain DNS editor.
 - [Pricing positioning](pricing-positioning.md) — Market-adjusted prices: “Not too cheap, but it needs to make sense.”
 - [Named client permissions](client-permissions.md) — Six operators approved as named clients; descriptions are not endorsements and the six-villa scenario is fictional.

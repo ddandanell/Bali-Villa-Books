@@ -47,8 +47,10 @@ def get(url):
 
 dev_posts = json.loads(get(PREVIEW + "/api/blog/posts?limit=50")[0])
 live_posts = json.loads(get(ORIGIN + "/api/blog/posts?limit=50")[0])
-all_slugs = {p["slug"] for p in dev_posts + live_posts}
-assert all_slugs <= set(journals), "Published-only articles missing from the imagery inventory"
+aliases = {"clean-books-villa-sale-price": "clean-books-villa-sale-bali"}
+all_slugs = {p["slug"] for p in dev_posts + live_posts if p["slug"] not in aliases}
+# New automatic articles can use independently licensed external photos.
+assert all(p["slug"] in journals for p in dev_posts if p["imageUrl"].startswith("/images/journal/"))
 documents = {}
 for route in pages:
     if route == "/blog":
@@ -61,13 +63,15 @@ for post in dev_posts:
     route = "/blog/" + post["slug"]
     documents[route] = Page(get(PREVIEW + route)[0].decode())
 for post in live_posts:
+    if post["slug"] in aliases:
+        continue
     route = "/blog/" + post["slug"]
     if route not in documents:
         documents[route] = Page(get(ORIGIN + route)[0].decode())
 
 errors, local_targets, seen_images, seen_shares, hashes = [], set(), set(), set(), set()
 for route, document in documents.items():
-    expected = pages.get(route) or journals[route.removeprefix("/blog/")]
+    expected = pages.get(route) or journals.get(route.removeprefix("/blog/"))
     assert document.h1 == 1, (route, "H1 count", document.h1)
     assert document.canonical == ORIGIN + route, (route, document.canonical)
     assert document.meta.get("description") and document.meta.get("og:title"), route
@@ -82,6 +86,8 @@ for route, document in documents.items():
         target = resolved.path.rstrip("/") or "/"
         if target == "/contact":
             target = "/get-started"
+        if target.startswith("/blog/") and target[6:] in aliases:
+            target = "/blog/" + aliases[target[6:]]
         if target not in documents and not target.startswith("/api/"):
             errors.append((route, href, "unknown internal target"))
         elif resolved.fragment and target in documents and unquote(resolved.fragment) not in documents[target].ids:

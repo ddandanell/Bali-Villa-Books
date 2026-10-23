@@ -11,7 +11,10 @@ export async function applyJournalImageryUpdates() {
     await db.transaction(async tx => {
       const [post] = await tx.select().from(blogPosts).where(eq(blogPosts.slug, slug)).for("update");
       if (!post || post.imageUrl === visual.imageUrl) return;
-      const reason = "Unique topic-aligned editorial cover; preserve original article and source references";
+      const restoredAfterAutomation = ["bali-villa-cash-flow-forecast", "bali-villa-chart-of-accounts", "preparing-villa-records-indonesian-tax-consultant"].includes(slug);
+      const reason = restoredAfterAutomation
+        ? "Restore distinct topic cover after automated editorial fallback; preserve later approved replacements"
+        : "Unique topic-aligned editorial cover; preserve original article and source references";
       const [applied] = await tx.select({ id: blogRevisions.id }).from(blogRevisions)
         .where(and(eq(blogRevisions.postId, post.id), eq(blogRevisions.reason, reason))).limit(1);
       if (applied) return;

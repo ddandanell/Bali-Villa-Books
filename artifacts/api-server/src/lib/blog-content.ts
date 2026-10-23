@@ -31,6 +31,22 @@ export function cleanHtml(html: string): string {
 type Existing = { slug: string; title: string; primaryKeyword: string };
 export const serviceLinks = ["/services", "/airbnb-bookkeeping-bali", "/villa-financial-reporting-bali", "/villa-bookkeeping-cleanup-bali", "/pt-pma-villa-bookkeeping", "/villa-payroll-records-bali", "/company-formation-bali", "/business-licensing-bali", "/tax-registration-bali", "/tax-compliance-bali", "/tax-planning-bali", "/business-visa-bali", "/investor-kitas-bali", "/company-compliance-bali"];
 export const publicLinks = ["/", "/#services", "/#pricing", "/#faq", "/blog", "/pricing", "/sample-report", "/about", "/get-started", "/faq", ...serviceLinks];
+/** Remove invented destinations without deleting the surrounding useful prose. */
+export function repairArticleLinks(html: string, existing: Existing[]) {
+  const known = new Set([...publicLinks, ...existing.map(post => `/blog/${post.slug}`)]);
+  return cleanHtml(html).replace(/<a href="([^"]+)">([\s\S]*?)<\/a>/g, (_all, href: string, label: string) => {
+    let candidate = href;
+    try {
+      const url = new URL(href, "https://bali-villa-accounting-service.com");
+      if (url.hostname === "bali-villa-accounting-service.com") {
+        const pathname = url.pathname.replace(/\/+$/, "") || "/";
+        candidate = known.has(pathname + url.hash) ? pathname + url.hash : pathname;
+      }
+    } catch { return label; }
+    const valid = known.has(candidate) || (candidate.startsWith("https://") && safeArticleLink(candidate));
+    return valid ? `<a href="${candidate.replace(/"/g, "&quot;")}">${label}</a>` : label;
+  });
+}
 export function validateArticle(value: unknown, existing: Existing[], revisionSlug?: string) {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Article must be a JSON object");
   const data = value as Record<string, unknown>;
@@ -43,8 +59,9 @@ export function validateArticle(value: unknown, existing: Existing[], revisionSl
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error("Invalid URL slug");
   const title = string("title", 20, 150);
   const primaryKeyword = string("primaryKeyword", 8, 100);
+  const normalize = (text: string) => text.normalize("NFKC").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
   const peers = existing.filter(p => p.slug !== revisionSlug);
-  if (peers.some(p => p.slug === slug || similarTitle(p.title, title) || p.primaryKeyword.toLowerCase() === primaryKeyword.toLowerCase())) {
+  if (peers.some(p => p.slug === slug || similarTitle(p.title, title) || normalize(p.primaryKeyword) === normalize(primaryKeyword))) {
     throw new Error("Duplicate article topic or keyword");
   }
   const contentHtml = cleanHtml(string("contentHtml", 1000, 90000));

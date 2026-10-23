@@ -29,6 +29,8 @@ const titleFor = (route, slug) => {
 const published = await fetch("https://bali-villa-accounting-service.com/api/blog/posts?limit=50");
 if (!published.ok) throw new Error("Cannot read public journal titles");
 const articleTitles = new Map((await published.json()).map(p => [p.slug, p.title]));
+const refreshFile = path.join(root, "artifacts/api-server/src/data/seo-refresh-2026-10.json");
+if (existsSync(refreshFile)) for (const post of JSON.parse(readFileSync(refreshFile, "utf8"))) articleTitles.set(post.slug, post.title);
 const temp = path.join(root, ".local/site-imagery");
 mkdirSync(temp, { recursive: true });
 let count = 0;

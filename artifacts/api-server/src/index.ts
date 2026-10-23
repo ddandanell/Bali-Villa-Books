@@ -1,4 +1,6 @@
 import app from "./app";
+import { seedSeoRefreshArticles } from "./lib/seo-refresh-seed";
+import { applyJournalClusterUpdates } from "./lib/journal-cluster-updates";
 import { logger } from "./lib/logger";
 import { startBlogAutomation, seedBlogPosts } from "./routes/blog";
 import { startEnquiryRetention } from "./routes/enquiries";
@@ -30,5 +32,5 @@ app.listen(port, (err) => {
 
   logger.info({ port }, "Server listening");
   startEnquiryRetention();
-  void seedBlogPosts().then(applyBlueprintGuideUpdates).then(publishResearchedNews).then(applySeoEditorialUpdates).then(seedBlueprintLaunchArticle).then(applyJournalImageryUpdates).then(startBlogAutomation).catch(err => logger.error({ err }, "Blog initialization failed"));
+  void seedBlogPosts().then(seedSeoRefreshArticles).then(applyBlueprintGuideUpdates).then(publishResearchedNews).then(applySeoEditorialUpdates).then(seedBlueprintLaunchArticle).then(applyJournalImageryUpdates).then(applyJournalClusterUpdates).then(startBlogAutomation).catch(err => logger.error({ err }, "Blog initialization failed"));
 });

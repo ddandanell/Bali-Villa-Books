@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Layout } from "@/components/Layout";
+import { SeoTopicGuides } from "@/components/SeoTopicGuides";
 import { SITE_ORIGIN, sitePages } from "@/lib/site-pages";
 import { updateShareImage } from "@/lib/social-images";
 import { ClientShowcase, SixVillaScenario } from "@/components/ClientShowcase";
@@ -52,5 +53,6 @@ export default function Home() {
     <JournalPreview />
     <PageEducation path="/" />
     <HomeContact />
+    <SeoTopicGuides path="/" />
   </Layout>;
 }

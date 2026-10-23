@@ -1,4 +1,6 @@
 import { Router } from "express";
+import { notInArray } from "drizzle-orm";
+import { articleAliases } from "@workspace/site-content";
 import { desc, eq } from "drizzle-orm";
 import { db, blogPosts } from "@workspace/db";
 import { readFile } from "node:fs/promises";
@@ -91,7 +93,7 @@ router.get("/blog", async (req, res) => {
   const rows = await db.select().from(blogPosts).orderBy(desc(blogPosts.publishedAt)).limit(51).offset((page - 1) * 50);
   const hasMore = rows.length > 50;
   if (!rows.length && page > 1) { res.status(404).type("html").send('<h1>Guide page not found</h1><a href="/blog">Browse guides</a>'); return; }
-  const posts = ListBlogPostsResponse.parse(rows.slice(0, 50));
+  const posts = ListBlogPostsResponse.parse(rows.filter(row => !articleAliases[row.slug]).slice(0, 50));
   const content = `<h1>Bali Villa Bookkeeping Guides</h1><p>Learn how to reconcile Airbnb payouts, track rental property expenses and review monthly villa P&amp;L and cash flow. Our practical guides connect reporting questions with the source records behind them.</p>${posts.map(post => `<article><h2><a href="/blog/${escape(post.slug)}">${escape(post.title)}</a></h2><img src="${escape(post.imageUrl)}" alt="${escape(post.imageAlt)}" width="1024" height="1024" loading="lazy"><p>${escape(post.excerpt)}</p></article>`).join("")}<nav aria-label="Guide pages">${page > 1 ? `<a href="/blog${page === 2 ? "" : `?page=${page - 1}`}">Newer guides</a>` : ""}${hasMore ? ` <a href="/blog?page=${page + 1}">Older guides</a>` : ""}</nav>
 <section><h2>Start with the monthly villa bookkeeping workflow</h2>
 <p>The monthly checklist explains how to collect bank exports, platform settlements, supplier invoices and owner notes before preparing a report. Use the Airbnb reconciliation guide when a booking total does not match the bank receipt. Read the owner-report guide when you need to distinguish operating profit, cash timing and owner movements.</p>
@@ -138,7 +140,7 @@ ${post.contentHtml}<p><a href="https://wa.me/6281237402292">Speak with Client Ad
 });
 
 router.get("/sitemap.xml", async (_req, res) => {
-  const posts = await db.select({ slug: blogPosts.slug, updatedAt: blogPosts.updatedAt, imageUrl: blogPosts.imageUrl }).from(blogPosts);
+  const posts = await db.select({ slug: blogPosts.slug, updatedAt: blogPosts.updatedAt, imageUrl: blogPosts.imageUrl }).from(blogPosts).where(notInArray(blogPosts.slug, Object.keys(articleAliases)));
   const imageEntry = (url: string) => `<image:image><image:loc>${escape(new URL(url, origin).href)}</image:loc></image:image>`;
   const entries = [...marketingPaths.map(url => `<url><loc>${origin}${url}</loc><lastmod>${pageImagery[url].updatedAt}</lastmod>${imageEntry(pageImagery[url].imageUrl)}</url>`),
     ...posts.map(post => `<url><loc>${origin}/blog/${escape(post.slug)}</loc><lastmod>${post.updatedAt.toISOString()}</lastmod>${imageEntry(post.imageUrl)}</url>`)];

@@ -44,3 +44,9 @@ Supply mandatory links and the exact service disclaimer deterministically rather
 **Why:** Repeated long-form drafts omitted link attributes or varied the disclaimer wording; regenerating the entire article for such formatting errors wasted generation without improving its substance.
 
 **How to apply:** Separate deterministic formatting from editorial quality. Keep valid draft content available during explicit development runs so small formatting repairs do not require repeated full generations; never bypass substantive quality checks.
+
+Editorial rewrites must preserve an article's primary keyword and chosen picture. Apply the same strict checks after a bounded draft repair, and validate against current published content immediately before insertion.
+
+**Why:** Production review found an automated rewrite had recycled generic covers and two posts competed for the same subject. Retry helpers can also outlive a failed batch, so pre-generation duplicate checks alone are insufficient.
+
+**How to apply:** Treat wording improvements separately from article identity or media replacement. Preserve revision history, avoid overlapping publisher callbacks, and never let an error or exhausted retry be reported as completed publication.

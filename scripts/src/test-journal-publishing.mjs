@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { createRequire } from "node:module";
-import { mkdtempSync, rmSync } from "node:fs";
+import { mkdtempSync, rmSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -17,8 +17,11 @@ try {
   assert.equal(new Set(blueprintTopics.map(t=>t.id)).size, 100);
   assert.equal(new Set(blueprintTopics.map(t=>t.cluster)).size, 8);
   assert.equal(nextBlueprintTopic([],1).id,1);
-  assert.equal(nextBlueprintTopic([{primaryKeyword:blueprintTopics[0].keyword}]).id,2);
-  assert.equal(nextBlueprintTopic(blueprintTopics.map(t=>({primaryKeyword:t.keyword}))),undefined);
+  const priorityTopics = JSON.parse(readFileSync(new URL("../../lib/site-content/src/seo-priority-topics.json", import.meta.url)));
+  assert.equal(nextBlueprintTopic([{primaryKeyword:blueprintTopics[0].keyword}]).id,priorityTopics[0].id);
+  assert.equal(nextBlueprintTopic(priorityTopics.slice(0,4).map(t=>({primaryKeyword:t.keyword}))).id,205);
+  assert.equal(nextBlueprintTopic([...blueprintTopics,...priorityTopics].map(t=>({primaryKeyword:t.keyword}))),undefined);
+  assert.equal(nextBlueprintTopic([{primaryKeyword:priorityTopics[0].keyword.toUpperCase().replaceAll(" ","-")}]).id,priorityTopics[1].id);
   assert.equal(MIN_WORDS,1500);
   assert.equal(DAILY_POSTS,2);
   assert.equal(baliClock(new Date("2026-10-10T00:59:00Z")).eligible,false);
