@@ -41,7 +41,7 @@ async function template() {
 }
 
 async function documentHtml(title: string, description: string, canonicalPath: string, content: string, bootstrap: unknown, image: string, schema: unknown, imageAlt?: string, imageVersion?: string) {
-  if (canonicalPath === "/blog") {
+  if (canonicalPath.split("?")[0] === "/blog") {
     const visual = pageImagery["/blog"];
     content = content.replace("</h1>", `</h1><figure><img src="${visual.imageUrl}" alt="${escape(visual.imageAlt)}" width="${visual.width}" height="${visual.height}" fetchpriority="high"><figcaption>${escape(visual.caption)}</figcaption></figure>`);
   }
@@ -49,7 +49,7 @@ async function documentHtml(title: string, description: string, canonicalPath: s
   const parsedImage = new URL(image, origin);
   if (imageVersion && parsedImage.origin === origin) parsedImage.searchParams.set("v", imageVersion);
   const imageUrl = parsedImage.href;
-  const socialAlt = imageAlt ?? (canonicalPath === "/blog" ? "Bali Accounting Journal — practical guides for better villa records" : "Bali Accounting — villa bookkeeping and clear owner reports");
+  const socialAlt = imageAlt ?? (canonicalPath.split("?")[0] === "/blog" ? "Bali Accounting Journal — practical guides for better villa records" : "Bali Accounting — villa bookkeeping and clear owner reports");
   const branded = parsedImage.pathname.startsWith("/images/share/");
   const faqs = articleFaqs(content);
   const scriptsAndStyles = [
@@ -90,7 +90,7 @@ ${scriptsAndStyles}</head><body><main id="journal-server-content" class="server-
 router.get("/blog", async (req, res) => {
   const page = Number(req.query.page ?? 1);
   if (!Number.isInteger(page) || page < 1 || page > 10000) { res.status(400).send("Invalid guide page"); return; }
-  const rows = await db.select().from(blogPosts).orderBy(desc(blogPosts.publishedAt)).limit(51).offset((page - 1) * 50);
+  const rows = await db.select().from(blogPosts).where(notInArray(blogPosts.slug, Object.keys(articleAliases))).orderBy(desc(blogPosts.publishedAt)).limit(51).offset((page - 1) * 50);
   const hasMore = rows.length > 50;
   if (!rows.length && page > 1) { res.status(404).type("html").send('<h1>Guide page not found</h1><a href="/blog">Browse guides</a>'); return; }
   const posts = ListBlogPostsResponse.parse(rows.filter(row => !articleAliases[row.slug]).slice(0, 50));
@@ -98,14 +98,15 @@ router.get("/blog", async (req, res) => {
 <section><h2>Start with the monthly villa bookkeeping workflow</h2>
 <p>The monthly checklist explains how to collect bank exports, platform settlements, supplier invoices and owner notes before preparing a report. Use the Airbnb reconciliation guide when a booking total does not match the bank receipt. Read the owner-report guide when you need to distinguish operating profit, cash timing and owner movements.</p>
 <p>These articles support practical rental property bookkeeping. They do not promise platform integrations, tax savings or guaranteed business results. Choose the guide closest to your current record question, then use the service pages to confirm what can be included in an engagement.</p>
-<ul><li><a href="/blog/monthly-bali-villa-bookkeeping-checklist">Monthly bookkeeping checklist</a></li><li><a href="/blog/reconciling-airbnb-booking-payouts">Reconcile Airbnb and Booking.com payouts</a></li><li><a href="/blog/bali-villa-owner-monthly-report">Monthly owner report guide</a></li></ul></section>
+<ul><li><a href="/blog/monthly-bali-villa-bookkeeping-checklist">Monthly bookkeeping checklist</a></li><li><a href="/blog/reconciling-airbnb-booking-payouts">Reconcile Airbnb and Booking.com payouts</a></li><li><a href="/blog/bali-villa-owner-statement-template">Monthly owner statement guide</a></li></ul></section>
 <section><h2>Keep expense controls and cash planning connected</h2>
 <p>Expense tracking starts with the document behind a cost, the property it belongs to and the person responsible for clarification. A management pack brings those records together with booking and cash views. A forecast then makes future receipt and payment assumptions visible; it is not evidence that the projected amount will be received.</p>
 <p>Dated Indonesia news and practical guides are general information, not individual tax, legal or immigration advice. Our in-house team offers separately scoped company, tax and visa support. Read each article's sources and limitations; a headline is not an eligibility assessment or permission to operate or work.</p>
-<ul><li><a href="/blog/bali-villa-expense-tracking-system">Villa expense tracking guide</a></li><li><a href="/blog/bali-villa-cash-flow-forecast">Villa cash-flow forecast guide</a></li><li><a href="/services">Explore monthly bookkeeping services</a></li></ul></section>`;
-  sendPage(res, req.originalUrl, await documentHtml("Bali Villa Bookkeeping & Airbnb Guides", "Practical Bali villa bookkeeping guides: Airbnb reconciliation, expense tracking, monthly owner reports and cash-flow forecasts, plus source-checked news.", "/blog", content, { posts, listParams: page === 1 ? { limit: 50 } : { limit: 50, offset: (page - 1) * 50 } }, journalShareImage, {
+<ul><li><a href="/blog/bali-villa-chart-of-accounts">Villa expense classification guide</a></li><li><a href="/blog/bali-villa-cash-flow-forecast">Villa cash-flow forecast guide</a></li><li><a href="/services">Explore monthly bookkeeping services</a></li></ul></section>`;
+  const archivePath = page === 1 ? "/blog" : `/blog?page=${page}`;
+  sendPage(res, req.originalUrl, await documentHtml(page === 1 ? "Bali Villa Bookkeeping & Airbnb Guides" : `Bali Accounting Journal — Page ${page}`, "Practical Bali villa bookkeeping guides: Airbnb reconciliation, expense tracking, monthly owner reports and cash-flow forecasts, plus source-checked news.", archivePath, content, { posts, listParams: page === 1 ? { limit: 50 } : { limit: 50, offset: (page - 1) * 50 } }, journalShareImage, {
     "@context": "https://schema.org", "@type": "CollectionPage", name: "Bali Villa Bookkeeping Guides",
-    url: `${origin}/blog`, hasPart: posts.map(post => ({ "@type": "BlogPosting", headline: post.title, url: `${origin}/blog/${post.slug}` })),
+    url: `${origin}${archivePath}`, hasPart: posts.map(post => ({ "@type": "BlogPosting", headline: post.title, url: `${origin}/blog/${post.slug}` })),
   }));
 });
 

@@ -20,10 +20,10 @@ export default function Blog() {
   });
   useEffect(() => {
     updateShareImage("/blog");
-    const title = "Bali Villa Bookkeeping & Airbnb Guides | Bali Accounting";
+    const title = page > 1 ? `Bali Accounting Journal — Page ${page}` : "Bali Villa Bookkeeping & Airbnb Guides | Bali Accounting";
     const description = "Practical Bali villa bookkeeping guides: Airbnb reconciliation, expense tracking, monthly owner reports and cash-flow forecasts, plus source-checked news.";
     document.title = title;
-    const canonical = `${SITE_ORIGIN}/blog`;
+    const canonical = `${SITE_ORIGIN}/blog${page > 1 ? `?page=${page}` : ""}`;
     let link = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (!link) { link = document.createElement("link"); link.rel = "canonical"; document.head.appendChild(link); }
     link.href = canonical;
@@ -40,7 +40,7 @@ export default function Blog() {
       meta.content = value;
     }
     trackEvent("blog_view", { page: "/blog", placement: "journal_page" });
-  }, []);
+  }, [page]);
   const offset = (page - 1) * 50;
   const params = page === 1 ? { limit: 50 } : { limit: 50, offset };
   const { data: posts, isLoading, isError, refetch } = useListBlogPosts(params);

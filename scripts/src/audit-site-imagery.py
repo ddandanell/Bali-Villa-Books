@@ -45,8 +45,18 @@ def get(url):
         return response.read(), response.headers.get("Content-Type", "")
 
 
-dev_posts = json.loads(get(PREVIEW + "/api/blog/posts?limit=50")[0])
-live_posts = json.loads(get(ORIGIN + "/api/blog/posts?limit=50")[0])
+def all_posts(origin):
+    posts = []
+    for offset in range(0, 1000, 50):
+        page = json.loads(get(origin + f"/api/blog/posts?limit=50&offset={offset}")[0])
+        posts.extend(page)
+        if len(page) < 50:
+            return posts
+    raise AssertionError("Article inventory exceeds audit safety limit")
+
+
+dev_posts = all_posts(PREVIEW)
+live_posts = all_posts(ORIGIN)
 aliases = {"clean-books-villa-sale-price": "clean-books-villa-sale-bali"}
 all_slugs = {p["slug"] for p in dev_posts + live_posts if p["slug"] not in aliases}
 # New automatic articles can use independently licensed external photos.

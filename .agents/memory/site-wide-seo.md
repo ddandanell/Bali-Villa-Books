@@ -20,3 +20,9 @@ Journal content should support the main commercial search terms through useful s
 **Why:** The user explicitly says the whole idea of the Journals is to lift the main keywords, and asks for ongoing optimization rather than isolated posts.
 
 **How to apply:** Give each main term one preferred landing page. Use distinct supporting long-tail subjects instead of duplicating its intent across articles. Check search intent as well as estimated volume; broad accounting results can be dominated by jobs.
+
+Check deployment eligibility, not just presence in either database, when approving internal Journal links.
+
+**Why:** Development contained prototype articles that were never seeded into production. A union-only inventory incorrectly treated links to those prototypes as valid on the live site.
+
+**How to apply:** Use published URLs plus articles actually included in the release seeds as the valid target set. Paginate the production inventory; the archive now exceeds one API page.

@@ -50,3 +50,9 @@ Editorial rewrites must preserve an article's primary keyword and chosen picture
 **Why:** Production review found an automated rewrite had recycled generic covers and two posts competed for the same subject. Retry helpers can also outlive a failed batch, so pre-generation duplicate checks alone are insufficient.
 
 **How to apply:** Treat wording improvements separately from article identity or media replacement. Preserve revision history, avoid overlapping publisher callbacks, and never let an error or exhausted retry be reported as completed publication.
+
+Supply compact, topic-relevant research summaries to the writer, not entire raw provider responses. Transport failures are not editorial findings.
+
+**Why:** Bulk research included long historical volume arrays; repeating them across concurrent articles exhausted provider token throughput. A rate-limited editorial check then incorrectly triggered a full rewrite of an otherwise usable draft.
+
+**How to apply:** Keep dated demand evidence and its limitations, omit irrelevant raw arrays, and resume checkpoints serially when necessary. Hold transport failures without treating them as instructions to change article content.

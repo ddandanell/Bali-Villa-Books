@@ -50971,7 +50971,7 @@ var page_imagery_default = {
     shareImage: "/images/share/home-2026-10.jpg",
     width: 1024,
     height: 1024,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/services": {
@@ -50980,7 +50980,7 @@ var page_imagery_default = {
     shareImage: "/images/share/services-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/airbnb-bookkeeping-bali": {
@@ -50989,7 +50989,7 @@ var page_imagery_default = {
     shareImage: "/images/share/airbnb-bookkeeping-bali-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/villa-financial-reporting-bali": {
@@ -50998,7 +50998,7 @@ var page_imagery_default = {
     shareImage: "/images/share/villa-financial-reporting-bali-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/villa-bookkeeping-cleanup-bali": {
@@ -51007,7 +51007,7 @@ var page_imagery_default = {
     shareImage: "/images/share/villa-bookkeeping-cleanup-bali-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/pt-pma-villa-bookkeeping": {
@@ -51016,7 +51016,7 @@ var page_imagery_default = {
     shareImage: "/images/share/pt-pma-villa-bookkeeping-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/villa-payroll-records-bali": {
@@ -51025,7 +51025,7 @@ var page_imagery_default = {
     shareImage: "/images/share/villa-payroll-records-bali-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/company-formation-bali": {
@@ -51034,7 +51034,7 @@ var page_imagery_default = {
     shareImage: "/images/share/company-formation-bali-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/business-licensing-bali": {
@@ -51043,7 +51043,7 @@ var page_imagery_default = {
     shareImage: "/images/share/business-licensing-bali-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/tax-registration-bali": {
@@ -51052,7 +51052,7 @@ var page_imagery_default = {
     shareImage: "/images/share/tax-registration-bali-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/tax-compliance-bali": {
@@ -51061,7 +51061,7 @@ var page_imagery_default = {
     shareImage: "/images/share/tax-compliance-bali-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/tax-planning-bali": {
@@ -51070,7 +51070,7 @@ var page_imagery_default = {
     shareImage: "/images/share/tax-planning-bali-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/business-visa-bali": {
@@ -51097,7 +51097,7 @@ var page_imagery_default = {
     shareImage: "/images/share/company-compliance-bali-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/pricing": {
@@ -51106,7 +51106,7 @@ var page_imagery_default = {
     shareImage: "/images/share/pricing-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/sample-report": {
@@ -51115,7 +51115,7 @@ var page_imagery_default = {
     shareImage: "/images/share/sample-report-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/about": {
@@ -51124,7 +51124,7 @@ var page_imagery_default = {
     shareImage: "/images/share/about-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/get-started": {
@@ -51133,7 +51133,7 @@ var page_imagery_default = {
     shareImage: "/images/share/get-started-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/faq": {
@@ -51142,7 +51142,7 @@ var page_imagery_default = {
     shareImage: "/images/share/faq-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-23T17:57:38.422Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   },
   "/privacy": {
@@ -51169,7 +51169,7 @@ var page_imagery_default = {
     shareImage: "/images/share/journal-2026-10.jpg",
     width: 1200,
     height: 750,
-    updatedAt: "2026-10-09T10:26:04.626Z",
+    updatedAt: "2026-10-28T04:06:54.019Z",
     caption: "Illustrative visual, not an actual client engagement or an official document."
   }
 };
@@ -51445,14 +51445,86 @@ var journal_imagery_default = {
     height: 750,
     caption: "AI-generated editorial illustration, not an actual client engagement, client record or official document.",
     updatedAt: "2026-10-23T18:03:02.224Z"
+  },
+  "accountant-bali-first-90-days-bookkeeping": {
+    imageUrl: "/images/journal/accountant-bali-first-90-days-bookkeeping-2026-10.webp",
+    imageAlt: "Illustrative Bali accounting workspace for starting with an accountant in bali your first 90 days of bookkeeping",
+    shareImage: "/images/share/accountant-bali-first-90-days-bookkeeping-2026-10.jpg",
+    caption: "AI-generated editorial illustration; not a client, actual property or real financial document.",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-28T03:59:48.119Z"
+  },
+  "airbnb-bookkeeping-cleaning-fees-extra-guest-charges": {
+    imageUrl: "/images/journal/airbnb-bookkeeping-cleaning-fees-extra-guest-charges-2026-10.webp",
+    imageAlt: "Illustrative Bali accounting workspace for airbnb bookkeeping cleaning fees and extra guest charges",
+    shareImage: "/images/share/airbnb-bookkeeping-cleaning-fees-extra-guest-charges-2026-10.jpg",
+    caption: "AI-generated editorial illustration; not a client, actual property or real financial document.",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-28T03:59:48.119Z"
+  },
+  "rental-property-accounting-repairs-improvements-records": {
+    imageUrl: "/images/journal/rental-property-accounting-repairs-improvements-records-2026-10.webp",
+    imageAlt: "Illustrative Bali accounting workspace for rental property accounting repair costs or larger improvements",
+    shareImage: "/images/share/rental-property-accounting-repairs-improvements-records-2026-10.jpg",
+    caption: "AI-generated editorial illustration; not a client, actual property or real financial document.",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-28T03:59:48.119Z"
+  },
+  "multi-currency-bookkeeping-bali-villa-exchange-differences": {
+    imageUrl: "/images/journal/multi-currency-bookkeeping-bali-villa-exchange-differences-2026-10.webp",
+    imageAlt: "Illustrative Bali accounting workspace for multi-currency bookkeeping for bali villas explain exchange differences",
+    shareImage: "/images/share/multi-currency-bookkeeping-bali-villa-exchange-differences-2026-10.jpg",
+    caption: "AI-generated editorial illustration; not a client, actual property or real financial document.",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-28T03:59:48.119Z"
+  },
+  "bank-reconciliation-bali-villa-unmatched-transactions": {
+    imageUrl: "/images/journal/bank-reconciliation-bali-villa-unmatched-transactions-2026-10.webp",
+    imageAlt: "Illustrative Bali accounting workspace for bank reconciliation for bali villas resolve unmatched transactions",
+    shareImage: "/images/share/bank-reconciliation-bali-villa-unmatched-transactions-2026-10.jpg",
+    caption: "AI-generated editorial illustration; not a client, actual property or real financial document.",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-28T03:59:48.119Z"
+  },
+  "villa-payroll-records-staff-advances-reimbursements": {
+    imageUrl: "/images/journal/villa-payroll-records-staff-advances-reimbursements-2026-10.webp",
+    imageAlt: "Illustrative Bali accounting workspace for villa payroll records staff advances and expense reimbursements",
+    shareImage: "/images/share/villa-payroll-records-staff-advances-reimbursements-2026-10.jpg",
+    caption: "AI-generated editorial illustration; not a client, actual property or real financial document.",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-28T03:59:48.119Z"
+  },
+  "pt-pma-setup-bali-first-business-transactions": {
+    imageUrl: "/images/journal/pt-pma-setup-bali-first-business-transactions-2026-10.webp",
+    imageAlt: "Illustrative Bali accounting workspace for pt pma setup in bali record the first business transactions",
+    shareImage: "/images/share/pt-pma-setup-bali-first-business-transactions-2026-10.jpg",
+    caption: "AI-generated editorial illustration; not a client, actual property or real financial document.",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-28T03:59:48.119Z"
+  },
+  "bookkeeper-vs-tax-consultant-bali-responsibilities": {
+    imageUrl: "/images/journal/bookkeeper-vs-tax-consultant-bali-responsibilities-2026-10.webp",
+    imageAlt: "Illustrative Bali accounting workspace for bookkeeper or tax consultant in bali who handles which work",
+    shareImage: "/images/share/bookkeeper-vs-tax-consultant-bali-responsibilities-2026-10.jpg",
+    caption: "AI-generated editorial illustration; not a client, actual property or real financial document.",
+    width: 1200,
+    height: 750,
+    updatedAt: "2026-10-28T03:59:48.119Z"
   }
 };
 
 // ../../lib/site-content/src/seo-strategy.json
 var seo_strategy_default = {
-  checkedAt: "2026-10-23T17:57:38.422Z",
-  source: "DataForSEO live keyword research",
-  limitations: "Country/language estimates, not site traffic or ranking promises. Null means unavailable. Keyword variants and countries may overlap. Ad competition is not organic difficulty. Broad accounting queries also include job-seeking intent.",
+  checkedAt: "2026-10-28T04:06:54.019Z",
+  source: "Review on 28 October 2026: live public search and competitor offerings, with retained DataForSEO estimates collected 23 October 2026. New paid lookups returned HTTP 402.",
+  limitations: "Retained country/language estimates are not newly measured today, actual traffic, organic difficulty or guaranteed demand for exact long tails. Broad searches can have mixed intent. Hosted analytics returned no activity in the past seven days; do not infer zero visitors.",
   demand: [
     {
       keyword: "accounting bali",
@@ -51715,16 +51787,16 @@ var seo_strategy_default = {
       description: "Choose an accountant in Bali by the records and decisions you need: booking-to-bank reconciliation, separate owner balances, understandable monthly reports and a clear scope. These guides explain what to ask before agreeing an engagement.",
       guides: [
         {
-          href: "/blog/accounting-services-bali-monthly-deliverables",
-          title: "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+          href: "/blog/accountant-bali-first-90-days-bookkeeping",
+          title: "Accountant Bali Bookkeeping Onboarding: First 90 Days"
         },
         {
-          href: "/blog/rental-property-bookkeeping-owner-contributions",
-          title: "Rental Property Bookkeeping: Separating Owner Funding from Rental Income"
+          href: "/blog/bookkeeper-vs-tax-consultant-bali-responsibilities",
+          title: "Bookkeeper vs Tax Consultant in Bali: Who Does What?"
         },
         {
-          href: "/blog/bookkeeping-cleanup-opening-balances-bali",
-          title: "Bookkeeping Cleanup: Building an Evidence-Based Opening Balance"
+          href: "/blog/bank-reconciliation-bali-villa-unmatched-transactions",
+          title: "Bank Reconciliation for Bali Villas: How to Resolve Unmatched Transactions"
         }
       ]
     },
@@ -51740,16 +51812,16 @@ var seo_strategy_default = {
       description: "Compare accounting services in Bali against a written monthly scope: source records, exception handling, reports and responsibilities. Company, tax and visa projects are separately quoted, not automatically included in monthly bookkeeping.",
       guides: [
         {
-          href: "/blog/accounting-services-bali-monthly-deliverables",
-          title: "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+          href: "/blog/accountant-bali-first-90-days-bookkeeping",
+          title: "Accountant Bali Bookkeeping Onboarding: First 90 Days"
         },
         {
-          href: "/blog/airbnb-bookkeeping-refunds-cancellations-reserves",
-          title: "Airbnb Bookkeeping: Handling Refunds, Cancellations and Payout Reserves"
+          href: "/blog/villa-payroll-records-staff-advances-reimbursements",
+          title: "Villa Payroll Records: Staff Advances and Expense Reimbursements"
         },
         {
-          href: "/blog/bookkeeping-cleanup-opening-balances-bali",
-          title: "Bookkeeping Cleanup: Building an Evidence-Based Opening Balance"
+          href: "/blog/bookkeeper-vs-tax-consultant-bali-responsibilities",
+          title: "Bookkeeper vs Tax Consultant in Bali: Who Does What?"
         }
       ]
     },
@@ -51762,12 +51834,16 @@ var seo_strategy_default = {
       description: "A platform payout is not guest revenue. Airbnb bookkeeping should explain bookings, cancellations, refunds, withheld reserves, fees and the eventual bank receipt without counting transfers twice.",
       guides: [
         {
-          href: "/blog/airbnb-bookkeeping-refunds-cancellations-reserves",
-          title: "Airbnb Bookkeeping: Handling Refunds, Cancellations and Payout Reserves"
+          href: "/blog/airbnb-bookkeeping-cleaning-fees-extra-guest-charges",
+          title: "Airbnb Bookkeeping: Cleaning Fees and Extra Guest Charges"
         },
         {
-          href: "/blog/accounting-services-bali-monthly-deliverables",
-          title: "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+          href: "/blog/multi-currency-bookkeeping-bali-villa-exchange-differences",
+          title: "Multi-Currency Bookkeeping for Bali Villas: Understanding Exchange Differences"
+        },
+        {
+          href: "/blog/airbnb-bookkeeping-refunds-cancellations-reserves",
+          title: "Handle refunds, cancellations and payout reserves"
         }
       ]
     },
@@ -51782,16 +51858,16 @@ var seo_strategy_default = {
       description: "Useful rental property bookkeeping keeps each property and owner distinct. Read profit and loss alongside owner contributions, cash movements, refundable balances and amounts payable; a bank balance alone cannot explain the result.",
       guides: [
         {
-          href: "/blog/rental-property-bookkeeping-owner-contributions",
-          title: "Rental Property Bookkeeping: Separating Owner Funding from Rental Income"
+          href: "/blog/rental-property-accounting-repairs-improvements-records",
+          title: "Rental Property Accounting: Records for Repairs and Improvements"
         },
         {
-          href: "/blog/airbnb-bookkeeping-refunds-cancellations-reserves",
-          title: "Airbnb Bookkeeping: Handling Refunds, Cancellations and Payout Reserves"
+          href: "/blog/multi-currency-bookkeeping-bali-villa-exchange-differences",
+          title: "Multi-Currency Bookkeeping for Bali Villas: Understanding Exchange Differences"
         },
         {
-          href: "/blog/accounting-services-bali-monthly-deliverables",
-          title: "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+          href: "/blog/airbnb-bookkeeping-cleaning-fees-extra-guest-charges",
+          title: "Airbnb Bookkeeping: Cleaning Fees and Extra Guest Charges"
         }
       ]
     },
@@ -51804,12 +51880,12 @@ var seo_strategy_default = {
       description: "Catch-up bookkeeping starts with evidence. Agree the period, reconcile bank and platform records, document unsupported items and establish opening balances before treating rebuilt spreadsheets as reliable monthly books.",
       guides: [
         {
-          href: "/blog/bookkeeping-cleanup-opening-balances-bali",
-          title: "Bookkeeping Cleanup: Building an Evidence-Based Opening Balance"
+          href: "/blog/bank-reconciliation-bali-villa-unmatched-transactions",
+          title: "Bank Reconciliation for Bali Villas: How to Resolve Unmatched Transactions"
         },
         {
-          href: "/blog/accounting-services-bali-monthly-deliverables",
-          title: "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+          href: "/blog/bookkeeping-cleanup-opening-balances-bali",
+          title: "Build supported opening balances"
         }
       ]
     },
@@ -51826,16 +51902,16 @@ var seo_strategy_default = {
       description: "Keep company revenue, owner funding and liabilities separate. These guides prepare evidence for a separately scoped company or tax engagement; they do not determine legal structure, tax treatment or eligibility.",
       guides: [
         {
-          href: "/blog/rental-property-bookkeeping-owner-contributions",
-          title: "Rental Property Bookkeeping: Separating Owner Funding from Rental Income"
+          href: "/blog/pt-pma-setup-bali-first-business-transactions",
+          title: "PT PMA Setup in Bali: Record the First Business Transactions"
         },
         {
-          href: "/blog/accounting-services-bali-monthly-deliverables",
-          title: "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+          href: "/blog/multi-currency-bookkeeping-bali-villa-exchange-differences",
+          title: "Multi-Currency Bookkeeping for Bali Villas: Understanding Exchange Differences"
         },
         {
-          href: "/blog/bookkeeping-cleanup-opening-balances-bali",
-          title: "Bookkeeping Cleanup: Building an Evidence-Based Opening Balance"
+          href: "/blog/bookkeeper-vs-tax-consultant-bali-responsibilities",
+          title: "Bookkeeper vs Tax Consultant in Bali: Who Does What?"
         }
       ]
     },
@@ -51851,12 +51927,34 @@ var seo_strategy_default = {
       description: "Tax compliance discussions are more useful when company records, owner funding and supporting documents are clear. These guides explain the record preparation; individual advice, filings and project fees need a separately agreed scope.",
       guides: [
         {
-          href: "/blog/accounting-services-bali-monthly-deliverables",
-          title: "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+          href: "/blog/bookkeeper-vs-tax-consultant-bali-responsibilities",
+          title: "Bookkeeper vs Tax Consultant in Bali: Who Does What?"
         },
         {
-          href: "/blog/rental-property-bookkeeping-owner-contributions",
-          title: "Keep owner funding separate from operating revenue"
+          href: "/blog/rental-property-accounting-repairs-improvements-records",
+          title: "Rental Property Accounting: Records for Repairs and Improvements"
+        },
+        {
+          href: "/blog/pt-pma-setup-bali-first-business-transactions",
+          title: "PT PMA Setup in Bali: Record the First Business Transactions"
+        }
+      ]
+    },
+    {
+      id: "payroll-records",
+      page: "/villa-payroll-records-bali",
+      supportPages: [],
+      keyword: "villa payroll records bali",
+      label: "Make staff costs and payroll records easier to review",
+      description: "Separate staff advances, reimbursements and recorded payroll costs. A clear evidence trail helps the responsible person review each payment; bookkeeping support does not automatically include payroll execution, employment advice or filings.",
+      guides: [
+        {
+          href: "/blog/villa-payroll-records-staff-advances-reimbursements",
+          title: "Villa Payroll Records: Staff Advances and Expense Reimbursements"
+        },
+        {
+          href: "/blog/accountant-bali-first-90-days-bookkeeping",
+          title: "Accountant Bali Bookkeeping Onboarding: First 90 Days"
         }
       ]
     }
@@ -51941,6 +52039,104 @@ var seo_priority_topics_default = [
     workingTitle: "Preparing Records for a Bali Tax Consultant: The Evidence Pack",
     keyword: "tax consultant bali records preparation",
     service: "/tax-compliance-bali"
+  },
+  {
+    id: 301,
+    cluster: "SEO",
+    workingTitle: "Starting with an Accountant in Bali: Your First 90 Days of Bookkeeping",
+    keyword: "accountant bali bookkeeping onboarding",
+    service: "/services"
+  },
+  {
+    id: 302,
+    cluster: "SEO",
+    workingTitle: "Airbnb Bookkeeping: Cleaning Fees and Extra Guest Charges",
+    keyword: "airbnb bookkeeping cleaning fees guest charges",
+    service: "/airbnb-bookkeeping-bali"
+  },
+  {
+    id: 303,
+    cluster: "SEO",
+    workingTitle: "Rental Property Accounting: Repair Costs or Larger Improvements?",
+    keyword: "rental property accounting repairs improvements records",
+    service: "/villa-financial-reporting-bali"
+  },
+  {
+    id: 304,
+    cluster: "SEO",
+    workingTitle: "Multi-Currency Bookkeeping for Bali Villas: Explain Exchange Differences",
+    keyword: "multi currency bookkeeping bali villas",
+    service: "/pt-pma-villa-bookkeeping"
+  },
+  {
+    id: 305,
+    cluster: "SEO",
+    workingTitle: "Bank Reconciliation for Bali Villas: Resolve Unmatched Transactions",
+    keyword: "bank reconciliation bali villa unmatched transactions",
+    service: "/villa-bookkeeping-cleanup-bali"
+  },
+  {
+    id: 306,
+    cluster: "SEO",
+    workingTitle: "Villa Payroll Records: Staff Advances and Expense Reimbursements",
+    keyword: "villa payroll bookkeeping staff advances reimbursements",
+    service: "/villa-payroll-records-bali"
+  },
+  {
+    id: 307,
+    cluster: "SEO",
+    workingTitle: "PT PMA Setup in Bali: Record the First Business Transactions",
+    keyword: "pt pma setup bali first business transactions",
+    service: "/company-formation-bali"
+  },
+  {
+    id: 308,
+    cluster: "SEO",
+    workingTitle: "Bookkeeper or Tax Consultant in Bali: Who Handles Which Work?",
+    keyword: "bookkeeper vs tax consultant bali responsibilities",
+    service: "/tax-compliance-bali"
+  },
+  {
+    id: 309,
+    workingTitle: "Month-End Bookkeeping Cutoff: Handling Late Supplier Invoices",
+    keyword: "month end bookkeeping late supplier invoices",
+    service: "/services",
+    cluster: "SEO"
+  },
+  {
+    id: 310,
+    workingTitle: "Villa Petty Cash: Reconcile Vouchers, Floats and Cash Counts",
+    keyword: "villa petty cash bookkeeping reconciliation",
+    service: "/villa-bookkeeping-cleanup-bali",
+    cluster: "SEO"
+  },
+  {
+    id: 311,
+    workingTitle: "Duplicate Supplier Invoices and Credit Notes: Keep the Trail Clear",
+    keyword: "villa bookkeeping duplicate invoices credit notes",
+    service: "/services",
+    cluster: "SEO"
+  },
+  {
+    id: 312,
+    workingTitle: "Bookkeeping Software Migration: Preserve the Opening Cutover Evidence",
+    keyword: "bookkeeping software migration opening cutover records",
+    service: "/villa-bookkeeping-cleanup-bali",
+    cluster: "SEO"
+  },
+  {
+    id: 313,
+    workingTitle: "Linen and Guest Supplies: Inventory Records for Villa Managers",
+    keyword: "villa inventory linen supplies bookkeeping records",
+    service: "/villa-financial-reporting-bali",
+    cluster: "SEO"
+  },
+  {
+    id: 314,
+    workingTitle: "Direct Booking Payment Links: Match Processor Settlements to Guest Receipts",
+    keyword: "direct booking payment processor reconciliation villa",
+    service: "/airbnb-bookkeeping-bali",
+    cluster: "SEO"
   }
 ];
 
@@ -52409,9 +52605,19 @@ function articleFaqs(html) {
 
 // src/lib/journal-writer.ts
 import { readFile, writeFile } from "node:fs/promises";
+function journalModel() {
+  const override = process.argv.find((arg) => arg.startsWith("--journal-model="))?.split("=")[1];
+  if (override && !["gpt-5.6-luna", "gpt-6-luna"].includes(override)) throw new Error("Unsupported editorial model override");
+  return override ?? "gpt-5.6-luna";
+}
+function fitMetadata(value, limit2) {
+  if (value.length <= limit2) return value;
+  return value.slice(0, limit2 - 1).replace(/\s+\S*$/, "").replace(/[ ,;:–-]+$/, "") + ".";
+}
 var instructions = `Write for Bali Accounting's editorial desk, a serious Denpasar-based villa bookkeeping firm.
 Return exactly one JSON object: slug,title,excerpt,metaTitle,metaDescription,primaryKeyword,category,contentHtml,imageUrl,imageAlt.
 Write 1800\u20132000 useful visible words, at least 1500 and no more than 2500 including FAQs and credits. Directly answer the article's question in the first 80 words. No SEO filler or repeated generic paragraphs.
+Keep worked examples limited to explicit illustrative cash movements or selected evidence schedules; do not present a partial balance list as a trial balance or invent balancing journal entries. Describe onboarding periods as adaptable planning examples, never guaranteed turnaround times.
 Use the assigned primary keyword naturally, exactly as assigned in primaryKeyword; choose a distinct keyword if no topic is assigned.
 Include "Who this applies to", a clearly illustrative IDR worked example with correct arithmetic (not tax calculations), a useful table, "What owners get wrong" with three corrections, and a printable step/checklist section.
 Finish with exactly <h2>Frequently asked questions</h2> followed by 4\u20136 <h3>Question?</h3><p>Answer.</p> pairs. Include a general-information/not-tax-advice disclaimer. At least four meaningful h2 sections.
@@ -52452,7 +52658,7 @@ async function createBlueprintArticle(topic, context2, fallback, options) {
     references.push({ url: url2, retrievedAt: (/* @__PURE__ */ new Date()).toISOString().slice(0, 10), text: text2 });
   }
   const response = await openai.chat.completions.create({
-    model: "gpt-5.6-luna",
+    model: journalModel(),
     max_completion_tokens: 12e3,
     response_format: { type: "json_object" },
     messages: [
@@ -52485,6 +52691,8 @@ async function createBlueprintArticle(topic, context2, fallback, options) {
   raw.imageUrl = image.url;
   raw.imageAlt = image.alt;
   raw.contentHtml += image.creditHtml ?? "";
+  raw.metaTitle = fitMetadata(raw.metaTitle, 43);
+  raw.metaDescription = fitMetadata(raw.metaDescription, 160);
   if (options?.draftPath) await writeFile(options.draftPath, JSON.stringify(raw, null, 2));
   if (process.argv.includes("--first") && process.env.NODE_ENV !== "production")
     await writeFile("/tmp/bali-first-journal-draft.json", JSON.stringify(raw));
@@ -52497,6 +52705,8 @@ async function createBlueprintArticle(topic, context2, fallback, options) {
     await reviewArticle(post, topic);
     return post;
   } catch (err) {
+    const status = err?.status;
+    if (status === 429 || status && status >= 500) throw err;
     const issues = err instanceof Error ? err.message : String(err);
     if (/duplicate/i.test(issues)) throw err;
     if (options?.draftPath) await writeFile(options.draftPath + ".review.txt", issues);
@@ -52505,7 +52715,7 @@ async function createBlueprintArticle(topic, context2, fallback, options) {
 }
 async function repairDraftAfterReview(raw, context2, topic, issues) {
   const response = await openai.chat.completions.create({
-    model: "gpt-5.6-luna",
+    model: journalModel(),
     max_completion_tokens: 12e3,
     response_format: { type: "json_object" },
     messages: [
@@ -52515,6 +52725,8 @@ async function repairDraftAfterReview(raw, context2, topic, issues) {
   }, { timeout: 18e4, maxRetries: 0 });
   if (response.choices[0]?.finish_reason !== "stop") throw new Error("Draft repair was incomplete");
   const repaired = JSON.parse(response.choices[0].message.content ?? "{}");
+  repaired.metaTitle = fitMetadata(repaired.metaTitle, 43);
+  repaired.metaDescription = fitMetadata(repaired.metaDescription, 160);
   Object.assign(repaired, { slug: raw.slug, primaryKeyword: raw.primaryKeyword, imageUrl: raw.imageUrl, imageAlt: raw.imageAlt });
   repaired.contentHtml = repairArticleLinks(repaired.contentHtml, context2.existing);
   const credits = String(raw.contentHtml).match(/<p><em>(?:Illustrative photo, not a client engagement|AI-generated editorial illustration)[\s\S]*?<\/em><\/p>/g) ?? [];
@@ -52537,7 +52749,7 @@ async function repairDraftAfterReview(raw, context2, topic, issues) {
 }
 async function reviewArticle(post, topic) {
   const review = await openai.chat.completions.create({
-    model: "gpt-5.6-luna",
+    model: journalModel(),
     max_completion_tokens: 1800,
     response_format: { type: "json_object" },
     messages: [

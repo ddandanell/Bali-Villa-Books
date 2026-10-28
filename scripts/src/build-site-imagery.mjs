@@ -26,11 +26,19 @@ const titleFor = (route, slug) => {
   }
   return slug.split("-").map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(" ");
 };
-const published = await fetch("https://bali-villa-accounting-service.com/api/blog/posts?limit=50");
-if (!published.ok) throw new Error("Cannot read public journal titles");
-const articleTitles = new Map((await published.json()).map(p => [p.slug, p.title]));
+const articleTitles = new Map();
+for (let offset = 0; offset < 1000; offset += 50) {
+  const published = await fetch(`https://bali-villa-accounting-service.com/api/blog/posts?limit=50&offset=${offset}`);
+  if (!published.ok) throw new Error("Cannot read public journal titles");
+  const page = await published.json();
+  for (const post of page) articleTitles.set(post.slug, post.title);
+  if (page.length < 50) break;
+  if (offset === 950) throw new Error("Article imagery inventory exceeds its safety limit");
+}
 const refreshFile = path.join(root, "artifacts/api-server/src/data/seo-refresh-2026-10.json");
 if (existsSync(refreshFile)) for (const post of JSON.parse(readFileSync(refreshFile, "utf8"))) articleTitles.set(post.slug, post.title);
+const expansionFile = path.join(root, "artifacts/api-server/src/data/seo-expansion-2026-10-28.json");
+if (existsSync(expansionFile)) for (const post of JSON.parse(readFileSync(expansionFile, "utf8"))) articleTitles.set(post.slug, post.title);
 const temp = path.join(root, ".local/site-imagery");
 mkdirSync(temp, { recursive: true });
 let count = 0;

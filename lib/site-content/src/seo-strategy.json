@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-10-23T17:57:38.422Z",
-  "source": "DataForSEO live keyword research",
-  "limitations": "Country/language estimates, not site traffic or ranking promises. Null means unavailable. Keyword variants and countries may overlap. Ad competition is not organic difficulty. Broad accounting queries also include job-seeking intent.",
+  "checkedAt": "2026-10-28T04:06:54.019Z",
+  "source": "Review on 28 October 2026: live public search and competitor offerings, with retained DataForSEO estimates collected 23 October 2026. New paid lookups returned HTTP 402.",
+  "limitations": "Retained country/language estimates are not newly measured today, actual traffic, organic difficulty or guaranteed demand for exact long tails. Broad searches can have mixed intent. Hosted analytics returned no activity in the past seven days; do not infer zero visitors.",
   "demand": [
     {
       "keyword": "accounting bali",
@@ -264,16 +264,16 @@
       "description": "Choose an accountant in Bali by the records and decisions you need: booking-to-bank reconciliation, separate owner balances, understandable monthly reports and a clear scope. These guides explain what to ask before agreeing an engagement.",
       "guides": [
         {
-          "href": "/blog/accounting-services-bali-monthly-deliverables",
-          "title": "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+          "href": "/blog/accountant-bali-first-90-days-bookkeeping",
+          "title": "Accountant Bali Bookkeeping Onboarding: First 90 Days"
         },
         {
-          "href": "/blog/rental-property-bookkeeping-owner-contributions",
-          "title": "Rental Property Bookkeeping: Separating Owner Funding from Rental Income"
+          "href": "/blog/bookkeeper-vs-tax-consultant-bali-responsibilities",
+          "title": "Bookkeeper vs Tax Consultant in Bali: Who Does What?"
         },
         {
-          "href": "/blog/bookkeeping-cleanup-opening-balances-bali",
-          "title": "Bookkeeping Cleanup: Building an Evidence-Based Opening Balance"
+          "href": "/blog/bank-reconciliation-bali-villa-unmatched-transactions",
+          "title": "Bank Reconciliation for Bali Villas: How to Resolve Unmatched Transactions"
         }
       ]
     },
@@ -289,16 +289,16 @@
       "description": "Compare accounting services in Bali against a written monthly scope: source records, exception handling, reports and responsibilities. Company, tax and visa projects are separately quoted, not automatically included in monthly bookkeeping.",
       "guides": [
         {
-          "href": "/blog/accounting-services-bali-monthly-deliverables",
-          "title": "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+          "href": "/blog/accountant-bali-first-90-days-bookkeeping",
+          "title": "Accountant Bali Bookkeeping Onboarding: First 90 Days"
         },
         {
-          "href": "/blog/airbnb-bookkeeping-refunds-cancellations-reserves",
-          "title": "Airbnb Bookkeeping: Handling Refunds, Cancellations and Payout Reserves"
+          "href": "/blog/villa-payroll-records-staff-advances-reimbursements",
+          "title": "Villa Payroll Records: Staff Advances and Expense Reimbursements"
         },
         {
-          "href": "/blog/bookkeeping-cleanup-opening-balances-bali",
-          "title": "Bookkeeping Cleanup: Building an Evidence-Based Opening Balance"
+          "href": "/blog/bookkeeper-vs-tax-consultant-bali-responsibilities",
+          "title": "Bookkeeper vs Tax Consultant in Bali: Who Does What?"
         }
       ]
     },
@@ -311,12 +311,16 @@
       "description": "A platform payout is not guest revenue. Airbnb bookkeeping should explain bookings, cancellations, refunds, withheld reserves, fees and the eventual bank receipt without counting transfers twice.",
       "guides": [
         {
-          "href": "/blog/airbnb-bookkeeping-refunds-cancellations-reserves",
-          "title": "Airbnb Bookkeeping: Handling Refunds, Cancellations and Payout Reserves"
+          "href": "/blog/airbnb-bookkeeping-cleaning-fees-extra-guest-charges",
+          "title": "Airbnb Bookkeeping: Cleaning Fees and Extra Guest Charges"
         },
         {
-          "href": "/blog/accounting-services-bali-monthly-deliverables",
-          "title": "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+          "href": "/blog/multi-currency-bookkeeping-bali-villa-exchange-differences",
+          "title": "Multi-Currency Bookkeeping for Bali Villas: Understanding Exchange Differences"
+        },
+        {
+          "href": "/blog/airbnb-bookkeeping-refunds-cancellations-reserves",
+          "title": "Handle refunds, cancellations and payout reserves"
         }
       ]
     },
@@ -331,16 +335,16 @@
       "description": "Useful rental property bookkeeping keeps each property and owner distinct. Read profit and loss alongside owner contributions, cash movements, refundable balances and amounts payable; a bank balance alone cannot explain the result.",
       "guides": [
         {
-          "href": "/blog/rental-property-bookkeeping-owner-contributions",
-          "title": "Rental Property Bookkeeping: Separating Owner Funding from Rental Income"
+          "href": "/blog/rental-property-accounting-repairs-improvements-records",
+          "title": "Rental Property Accounting: Records for Repairs and Improvements"
         },
         {
-          "href": "/blog/airbnb-bookkeeping-refunds-cancellations-reserves",
-          "title": "Airbnb Bookkeeping: Handling Refunds, Cancellations and Payout Reserves"
+          "href": "/blog/multi-currency-bookkeeping-bali-villa-exchange-differences",
+          "title": "Multi-Currency Bookkeeping for Bali Villas: Understanding Exchange Differences"
         },
         {
-          "href": "/blog/accounting-services-bali-monthly-deliverables",
-          "title": "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+          "href": "/blog/airbnb-bookkeeping-cleaning-fees-extra-guest-charges",
+          "title": "Airbnb Bookkeeping: Cleaning Fees and Extra Guest Charges"
         }
       ]
     },
@@ -353,12 +357,12 @@
       "description": "Catch-up bookkeeping starts with evidence. Agree the period, reconcile bank and platform records, document unsupported items and establish opening balances before treating rebuilt spreadsheets as reliable monthly books.",
       "guides": [
         {
-          "href": "/blog/bookkeeping-cleanup-opening-balances-bali",
-          "title": "Bookkeeping Cleanup: Building an Evidence-Based Opening Balance"
+          "href": "/blog/bank-reconciliation-bali-villa-unmatched-transactions",
+          "title": "Bank Reconciliation for Bali Villas: How to Resolve Unmatched Transactions"
         },
         {
-          "href": "/blog/accounting-services-bali-monthly-deliverables",
-          "title": "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+          "href": "/blog/bookkeeping-cleanup-opening-balances-bali",
+          "title": "Build supported opening balances"
         }
       ]
     },
@@ -375,16 +379,16 @@
       "description": "Keep company revenue, owner funding and liabilities separate. These guides prepare evidence for a separately scoped company or tax engagement; they do not determine legal structure, tax treatment or eligibility.",
       "guides": [
         {
-          "href": "/blog/rental-property-bookkeeping-owner-contributions",
-          "title": "Rental Property Bookkeeping: Separating Owner Funding from Rental Income"
+          "href": "/blog/pt-pma-setup-bali-first-business-transactions",
+          "title": "PT PMA Setup in Bali: Record the First Business Transactions"
         },
         {
-          "href": "/blog/accounting-services-bali-monthly-deliverables",
-          "title": "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+          "href": "/blog/multi-currency-bookkeeping-bali-villa-exchange-differences",
+          "title": "Multi-Currency Bookkeeping for Bali Villas: Understanding Exchange Differences"
         },
         {
-          "href": "/blog/bookkeeping-cleanup-opening-balances-bali",
-          "title": "Bookkeeping Cleanup: Building an Evidence-Based Opening Balance"
+          "href": "/blog/bookkeeper-vs-tax-consultant-bali-responsibilities",
+          "title": "Bookkeeper vs Tax Consultant in Bali: Who Does What?"
         }
       ]
     },
@@ -400,12 +404,34 @@
       "description": "Tax compliance discussions are more useful when company records, owner funding and supporting documents are clear. These guides explain the record preparation; individual advice, filings and project fees need a separately agreed scope.",
       "guides": [
         {
-          "href": "/blog/accounting-services-bali-monthly-deliverables",
-          "title": "Accounting Services in Bali: What a Monthly Engagement Should Deliver"
+          "href": "/blog/bookkeeper-vs-tax-consultant-bali-responsibilities",
+          "title": "Bookkeeper vs Tax Consultant in Bali: Who Does What?"
         },
         {
-          "href": "/blog/rental-property-bookkeeping-owner-contributions",
-          "title": "Keep owner funding separate from operating revenue"
+          "href": "/blog/rental-property-accounting-repairs-improvements-records",
+          "title": "Rental Property Accounting: Records for Repairs and Improvements"
+        },
+        {
+          "href": "/blog/pt-pma-setup-bali-first-business-transactions",
+          "title": "PT PMA Setup in Bali: Record the First Business Transactions"
+        }
+      ]
+    },
+    {
+      "id": "payroll-records",
+      "page": "/villa-payroll-records-bali",
+      "supportPages": [],
+      "keyword": "villa payroll records bali",
+      "label": "Make staff costs and payroll records easier to review",
+      "description": "Separate staff advances, reimbursements and recorded payroll costs. A clear evidence trail helps the responsible person review each payment; bookkeeping support does not automatically include payroll execution, employment advice or filings.",
+      "guides": [
+        {
+          "href": "/blog/villa-payroll-records-staff-advances-reimbursements",
+          "title": "Villa Payroll Records: Staff Advances and Expense Reimbursements"
+        },
+        {
+          "href": "/blog/accountant-bali-first-90-days-bookkeeping",
+          "title": "Accountant Bali Bookkeeping Onboarding: First 90 Days"
         }
       ]
     }

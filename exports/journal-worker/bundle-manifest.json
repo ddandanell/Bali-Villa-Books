@@ -1,12 +1,12 @@
 {
-  "builtAt": "2026-10-23T18:31:38.905Z",
+  "builtAt": "2026-10-28T04:15:58.019Z",
   "timezone": "Asia/Makassar",
   "cron": "0,15,30,45 9 * * *",
   "files": {
     "pino-file.mjs": "981950bfc06b480ac6bf216040997b44a11c45e7838b90f684f6833f42c7f100",
     "pino-pretty.mjs": "ca6e44c3969964d21d7e7ded2ff7dd581a1a6ff7fc2815b9da03b1354886fe26",
     "pino-worker.mjs": "c9069ca9d2b691877f13e5894600fae17660c088e92331506c8f548cf25acdf7",
-    "run-blog-job.mjs": "88b18386fecf8f9da6ce3b437d596c74319e8f133ee4e71a3164f41132c1cce1",
+    "run-blog-job.mjs": "49f62c9a203742ea89ecee521d46286a2a47b5ed63bf483f504d793261191383",
     "thread-stream-worker.mjs": "44286ceae07d2e89f8a5820fda394a5f2bca0bad037b25c1c393ae45eb20ca4b"
   }
 }
