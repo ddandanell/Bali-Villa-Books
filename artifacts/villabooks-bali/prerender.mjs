@@ -24,6 +24,8 @@ for (const pathname of [...pages, "/404"]) {
   writeFileSync(target, pageDocument(template, render(pathname), pathname));
 }
 writeFileSync(path.join(output, "routes.json"), JSON.stringify(pages));
+// Vercel serves this document with a real 404 instead of a homepage fallback.
+writeFileSync(path.join(output, "404.html"), pageDocument(template, render("/404"), "/404"));
 writeFileSync(path.join(output, "robots.txt"), "User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: https://bali-villa-accounting-service.com/sitemap.xml\n");
 rmSync(server, { recursive: true, force: true });
 process.stdout.write(`Pre-rendered ${pages.length} distinct marketing pages and a real 404 document.\n`);

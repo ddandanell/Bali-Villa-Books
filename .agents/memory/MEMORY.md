@@ -5,3 +5,4 @@
 - [DataForSEO authentication](dataforseo-auth.md) — Normalize a complete dashboard-encoded credential pair without double-encoding or exposing it.
 - [Site-wide SEO scope](site-wide-seo.md) — Optimize all public content pages and individual articles; retain factual boundaries and distinguish broad-term volume from niche demand.
 - [Expanded service scope](service-scope.md) — User confirmed in-house company, tax and visa support, separate from monthly bookkeeping-package inclusions.
+- [GitHub validation](github-validation.md) — Validate clean builds before pushes; check actual deployment results and preserve the existing backend.
