@@ -1,18 +1,32 @@
 /**
  * Vercel has no copy of the production database. Forward only public website
  * endpoints to the existing backend; never forward credentials or private APIs.
+ *
+ * BACKEND_ORIGIN must be a host that still reaches the Replit deployment after
+ * the public domain moves to Vercel (for example https://api.bali-villa-accounting-service.com).
+ * Leaving it unset keeps today's safe default: the public apex, which still points at Replit.
  */
-export const origin = "https://bali-villa-accounting-service.com";
+export const publicOrigin = "https://bali-villa-accounting-service.com";
+export const origin = (process.env.BACKEND_ORIGIN || publicOrigin).replace(/\/$/, "");
+
 export function allowedEndpoint(path, method) {
-  const read = ["/api/healthz", "/api/blog/posts"].includes(path) ||
+  const readApi = ["/api/healthz", "/api/blog/posts"].includes(path) ||
     /^\/api\/blog\/posts\/[a-z0-9-]+$/.test(path);
-  return (["GET", "HEAD"].includes(method) && read) ||
+  const readSite = path === "/blog" || path === "/sitemap.xml" ||
+    /^\/blog\/[A-Za-z0-9/_-]*$/.test(path);
+  return (["GET", "HEAD"].includes(method) && (readApi || readSite)) ||
     (method === "POST" && ["/api/enquiries", "/api/site-events", "/api/blog/events"].includes(path));
 }
+
+function gatewayPath(raw) {
+  if (!raw) return "/api/";
+  return raw.startsWith("/") ? raw : `/api/${raw}`;
+}
+
 export async function proxyRequest(req, fetcher = fetch) {
   const url = new URL(req.url, "https://gateway.invalid");
   const targetPath = url.pathname === "/api/gateway" ?
-    `/api/${url.searchParams.get("__gateway") ?? ""}` : url.pathname;
+    gatewayPath(url.searchParams.get("__gateway") ?? "") : url.pathname;
   url.searchParams.delete("__gateway");
   if (!allowedEndpoint(targetPath, req.method))
     return new Response('{"error":"Not found"}', { status: 404, headers: { "content-type": "application/json" } });
@@ -20,9 +34,10 @@ export async function proxyRequest(req, fetcher = fetch) {
   let body;
   if (req.method === "POST") {
     // These are anonymous public forms/events, never authenticated endpoints.
-    // The server-side request has the backend origin, not an arbitrary preview
-    // hostname. Cookies and Authorization are deliberately NOT forwarded.
-    headers.origin = origin;
+    // Always claim the public site origin so the backend same-origin check still
+    // passes after BACKEND_ORIGIN moves to api.* Cookies and Authorization are
+    // deliberately NOT forwarded.
+    headers.origin = publicOrigin;
     headers["content-type"] = "application/json";
     if (req.body !== undefined)
       body = typeof req.body === "string" || Buffer.isBuffer(req.body) ? req.body : JSON.stringify(req.body);
@@ -43,6 +58,7 @@ export async function proxyRequest(req, fetcher = fetch) {
     signal: AbortSignal.timeout(15000),
   });
 }
+
 export default async function handler(req, res) {
   try {
     const upstream = await proxyRequest(req);

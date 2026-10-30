@@ -25,16 +25,39 @@ autodetection. Node is selected through `package.json` engines, not an unsupport
 The Vercel frontend serves each marketing page's pre-rendered HTML, not a universal
 homepage fallback. The original Replit production deployment remains the source
 of truth for the database, daily publisher, Journals and sitemap. Vercel forwards
-the public API through a narrow server-side adapter so anonymous forms can work
-without exposing credentials or accepting arbitrary upstream targets. Journals
-and the sitemap are rewritten to the existing production site.
+public API, Journal and sitemap traffic through `api/gateway.mjs`, which reads
+`BACKEND_ORIGIN` (default: the public apex, while that apex still points at Replit).
 
-This is **not a migration of the backend**. Keep
-`https://bali-villa-accounting-service.com` pointed at the existing Replit
-deployment. Moving that domain to Vercel without first establishing a different
-verified backend origin would cause proxy loops. Do not move its DNS as part of a
-routine GitHub push. Backend functionality also requires that deployment to remain
-available.
+## Move the public domain onto Vercel (single-push website)
+
+Do this only after a separate backend hostname already reaches Replit. Moving the
+apex onto Vercel while the gateway still targets the apex creates a proxy loop.
+
+1. In Replit (`Bali-Regnskab` / Publishing → Domains), add
+   `api.bali-villa-accounting-service.com` and keep the Replit deployment online.
+2. In DNS (this domain already uses `ns1.vercel-dns.com` / `ns2.vercel-dns.com`),
+   point `api` at the Replit deployment using the records Replit shows. Do **not**
+   change the apex/`www` records yet. Confirm
+   `https://api.bali-villa-accounting-service.com/api/healthz` returns JSON.
+3. In the Vercel project (`prj_R4hssmwrWpUrqAn7wgPlxTSeUbX7` → Settings →
+   Environment Variables), set Production (and Preview if desired):
+
+   `BACKEND_ORIGIN=https://api.bali-villa-accounting-service.com`
+
+   Redeploy so the gateway picks it up.
+4. In that same Vercel project → Settings → Domains, add
+   `bali-villa-accounting-service.com` and `www.bali-villa-accounting-service.com`.
+   Accept Vercel’s suggested apex/`www` records (replace the current Replit A/AAAA
+   targets). Keep the `api` records aimed at Replit.
+5. Leave the Replit app running. Do not delete
+   `https://replit.com/@b2b8/Bali-Regnskab`. Journal publishing, forms and the
+   database stay there; only the public website edge moves to Vercel.
+
+After step 5, merging to `main` updates the public site on the custom domain.
+Republish Replit only when backend/API code itself changes.
+
+Do **not** use `bali-villa-books.replit.app` as `BACKEND_ORIGIN`: that host
+permanently redirects to the public apex and would loop after the domain flip.
 
 GitHub Actions and Vercel are separate checks; a successful Git push is not proof
 that either passed. Vercel's Git integration can start deployment alongside Actions.

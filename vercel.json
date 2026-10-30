@@ -11,9 +11,9 @@
   ],
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/gateway?__gateway=:path*" },
-    { "source": "/blog", "destination": "https://bali-villa-accounting-service.com/blog" },
-    { "source": "/blog/:path*", "destination": "https://bali-villa-accounting-service.com/blog/:path*" },
-    { "source": "/sitemap.xml", "destination": "https://bali-villa-accounting-service.com/sitemap.xml" }
+    { "source": "/blog", "destination": "/api/gateway?__gateway=/blog" },
+    { "source": "/blog/:path*", "destination": "/api/gateway?__gateway=/blog/:path*" },
+    { "source": "/sitemap.xml", "destination": "/api/gateway?__gateway=/sitemap.xml" }
   ],
   "headers": [
     {
