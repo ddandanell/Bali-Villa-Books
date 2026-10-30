@@ -31,7 +31,8 @@ export function Hero() {
         <p className="mt-7 max-w-xl text-lg leading-8 text-foreground/75">Monthly bookkeeping for Bali villas and short-term rental properties. Our Denpasar team reconciles Airbnb and other booking payouts, tracks operating expenses and prepares clear owner financial reports. Understand your income and cash flow, with packages from {priceShort(prices.starter)} per month.</p>
         <p className="mt-4 max-w-xl text-sm leading-7 text-foreground/70">Our qualified in-house team also supports <Link href="/company-formation-bali" className="font-semibold text-primary underline underline-offset-4">company setup</Link>, <Link href="/tax-compliance-bali" className="font-semibold text-primary underline underline-offset-4">tax compliance</Link> and <Link href="/business-visa-bali" className="font-semibold text-primary underline underline-offset-4">visa applications</Link>, with separate scopes and quotations.</p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row"><WhatsAppCTA place="home_hero" /><Link href="/sample-report" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-primary/20 px-6 text-sm font-semibold text-primary transition-colors hover:bg-accent">View a sample report <ArrowRight className="h-4 w-4" /></Link></div>
-        <p className="mt-7 max-w-xl text-sm leading-6 text-foreground/55">Based in Denpasar. English and Indonesian support. Scope agreed before work begins.</p>
+        <p className="mt-6 max-w-xl text-sm leading-6 text-foreground/70">Payouts not matching your bank? Read the full guide: <Link href="/airbnb-ota-reconciliation-bali" className="font-semibold text-primary underline decoration-secondary/60 underline-offset-4">Airbnb &amp; OTA payout reconciliation for Bali villas</Link> — gross bookings to fees, refunds, reserves and receipts, step by step.</p>
+        <p className="mt-4 max-w-xl text-sm leading-6 text-foreground/55">Based in Denpasar. English and Indonesian support. Scope agreed before work begins.</p>
       </div>
       <div className="relative lg:col-span-6">
         <div className="absolute -inset-5 rounded-[4rem] bg-secondary/10 blur-3xl" />
@@ -53,7 +54,7 @@ export function TrustIntro() {
 
 const services = [
   { n: "01", title: "Rental property bookkeeping", desc: "Organize villa income, supplier expenses and bank records for a consistent monthly close.", href: "/villa-financial-reporting-bali", link: "See monthly villa reporting" },
-  { n: "02", title: "Airbnb & OTA reconciliation", desc: "Match Airbnb, Booking.com, Agoda, VRBO and direct-booking payouts with fees, refunds and bank receipts.", href: "/airbnb-bookkeeping-bali", link: "Explore Airbnb bookkeeping" },
+  { n: "02", title: "Airbnb & OTA reconciliation", desc: "Match Airbnb, Booking.com, Agoda, VRBO and direct-booking payouts with fees, refunds and bank receipts.", href: "/airbnb-ota-reconciliation-bali", link: "Explore OTA payout reconciliation" },
   { n: "03", title: "Villa owner financial reports", desc: "Read your profit and loss, cash movements and outstanding questions—not just a bank balance.", href: "/villa-financial-reporting-bali", link: "Review financial report scope" },
   { n: "04", title: "Payroll records", desc: "Track supplied staff schedules and BPJS document status in the agreed bookkeeping scope.", href: "/villa-payroll-records-bali", link: "See record tracking" },
   { n: "05", title: "Catch-up bookkeeping", desc: "Bring overdue villa records into an agreed cleanup process. Reconcile what the evidence supports and list remaining gaps.", href: "/villa-bookkeeping-cleanup-bali", link: "Understand bookkeeping cleanup" },
@@ -133,7 +134,7 @@ const longTailTopics: { heading: string; paragraphs: string[]; links: [string, s
   {
     heading: "Airbnb & OTA reconciliation for Bali villas",
     paragraphs: ["Airbnb, Booking.com, Agoda and VRBO payouts rarely equal gross booking revenue. Platform fees, refunds and timing differences must be reconciled against your bank before you can rely on the numbers. We work from your booking exports and statements—not a claimed direct integration—so the source of every figure stays visible."],
-    links: [["Explore Airbnb bookkeeping", "/airbnb-bookkeeping-bali"]],
+    links: [["Read the OTA reconciliation pillar guide", "/airbnb-ota-reconciliation-bali"], ["Explore Airbnb bookkeeping", "/airbnb-bookkeeping-bali"]],
   },
   {
     heading: "Monthly villa owner reporting",

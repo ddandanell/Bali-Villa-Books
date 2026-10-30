@@ -2,6 +2,7 @@ import { sitePages, SITE_ORIGIN, PHONE, OFFICE_LATITUDE, OFFICE_LONGITUDE, mapsD
 import { prices } from "./pricing";
 import { additionalFaqs } from "./additional-faqs";
 import { homeFaqs } from "./home-faqs";
+import { OTA_PILLAR_PATH, otaFaqs, otaSteps } from "./ota-pillar";
 import { DEFAULT_SHARE_IMAGE, shareImage, shareImageAlt } from "./social-images";
 import { expandedServices } from "./expanded-services";
 import { getPageImagery } from "./page-imagery";
@@ -65,6 +66,19 @@ export function pageDocument(template: string, content: string, pathname: string
     "@type": "FAQPage", "@id": `${canonical}#questions`,
     mainEntity: homeFaqs.map(([question, answer]) => ({
       "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer },
+    })),
+  });
+  if (path === OTA_PILLAR_PATH) graph.push({
+    "@type": "FAQPage", "@id": `${canonical}#questions`,
+    mainEntity: otaFaqs.map(([question, answer]) => ({
+      "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer },
+    })),
+  }, {
+    "@type": "HowTo", "@id": `${canonical}#howto`,
+    name: "How to reconcile Airbnb and OTA payouts for a Bali villa",
+    description: page.description,
+    step: otaSteps.map((step, index) => ({
+      "@type": "HowToStep", position: index + 1, name: step.name, text: step.text,
     })),
   });
   if (path === "/" || path === "/pricing") graph.push({
