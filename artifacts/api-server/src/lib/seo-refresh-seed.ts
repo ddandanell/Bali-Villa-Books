@@ -1,11 +1,12 @@
 import { db, blogPosts } from "@workspace/db";
 import refreshPosts from "../data/seo-refresh-2026-10.json";
 import expansionPosts from "../data/seo-expansion-2026-10-28.json";
+import pillarPosts from "../data/seo-pillar-2026-10.json";
 import { logger } from "./logger";
 
 export async function seedSeoRefreshArticles() {
   let inserted = 0;
-  const prepared = [...refreshPosts, ...expansionPosts];
+  const prepared = [...refreshPosts, ...expansionPosts, ...pillarPosts];
   const expansionSlugs = new Set(expansionPosts.map(post => post.slug));
   for (const post of prepared) {
     const rows = await db.insert(blogPosts).values({

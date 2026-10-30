@@ -305,11 +305,19 @@
     {
       "id": "airbnb-bookkeeping",
       "page": "/airbnb-bookkeeping-bali",
-      "supportPages": [],
+      "supportPages": ["/airbnb-ota-reconciliation-bali"],
       "keyword": "airbnb bookkeeping",
       "label": "Airbnb bookkeeping and payout reconciliation",
-      "description": "A platform payout is not guest revenue. Airbnb bookkeeping should explain bookings, cancellations, refunds, withheld reserves, fees and the eventual bank receipt without counting transfers twice.",
+      "description": "A platform payout is not guest revenue. Airbnb bookkeeping should explain bookings, cancellations, refunds, withheld reserves, fees and the eventual bank receipt without counting transfers twice. The pillar guide at /airbnb-ota-reconciliation-bali owns the full workflow.",
       "guides": [
+        {
+          "href": "/blog/booking-com-commission-reconciliation-checklist-bali-villas",
+          "title": "Booking.com Commission Reconciliation Checklist for Bali Villas"
+        },
+        {
+          "href": "/blog/airbnb-reserves-delayed-payouts-bali-villa-bookkeeping",
+          "title": "Airbnb Reserves and Delayed Payouts: A Bali Villa Bookkeeping Guide"
+        },
         {
           "href": "/blog/airbnb-bookkeeping-cleaning-fees-extra-guest-charges",
           "title": "Airbnb Bookkeeping: Cleaning Fees and Extra Guest Charges"

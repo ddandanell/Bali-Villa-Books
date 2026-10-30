@@ -9,6 +9,7 @@ import Home from "@/pages/Home";
 import Blog from "@/pages/Blog";
 import BlogArticle from "@/pages/BlogArticle";
 import PageContent from "@/pages/PageContent";
+import OtaPillar from "@/pages/OtaPillar";
 
 const queryClient = new QueryClient();
 if (typeof window !== "undefined") {
@@ -25,6 +26,7 @@ function Router() {
       <Route path="/blog/:slug" component={BlogArticle} />
       <Route path="/services"><PageContent path="/services" /></Route>
       <Route path="/airbnb-bookkeeping-bali"><PageContent path="/airbnb-bookkeeping-bali" /></Route>
+      <Route path="/airbnb-ota-reconciliation-bali"><OtaPillar /></Route>
       <Route path="/villa-financial-reporting-bali"><PageContent path="/villa-financial-reporting-bali" /></Route>
       <Route path="/villa-bookkeeping-cleanup-bali"><PageContent path="/villa-bookkeeping-cleanup-bali" /></Route>
       <Route path="/pt-pma-villa-bookkeeping"><PageContent path="/pt-pma-villa-bookkeeping" /></Route>
