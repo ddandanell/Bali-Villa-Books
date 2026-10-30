@@ -5,6 +5,7 @@ import router from "./routes";
 import blogSeo from "./routes/blog-seo";
 import { logger } from "./lib/logger";
 import { articleAliases } from "@workspace/site-content";
+import { isBackendOriginRoute } from "./lib/canonical-host";
 
 const app: Express = express();
 app.set("trust proxy", 1);
@@ -33,6 +34,13 @@ app.use(express.json({ limit: "20kb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use((req, res, next) => {
   const host = (req.get("x-forwarded-host") ?? req.get("host") ?? "").split(",")[0].trim().split(":")[0];
+  if (process.env.NODE_ENV === "production" && host === "bali-villa-books.replit.app" &&
+      isBackendOriginRoute(req.path, req.method)) {
+    // Direct backend responses must not become a second indexed website.
+    // The Vercel adapter intentionally does not forward this origin-only header.
+    res.setHeader("X-Robots-Tag", "noindex, nofollow");
+    next(); return;
+  }
   if (process.env.NODE_ENV === "production" && ["www.bali-villa-accounting-service.com", "bali-villa-books.replit.app"].includes(host)) {
     res.redirect(308, `https://bali-villa-accounting-service.com${req.originalUrl}`); return;
   }

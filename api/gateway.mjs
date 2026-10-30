@@ -2,7 +2,8 @@
  * Vercel has no copy of the production database. Forward only public website
  * endpoints to the existing backend; never forward credentials or private APIs.
  */
-export const origin = "https://bali-villa-accounting-service.com";
+export const origin = "https://bali-villa-books.replit.app";
+export const publicOrigin = "https://bali-villa-accounting-service.com";
 export function allowedEndpoint(path, method) {
   const read = ["/api/healthz", "/api/blog/posts"].includes(path) ||
     /^\/api\/blog\/posts\/[a-z0-9-]+$/.test(path);
@@ -11,10 +12,14 @@ export function allowedEndpoint(path, method) {
 }
 export async function proxyRequest(req, fetcher = fetch) {
   const url = new URL(req.url, "https://gateway.invalid");
+  const documentPath = url.pathname === "/api/gateway" ? url.searchParams.get("__document") : null;
   const targetPath = url.pathname === "/api/gateway" ?
-    `/api/${url.searchParams.get("__gateway") ?? ""}` : url.pathname;
+    (documentPath !== null ? `/${documentPath}` : `/api/${url.searchParams.get("__gateway") ?? ""}`) : url.pathname;
   url.searchParams.delete("__gateway");
-  if (!allowedEndpoint(targetPath, req.method))
+  url.searchParams.delete("__document");
+  const documentRead = ["GET", "HEAD"].includes(req.method) &&
+    (targetPath === "/blog" || /^\/blog\/[a-z0-9-]+\/?$/.test(targetPath) || targetPath === "/sitemap.xml");
+  if (!allowedEndpoint(targetPath, req.method) && !documentRead)
     return new Response('{"error":"Not found"}', { status: 404, headers: { "content-type": "application/json" } });
   const headers = { accept: req.headers.accept ?? "application/json" };
   let body;
@@ -22,7 +27,7 @@ export async function proxyRequest(req, fetcher = fetch) {
     // These are anonymous public forms/events, never authenticated endpoints.
     // The server-side request has the backend origin, not an arbitrary preview
     // hostname. Cookies and Authorization are deliberately NOT forwarded.
-    headers.origin = origin;
+    headers.origin = publicOrigin;
     headers["content-type"] = "application/json";
     if (req.body !== undefined)
       body = typeof req.body === "string" || Buffer.isBuffer(req.body) ? req.body : JSON.stringify(req.body);

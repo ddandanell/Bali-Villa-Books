@@ -8,11 +8,11 @@ Run repository validation before pushing site changes to GitHub and distinguish 
 
 **How to apply:** Check actual GitHub/Vercel results, reproduce from a clean checkout without workspace-only files or secrets, and retain the pre-push validation. Do not claim the deployment succeeded just because the Git command did.
 
-Keep the existing Replit deployment as the backend while Vercel serves the frontend; do not move the custom-domain DNS without establishing a separate backend origin first.
+Keep the existing Replit deployment as the backend while Vercel serves the frontend; do not move the custom-domain DNS without establishing a separate backend origin first. The user explicitly requested moving the apex to Vercel's `216.150.1.1`.
 
 **Why:** Dynamic Journal HTML, live articles, form submissions, the database and the daily publisher are not a static Vite export. The adapter uses the verified custom domain as its upstream, so pointing that domain at the adapter would loop.
 
-**How to apply:** Preserve dynamic routes and public form handling when changing hosts. Treat a full backend/domain migration as separate work with explicit configuration and verification.
+**How to apply:** Preserve dynamic routes and public form handling when changing hosts. Publish and verify the separate Replit backend-origin routes before switching DNS or deploying the adapter that depends on them. Do not claim the cutover is finished based on local checks.
 
 Probe actual runtime responses on the verified production alias after the host reports a successful build, and check content type/body as well as HTTP status.
 

@@ -27,14 +27,29 @@ homepage fallback. The original Replit production deployment remains the source
 of truth for the database, daily publisher, Journals and sitemap. Vercel forwards
 the public API through a narrow server-side adapter so anonymous forms can work
 without exposing credentials or accepting arbitrary upstream targets. Journals
-and the sitemap are rewritten to the existing production site.
+and the sitemap use the same adapter. The adapter connects directly to
+`https://bali-villa-books.replit.app`, never back to the public domain.
 
-This is **not a migration of the backend**. Keep
-`https://bali-villa-accounting-service.com` pointed at the existing Replit
-deployment. Moving that domain to Vercel without first establishing a different
-verified backend origin would cause proxy loops. Do not move its DNS as part of a
-routine GitHub push. Backend functionality also requires that deployment to remain
-available.
+This is **not a migration of the backend**. The custom domain can move to Vercel
+only after the backend-origin exception has been published on Replit. That
+exception serves only the adapter's public routes on the Replit hostname, with
+an origin-only noindex header. Other Replit-host pages still redirect to the
+canonical custom domain. The adapter does not forward the noindex header.
+
+Cutover order:
+1. Publish the backend change on Replit and verify that the Replit hostname
+   returns JSON for `/api/healthz` and `/api/blog/posts`, HTML for `/blog`, and XML
+   for `/sitemap.xml`, without redirecting to the custom domain.
+2. Push the checked frontend adapter to GitHub and verify the Vercel production
+   alias (including nested Journal reads and invalid enquiry validation).
+3. On Vercel, remove the apex-to-www redirect and redirect www to the apex.
+4. Change only the apex A record to the Vercel-confirmed `216.150.1.1`, preserving
+   verification TXT, CAA and other unrelated records. Check domain configuration,
+   HTTPS, canonical tags, dynamic routes and form validation after propagation.
+
+Do not switch DNS while the backend hostname still redirects its public API to
+the custom domain. Keep the Replit backend deployment running for its database
+and Journal publisher. Do not turn off its hostname or move the database.
 
 GitHub Actions and Vercel are separate checks; a successful Git push is not proof
 that either passed. Vercel's Git integration can start deployment alongside Actions.

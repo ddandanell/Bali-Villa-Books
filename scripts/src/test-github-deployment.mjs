@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
 import Ajv from "ajv-draft-04";
-import { origin, allowedEndpoint, proxyRequest } from "../../api/gateway.mjs";
+import { origin, publicOrigin, allowedEndpoint, proxyRequest } from "../../api/gateway.mjs";
+import { isBackendOriginRoute } from "../../artifacts/api-server/src/lib/canonical-host.ts";
 
 const read = path => JSON.parse(readFileSync(new URL(`../../${path}`, import.meta.url)));
 const config = read("vercel.json");
@@ -29,7 +30,8 @@ assert.equal(config.buildCommand, "pnpm run build:web");
 assert.ok(config.rewrites.every(r => r.source !== "/(.*)"), "never hide missing pages behind homepage HTML");
 assert.equal(config.rewrites.find(r => r.source === "/api/:path*")?.destination, "/api/gateway?__gateway=:path*");
 for (const path of ["/blog", "/blog/:path*", "/sitemap.xml"])
-  assert.ok(config.rewrites.find(r => r.source === path)?.destination.startsWith(origin));
+  assert.ok(config.rewrites.find(r => r.source === path)?.destination.startsWith("/api/gateway?__document="));
+assert.notEqual(origin, publicOrigin, "backend cannot resolve to the Vercel frontend");
 assert.ok(existsSync(new URL("../../artifacts/villabooks-bali/dist/public/404.html", import.meta.url)));
 const routes = read("artifacts/villabooks-bali/dist/public/routes.json");
 for (const route of routes)
@@ -40,7 +42,7 @@ let called = 0;
 const fetcher = async (url, init) => {
   called++;
   assert.equal(url, `${origin}/api/enquiries`);
-  assert.equal(init.headers.origin, origin);
+  assert.equal(init.headers.origin, publicOrigin);
   assert.equal(init.headers.authorization, undefined);
   assert.equal(init.headers.cookie, undefined);
   assert.deepEqual(JSON.parse(init.body), { serviceInterest: "bookkeeping" });
@@ -65,4 +67,20 @@ await proxyRequest({url: "/api/gateway?__gateway=blog%2Fposts&limit=50&offset=50
 });
 assert.equal(readUrl, `${origin}/api/blog/posts?limit=50&offset=50`);
 assert.equal((await proxyRequest({url: "/api/gateway?__gateway=admin", method: "GET", headers: {}}, fetcher)).status, 404);
+for (const [document, path] of [["blog", "/blog"], ["blog/monthly-checklist", "/blog/monthly-checklist"], ["sitemap.xml", "/sitemap.xml"]]) {
+  await proxyRequest({url: `/api/gateway?__document=${encodeURIComponent(document)}&page=2`, method: "GET", headers: {}}, async url => {
+    readUrl = url;
+    return new Response("document");
+  });
+  assert.equal(readUrl, `${origin}${path}?page=2`);
+  assert.equal(isBackendOriginRoute(path, "GET"), true);
+}
+for (const path of ["/", "/services", "/api/admin", "/blog/../../admin", "/api/blog/automation/status"]) {
+  assert.equal(isBackendOriginRoute(path, "GET"), false);
+}
+for (const path of ["/api/enquiries", "/api/site-events", "/api/blog/events"]) {
+  assert.equal(isBackendOriginRoute(path, "POST"), true);
+  assert.equal(isBackendOriginRoute(path, "DELETE"), false);
+}
+assert.equal((await proxyRequest({url: "/api/gateway?__document=api/admin", method: "GET", headers: {}}, fetcher)).status, 404);
 console.log(`PASS: official Vercel schema, ${routes.length} prerendered routes, real 404, dynamic Journal/sitemap routing, anonymous form proxy, no credential forwarding, body limits and pagination.`);
