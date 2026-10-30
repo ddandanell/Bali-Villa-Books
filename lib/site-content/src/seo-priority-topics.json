@@ -30,7 +30,7 @@
   {
     "id": 205,
     "cluster": "SEO",
-    "workingTitle": "Booking.com Bookkeeping: Reconciling Commission Invoices and Bank Deposits",
+    "workingTitle": "Booking.com Bookkeeping: Reconciling Commission Invoices and Bank Deposits",
     "keyword": "booking com bookkeeping commission invoices",
     "service": "/airbnb-bookkeeping-bali"
   },
@@ -173,5 +173,47 @@
     "keyword": "direct booking payment processor reconciliation villa",
     "service": "/airbnb-bookkeeping-bali",
     "cluster": "SEO"
+  },
+  {
+    "id": 401,
+    "cluster": "Villa Finance",
+    "workingTitle": "Vacation Rental Accounting: A-Chart of Accounts Built for Short Lets",
+    "keyword": "vacation rental accounting chart of accounts villa",
+    "service": "/villa-financial-reporting-bali"
+  },
+  {
+    "id": 402,
+    "cluster": "Villa Finance",
+    "workingTitle": "Short-Term Rental Bookkeeping: Splitting Platform Fees From Cleaning Revenue",
+    "keyword": "short term rental bookkeeping platform fees cleaning revenue",
+    "service": "/airbnb-bookkeeping-bali"
+  },
+  {
+    "id": 403,
+    "cluster": "Accounting",
+    "workingTitle": "Freelance Accountant in Bali vs a Bookkeeping Firm: Scope, Controls and Risk",
+    "keyword": "freelance accounting bali vs bookkeeping firm scope",
+    "service": "/services"
+  },
+  {
+    "id": 404,
+    "cluster": "Villa Finance",
+    "workingTitle": "Management Fee Accounting for Bali Villa Managers: Gross, Net and Everything Between",
+    "keyword": "villa management fee accounting gross net",
+    "service": "/villa-financial-reporting-bali"
+  },
+  {
+    "id": 405,
+    "cluster": "Villa Finance",
+    "workingTitle": "Guest Security Deposits: Liability Tracking Without Mixing Revenue",
+    "keyword": "villa guest security deposit accounting liability",
+    "service": "/villa-bookkeeping-cleanup-bali"
+  },
+  {
+    "id": 406,
+    "cluster": "Company & Records",
+    "workingTitle": "Owner Advances and Reimbursements: Keeping the Loan Account Honest",
+    "keyword": "villa owner advance reimbursement loan account",
+    "service": "/pt-pma-villa-bookkeeping"
   }
 ]
