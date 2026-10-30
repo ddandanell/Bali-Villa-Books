@@ -1,6 +1,7 @@
-import { sitePages, SITE_ORIGIN, PHONE } from "./site-pages";
+import { sitePages, SITE_ORIGIN, PHONE, OFFICE_LATITUDE, OFFICE_LONGITUDE, mapsDirectionsUrl } from "./site-pages";
 import { prices } from "./pricing";
 import { additionalFaqs } from "./additional-faqs";
+import { homeFaqs } from "./home-faqs";
 import { DEFAULT_SHARE_IMAGE, shareImage, shareImageAlt } from "./social-images";
 import { expandedServices } from "./expanded-services";
 import { getPageImagery } from "./page-imagery";
@@ -24,6 +25,13 @@ export function pageDocument(template: string, content: string, pathname: string
     telephone: PHONE, image: `${SITE_ORIGIN}${DEFAULT_SHARE_IMAGE}`,
     founder: { "@type": "Person", name: "Abel Yuniartini" },
     address: { "@type": "PostalAddress", streetAddress: "Jl. Tukad Barito Timur III No.16, Panjer", addressLocality: "Denpasar Selatan", addressRegion: "Bali", postalCode: "80226", addressCountry: "ID" },
+    geo: { "@type": "GeoCoordinates", latitude: OFFICE_LATITUDE, longitude: OFFICE_LONGITUDE },
+    openingHoursSpecification: [{
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00", closes: "18:00",
+    }],
+    sameAs: [mapsDirectionsUrl],
     areaServed: { "@type": "Place", name: "Bali, Indonesia" },
   }, { "@type": "WebSite", "@id": webId, url: `${SITE_ORIGIN}/`, name: "Bali Accounting", publisher: { "@id": businessId } },
   { "@type": "WebPage", "@id": `${canonical}#webpage`, url: canonical, name: page.title, description: page.description, isPartOf: { "@id": webId }, about: { "@id": businessId } }];
@@ -50,6 +58,12 @@ export function pageDocument(template: string, content: string, pathname: string
   if (path === "/faq") graph.push({
     "@type": "FAQPage", "@id": `${canonical}#questions`,
     mainEntity: additionalFaqs.map(([question, answer]) => ({
+      "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer },
+    })),
+  });
+  if (path === "/") graph.push({
+    "@type": "FAQPage", "@id": `${canonical}#questions`,
+    mainEntity: homeFaqs.map(([question, answer]) => ({
       "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer },
     })),
   });

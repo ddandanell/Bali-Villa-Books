@@ -6,9 +6,16 @@ export const WHATSAPP_NUMBER = "6281237402292";
 export const PHONE = "+62 812-3740-2292";
 export const whatsapp = (message = "Hello Client Advisory, I would like a free consultation about your Bali accounting and business-support services.") => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
+/** Panjer office coordinates on Jl. Tukad Barito Timur III (approximate street-level position). */
+export const OFFICE_LATITUDE = -8.683;
+export const OFFICE_LONGITUDE = 115.2324;
+export const MAPS_QUERY = "Jl. Tukad Barito Timur III No.16, Panjer, Denpasar Selatan, Bali 80226";
+export const mapsDirectionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAPS_QUERY)}`;
+export const mapsEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(MAPS_QUERY)}&z=16&output=embed`;
+
 export const sitePages: Record<string, { title: string; description: string; h1: string; service?: boolean }> = {
   ...Object.fromEntries(expandedServices.map(service => [service.path, service.meta])),
-  "/": { title: "Bali Accountant & Villa Bookkeeping | Bali Accounting", description: `Looking for an accountant in Bali? Explore villa bookkeeping, Airbnb reconciliation and clear owner reports from ${priceShort(prices.starter)}/month. Discuss your records.`, h1: "Bali Accounting & Bookkeeping for Villa Owners" },
+  "/": { title: "Villa Accounting Bali | Bookkeeping & Airbnb Reconciliation", description: `Bali villa accounting specialists. Monthly bookkeeping, Airbnb/OTA reconciliation and clear owner reports from ${priceShort(prices.starter)}. Free consultation.`, h1: "Bali Villa Accounting & Bookkeeping for Villa Owners" },
   "/services": { title: "Accounting Services Bali | Clear Monthly Books", description: "Compare accounting services in Bali: monthly bookkeeping, PT PMA setup, company records, tax and visa support. Clear deliverables and separately agreed scopes.", h1: "Accounting Services in Bali: Bookkeeping, Company, Tax and Visa Support" },
   "/airbnb-bookkeeping-bali": { title: "Airbnb Bookkeeping Bali | Payouts & Fees", description: "Airbnb bookkeeping for Bali villas: reconcile Booking.com and OTA payouts, cleaning fees, extra guest charges and refunds. Keep short-term rental records clear.", h1: "Airbnb Bookkeeping for Bali Villas", service: true },
   "/villa-financial-reporting-bali": { title: "Villa Financial Reporting Bali | P&L & Cash Flow", description: "Monthly villa financial reporting in Bali with profit and loss, rental income, expense tracking and cash-flow explanations. Explore a sample owner report.", h1: "Villa Financial Reporting in Bali: P&L and Cash Flow", service: true },
