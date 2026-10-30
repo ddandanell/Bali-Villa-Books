@@ -1,6 +1,6 @@
 import { openai } from "@workspace/integrations-openai-ai-server";
 import { repairArticleLinks, validateArticle } from "./blog-content";
-import { imageLibrary } from "./blog-policy";
+import { categoryForService, imageLibrary, journalCategories } from "./blog-policy";
 import { assertNoUnsupportedClaims, validateBlueprintStructure, type BlueprintTopic } from "./editorial-blueprint";
 import { findJournalImage, type JournalImage } from "./journal-images";
 import { readFile, writeFile } from "node:fs/promises";
@@ -20,6 +20,7 @@ function fitMetadata(value: string, limit: number) {
 }
 const instructions = `Write for Bali Accounting's editorial desk, a serious Denpasar-based villa bookkeeping firm.
 Return exactly one JSON object: slug,title,excerpt,metaTitle,metaDescription,primaryKeyword,category,contentHtml,imageUrl,imageAlt.
+category must be exactly one of: ${journalCategories.join(", ")}. Never use blueprint cluster codes such as SEO, A, B or H.
 Write 1800–2000 useful visible words, at least 1500 and no more than 2500 including FAQs and credits. Directly answer the article's question in the first 80 words. No SEO filler or repeated generic paragraphs.
 Keep worked examples limited to explicit illustrative cash movements or selected evidence schedules; do not present a partial balance list as a trial balance or invent balancing journal entries. Describe onboarding periods as adaptable planning examples, never guaranteed turnaround times.
 Use the assigned primary keyword naturally, exactly as assigned in primaryKeyword; choose a distinct keyword if no topic is assigned.
@@ -87,6 +88,7 @@ export async function createBlueprintArticle(topic: BlueprintTopic | undefined, 
   raw.contentHtml += '<p>For ongoing support, explore our <a href="/">Bali accounting and villa bookkeeping services</a>. Project work and monthly bookkeeping have separately agreed scopes.</p>';
   raw.imageUrl = image.url;
   raw.imageAlt = image.alt;
+  raw.category = categoryForService(topic?.service);
   raw.contentHtml += image.creditHtml ?? "";
   raw.metaTitle = fitMetadata(raw.metaTitle, 43);
   raw.metaDescription = fitMetadata(raw.metaDescription, 160);
@@ -125,7 +127,10 @@ export async function repairDraftAfterReview(raw: ReturnType<typeof validateArti
   const repaired = JSON.parse(response.choices[0].message.content ?? "{}");
   repaired.metaTitle = fitMetadata(repaired.metaTitle, 43);
   repaired.metaDescription = fitMetadata(repaired.metaDescription, 160);
-  Object.assign(repaired, { slug: raw.slug, primaryKeyword: raw.primaryKeyword, imageUrl: raw.imageUrl, imageAlt: raw.imageAlt });
+  Object.assign(repaired, {
+    slug: raw.slug, primaryKeyword: raw.primaryKeyword, category: raw.category,
+    imageUrl: raw.imageUrl, imageAlt: raw.imageAlt,
+  });
   repaired.contentHtml = repairArticleLinks(repaired.contentHtml, context.existing);
   const credits = String(raw.contentHtml).match(/<p><em>(?:Illustrative photo, not a client engagement|AI-generated editorial illustration)[\s\S]*?<\/em><\/p>/g) ?? [];
   if (credits.length) {

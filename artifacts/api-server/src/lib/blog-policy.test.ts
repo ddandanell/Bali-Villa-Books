@@ -1,7 +1,13 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { baliClock, nextPublication, countWords, similarTitle, imageLibrary } from "./blog-policy";
+import { baliClock, nextPublication, countWords, similarTitle, imageLibrary, categoryForService } from "./blog-policy";
 import { validateArticle, cleanHtml } from "./blog-content";
+
+test("service paths map to public journal categories, never SEO", () => {
+  assert.equal(categoryForService("/airbnb-bookkeeping-bali"), "OTA Operations");
+  assert.equal(categoryForService("/services"), "Villa Bookkeeping");
+  assert.notEqual(categoryForService("/services"), "SEO");
+});
 
 test("Bali weekday trigger opens at 09:00 and ignores weekends", () => {
   assert.equal(baliClock(new Date("2026-10-05T00:59:00Z")).eligible, false);
@@ -41,10 +47,11 @@ test("word counter counts visible words rather than HTML length", () => {
 
 test("article validator enforces minimum words, image library and real internal links", () => {
   assert.ok(validateArticle(article, existing).wordCount >= 1000);
-  assert.throws(() => validateArticle({ ...article, imageUrl: "https://unknown.example/image.jpg" }, existing), /verified/);
+  assert.throws(() => validateArticle({ ...article, imageUrl: "https://unknown.example/image.jpg" }, existing), /approved|verified|Image/);
   assert.throws(() => validateArticle({ ...article, contentHtml: article.contentHtml.replace("/#services", "/#imaginary") }, existing), /required/);
   assert.throws(() => validateArticle({ ...article, contentHtml: article.contentHtml + '<a href="/blog/missing">Missing</a>' }, existing), /Unknown/);
   assert.throws(() => validateArticle({ ...article, primaryKeyword: existing[0].primaryKeyword }, existing), /Duplicate/);
+  assert.throws(() => validateArticle({ ...article, category: "SEO" }, existing), /Invalid category/);
 });
 
 test("HTML sanitizer removes scripts, dangerous attributes and external protocols", () => {

@@ -3,6 +3,44 @@ export const SCHEDULED_HOUR = 9;
 export const MIN_WORDS = 1500;
 export const DAILY_POSTS = 2;
 
+/** Public journal labels only. Never persist blueprint/cluster codes such as "SEO". */
+export const journalCategories = [
+  "Villa Bookkeeping",
+  "Villa Finance",
+  "OTA Operations",
+  "Villa Financial Reporting",
+  "Bookkeeping Cleanup",
+  "PT PMA Bookkeeping",
+  "Villa Payroll Records",
+  "Records & Compliance",
+  "Villa Accounting and Tax Records",
+  "Company Setup Records",
+  "Indonesia News & Visas",
+  "Expense Controls",
+] as const;
+export type JournalCategory = (typeof journalCategories)[number];
+
+const categoryByService: Record<string, JournalCategory> = {
+  "/services": "Villa Bookkeeping",
+  "/airbnb-bookkeeping-bali": "OTA Operations",
+  "/villa-financial-reporting-bali": "Villa Financial Reporting",
+  "/villa-bookkeeping-cleanup-bali": "Bookkeeping Cleanup",
+  "/pt-pma-villa-bookkeeping": "PT PMA Bookkeeping",
+  "/villa-payroll-records-bali": "Villa Payroll Records",
+  "/tax-compliance-bali": "Records & Compliance",
+  "/tax-planning-bali": "Records & Compliance",
+  "/tax-registration-bali": "Records & Compliance",
+  "/company-formation-bali": "Company Setup Records",
+  "/company-compliance-bali": "Company Setup Records",
+  "/business-licensing-bali": "Company Setup Records",
+  "/business-visa-bali": "Indonesia News & Visas",
+  "/investor-kitas-bali": "Indonesia News & Visas",
+};
+
+export function categoryForService(service?: string): JournalCategory {
+  return (service && categoryByService[service]) || "Villa Bookkeeping";
+}
+
 export const imageLibrary = [
   { url: "/images/bali-villa-bookkeeping-reconciliation.jpg", alt: "Bali villa bookkeeping professional comparing receipts and reconciliation records" },
   { url: "/images/bali-accountant-consultation.jpg", alt: "Bali accountant discussing financial reporting with a villa owner" },
