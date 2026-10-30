@@ -36,8 +36,11 @@ assert.ok(existsSync(new URL("../../artifacts/villabooks-bali/dist/public/404.ht
 const routes = read("artifacts/villabooks-bali/dist/public/routes.json");
 for (const route of routes)
   assert.ok(existsSync(new URL(`../../artifacts/villabooks-bali/dist/public${route === "/" ? "" : route}/index.html`, import.meta.url)), route);
-for (const path of ["/api/admin", "/api/blog/automation/status", "/api/../../admin"])
+for (const path of ["/api/admin", "/api/blog/automation/status", "/api/../../admin", "/admin"])
   assert.equal(allowedEndpoint(path, "GET"), false);
+assert.equal(allowedEndpoint("/blog", "GET"), true);
+assert.equal(allowedEndpoint("/blog/example-post", "GET"), true);
+assert.equal(allowedEndpoint("/sitemap.xml", "GET"), true);
 let called = 0;
 const fetcher = async (url, init) => {
   called++;
@@ -66,6 +69,16 @@ await proxyRequest({url: "/api/gateway?__gateway=blog%2Fposts&limit=50&offset=50
   return new Response("[]");
 });
 assert.equal(readUrl, `${origin}/api/blog/posts?limit=50&offset=50`);
+await proxyRequest({url: "/api/gateway?__gateway=%2Fblog%2Fexample&x=1", method: "GET", headers: {}}, async url => {
+  readUrl = url;
+  return new Response("<html></html>");
+});
+assert.equal(readUrl, `${origin}/blog/example?x=1`);
+await proxyRequest({url: "/api/gateway?__gateway=%2Fsitemap.xml", method: "GET", headers: {}}, async url => {
+  readUrl = url;
+  return new Response("<urlset></urlset>");
+});
+assert.equal(readUrl, `${origin}/sitemap.xml`);
 assert.equal((await proxyRequest({url: "/api/gateway?__gateway=admin", method: "GET", headers: {}}, fetcher)).status, 404);
 for (const [document, path] of [["blog", "/blog"], ["blog/monthly-checklist", "/blog/monthly-checklist"], ["sitemap.xml", "/sitemap.xml"]]) {
   await proxyRequest({url: `/api/gateway?__document=${encodeURIComponent(document)}&page=2`, method: "GET", headers: {}}, async url => {

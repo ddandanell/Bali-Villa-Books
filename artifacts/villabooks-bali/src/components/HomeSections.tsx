@@ -3,8 +3,9 @@ import { ArrowRight, ArrowUpRight, Check, CircleHelp, FileText, MapPin, MessageC
 import { useListBlogPosts } from "@workspace/api-client-react";
 import { BlogCard } from "@/components/BlogCard";
 import { ConsultationForm } from "@/components/ConsultationForm";
-import { PHONE, sitePages, whatsapp } from "@/lib/site-pages";
+import { PHONE, mapsDirectionsUrl, mapsEmbedUrl, sitePages, whatsapp } from "@/lib/site-pages";
 import { prices, priceText, priceShort } from "@/lib/pricing";
+import { homeFaqs } from "@/lib/home-faqs";
 import { trackEvent } from "@/lib/analytics";
 import { expandedServices } from "@/lib/expanded-services";
 import { getPageImagery } from "@/lib/page-imagery";
@@ -30,7 +31,8 @@ export function Hero() {
         <p className="mt-7 max-w-xl text-lg leading-8 text-foreground/75">Monthly bookkeeping for Bali villas and short-term rental properties. Our Denpasar team reconciles Airbnb and other booking payouts, tracks operating expenses and prepares clear owner financial reports. Understand your income and cash flow, with packages from {priceShort(prices.starter)} per month.</p>
         <p className="mt-4 max-w-xl text-sm leading-7 text-foreground/70">Our qualified in-house team also supports <Link href="/company-formation-bali" className="font-semibold text-primary underline underline-offset-4">company setup</Link>, <Link href="/tax-compliance-bali" className="font-semibold text-primary underline underline-offset-4">tax compliance</Link> and <Link href="/business-visa-bali" className="font-semibold text-primary underline underline-offset-4">visa applications</Link>, with separate scopes and quotations.</p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row"><WhatsAppCTA place="home_hero" /><Link href="/sample-report" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-primary/20 px-6 text-sm font-semibold text-primary transition-colors hover:bg-accent">View a sample report <ArrowRight className="h-4 w-4" /></Link></div>
-        <p className="mt-7 max-w-xl text-sm leading-6 text-foreground/55">Based in Denpasar. English and Indonesian support. Scope agreed before work begins.</p>
+        <p className="mt-6 max-w-xl text-sm leading-6 text-foreground/70">Payouts not matching your bank? Read the full guide: <Link href="/airbnb-ota-reconciliation-bali" className="font-semibold text-primary underline decoration-secondary/60 underline-offset-4">Airbnb &amp; OTA payout reconciliation for Bali villas</Link> — gross bookings to fees, refunds, reserves and receipts, step by step.</p>
+        <p className="mt-4 max-w-xl text-sm leading-6 text-foreground/55">Based in Denpasar. English and Indonesian support. Scope agreed before work begins.</p>
       </div>
       <div className="relative lg:col-span-6">
         <div className="absolute -inset-5 rounded-[4rem] bg-secondary/10 blur-3xl" />
@@ -46,13 +48,13 @@ export function Hero() {
 export function TrustIntro() {
   return <section className="border-y border-primary/10 bg-accent/40 py-10"><div className={`${wrap} grid gap-6 sm:grid-cols-[1fr_auto] sm:items-center`}>
     <div><p className={eyebrow}>The firm and its work</p><p className="mt-3 max-w-3xl text-sm leading-7 text-foreground/70">Bali Accounting is a Denpasar bookkeeping firm founded by Abel Yuniartini. The work is practical: reconcile booking activity, organize operating records and prepare monthly owner reporting. <Link href="/about" className="font-semibold text-primary underline decoration-secondary/50 underline-offset-4">Meet the firm and see its responsibilities.</Link></p></div>
-    <address className="not-italic text-xs leading-5 text-foreground/55">Jl. Tukad Barito Timur III No.16<br/>Panjer, Denpasar Selatan, Bali 80226</address>
+    <div><address className="not-italic text-xs leading-5 text-foreground/55">Jl. Tukad Barito Timur III No.16<br/>Panjer, Denpasar Selatan, Bali 80226</address><a href={mapsDirectionsUrl} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-primary underline decoration-secondary/50 underline-offset-4">Find us on Google <ArrowUpRight className="h-3 w-3" /></a></div>
   </div></section>;
 }
 
 const services = [
   { n: "01", title: "Rental property bookkeeping", desc: "Organize villa income, supplier expenses and bank records for a consistent monthly close.", href: "/villa-financial-reporting-bali", link: "See monthly villa reporting" },
-  { n: "02", title: "Airbnb & OTA reconciliation", desc: "Match Airbnb, Booking.com, Agoda, VRBO and direct-booking payouts with fees, refunds and bank receipts.", href: "/airbnb-bookkeeping-bali", link: "Explore Airbnb bookkeeping" },
+  { n: "02", title: "Airbnb & OTA reconciliation", desc: "Match Airbnb, Booking.com, Agoda, VRBO and direct-booking payouts with fees, refunds and bank receipts.", href: "/airbnb-ota-reconciliation-bali", link: "Explore OTA payout reconciliation" },
   { n: "03", title: "Villa owner financial reports", desc: "Read your profit and loss, cash movements and outstanding questions—not just a bank balance.", href: "/villa-financial-reporting-bali", link: "Review financial report scope" },
   { n: "04", title: "Payroll records", desc: "Track supplied staff schedules and BPJS document status in the agreed bookkeeping scope.", href: "/villa-payroll-records-bali", link: "See record tracking" },
   { n: "05", title: "Catch-up bookkeeping", desc: "Bring overdue villa records into an agreed cleanup process. Reconcile what the evidence supports and list remaining gaps.", href: "/villa-bookkeeping-cleanup-bali", link: "Understand bookkeeping cleanup" },
@@ -125,18 +127,38 @@ export function UseCasesSection() {
 }
 
 export function LocalAbout() {
-  return <section id="about" className="bg-accent/45 py-16 sm:py-24"><div className={`${wrap} grid gap-10 lg:grid-cols-[1fr_.8fr] lg:items-center`}><div><p className={eyebrow}>Denpasar, Bali</p><h2 className="mt-4 font-serif text-4xl leading-tight text-primary sm:text-5xl">Local records. Clear responsibilities.</h2><p className="mt-5 max-w-2xl leading-7 text-foreground/70">Founded by Abel Yuniartini, Bali Accounting works from Panjer, Denpasar. The firm's focus is organizing villa records, preparing monthly owner reporting and making exceptions visible—not giving tax advice or filing official returns.</p><Link href="/about" className="mt-6 inline-flex items-center gap-2 font-semibold text-primary underline decoration-secondary/50 underline-offset-4">About Bali Accounting <ArrowRight className="h-4 w-4" /></Link></div><div className="rounded-3xl border border-primary/10 bg-background p-7"><MapPin className="h-5 w-5 text-secondary" /><p className="mt-4 font-serif text-2xl text-primary">Panjer · Denpasar Selatan</p><address className="mt-3 not-italic text-sm leading-6 text-foreground/60">Jl. Tukad Barito Timur III No.16<br/>Panjer, Denpasar Selatan<br/>Bali 80226</address><p className="mt-5 border-t border-primary/10 pt-5 text-xs leading-5 text-foreground/50">Service coverage and responsibilities are confirmed for each engagement. No unverified team credentials or response hours are presented.</p></div></div></section>;
+  return <section id="about" className="bg-accent/45 py-16 sm:py-24"><div className={`${wrap} grid gap-10 lg:grid-cols-[1fr_.8fr] lg:items-center`}><div><p className={eyebrow}>Denpasar, Bali</p><h2 className="mt-4 font-serif text-4xl leading-tight text-primary sm:text-5xl">Local records. Clear responsibilities.</h2><p className="mt-5 max-w-2xl leading-7 text-foreground/70">Founded by Abel Yuniartini, Bali Accounting works from Panjer, Denpasar. The firm's focus is organizing villa records, preparing monthly owner reporting and making exceptions visible—not giving tax advice or filing official returns.</p><Link href="/about" className="mt-6 inline-flex items-center gap-2 font-semibold text-primary underline decoration-secondary/50 underline-offset-4">About Bali Accounting <ArrowRight className="h-4 w-4" /></Link></div><div className="overflow-hidden rounded-3xl border border-primary/10 bg-background"><div className="p-7"><MapPin className="h-5 w-5 text-secondary" /><p className="mt-4 font-serif text-2xl text-primary">Panjer · Denpasar Selatan</p><address className="mt-3 not-italic text-sm leading-6 text-foreground/60">Jl. Tukad Barito Timur III No.16<br/>Panjer, Denpasar Selatan<br/>Bali 80226</address><p className="mt-5 border-t border-primary/10 pt-5 text-xs leading-5 text-foreground/50">Service coverage and responsibilities are confirmed for each engagement. No unverified team credentials or response hours are presented.</p></div><div className="px-7 pb-5"><iframe title="Map of Bali Accounting office at Jl. Tukad Barito Timur III No.16, Panjer, Denpasar Selatan" src={mapsEmbedUrl} loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="aspect-[16/9] w-full rounded-2xl border border-primary/10" /><a href={mapsDirectionsUrl} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary underline decoration-secondary/50 underline-offset-4">Find us on Google <ArrowUpRight className="h-4 w-4" /></a></div></div></div></section>;
 }
 
-const homeFaq: [string,string][] = [
-  ["What is the monthly price?",`Starter is ${priceText(prices.starter)}, Professional ${priceText(prices.professional)} and Premium ${priceText(prices.premium)} per month. Confirm price basis and applicable limits before agreement.`],
-  ["Do you provide tax and company support?","Yes. Our in-house team supports company setup, tax registration, tax-compliance and planning engagements, plus visa application administration. These services are separately scoped and quoted; they are not automatically included in monthly bookkeeping prices."],
-  ["Can you reconcile Airbnb and other OTA payouts?","Yes, from records and exports supplied and within the agreed package scope. Direct integrations are not promised."],
-  ["When will I receive my report?","The 15th is a target after complete and timely source documents are received—not a guaranteed date."],
-  ["What should I do if my books are behind?",`A cleanup starts at ${priceText(prices.cleanup)} for up to 12 months, subject to records review and a scoped agreement.`],
+const longTailTopics: { heading: string; paragraphs: string[]; links: [string, string][] }[] = [
+  {
+    heading: "Airbnb & OTA reconciliation for Bali villas",
+    paragraphs: ["Airbnb, Booking.com, Agoda and VRBO payouts rarely equal gross booking revenue. Platform fees, refunds and timing differences must be reconciled against your bank before you can rely on the numbers. We work from your booking exports and statements—not a claimed direct integration—so the source of every figure stays visible."],
+    links: [["Read the OTA reconciliation pillar guide", "/airbnb-ota-reconciliation-bali"], ["Explore Airbnb bookkeeping", "/airbnb-bookkeeping-bali"]],
+  },
+  {
+    heading: "Monthly villa owner reporting",
+    paragraphs: ["A bank balance alone does not show whether a villa earned a profit. Our monthly reporting connects the P&L, cash movements, owner funding and open questions so you can review what changed and why. Reports are management information, not filed tax returns, and the 15th is a target after complete source documents."],
+    links: [["Review financial reporting scope", "/villa-financial-reporting-bali"]],
+  },
+  {
+    heading: "Villa payroll & BPJS record tracking",
+    paragraphs: ["Staff costs belong in your monthly books only when they connect to an approved payroll schedule and supporting records. We track supplied documents and flag missing items. This is record tracking—not payroll execution, BPJS administration or employee-tax filing."],
+    links: [["See payroll record tracking", "/villa-payroll-records-bali"]],
+  },
 ];
+export function LongTailSections() {
+  return <section className="border-y border-primary/10 bg-accent/40 py-16 sm:py-24"><div className={`${wrap} grid gap-10 lg:grid-cols-3`}>
+    {longTailTopics.map((topic) => <article key={topic.heading} className="border-t-2 border-secondary pt-5">
+      <h2 className="font-serif text-2xl text-primary">{topic.heading}</h2>
+      {topic.paragraphs.map((p) => <p key={p} className="mt-4 text-sm leading-7 text-foreground/70">{p}</p>)}
+      <div className="mt-5 flex flex-col items-start gap-3">{topic.links.map(([label, href]) => <Link key={href} href={href} className="text-sm font-semibold text-primary underline decoration-secondary/60 underline-offset-4">{label}</Link>)}</div>
+    </article>)}
+  </div></section>;
+}
+
 export function HomeFAQ() {
-  return <section id="faq" className="bg-background py-16 sm:py-24"><div className={`${wrap} grid gap-10 lg:grid-cols-[.7fr_1.3fr]`}><div><p className={eyebrow}>Before you begin</p><h2 className="mt-4 font-serif text-4xl leading-tight text-primary sm:text-5xl">Useful answers. No hidden booking step.</h2><Link href="/faq" className="mt-6 inline-flex items-center gap-2 font-semibold text-primary underline underline-offset-4">See all buying FAQs <ArrowRight className="h-4 w-4" /></Link></div><div className="divide-y divide-primary/10 border-y border-primary/10">{homeFaq.map(([q,a])=><details key={q} className="py-5"><summary className="cursor-pointer list-none font-semibold text-primary">{q}<span className="float-right text-secondary">+</span></summary><p className="mt-3 text-sm leading-7 text-foreground/70">{a}</p></details>)}</div></div></section>;
+  return <section id="faq" className="bg-background py-16 sm:py-24"><div className={`${wrap} grid gap-10 lg:grid-cols-[.7fr_1.3fr]`}><div><p className={eyebrow}>Before you begin</p><h2 className="mt-4 font-serif text-4xl leading-tight text-primary sm:text-5xl">Useful answers. No hidden booking step.</h2><Link href="/faq" className="mt-6 inline-flex items-center gap-2 font-semibold text-primary underline underline-offset-4">See all buying FAQs <ArrowRight className="h-4 w-4" /></Link></div><div className="divide-y divide-primary/10 border-y border-primary/10">{homeFaqs.map(([q,a])=><details key={q} className="py-5"><summary className="cursor-pointer list-none font-semibold text-primary">{q}<span className="float-right text-secondary">+</span></summary><p className="mt-3 text-sm leading-7 text-foreground/70">{a}</p></details>)}</div></div></section>;
 }
 
 export function JournalPreview() {

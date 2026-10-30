@@ -125,7 +125,7 @@ router.get("/blog/:slug", async (req, res) => {
     for (const post of recent) if (post.slug !== row.slug && !peers.some(p => p.slug === post.slug)) peers.push(post);
   }
   const post = GetBlogPostResponse.parse({ ...row, contentHtml: cleanHtml(row.contentHtml), relatedPosts: peers.slice(0, 3) });
-  const servicePath = /airbnb|payout|booking|ota/i.test(post.slug) ? "/airbnb-bookkeeping-bali" : /cleanup|catch-up|incomplete/i.test(post.slug) ? "/villa-bookkeeping-cleanup-bali" : /pt-pma|tax-adviser/i.test(post.slug) ? "/pt-pma-villa-bookkeeping" : "/villa-financial-reporting-bali";
+  const servicePath = /airbnb|payout|booking|ota/i.test(post.slug) ? "/airbnb-ota-reconciliation-bali" : /cleanup|catch-up|incomplete/i.test(post.slug) ? "/villa-bookkeeping-cleanup-bali" : /pt-pma|tax-adviser/i.test(post.slug) ? "/pt-pma-villa-bookkeeping" : "/villa-financial-reporting-bali";
   const content = `<article><p>${escape(post.category)}</p><h1>${escape(post.title)}</h1><p>${escape(post.excerpt)}</p><time datetime="${post.publishedAt.toISOString()}">${post.publishedAt.toISOString().slice(0, 10)}</time>
 <img src="${escape(post.imageUrl)}" alt="${escape(post.imageAlt)}" width="${journalImagery[post.slug]?.width ?? 1024}" height="${journalImagery[post.slug]?.height ?? 1024}" fetchpriority="high">
 <p>By Bali Accounting editorial desk · Editorial updated ${post.updatedAt.toISOString().slice(0,10)}. General information, not a claim of licensed professional review.</p>

@@ -12,6 +12,7 @@ import {
   HomeFAQ,
   JournalPreview,
   LocalAbout,
+  LongTailSections,
   MidConsultation,
   PricingSection,
   SamplePreview,
@@ -48,6 +49,7 @@ export default function Home() {
     <ClientShowcase />
     <SixVillaScenario />
     <UseCasesSection />
+    <LongTailSections />
     <LocalAbout />
     <HomeFAQ />
     <JournalPreview />

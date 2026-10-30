@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link, useLocation } from "wouter";
 import { ArrowUpRight, Menu, MessageCircle, Phone, X } from "lucide-react";
 import { Logo } from "@/components/Logo";
-import { PHONE, whatsapp } from "@/lib/site-pages";
+import { PHONE, mapsDirectionsUrl, whatsapp } from "@/lib/site-pages";
 import { trackEvent } from "@/lib/analytics";
 
 const NAV = [
@@ -85,7 +85,7 @@ export function Layout({ children }: { children: ReactNode }) {
         </div>
         <div className="grid grid-cols-2 gap-8 text-sm md:col-span-3">
           <div><h2 className="mb-4 text-xs font-bold uppercase tracking-[.18em] text-secondary">Explore</h2><div className="space-y-3">{[["Services","/services"],["Pricing","/pricing"],["Sample report","/sample-report"],["About","/about"],["Journal","/blog"],["FAQs","/faq"]].map(([label,href])=><Link key={href} href={href} className="block text-primary-foreground/70 transition-colors hover:text-white">{label}</Link>)}</div></div>
-           <div><h2 className="mb-4 text-xs font-bold uppercase tracking-[.18em] text-secondary">Contact</h2><a onClick={() => waClick("footer_contact")} href={whatsapp()} target="_blank" rel="noreferrer" className="block text-primary-foreground/80 hover:text-white">WhatsApp {PHONE}</a><a href="tel:+6281237402292" onClick={() => trackEvent("phone_click", { placement: "footer_contact" })} className="mt-3 block text-primary-foreground/80 hover:text-white">Call {PHONE}</a><p className="mt-5 leading-6 text-primary-foreground/65">Jl. Tukad Barito Timur III No.16, Panjer, Denpasar Selatan, Bali 80226</p></div>
+           <div><h2 className="mb-4 text-xs font-bold uppercase tracking-[.18em] text-secondary">Contact</h2><a onClick={() => waClick("footer_contact")} href={whatsapp()} target="_blank" rel="noreferrer" className="block text-primary-foreground/80 hover:text-white">WhatsApp {PHONE}</a><a href="tel:+6281237402292" onClick={() => trackEvent("phone_click", { placement: "footer_contact" })} className="mt-3 block text-primary-foreground/80 hover:text-white">Call {PHONE}</a><p className="mt-5 leading-6 text-primary-foreground/65">Jl. Tukad Barito Timur III No.16, Panjer, Denpasar Selatan, Bali 80226</p><a href={mapsDirectionsUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-1.5 text-sm text-primary-foreground/80 underline underline-offset-4 hover:text-white">Find us on Google <ArrowUpRight className="h-3.5 w-3.5" /></a></div>
         </div>
         <div className="md:col-span-4"><h2 className="mb-4 text-xs font-bold uppercase tracking-[.18em] text-secondary">A clear scope</h2><p className="text-sm leading-7 text-primary-foreground/65">Our in-house team supports bookkeeping, company setup, tax-compliance and planning engagements, and visa-application administration. Each engagement confirms deliverables, fees and the professionally responsible or authorised person. Authorities decide applications; approvals and tax savings are not guaranteed.</p><Link href="/services" className="mt-4 inline-block text-sm font-semibold text-primary-foreground underline underline-offset-4">Explore all service scopes</Link><p className="mt-4 text-sm leading-7 text-primary-foreground/65">Monthly report delivery by the 15th is a target after complete, timely source documents are received.</p></div>
         <div className="flex flex-col gap-3 border-t border-primary-foreground/15 pt-6 text-xs text-primary-foreground/50 sm:flex-row sm:items-center sm:justify-between md:col-span-12">

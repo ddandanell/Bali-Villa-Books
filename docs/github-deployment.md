@@ -42,7 +42,8 @@ Cutover order:
    for `/sitemap.xml`, without redirecting to the custom domain.
 2. Push the checked frontend adapter to GitHub and verify the Vercel production
    alias (including nested Journal reads and invalid enquiry validation).
-3. On Vercel, remove the apex-to-www redirect and redirect www to the apex.
+3. On Vercel, remove the apex-to-www redirect and remove the www domain mapping.
+   The user wants the apex only, without a www redirect or duplicate website.
 4. Change only the apex A record to the Vercel-confirmed `216.150.1.1`, preserving
    verification TXT, CAA and other unrelated records. Check domain configuration,
    HTTPS, canonical tags, dynamic routes and form validation after propagation.

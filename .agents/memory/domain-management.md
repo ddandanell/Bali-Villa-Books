@@ -13,4 +13,10 @@ The user wants `bali-villa-accounting-service.com` to be the only public website
 
 **Why:** The user is concerned that showing the Replit address could damage the site's search presence.
 
-**How to apply:** Keep the custom domain as the canonical destination for site links and sharing. Preserve permanent alias redirects, including page paths and query strings; do not take down the deployment to remove an alias, since the custom domain depends on it.
+**How to apply:** Keep the apex as the canonical destination for site links and sharing. The user explicitly requested no www redirect and no second website; remove the www domain mapping rather than serving a duplicate. Keep the separate backend running.
+
+The public site should live on Vercel, while Replit remains the invisible backend.
+
+**Why:** Dual hosting made GitHub/Vercel updates invisible on the custom domain.
+
+**How to apply:** Keep a separate verified backend origin. The Replit hostname's public-route exception is published, so it can now serve as the adapter's backend without a new api subdomain. Never target the public apex from its own Vercel adapter.
