@@ -4,7 +4,7 @@ import { openai } from "@workspace/integrations-openai-ai-server";
 import { batchProcess } from "@workspace/integrations-openai-ai-server/batch";
 import { logger } from "./logger";
 import { validateArticle, cleanHtml, publicLinks, serviceLinks, safeArticleLink, repairArticleLinks } from "./blog-content";
-import { baliClock, countWords, DAILY_POSTS, imageLibrary, keywordClusters, MIN_WORDS } from "./blog-policy";
+import { baliClock, categoryForService, countWords, DAILY_POSTS, imageLibrary, journalCategories, keywordClusters, MIN_WORDS } from "./blog-policy";
 import { nextBlueprintTopic } from "./editorial-blueprint";
 import { createBlueprintArticle } from "./journal-writer";
 import { isJournalImage } from "./journal-images";
@@ -16,6 +16,7 @@ Never present bookkeeping as tax advice; licensed Indonesian Konsultan Pajak han
 The firm has confirmed a qualified in-house team for separately scoped company formation, licensing, tax registration, tax-compliance and planning work, and visa-application support. Do not say the firm never offers those services. Monthly bookkeeping prices do not automatically include them. Articles are general information, never individual advice, and must not invent licences, a named professional review or guaranteed results.
 Use Sales / Client Advisory language, never personal founder-led CTAs.
 Return exactly one JSON article object: slug,title,excerpt,metaTitle,metaDescription,primaryKeyword,category,contentHtml,imageUrl,imageAlt.
+category must be exactly one of: ${journalCategories.join(", ")}. Never use blueprint cluster codes such as SEO.
 Aim for 1800–2200 visible words; ABSOLUTE MINIMUM 1500. Include at least four h2 sections, practical examples explicitly marked illustrative, and useful checklists.
 Use semantic h2,h3,p,ul,ol,li,strong,em,a HTML only. No h1, scripts, styles or inline event handlers.
 Meta title 20–60 characters; meta description 90–160; excerpt 60–350; descriptive natural image alt 20–180.
@@ -27,7 +28,8 @@ const keywordResearch = seoStrategy;
 
 async function context() {
   const existing = await db.select({
-    slug: blogPosts.slug, title: blogPosts.title, primaryKeyword: blogPosts.primaryKeyword, imageUrl: blogPosts.imageUrl, imageAlt: blogPosts.imageAlt,
+    slug: blogPosts.slug, title: blogPosts.title, primaryKeyword: blogPosts.primaryKeyword,
+    category: blogPosts.category, imageUrl: blogPosts.imageUrl, imageAlt: blogPosts.imageAlt,
   }).from(blogPosts).orderBy(desc(blogPosts.publishedAt));
   const engagement = await db.select({
     slug: blogEvents.slug, eventType: blogEvents.eventType, count: sql<number>`count(*)`,
@@ -55,6 +57,9 @@ async function generateArticle(instruction: string, revisionSlug?: string) {
     raw.primaryKeyword = original.primaryKeyword;
     raw.imageUrl = original.imageUrl;
     raw.imageAlt = original.imageAlt;
+    raw.category = original.category ?? raw.category;
+  } else if (!(journalCategories as readonly string[]).includes(String(raw.category ?? ""))) {
+    raw.category = categoryForService();
   }
   return validateArticle(raw, details.existing, revisionSlug);
 }

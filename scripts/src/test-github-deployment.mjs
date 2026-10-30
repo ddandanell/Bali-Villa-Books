@@ -33,6 +33,8 @@ for (const path of ["/blog", "/blog/:path*", "/sitemap.xml"])
   assert.ok(config.rewrites.find(r => r.source === path)?.destination.startsWith("/api/gateway?__document="));
 assert.notEqual(origin, publicOrigin, "backend cannot resolve to the Vercel frontend");
 assert.ok(existsSync(new URL("../../artifacts/villabooks-bali/dist/public/404.html", import.meta.url)));
+assert.equal(existsSync(new URL("../../artifacts/villabooks-bali/dist/public/sitemap.xml", import.meta.url)), false,
+  "static sitemap.xml must not shadow the gateway rewrite");
 const routes = read("artifacts/villabooks-bali/dist/public/routes.json");
 for (const route of routes)
   assert.ok(existsSync(new URL(`../../artifacts/villabooks-bali/dist/public${route === "/" ? "" : route}/index.html`, import.meta.url)), route);

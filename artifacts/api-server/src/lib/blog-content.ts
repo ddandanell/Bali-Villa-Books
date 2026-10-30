@@ -1,5 +1,5 @@
 import sanitizeHtml from "sanitize-html";
-import { countWords, imageLibrary, MIN_WORDS, similarTitle } from "./blog-policy";
+import { countWords, imageLibrary, journalCategories, MIN_WORDS, similarTitle } from "./blog-policy";
 import { isJournalImage } from "./journal-images";
 
 // Hand-researched news may cite these verified official and public-news sources.
@@ -81,7 +81,12 @@ export function validateArticle(value: unknown, existing: Existing[], revisionSl
     excerpt: string("excerpt", 60, 350),
     metaTitle: string("metaTitle", 20, 60),
     metaDescription: string("metaDescription", 90, 160),
-    category: string("category", 3, 70),
+    category: (() => {
+      const category = string("category", 3, 70);
+      if (!(journalCategories as readonly string[]).includes(category))
+        throw new Error(`Invalid category; use one of: ${journalCategories.join(", ")}`);
+      return category;
+    })(),
     imageUrl, imageAlt: string("imageAlt", 20, 180),
     readTimeMinutes: Math.ceil(wordCount / 220),
     updatedAt: new Date(),
