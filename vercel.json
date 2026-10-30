@@ -10,6 +10,7 @@
     { "source": "/contact", "destination": "/get-started", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/gateway?__gateway=:path*" },
     { "source": "/blog", "destination": "https://bali-villa-accounting-service.com/blog" },
     { "source": "/blog/:path*", "destination": "https://bali-villa-accounting-service.com/blog/:path*" },
     { "source": "/sitemap.xml", "destination": "https://bali-villa-accounting-service.com/sitemap.xml" }

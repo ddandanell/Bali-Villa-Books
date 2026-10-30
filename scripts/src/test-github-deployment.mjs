@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
 import Ajv from "ajv-draft-04";
-import { origin, allowedEndpoint, proxyRequest } from "../../api/[...path].mjs";
+import { origin, allowedEndpoint, proxyRequest } from "../../api/gateway.mjs";
 
 const read = path => JSON.parse(readFileSync(new URL(`../../${path}`, import.meta.url)));
 const config = read("vercel.json");
@@ -27,6 +27,7 @@ assert.ok(validate(config), JSON.stringify(validate.errors));
 assert.equal(validate({ ...config, nodejs: "20.x" }), false, "regression: invalid Vercel property");
 assert.equal(config.buildCommand, "pnpm run build:web");
 assert.ok(config.rewrites.every(r => r.source !== "/(.*)"), "never hide missing pages behind homepage HTML");
+assert.equal(config.rewrites.find(r => r.source === "/api/:path*")?.destination, "/api/gateway?__gateway=:path*");
 for (const path of ["/blog", "/blog/:path*", "/sitemap.xml"])
   assert.ok(config.rewrites.find(r => r.source === path)?.destination.startsWith(origin));
 assert.ok(existsSync(new URL("../../artifacts/villabooks-bali/dist/public/404.html", import.meta.url)));
@@ -58,4 +59,10 @@ await proxyRequest({url: "/api/blog/posts?limit=50&offset=50", method: "GET", he
   return new Response("[]");
 });
 assert.equal(readUrl, `${origin}/api/blog/posts?limit=50&offset=50`);
+await proxyRequest({url: "/api/gateway?__gateway=blog%2Fposts&limit=50&offset=50", method: "GET", headers: {}}, async url => {
+  readUrl = url;
+  return new Response("[]");
+});
+assert.equal(readUrl, `${origin}/api/blog/posts?limit=50&offset=50`);
+assert.equal((await proxyRequest({url: "/api/gateway?__gateway=admin", method: "GET", headers: {}}, fetcher)).status, 404);
 console.log(`PASS: official Vercel schema, ${routes.length} prerendered routes, real 404, dynamic Journal/sitemap routing, anonymous form proxy, no credential forwarding, body limits and pagination.`);

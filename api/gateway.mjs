@@ -11,7 +11,10 @@ export function allowedEndpoint(path, method) {
 }
 export async function proxyRequest(req, fetcher = fetch) {
   const url = new URL(req.url, "https://gateway.invalid");
-  if (!allowedEndpoint(url.pathname, req.method))
+  const targetPath = url.pathname === "/api/gateway" ?
+    `/api/${url.searchParams.get("__gateway") ?? ""}` : url.pathname;
+  url.searchParams.delete("__gateway");
+  if (!allowedEndpoint(targetPath, req.method))
     return new Response('{"error":"Not found"}', { status: 404, headers: { "content-type": "application/json" } });
   const headers = { accept: req.headers.accept ?? "application/json" };
   let body;
@@ -35,7 +38,7 @@ export async function proxyRequest(req, fetcher = fetch) {
     }
     if (Buffer.byteLength(body) > 65536) return new Response(null, { status: 413 });
   }
-  return fetcher(`${origin}${url.pathname}${url.search}`, {
+  return fetcher(`${origin}${targetPath}${url.search}`, {
     method: req.method, headers, body, redirect: "manual",
     signal: AbortSignal.timeout(15000),
   });
