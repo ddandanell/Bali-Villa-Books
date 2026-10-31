@@ -6,7 +6,7 @@ import { getGetBlogPostQueryKey, useGetBlogPost, useRecordBlogEvent } from "@wor
 import { Layout } from "@/components/Layout";
 import { BlogCard } from "@/components/BlogCard";
 import { trackEvent } from "@/lib/analytics";
-import { journalImagery } from "@/lib/page-imagery";
+import { articleVisual } from "@workspace/site-content";
 
 const WA = "https://wa.me/6281237402292";
 const wa = (message: string) => `${WA}?text=${encodeURIComponent(message)}`;
@@ -14,7 +14,7 @@ const wa = (message: string) => `${WA}?text=${encodeURIComponent(message)}`;
 export default function BlogArticle() {
   const { slug = "" } = useParams<{ slug: string }>();
   const { data: post, isLoading, isError, refetch } = useGetBlogPost(slug, { query: { queryKey: getGetBlogPostQueryKey(slug), enabled: !!slug } });
-  const imagery = journalImagery[slug]?.imageUrl === post?.imageUrl ? journalImagery[slug] : undefined;
+  const imagery = post ? articleVisual(slug, post) : undefined;
   const event = useRecordBlogEvent();
   const complete = useRef(false);
   useEffect(() => {

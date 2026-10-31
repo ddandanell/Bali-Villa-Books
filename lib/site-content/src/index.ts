@@ -23,6 +23,16 @@ export type PageImagery = {
 export const pageImagery: Record<string, PageImagery> = pages;
 export const journalImagery: Record<string, PageImagery> = journals;
 export const publicPagePaths = Object.keys(pageImagery);
+/** Article art: a local journal image wins over whatever the database row carries. */
+export function articleVisual(slug: string, fallback: { imageUrl: string; imageAlt: string; width?: number; height?: number }): PageImagery {
+  const local = journalImagery[slug];
+  if (local) return local;
+  return {
+    imageUrl: fallback.imageUrl, imageAlt: fallback.imageAlt, shareImage: fallback.imageUrl,
+    width: fallback.width ?? 1200, height: fallback.height ?? 750, caption: "",
+  };
+}
+
 export function getPageImagery(pathname: string): PageImagery | undefined {
   return pageImagery[pathname.replace(/\/+$/, "") || "/"];
 }
