@@ -6,7 +6,7 @@ import { db, blogPosts } from "@workspace/db";
 import { cleanHtml } from "../lib/blog-content";
 import { articleFaqs } from "../lib/editorial-blueprint";
 import { GetBlogPostResponse, ListBlogPostsResponse } from "@workspace/api-zod";
-import { pageImagery, journalImagery, publicPagePaths } from "@workspace/site-content";
+import { pageImagery, journalImagery, articleVisual, publicPagePaths } from "@workspace/site-content";
 
 const router = Router();
 // Verified custom domain returned by deployment metadata, not a development domain.
@@ -147,7 +147,7 @@ router.get("/blog", async (req, res) => {
   const hasMore = rows.length > 50;
   if (!rows.length && page > 1) { res.status(404).type("html").send('<h1>Guide page not found</h1><a href="/blog">Browse guides</a>'); return; }
   const posts = ListBlogPostsResponse.parse(rows.filter(row => !articleAliases[row.slug]).slice(0, 50));
-  const content = `<h1>Bali Villa Bookkeeping Guides</h1><p>Learn how to reconcile Airbnb payouts, track rental property expenses and review monthly villa P&amp;L and cash flow. Our practical guides connect reporting questions with the source records behind them.</p>${posts.map(post => `<article><h2><a href="/blog/${escape(post.slug)}">${escape(post.title)}</a></h2><img src="${escape(post.imageUrl)}" alt="${escape(post.imageAlt)}"${sizeAttrs(post.slug)} loading="lazy"><p>${escape(post.excerpt)}</p></article>`).join("")}<nav aria-label="Guide pages">${page > 1 ? `<a href="/blog${page === 2 ? "" : `?page=${page - 1}`}">Newer guides</a>` : ""}${hasMore ? ` <a href="/blog?page=${page + 1}">Older guides</a>` : ""}</nav>
+  const content = `<h1>Bali Villa Bookkeeping Guides</h1><p>Learn how to reconcile Airbnb payouts, track rental property expenses and review monthly villa P&amp;L and cash flow. Our practical guides connect reporting questions with the source records behind them.</p>${posts.map(post => `<article><h2><a href="/blog/${escape(post.slug)}">${escape(post.title)}</a></h2><img src="${escape(journalImagery[post.slug]?.imageUrl ?? post.imageUrl)}" alt="${escape(journalImagery[post.slug]?.imageAlt ?? post.imageAlt)}"${sizeAttrs(post.slug)} loading="lazy"><p>${escape(post.excerpt)}</p></article>`).join("")}<nav aria-label="Guide pages">${page > 1 ? `<a href="/blog${page === 2 ? "" : `?page=${page - 1}`}">Newer guides</a>` : ""}${hasMore ? ` <a href="/blog?page=${page + 1}">Older guides</a>` : ""}</nav>
 <section><h2>Start with the monthly villa bookkeeping workflow</h2>
 <p>The monthly checklist explains how to collect bank exports, platform settlements, supplier invoices and owner notes before preparing a report. Use the Airbnb reconciliation guide when a booking total does not match the bank receipt. Read the owner-report guide when you need to distinguish operating profit, cash timing and owner movements.</p>
 <p>These articles support practical rental property bookkeeping. They do not promise platform integrations, tax savings or guaranteed business results. Choose the guide closest to your current record question, then use the service pages to confirm what can be included in an engagement.</p>
@@ -179,25 +179,24 @@ router.get("/blog/:slug", async (req, res) => {
   }
   const post = GetBlogPostResponse.parse({ ...row, contentHtml: cleanHtml(row.contentHtml), relatedPosts: peers.slice(0, 3) });
   const servicePath = /airbnb|payout|booking|ota/i.test(post.slug) ? "/airbnb-ota-reconciliation-bali" : /cleanup|catch-up|incomplete/i.test(post.slug) ? "/villa-bookkeeping-cleanup-bali" : /pt-pma|tax-adviser/i.test(post.slug) ? "/pt-pma-villa-bookkeeping" : "/villa-financial-reporting-bali";
+  const visual = articleVisual(post.slug, post);
   const content = `<article><p>${escape(post.category)}</p><h1>${escape(post.title)}</h1><p>${escape(post.excerpt)}</p><time datetime="${post.publishedAt.toISOString()}">${post.publishedAt.toISOString().slice(0, 10)}</time>
-<img src="${escape(post.imageUrl)}" alt="${escape(post.imageAlt)}"${sizeAttrs(post.slug)} fetchpriority="high">
+<img src="${escape(visual.imageUrl)}" alt="${escape(visual.imageAlt)}" width="${visual.width}" height="${visual.height}" fetchpriority="high">
 <p>By Bali Accounting editorial desk · Editorial updated ${post.updatedAt.toISOString().slice(0,10)}. General information, not a claim of licensed professional review.</p>
 ${post.contentHtml}<p><a href="https://wa.me/6281237402292">Speak with Client Advisory</a></p><h2>Related guides</h2><ul>${post.relatedPosts.map(p => `<li><a href="/blog/${escape(p.slug)}">${escape(p.title)}</a></li>`).join("")}</ul></article>`;
-  const articleVisual = journalImagery[post.slug];
-  const articleShare = articleVisual?.imageUrl === post.imageUrl ? articleVisual.shareImage : post.imageUrl;
-  sendPage(res, req.originalUrl, await documentHtml(post.metaTitle, post.metaDescription, `/blog/${post.slug}`, content.replace("</article>", `<p>Need help applying this process? Explore the <a href="${servicePath}">relevant service scope</a>, <a href="/sample-report">sample owner report</a> and <a href="/pricing">bookkeeping package inclusions</a>.</p></article>`), { post, static: true }, articleShare, {
+  sendPage(res, req.originalUrl, await documentHtml(post.metaTitle, post.metaDescription, `/blog/${post.slug}`, content.replace("</article>", `<p>Need help applying this process? Explore the <a href="${servicePath}">relevant service scope</a>, <a href="/sample-report">sample owner report</a> and <a href="/pricing">bookkeeping package inclusions</a>.</p></article>`), { post, static: true }, visual.shareImage, {
     "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.metaDescription,
-    image: new URL(post.imageUrl, origin).href, datePublished: post.publishedAt, dateModified: post.updatedAt,
+    image: new URL(visual.imageUrl, origin).href, datePublished: post.publishedAt, dateModified: post.updatedAt,
     wordCount: post.wordCount, author: { "@id": `${origin}/#business` },
     publisher: { "@id": `${origin}/#business` }, mainEntityOfPage: `${origin}/blog/${post.slug}`,
-  }, post.imageAlt, String(post.updatedAt.getTime())));
+  }, visual.imageAlt, String(post.updatedAt.getTime())));
 });
 
 router.get("/sitemap.xml", async (_req, res) => {
   const posts = await db.select({ slug: blogPosts.slug, updatedAt: blogPosts.updatedAt, imageUrl: blogPosts.imageUrl }).from(blogPosts).where(notInArray(blogPosts.slug, Object.keys(articleAliases)));
   const imageEntry = (url: string) => `<image:image><image:loc>${escape(new URL(url, origin).href)}</image:loc></image:image>`;
   const entries = [...marketingPaths.map(url => `<url><loc>${origin}${url}</loc><lastmod>${pageImagery[url].updatedAt}</lastmod>${imageEntry(pageImagery[url].imageUrl)}</url>`),
-    ...posts.map(post => `<url><loc>${origin}/blog/${escape(post.slug)}</loc><lastmod>${post.updatedAt.toISOString()}</lastmod>${imageEntry(post.imageUrl)}</url>`)];
+    ...posts.map(post => `<url><loc>${origin}/blog/${escape(post.slug)}</loc><lastmod>${post.updatedAt.toISOString()}</lastmod>${imageEntry(journalImagery[post.slug]?.imageUrl ?? post.imageUrl)}</url>`)];
   res.set("Cache-Control", "public, max-age=60").type("application/xml").send(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${entries.join("")}</urlset>`);
 });
 router.use((error: unknown, req: import("express").Request, res: import("express").Response, _next: import("express").NextFunction) => {
