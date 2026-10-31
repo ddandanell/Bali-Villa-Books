@@ -55,7 +55,7 @@ export async function findJournalImage(used: Set<string>, seed: number, topic = 
       const source = new URL(image.descriptionurl!);
       if (source.hostname !== "commons.wikimedia.org") continue;
       const license = plain(image.extmetadata?.LicenseShortName?.value ?? "");
-      const artist = plain(image.extmetadata?.Artist?.value ?? "See original attribution");
+      const artist = plain(image.extmetadata?.Artist?.value ?? "") || "Wikimedia Commons";
       const licenseUrl = image.extmetadata?.LicenseUrl?.value;
       const approvedLicense = licenseUrl && /^https:\/\/creativecommons\.org\/(?:licenses|publicdomain)\//.test(licenseUrl) ? licenseUrl : null;
       logger.info({ source: source.href, query, license }, "Unique topic-related journal image selected");

@@ -7,7 +7,10 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/contact", "destination": "/get-started", "permanent": true }
+    { "source": "/contact", "destination": "/get-started", "permanent": true },
+    { "source": "/blog/bali-villa-expense-tracking-system", "destination": "/blog/bali-villa-chart-of-accounts", "permanent": true },
+    { "source": "/blog/bali-villa-owner-monthly-report", "destination": "/blog/bali-villa-owner-statement-template", "permanent": true },
+    { "source": "/blog/bali-villa-supplier-invoice-payroll-bpjs-control-calendar", "destination": "/blog/bali-villa-supplier-invoice-payroll-control-calendar", "permanent": true }
   ],
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/gateway?__gateway=:path*" },

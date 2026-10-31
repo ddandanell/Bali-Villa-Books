@@ -9,6 +9,7 @@ import { publishResearchedNews } from "./lib/researched-news";
 import { applySeoEditorialUpdates } from "./lib/seo-editorial-updates";
 import { seedBlueprintLaunchArticle } from "./lib/blueprint-launch";
 import { applyJournalImageryUpdates } from "./lib/journal-imagery-updates";
+import { applyJournalRecordRepairs } from "./lib/journal-record-repairs";
 
 const rawPort = process.env["PORT"];
 
@@ -32,5 +33,5 @@ app.listen(port, (err) => {
 
   logger.info({ port }, "Server listening");
   startEnquiryRetention();
-  void seedBlogPosts().then(seedSeoRefreshArticles).then(applyBlueprintGuideUpdates).then(publishResearchedNews).then(applySeoEditorialUpdates).then(seedBlueprintLaunchArticle).then(applyJournalImageryUpdates).then(applyJournalClusterUpdates).then(startBlogAutomation).catch(err => logger.error({ err }, "Blog initialization failed"));
+  void seedBlogPosts().then(seedSeoRefreshArticles).then(applyBlueprintGuideUpdates).then(publishResearchedNews).then(applySeoEditorialUpdates).then(seedBlueprintLaunchArticle).then(applyJournalImageryUpdates).then(applyJournalClusterUpdates).then(applyJournalRecordRepairs).then(startBlogAutomation).catch(err => logger.error({ err }, "Blog initialization failed"));
 });
