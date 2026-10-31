@@ -3,8 +3,6 @@ import { notInArray } from "drizzle-orm";
 import { articleAliases } from "@workspace/site-content";
 import { desc, eq } from "drizzle-orm";
 import { db, blogPosts } from "@workspace/db";
-import { readFile } from "node:fs/promises";
-import path from "node:path";
 import { cleanHtml } from "../lib/blog-content";
 import { articleFaqs } from "../lib/editorial-blueprint";
 import { GetBlogPostResponse, ListBlogPostsResponse } from "@workspace/api-zod";
@@ -30,14 +28,44 @@ function sendPage(res: import("express").Response, key: string, html: string) {
   res.set("Cache-Control", "public, max-age=60").type("html").send(html);
 }
 
-async function template() {
-  if (process.env.NODE_ENV !== "production") {
-    // Development only: obtain Vite's transformed HTML via the shared proxy (includes React refresh).
-    const response = await fetch("http://localhost:80/");
-    if (!response.ok) throw new Error("Cannot load development page template");
-    return response.text();
+const TEMPLATE_TIMEOUT_MS = 4000;
+const TEMPLATE_TTL_MS = 15000;
+let assetTagsCache: { tags: string; at: number } | null = null;
+
+function extractAssetTags(html: string) {
+  return [
+    ...(html.match(/<script\b[^>]*type="module"[\s\S]*?<\/script>/gi) ?? []),
+    ...(html.match(/<script\b[^>]*>[\s\S]*?@react-refresh[\s\S]*?<\/script>/gi) ?? []),
+    ...(html.match(/<link[^>]*(?:rel="stylesheet"|rel="modulepreload")[^>]*>/gi) ?? []),
+  ].filter((value, index, values) => values.indexOf(value) === index).join("\n");
+}
+
+// 2026-10-31: this used to copy asset tags out of a local dist/public/index.html. That copy is
+// frozen when the api-server image is built, so once the apex promoted a new bundle every
+// journal document pointed at a file the CDN had already deleted (77 of 101 URLs). Ask the
+// apex for the build it is serving now, hold the last non-empty answer for a few seconds, and
+// never throw: a document without its bundle still renders its server HTML, a 503 does not.
+async function assetTags() {
+  if (assetTagsCache && Date.now() - assetTagsCache.at < TEMPLATE_TTL_MS) return assetTagsCache.tags;
+  // The apex answers /index.html with a 308 to /, so ask for / directly.
+  const target = process.env.NODE_ENV !== "production" ? "http://localhost:80/" : `${origin}/`;
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), TEMPLATE_TIMEOUT_MS);
+  try {
+    const response = await fetch(target, { signal: controller.signal, headers: { "cache-control": "no-cache" } });
+    if (response.ok) {
+      const tags = extractAssetTags(await response.text());
+      if (tags) {
+        assetTagsCache = { tags, at: Date.now() };
+        return tags;
+      }
+    }
+  } catch {
+    // Network failure or timeout: keep the last set we saw rather than failing the document.
+  } finally {
+    clearTimeout(timer);
   }
-  return readFile(path.resolve("artifacts/villabooks-bali/dist/public/index.html"), "utf8");
+  return assetTagsCache?.tags ?? "";
 }
 
 async function documentHtml(title: string, description: string, canonicalPath: string, content: string, bootstrap: unknown, image: string, schema: unknown, imageAlt?: string, imageVersion?: string) {
@@ -45,18 +73,13 @@ async function documentHtml(title: string, description: string, canonicalPath: s
     const visual = pageImagery["/blog"];
     content = content.replace("</h1>", `</h1><figure><img src="${visual.imageUrl}" alt="${escape(visual.imageAlt)}" width="${visual.width}" height="${visual.height}" fetchpriority="high"><figcaption>${escape(visual.caption)}</figcaption></figure>`);
   }
-  const raw = await template();
+  const scriptsAndStyles = await assetTags();
   const parsedImage = new URL(image, origin);
   if (imageVersion && parsedImage.origin === origin) parsedImage.searchParams.set("v", imageVersion);
   const imageUrl = parsedImage.href;
   const socialAlt = imageAlt ?? (canonicalPath.split("?")[0] === "/blog" ? "Bali Accounting Journal — practical guides for better villa records" : "Bali Accounting — villa bookkeeping and clear owner reports");
   const branded = parsedImage.pathname.startsWith("/images/share/");
   const faqs = articleFaqs(content);
-  const scriptsAndStyles = [
-    ...(raw.match(/<script\b[^>]*type="module"[\s\S]*?<\/script>/gi) ?? []),
-    ...(raw.match(/<script\b[^>]*>[\s\S]*?@react-refresh[\s\S]*?<\/script>/gi) ?? []),
-    ...(raw.match(/<link[^>]*(?:rel="stylesheet"|rel="modulepreload")[^>]*>/gi) ?? []),
-  ].filter((value, index, values) => values.indexOf(value) === index).join("\n");
   return `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${escape(title)} | Bali Accounting</title><meta name="description" content="${escape(description)}">
 <link rel="canonical" href="${origin}${escape(canonicalPath)}">
