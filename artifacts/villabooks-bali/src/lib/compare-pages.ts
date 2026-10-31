@@ -626,7 +626,7 @@ export const compareHub = {
       bestFor: "One villa, low volume, owner comfortable with reconciliation",
       produces: "A cash view you update yourself",
       watchOut: "Payouts are rarely matched to deposits; the history is one deleted row from being lost",
-      cost: "No fee; six to ten hours of your month",
+      cost: "No fee; the reconciliation is your own time each month",
     },
     {
       name: "Bookkeeping inside the management company",
@@ -689,10 +689,10 @@ export const compareHub = {
     },
   ],
   table: {
-    caption: "Illustrative monthly cost bands by model for a single villa (planning ranges, not quotes)",
-    columns: ["Model", "Illustrative monthly cost", "What you still do yourself"],
+    caption: "Cost or billing basis by model for a single villa (no fee quoted by any other provider)",
+    columns: ["Model", "Cost or billing basis", "What you still do yourself"],
     rows: [
-      ["Owner spreadsheet", "Rp 0 in fees", "All reconciliation, six to ten hours"],
+      ["Owner spreadsheet", "Rp 0 in fees", "All reconciliation, your own time"],
       ["Manager in-house", "Inside your management fee", "Chase per-property detail and evidence"],
       ["Offshore bookkeeping", "Hourly or per transaction, billed outside Indonesia", "Forward documents, resolve Indonesian questions"],
       ["Bali specialist (our Starter)", "From Rp 2,900,000", "Supply documents by the agreed deadline"],

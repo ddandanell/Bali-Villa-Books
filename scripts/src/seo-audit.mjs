@@ -173,7 +173,9 @@ for (const route of pagePaths) {
       return norm.length > 0 && !visible.includes(norm);
     });
     if (!faqQuestions.length) record.warnings.push("FAQPage schema with no readable questions");
-    else if (missing.length) record.warnings.push(`${missing.length}/${faqQuestions.length} schema FAQs not found in visible text: ${missing[0].slice(0, 60)}`);
+    // 2026-10-31: was a warning, so it detected the defect and still exited 0 (QA #3 item 2).
+    // A schema question a reader cannot see is a markup defect, so it now fails the build.
+    else if (missing.length) record.issues.push(`${missing.length}/${faqQuestions.length} schema FAQs not found in visible text: ${missing[0].slice(0, 60)}`);
   }
 
   pages.push(record);
