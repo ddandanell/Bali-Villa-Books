@@ -24,6 +24,7 @@ if (!process.env.CI && before) {
 }
 const commands = [
   ["pnpm", ["run", "typecheck"]],
+  ["node", ["scripts/src/test-journal-art.mjs"]],
   ["node", ["scripts/src/test-journal-publishing.mjs"]],
   ["node", ["scripts/src/test-editorial-research.mjs"]],
   ["node", ["scripts/src/test-custom-analytics.mjs"]],
