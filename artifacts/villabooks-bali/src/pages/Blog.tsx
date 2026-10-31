@@ -9,6 +9,7 @@ import { trackEvent } from "@/lib/analytics";
 import { SITE_ORIGIN } from "@/lib/site-pages";
 import { PageEducation } from "@/components/PageEducation";
 import { getPageImagery } from "@/lib/page-imagery";
+import { staticJournalPosts } from "@/lib/journal-static";
 
 export default function Blog() {
   const imagery = getPageImagery("/blog");
@@ -45,6 +46,12 @@ export default function Blog() {
   const params = page === 1 ? { limit: 50 } : { limit: 50, offset };
   const { data: posts, isLoading, isError, refetch } = useListBlogPosts(params);
   const { data: automation } = useGetBlogAutomationStatus({ query: { queryKey: getGetBlogAutomationStatusQueryKey(), refetchInterval: 60000 } });
+  // Articles this build prerenders live in the repo, not the API, so the API list cannot see them.
+  const latestStatic = useMemo(() => staticJournalPosts
+    .filter((post) => !(posts ?? []).some((live) => live.slug === post.slug))
+    .slice()
+    .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))
+    .slice(0, 3), [posts]);
   const filtered = useMemo(() => (posts ?? []).filter((post) =>
     `${post.title} ${post.excerpt} ${post.category} ${post.primaryKeyword}`.toLowerCase().includes(search.toLowerCase())
   ), [posts, search]);
@@ -71,6 +78,18 @@ export default function Blog() {
           </div>
         </section>
         <section className="container mx-auto max-w-7xl px-5 py-14 md:px-8 sm:py-20">
+          {page === 1 && !search && latestStatic.length > 0 && <div className="mb-12 rounded-[1.75rem] border border-primary/10 bg-white p-7 sm:p-9" data-testid="section-newest-articles">
+            <p className="text-xs font-bold uppercase tracking-[.18em] text-secondary">Newest guides</p>
+            <div className="mt-5 divide-y divide-primary/10">
+              {latestStatic.map((post) => <Link key={post.slug} href={`/blog/${post.slug}`} className="group flex flex-col gap-2 py-5 first:pt-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
+                <span className="max-w-2xl">
+                  <span className="block font-serif text-xl leading-snug text-primary transition-colors group-hover:text-secondary">{post.title}</span>
+                  <span className="mt-1 block text-sm leading-6 text-foreground/60">{post.excerpt}</span>
+                </span>
+                <span className="shrink-0 text-xs text-foreground/45">{new Date(post.publishedAt).toLocaleDateString("en-GB", { dateStyle: "medium", timeZone: "Asia/Makassar" })} · {post.readTimeMinutes} min read</span>
+              </Link>)}
+            </div>
+          </div>}
           <div className="mb-12 flex flex-col gap-5 border-b border-primary/10 pb-8 sm:flex-row sm:items-center sm:justify-between">
              <div><p className="text-sm font-semibold text-secondary">Practical guides from Bali Accounting</p><h2 className="mt-2 text-3xl text-primary sm:text-4xl">Browse the journal</h2></div>
               <label className="relative block sm:w-80"><span className="sr-only">Search articles</span><Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/40" /><input data-testid="input-blog-search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search the journal" className="h-12 w-full rounded-full border border-primary/15 bg-background pl-11 pr-5 text-sm outline-none transition-shadow focus:border-secondary focus:ring-4 focus:ring-secondary/10" /></label>

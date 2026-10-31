@@ -40,11 +40,17 @@ export default function BlogArticle() {
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
-    const schema = document.createElement("script");
-    schema.type = "application/ld+json";
-    schema.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.metaDescription, image: new URL(post.imageUrl, "https://bali-villa-accounting-service.com").href, datePublished: post.publishedAt, dateModified: post.updatedAt, author: { "@type": "Organization", name: "Bali Accounting" }, mainEntityOfPage: canonical });
-    document.head.appendChild(schema);
-    return () => { window.removeEventListener("scroll", onScroll); schema.remove(); };
+    // A prerendered article already arrives with BlogPosting in its server JSON-LD block.
+    // Appending another here would leave two BlogPosting nodes for one URL.
+    const serverRendered = (window as Window & { __BLOG_INITIAL__?: { static?: boolean } }).__BLOG_INITIAL__?.static === true;
+    let schema: HTMLScriptElement | undefined;
+    if (!serverRendered) {
+      schema = document.createElement("script");
+      schema.type = "application/ld+json";
+      schema.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.metaDescription, image: new URL(post.imageUrl, "https://bali-villa-accounting-service.com").href, datePublished: post.publishedAt, dateModified: post.updatedAt, author: { "@type": "Organization", name: "Bali Accounting" }, mainEntityOfPage: canonical });
+      document.head.appendChild(schema);
+    }
+    return () => { window.removeEventListener("scroll", onScroll); schema?.remove(); };
   }, [post, slug]);
   if (isLoading) return <Layout><section className="container mx-auto max-w-4xl px-5 pb-24 pt-40"><div className="h-8 w-32 animate-pulse rounded bg-primary/10" /><div className="mt-8 h-28 animate-pulse rounded bg-primary/10" /><div className="mt-10 space-y-3"><div className="h-4 animate-pulse rounded bg-primary/10" /><div className="h-4 animate-pulse rounded bg-primary/10" /><div className="h-4 w-2/3 animate-pulse rounded bg-primary/10" /></div></section></Layout>;
   if (isError || !post) return <Layout><section className="container mx-auto max-w-3xl px-5 pb-24 pt-40 text-center"><p className="font-serif text-3xl text-primary">This guide could not be found.</p><button data-testid="button-article-retry" onClick={() => refetch()} className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-white"><RefreshCw className="h-4 w-4" /> Try again</button></section></Layout>;
@@ -67,7 +73,7 @@ export default function BlogArticle() {
       <Link href="/blog" data-testid="link-back-blog" className="inline-flex items-center gap-2 text-sm font-semibold text-secondary"><ArrowLeft className="h-4 w-4" /> All guides</Link>
       <div className="mt-10 max-w-4xl"><p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">{post.category}</p><h1 data-testid="text-article-title" className="mt-5 text-4xl leading-[1.05] text-primary sm:text-6xl">{post.title}</h1><p className="mt-7 max-w-3xl text-lg leading-8 text-foreground/65">{post.excerpt}</p><div className="mt-7 flex items-center gap-3 text-sm text-foreground/45"><Clock3 className="h-4 w-4" /> {post.readTimeMinutes} minute read <span>·</span> {new Date(post.publishedAt).toLocaleDateString("en-US", { dateStyle: "long", timeZone: "Asia/Makassar" })}</div></div>
        <figure className="mt-10 overflow-hidden rounded-[2rem]">
-       <img src={imagery?.imageUrl ?? post.imageUrl} alt={imagery?.imageAlt ?? post.imageAlt} width={imagery?.width ?? 1024} height={imagery?.height ?? 1024} fetchPriority="high" loading="eager" className="aspect-[16/9] w-full object-cover" />
+       <img src={imagery?.imageUrl ?? post.imageUrl} alt={imagery?.imageAlt ?? post.imageAlt} width={imagery?.width ?? 1200} height={imagery?.height ?? 750} fetchPriority="high" loading="eager" className="aspect-[16/9] w-full object-cover" />
        {imagery?.caption && <figcaption className="px-1 pt-4 text-sm leading-6 text-foreground/60">{imagery.caption}</figcaption>}
        </figure>
       <p className="mt-5 text-sm leading-6 text-foreground/60">By Bali Accounting editorial desk · Editorial updated {new Date(post.updatedAt).toLocaleDateString("en-US", { dateStyle: "long", timeZone: "Asia/Makassar" })}. General information, not a claim of licensed professional review.</p>

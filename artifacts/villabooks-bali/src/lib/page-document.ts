@@ -27,6 +27,10 @@ export function pageDocument(template: string, content: string, pathname: string
   const canonical = `${SITE_ORIGIN}${path}`;
   const socialImage = article ? new URL(article.imageUrl, SITE_ORIGIN).href : `${SITE_ORIGIN}${shareImage(path)}`;
   const socialAlt = article ? article.imageAlt : shareImageAlt(path);
+  // Declare the file that is actually served. Journal heroes are 1200x750 WebP; page share cards are 1200x630 JPEG.
+  const journalHero = /\/images\/journal\/[^/]+\.webp$/i.test(socialImage);
+  const socialType = journalHero ? "image/webp" : /\.png$/i.test(socialImage) ? "image/png" : "image/jpeg";
+  const socialSize = journalHero ? { width: 1200, height: 750 } : { width: 1200, height: 630 };
   const compareChild = comparePages.find(item => item.path === path);
   const businessId = `${SITE_ORIGIN}/#business`;
   const webId = `${SITE_ORIGIN}/#website`;
@@ -154,8 +158,8 @@ ${sitePages[path] || article ? "" : '<meta name="robots" content="noindex,follow
 <meta property="og:type" content="${article ? "article" : "website"}"><meta property="og:title" content="${escape(page.title)}">
 <meta property="og:description" content="${escape(page.description)}"><meta property="og:url" content="${escape(canonical)}">
 <meta property="og:image" content="${socialImage}"><meta property="og:image:secure_url" content="${socialImage}">
-<meta property="og:image:alt" content="${escape(socialAlt)}"><meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${escape(socialAlt)}"><meta property="og:image:type" content="${socialType}">
+<meta property="og:image:width" content="${socialSize.width}"><meta property="og:image:height" content="${socialSize.height}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escape(page.title)}">
 <meta name="twitter:description" content="${escape(page.description)}"><meta name="twitter:image" content="${socialImage}">
 <meta name="twitter:image:alt" content="${escape(socialAlt)}">

@@ -75,7 +75,7 @@ export const pageEducation: Record<string, EducationSection[]> = {
         "When several villas share a team, compare each property's activity using consistently labelled revenue and cost categories. Document how shared invoices are allocated and keep the management company's overhead separate where the agreed structure requires it. A combined total may be useful, but it should not prevent an owner from understanding their own villa.",
         "Budget comparisons, channel analysis and forecasts are useful only when their inputs and assumptions are explained. Confirm which views your selected package includes. Occupancy, ADR and RevPAR in the sample are illustrative measures, not evidence of a particular client's returns or a forecast of Bali market performance.",
       ],
-      links: [["Build a monthly villa management pack", "/blog/bali-villa-monthly-management-reporting-pack"], ["Inspect the worked financial report", "/sample-report"]],
+      links: [["Build a monthly villa management pack", "/blog/bali-villa-monthly-management-reporting-pack"], ["PBJT records behind the 10% accommodation charge", "/blog/bali-villa-pbjt-accommodation-tax-records"], ["Inspect the worked financial report", "/sample-report"]],
     },
   ],
   "/villa-bookkeeping-cleanup-bali": [
@@ -93,7 +93,7 @@ export const pageEducation: Record<string, EducationSection[]> = {
         "Agree the opening position, unresolved-item register and document cutoff before recurring work begins. Keep the historical corrections and their supporting explanations identifiable. That gives the next monthly review a starting point and prevents the same missing evidence from being repeatedly treated as a new issue.",
         "Choose an owner or operator contact for follow-up and establish a repeatable handover of booking exports and invoices. Retain copies of your records and reports. Cleanup supports clearer books; it is not a statutory audit, a tax return, a guarantee of compliance or a way to manufacture unavailable evidence.",
       ],
-      links: [["Set up a villa expense tracking system", "/blog/bali-villa-chart-of-accounts"], ["Discuss your backlog with Client Advisory", "/get-started"]],
+      links: [["Agree a villa chart of accounts", "/blog/bali-villa-chart-of-accounts"], ["Discuss your backlog with Client Advisory", "/get-started"]],
     },
   ],
   "/pt-pma-villa-bookkeeping": [
@@ -219,7 +219,7 @@ export const pageEducation: Record<string, EducationSection[]> = {
         "If cash and profit seem inconsistent, compare the owner report with the cash-flow guide. If the books are behind, make a period-by-period list of the statements available. If supplier expenses are hard to allocate, review the expense-tracking workflow. A specific example of the record problem helps Client Advisory discuss the work more accurately than a request to fix everything without seeing the scope.",
         "The journal is general educational information. It does not replace an engagement review or advice about tax, employment, immigration or legal status. Dated news articles retain their sources and limitations, and should not be treated as confirmation of current rules for your own circumstances.",
       ],
-      links: [["Browse the bookkeeping journal", "/blog"], ["Prepare a villa expense tracking system", "/blog/bali-villa-chart-of-accounts"]],
+      links: [["Browse the bookkeeping journal", "/blog"], ["Read the villa chart-of-accounts guide", "/blog/bali-villa-chart-of-accounts"]],
     },
   ],
   "/privacy": [
@@ -274,7 +274,7 @@ export const pageEducation: Record<string, EducationSection[]> = {
         "Expense tracking starts with the document behind a cost, the property it belongs to and the person responsible for clarification. A management pack brings those records together with booking and cash views. A forecast then makes future receipt and payment assumptions visible; it is not evidence that the projected amount will be received.",
         "Dated Indonesia news is published separately from the practical guides. Articles are general information, not individual tax, legal or immigration advice. Our in-house team offers separately scoped company, tax and visa support; a news headline is not an eligibility assessment or permission to operate or work.",
       ],
-      links: [["Villa expense tracking guide", "/blog/bali-villa-chart-of-accounts"], ["Villa cash-flow forecast guide", "/blog/bali-villa-cash-flow-forecast"], ["Explore monthly bookkeeping services", "/services"]],
+      links: [["Villa chart-of-accounts guide", "/blog/bali-villa-chart-of-accounts"], ["Villa cash-flow forecast guide", "/blog/bali-villa-cash-flow-forecast"], ["Explore monthly bookkeeping services", "/services"]],
     },
   ],
 };
