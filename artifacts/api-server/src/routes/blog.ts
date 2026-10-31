@@ -5,7 +5,7 @@ import { db, blogEvents, blogPosts, automationConfig, automationRuns } from "@wo
 import { ListBlogPostsQueryParams, ListBlogPostsResponse, GetBlogPostParams, GetBlogPostResponse, RecordBlogEventBody, GetBlogAutomationStatusResponse } from "@workspace/api-zod";
 import { logger } from "../lib/logger";
 import { cleanHtml } from "../lib/blog-content";
-import { baliClock, countWords, imageLibrary, nextPublication, TIMEZONE, SCHEDULED_HOUR, MIN_WORDS } from "../lib/blog-policy";
+import { baliClock, countWords, imageLibrary, nextPublication, TIMEZONE, SCHEDULED_HOUR, MIN_WORDS, DAILY_POSTS } from "../lib/blog-policy";
 export { startBlogAutomation } from "../lib/blog-automation";
 
 const router: IRouter = Router();
@@ -89,8 +89,8 @@ router.get("/blog/automation/status", async (_req, res): Promise<void> => {
   const next = daily && daily.status !== "completed" && baliClock().eligible
     ? new Date(Date.now() + 5 * 60000) : nextPublication(new Date(), daily?.status === "completed");
   res.json(GetBlogAutomationStatusResponse.parse({
-    enabled: config?.enabled ?? true, cadence: "Every day, including weekends: two journals daily; weekly SEO review",
-    maxPostsPerRun: 2, publishedPosts: Number(published[0]?.count ?? 0), lastRunAt: last,
+    enabled: config?.enabled ?? true, cadence: "Every day, including weekends: one journal daily; weekly SEO review",
+    maxPostsPerRun: DAILY_POSTS, publishedPosts: Number(published[0]?.count ?? 0), lastRunAt: last,
     nextEligibleRunAt: next, timezone: TIMEZONE, scheduledHour: SCHEDULED_HOUR,
     minimumWords: MIN_WORDS, lastRunStatus: latest?.status ?? null, lastReviewAt: review?.completedAt ?? null,
   }));

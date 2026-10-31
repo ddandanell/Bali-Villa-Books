@@ -1,0 +1,39 @@
+DAILY EDITORIAL FRAMEWORK
+
+Commercial focus
+The primary audience is Bali villa owners and operators, including overseas owners. Each article should help with a real records, reporting, cash, operating or compliance-preparation question and connect to the service that actually owns that need.
+
+Content types
+Practical bookkeeping: explain a specific recurring problem with records and a worked illustration.
+Owner reporting: interpret cash, operating activity and exceptions without confusing them.
+Process: explain document handovers, responsibilities and what a real deliverable contains.
+Rules: cite exact current official sources, identify applicability and distinguish effective dates from publication dates. Hold unsupported advice.
+Market: use an original dataset with a named period and geography; explain business relevance without pretending a provincial total predicts an individual villa.
+Decision checklist: provide questions or a comparison that helps an owner choose the next action.
+
+Brief contract
+date; topic_id; reader_question; target_audience; distinct_intent; primary_keyword; exact_volume_or_unknown; evidence_date; commercial_owner_url; related_guide_urls; sources; original_contribution; exclusions; factual_review_requirements; metric; review_date.
+
+Internal linking
+Link to one main commercial owner where it answers the natural next question. Add two genuinely relevant guides. Use descriptive varied anchors. Include the article in the journal index and the dynamic sitemap. Suggest a relevant inbound link from an existing hub when helpful. Do not put every service into every article or force repeated exact-match anchors.
+
+Release gate
+Check purpose, evidence, original value, metadata, crawl/index/canonical behavior, useful links, appropriate structured data, media provenance, mobile usability, functionality, measurement and authorization/recovery. Existing article-validation and independent-review checks remain mandatory.
+
+Daily ledger
+Record source observations, failures, topic decision, article version, validation, status and next review in persistent run metadata. Never label a pending draft as published. A future Railway mirror should keep the same stable site and run IDs and enforce scope at the API/database level.
+
+Weekly review
+Check available complete performance data, source drift, dead links, duplicate intent, failed QA and unresolved factual questions. Choose a small justified improvement. Preserve previous content and explain the reason. Keep site engagement separate from organic acquisition and qualified enquiries.
+
+Current connection status, checked 31 October 2026
+GitHub repository: accessible.
+Vercel frontend project: identified; production deployment observed READY.
+Live journal: read-only public access available, production writes require the Replit database connection.
+Shared Railway knowledge database: not connected in this session.
+Search Console and GA4: no connection verified in this session.
+Vercel Web Analytics: not enabled for the project.
+Saved keyword evidence: 23 October 2026; no new paid provider volumes obtained in the October 28 refresh.
+
+Scheduled production contract
+One post per Bali day at 09:00, with the existing bounded recovery checks and database lock. Generate a new worker bundle after source changes. Activation and successful live publication still require verified production access; source preparation is not activation.

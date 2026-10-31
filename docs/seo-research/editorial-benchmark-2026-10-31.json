@@ -1,0 +1,184 @@
+{
+  "checkedAt": "2026-10-31",
+  "siteId": "bali-villa-accounting-service.com",
+  "status": "researched_framework_not_a_verified_market_league_table",
+  "method": "Compare current primary publisher pages for relevance, format, source practice, dates and service handoffs. Use existing provider snapshots only with their original dates and geography.",
+  "benchmarks": [
+    {
+      "name": "Emerhub",
+      "role": "market-entry content benchmark",
+      "url": "https://emerhub.com/blog/",
+      "observed": "Country and service categories, practical explainers, updated articles and contact paths.",
+      "apply": "Build clear question-led guides and a useful next step into an existing service.",
+      "limit": "No comparable traffic or revenue dataset was available.",
+      "exampleUrl": "https://emerhub.com/bali/guide-to-tax-compliance-in-bali/",
+      "observedAuthor": "Colin Young on the reviewed guide; page displays publication and update dates."
+    },
+    {
+      "name": "InCorp / Cekindo",
+      "role": "business and tax content benchmark",
+      "url": "https://www.cekindo.com/blog/pt-pma-bali",
+      "observed": "The reviewed PT PMA guide includes key takeaways, overview/comparison tables, FAQs and an editorial attribution.",
+      "apply": "Use decision aids and precise applicability, checking regulatory claims against official instruments.",
+      "limit": "The publisher is a competitor, not the legal source of truth."
+    },
+    {
+      "name": "Seven Stones Indonesia",
+      "role": "Bali audience and topical-update benchmark",
+      "url": "https://sevenstonesindonesia.com/blog/correcting-a-tax-return-in-indonesia/",
+      "observed": "The October 15 article is attributed to Terje Nilsen and connects an identified rule to practical business situations.",
+      "apply": "Use dated change explainers with named affected audiences and exact primary references.",
+      "limit": "Its legal interpretations were not adopted as verified facts."
+    },
+    {
+      "name": "DDTCNews",
+      "role": "tax news and discovery benchmark",
+      "url": "https://news.ddtc.co.id/upperdeck/coretax-system",
+      "observed": "Topic hub, dated news, explanations, reference resources and tools.",
+      "apply": "Maintain a watchlist and distinguish news, explanation, glossary and reference content.",
+      "limit": "Do not republish its reporting or treat every story as relevant to a villa owner."
+    },
+    {
+      "name": "PwC Indonesia TaxFlash",
+      "role": "professional bulletin format benchmark",
+      "url": "https://www.pwc.com/id/en/pwc-publications/services-publications/tax-publications.html",
+      "observed": "Dated numbered bulletins, defined issues and references to legal instruments.",
+      "apply": "Record publication date, effective date, audience, practical action and primary citation.",
+      "limit": "A format benchmark, not evidence of rankings or a claim that PwC is a direct local bookkeeping competitor."
+    },
+    {
+      "name": "Bali Accounting Service (B.A.S.)",
+      "role": "local commercial benchmark",
+      "url": "https://baliaccountingservice.com/",
+      "observed": "Separate accounting, tax and legal service areas, consultation paths and contact details.",
+      "apply": "Make scopes and the next enquiry step easy to distinguish.",
+      "limit": "No current independent traffic, ranking trend or revenue comparison was established."
+    },
+    {
+      "name": "Business Hub Asia",
+      "role": "market-entry and service navigation benchmark",
+      "url": "https://businesshubasia.com/",
+      "observed": "Service categories and a resource area containing blogs, FAQs and downloads.",
+      "apply": "Connect a useful informational question to the correct service and location context.",
+      "limit": "A broader service company; its published scale claims were not independently verified."
+    }
+  ],
+  "existingDemandEvidence": {
+    "path": "docs/seo-research/seo-expansion-2026-10-28-research.json",
+    "snapshotDate": "2026-10-23",
+    "examples": [
+      {
+        "keyword": "accounting bali",
+        "market": "Indonesia",
+        "estimatedMonthlySearches": 170,
+        "source": "DataForSEO Labs suggestions",
+        "observedAt": "2026-10-23T17:55:33.815Z"
+      },
+      {
+        "keyword": "airbnb bookkeeping",
+        "market": "Indonesia",
+        "estimatedMonthlySearches": 10,
+        "source": "DataForSEO Google Ads search volume",
+        "observedAt": "2026-10-23T17:55:23.005Z"
+      },
+      {
+        "keyword": "rental property bookkeeping",
+        "market": "Indonesia",
+        "estimatedMonthlySearches": 10,
+        "source": "DataForSEO Google Ads search volume",
+        "observedAt": "2026-10-23T17:55:23.005Z"
+      },
+      {
+        "keyword": "accounting bali",
+        "market": "Australia",
+        "estimatedMonthlySearches": 10,
+        "source": "DataForSEO Google Ads search volume",
+        "observedAt": "2026-10-23T17:55:26.683Z"
+      },
+      {
+        "keyword": "airbnb bookkeeping",
+        "market": "Australia",
+        "estimatedMonthlySearches": 10,
+        "source": "DataForSEO Google Ads search volume",
+        "observedAt": "2026-10-23T17:55:26.683Z"
+      },
+      {
+        "keyword": "rental property bookkeeping",
+        "market": "Australia",
+        "estimatedMonthlySearches": 10,
+        "source": "DataForSEO Google Ads search volume",
+        "observedAt": "2026-10-23T17:55:26.683Z"
+      },
+      {
+        "keyword": "accounting bali",
+        "market": "United Kingdom",
+        "estimatedMonthlySearches": 10,
+        "source": "DataForSEO Google Ads search volume",
+        "observedAt": "2026-10-23T17:55:30.304Z"
+      },
+      {
+        "keyword": "airbnb bookkeeping",
+        "market": "United Kingdom",
+        "estimatedMonthlySearches": 10,
+        "source": "DataForSEO Google Ads search volume",
+        "observedAt": "2026-10-23T17:55:30.304Z"
+      },
+      {
+        "keyword": "rental property bookkeeping",
+        "market": "United Kingdom",
+        "estimatedMonthlySearches": 10,
+        "source": "DataForSEO Google Ads search volume",
+        "observedAt": "2026-10-23T17:55:30.304Z"
+      },
+      {
+        "keyword": "accounting bali",
+        "market": "United States",
+        "estimatedMonthlySearches": 10,
+        "source": "DataForSEO Google Ads search volume",
+        "observedAt": "2026-10-23T17:55:33.547Z"
+      },
+      {
+        "keyword": "airbnb bookkeeping",
+        "market": "United States",
+        "estimatedMonthlySearches": 40,
+        "source": "DataForSEO Google Ads search volume",
+        "observedAt": "2026-10-23T17:55:33.547Z"
+      },
+      {
+        "keyword": "rental property bookkeeping",
+        "market": "United States",
+        "estimatedMonthlySearches": 110,
+        "source": "DataForSEO Google Ads search volume",
+        "observedAt": "2026-10-23T17:55:33.547Z"
+      }
+    ],
+    "limitations": "Provider estimates, not site visits or exact Bali long-tail demand. Do not sum overlapping variants. The October 28 refresh records HTTP 402 and obtained no fresh volumes."
+  },
+  "measurementChecked": {
+    "vercel": "Web Analytics not enabled; verified through project API on 2026-10-31",
+    "gsc": "No connection verified in this session",
+    "ga4": "No connection verified in this session",
+    "localEvents": "Existing database tracks article views and CTA clicks; production data was not available through the current connection."
+  },
+  "publishingArchitecture": {
+    "repository": "ddandanell/Bali-Villa-Books",
+    "productionCommitAtInspection": "ff57772217c877a7808baf89158292c9363c6f5a",
+    "frontend": "Vercel project bali-villa-books-api-serverff",
+    "journal": "Replit production database through the existing backend",
+    "railwayKnowledge": "Not connected in this session"
+  },
+  "primarySourceWatchlist": [
+    "https://www.pajak.go.id/en",
+    "https://jdih.kemenkeu.go.id/",
+    "https://peraturan.bpk.go.id/",
+    "https://bali.bps.go.id/en/pressrelease",
+    "https://oss.go.id/"
+  ],
+  "sampleEvidence": [
+    {
+      "url": "https://docs.stripe.com/disputes/how-disputes-work",
+      "checkedAt": "2026-10-31",
+      "scope": "Only the provider-specific distinction between a payment, disputed amount and dispute status; no fee amount or response deadline is adopted."
+    }
+  ]
+}

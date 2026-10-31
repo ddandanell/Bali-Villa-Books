@@ -3,7 +3,7 @@ import { countWords, imageLibrary, journalCategories, MIN_WORDS, similarTitle } 
 import { isJournalImage } from "./journal-images";
 
 // Hand-researched news may cite these verified official and public-news sources.
-const sourceHosts = new Set(["kemenimipas.go.id", "www.imigrasi.go.id", "evisa.imigrasi.go.id", "peraturan.bpk.go.id", "en.antaranews.com", "allindonesia.imigrasi.go.id", "oss.go.id", "www.pajak.go.id", "pajak.go.id", "commons.wikimedia.org", "creativecommons.org"]);
+const sourceHosts = new Set(["kemenimipas.go.id", "www.imigrasi.go.id", "evisa.imigrasi.go.id", "peraturan.bpk.go.id", "en.antaranews.com", "allindonesia.imigrasi.go.id", "oss.go.id", "www.pajak.go.id", "pajak.go.id", "jdih.kemenkeu.go.id", "bali.bps.go.id", "www.bps.go.id", "docs.stripe.com", "commons.wikimedia.org", "creativecommons.org"]);
 export function safeArticleLink(href?: string) {
   if (!href) return false;
   if (href.startsWith("/") && !href.startsWith("//")) return true;

@@ -9,6 +9,7 @@ import { nextBlueprintTopic } from "./editorial-blueprint";
 import { createBlueprintArticle } from "./journal-writer";
 import { isJournalImage } from "./journal-images";
 import { seoStrategy, articleAliases, photoKey } from "@workspace/site-content";
+import { collectEditorialResearch, mergeEditorialMetadata, type ResearchObservation } from "./editorial-research";
 
 const guidance = `You write for Bali Accounting, a serious Denpasar-based bookkeeping firm for villa owners and operators.
 Create useful, original English guides, not SEO filler. No invented testimonials, client outcomes, credentials, statistics, tax rates or legal conclusions.
@@ -77,7 +78,7 @@ async function openRun(runKey: string) {
     return null;
   }
   const [retried] = await db.update(automationRuns).set({
-    status: "running", errorMessage: null, metadata: { attempts: attempts + 1 },
+    status: "running", errorMessage: null, metadata: { ...(previous.metadata as Record<string, unknown> ?? {}), attempts: attempts + 1 },
   }).where(eq(automationRuns.id, previous.id)).returning();
   return retried;
 }
@@ -90,14 +91,38 @@ async function publishDay(dateKey: string, firstOnly = false) {
       throw new Error("Daily publication is incomplete and its retry limit has been reached; investigate the failed run");
     return;
   }
+  let metadata = mergeEditorialMetadata(run.metadata, { siteId: "bali-villa-accounting-service.com", dateKey });
   try {
+    const recent = await db.select({ runKey: automationRuns.runKey, metadata: automationRuns.metadata })
+      .from(automationRuns).where(and(sql`${automationRuns.runKey} like 'daily:%'`, sql`${automationRuns.runKey} <> ${`daily:${dateKey}`}`))
+      .orderBy(desc(automationRuns.startedAt)).limit(1);
+    const reviews = await db.select({ runKey: automationRuns.runKey, metadata: automationRuns.metadata })
+      .from(automationRuns).where(and(sql`${automationRuns.runKey} like 'review:%'`, eq(automationRuns.status, "completed")))
+      .orderBy(desc(automationRuns.completedAt)).limit(3);
+    const previousMetadata = recent[0]?.metadata as { editorial?: { research?: { observations?: ResearchObservation[] } } } | undefined;
+    const research = await collectEditorialResearch({
+      previous: previousMetadata?.editorial?.research?.observations,
+      priorOperationalObservations: reviews.map(review => {
+        const result = review.metadata as { auditedPosts?: number; revised?: string[]; audit?: { slug: string; problems: string[] }[] } | null;
+        return { runKey: review.runKey, type: "operational_observation_not_causal_lesson", auditedPosts: result?.auditedPosts,
+          revised: result?.revised?.slice(0, 5), issues: result?.audit?.filter(item => item.problems.length).slice(0, 8) };
+      }),
+    });
+    metadata = mergeEditorialMetadata(metadata, { research, stage: "research_complete" });
+    await db.update(automationRuns).set({ metadata }).where(eq(automationRuns.id, run.id));
     for (const slot of (firstOnly ? [0] : Array.from({ length: DAILY_POSTS }, (_, index) => index))) {
       const automationKey = `${dateKey}:${slot}`;
       const [already] = await db.select({ id: blogPosts.id }).from(blogPosts).where(eq(blogPosts.automationKey, automationKey));
       if (already) continue;
       const cluster = keywordClusters[(Math.floor(Date.parse(dateKey) / 86400000) * DAILY_POSTS + slot) % keywordClusters.length];
-      const details = await context();
+      const details = { ...await context(), editorialResearch: research };
       const topic = nextBlueprintTopic(details.existing, firstOnly ? 1 : undefined);
+      metadata = mergeEditorialMetadata(metadata, { stage: "drafting", selection: {
+        topicId: topic?.id ?? null, keyword: topic?.keyword ?? null, service: topic?.service ?? cluster.page,
+        basis: "Uncovered prepared intent, dated keyword evidence, current source observations and prior operational review.",
+        exactKeywordVolume: null, selectedAt: new Date().toISOString(),
+      } });
+      await db.update(automationRuns).set({ metadata }).where(eq(automationRuns.id, run.id));
       const post = await createBlueprintArticle(topic, details, cluster).catch(err => {
         logger.warn({ reason: err instanceof Error ? err.message : String(err), topicId: topic?.id }, "Article attempt held by publication quality checks");
         throw err;
@@ -116,9 +141,15 @@ async function publishDay(dateKey: string, firstOnly = false) {
     }
     const count = await db.select({ count: sql<number>`count(*)` }).from(blogPosts).where(sql`${blogPosts.automationKey} like ${`${dateKey}:%`}`);
     const publishedCount = Number(count[0].count);
-    if (!firstOnly && publishedCount !== DAILY_POSTS) throw new Error(`Published ${publishedCount} of ${DAILY_POSTS} articles`);
-    await db.update(automationRuns).set({ status: publishedCount === DAILY_POSTS ? "completed" : "partial", completedAt: publishedCount === DAILY_POSTS ? new Date() : null, publishedCount,
-      metadata: { attempts: publishedCount === DAILY_POSTS ? Number((run.metadata as { attempts?: number })?.attempts ?? 1) : 0 },
+    if (!firstOnly && publishedCount < DAILY_POSTS) throw new Error(`Published ${publishedCount} of ${DAILY_POSTS} articles`);
+    const published = await db.select({ slug: blogPosts.slug, keyword: blogPosts.primaryKeyword })
+      .from(blogPosts).where(sql`${blogPosts.automationKey} like ${`${dateKey}:%`}`);
+    metadata = mergeEditorialMetadata(metadata, { stage: "published", outputs: published, qa: "Existing deterministic and independent editorial checks passed before insertion",
+      measurement: { outcome: "pending", reviewAfter: new Date(Date.now() + 28 * 86400000).toISOString(),
+        note: "Publication is not proof of search or conversion improvement. Compare complete data and retain uncertainty." } });
+    const complete = publishedCount >= DAILY_POSTS;
+    await db.update(automationRuns).set({ status: complete ? "completed" : "partial", completedAt: complete ? new Date() : null, publishedCount,
+      metadata: { ...metadata, attempts: complete ? Number((run.metadata as { attempts?: number })?.attempts ?? 1) : 0 },
     }).where(eq(automationRuns.id, run.id));
     await db.update(automationConfig).set({ lastRunAt: new Date(), updatedAt: new Date() });
     logger.info({ dateKey, publishedCount, firstOnly }, "Daily journal publication completed");
@@ -127,6 +158,7 @@ async function publishDay(dateKey: string, firstOnly = false) {
     await db.update(automationRuns).set({
       status: "failed", completedAt: new Date(), publishedCount: Number(count[0].count),
       errorMessage: err instanceof Error ? err.message : String(err),
+      metadata: mergeEditorialMetadata(metadata, { stage: "held_or_failed", outcome: "No learning claim; inspect the recorded source, selection and error before retrying." }),
     }).where(eq(automationRuns.id, run.id));
     logger.error({ err, dateKey }, "Weekday journal publication failed; valid published slots will not be duplicated on retry");
     throw err;

@@ -1,0 +1,32 @@
+{
+  "version": "2026-10-31",
+  "siteId": "bali-villa-accounting-service.com",
+  "goal": "Help villa owners make better decisions and generate qualified service enquiries through useful, evidenced content.",
+  "cadence": { "postsPerDay": 1, "timezone": "Asia/Makassar", "hour": 9 },
+  "keywordEvidenceDate": "2026-10-23",
+  "measurement": {
+    "searchConsole": "not_connected_in_this_setup",
+    "ga4": "not_connected_in_this_setup",
+    "vercelWebAnalytics": "not_enabled_checked_2026-10-31",
+    "localEvents": "Article views and CTA clicks are diagnostic signals, not organic visits or qualified leads."
+  },
+  "principles": [
+    "Research specific client questions before writing; retain stable commercial keyword owners.",
+    "Competitor content is a discovery signal, not legal authority or proof of commercial success.",
+    "One useful post is a target; hold unsupported or duplicate content rather than fill a slot.",
+    "Use a practical answer, an original illustration or decision aid, relevant service links, and a clear next step.",
+    "Keep operational observations separate from causal lessons and approved business facts."
+  ],
+  "sources": [
+    { "id": "emerhub", "kind": "competitor", "url": "https://emerhub.com/blog/", "use": "Market-entry explainers, country categories, dated updates and related services." },
+    { "id": "incorp", "kind": "competitor", "url": "https://www.cekindo.com/blog", "use": "Question-led guides, key takeaways, comparison tables and service handoffs." },
+    { "id": "seven-stones", "kind": "competitor", "url": "https://sevenstonesindonesia.com/blog/correcting-a-tax-return-in-indonesia/", "use": "A dated example of a rule change connected to operating implications. Recheck claims against the underlying official instrument." },
+    { "id": "ddtc", "kind": "publisher", "url": "https://news.ddtc.co.id/upperdeck/coretax-system", "use": "Discovery of Indonesian tax administration stories and specific official references." },
+    { "id": "pwc", "kind": "publisher", "url": "https://www.pwc.com/id/en/pwc-publications/services-publications/tax-publications.html", "use": "TaxFlash format: dated rule, affected audience, implications and references." },
+    { "id": "djp", "kind": "primary-monitor", "url": "https://www.pajak.go.id/en", "use": "Find exact official tax publications; the homepage is not evidence for a specific rule." },
+    { "id": "bps-bali", "kind": "primary-monitor", "url": "https://bali.bps.go.id/en/pressrelease", "use": "Find actual tourism releases. Record period, geography, methodology and access failures." }
+  ],
+  "contentMix": ["practical_bookkeeping", "owner_reporting", "process_explainer", "verified_regulatory_explainer", "sourced_market_observation", "decision_checklist"],
+  "regulatoryGate": "Specific rates, deadlines, legal entitlements and filing instructions need exact current primary evidence and appropriate professional review. Otherwise choose a supported record-preparation angle or a practical topic.",
+  "learningGate": "Store every run and result. A performance increase alone does not establish causality; proposed lessons need evidence, limitations and an approval decision."
+}
