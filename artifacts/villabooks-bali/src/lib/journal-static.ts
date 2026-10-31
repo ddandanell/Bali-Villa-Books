@@ -31,8 +31,8 @@ export const staticJournalPosts: StaticJournalPost[] = [
     "imageUrl": "/images/journal/preparing-villa-records-indonesian-tax-consultant-2026-10.webp",
     "imageAlt": "Illustrative accountant handover pack: guest invoices, settlement reports and a filed return on a desk",
     "readTimeMinutes": 9,
-    "publishedAt": "2026-11-02T09:00:00+08:00",
-    "updatedAt": "2026-10-31T12:00:00+08:00",
+    "publishedAt": "2026-10-31T09:00:00+08:00",
+    "updatedAt": "2026-10-31T11:40:00+08:00",
     "wordCount": 1827,
     "faqs": [
       [
