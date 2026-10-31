@@ -16,6 +16,16 @@ const journalShareImage = pageImagery["/blog"].shareImage;
 const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]!));
 const safeJson = (value: unknown) => JSON.stringify(value).replace(/</g, "\\u003c");
 const lastGood = new Map<string, { html: string; savedAt: number }>();
+// Declared image sizes are a layout promise. Journal art is 1200x750; the listing and
+// article heroes used to promise 1024x1024 for every post, which reserves a square box
+// and then shifts. Known art keeps its real dimensions, unknown art declares none.
+// Anything before <!doctype html> puts the parser in "before html" mode, where a late
+// doctype token is ignored and the document falls into quirks mode. The banner comment
+// below therefore sits after the doctype, never before it.
+const sizeAttrs = (slug: string) => {
+  const visual = journalImagery[slug];
+  return visual ? ` width="${visual.width}" height="${visual.height}"` : "";
+};
 const marketingPaths = publicPagePaths;
 router.use((req, res, next) => {
   const normalized = req.path.replace(/\/+$/, "") || "/";
@@ -31,6 +41,19 @@ function sendPage(res: import("express").Response, key: string, html: string) {
 const TEMPLATE_TIMEOUT_MS = 4000;
 const TEMPLATE_TTL_MS = 15000;
 let assetTagsCache: { tags: string; at: number } | null = null;
+// A document served without the app bundle still returns 200, so nothing outside
+// notices. Count every miss and log the first one in each minute: the Cloud Run log
+// is the only surface this site has, since there is no GA4, Search Console or
+// uptime check watching it.
+let assetTagAttempts = 0;
+let assetTagMisses = 0;
+let lastAssetMissLogAt = 0;
+function noteAssetTagMiss(reason: string) {
+  assetTagMisses += 1;
+  if (Date.now() - lastAssetMissLogAt < 60000) return;
+  lastAssetMissLogAt = Date.now();
+  console.error(`[blog-seo] asset tags ${reason}; serving documents without the app bundle (${assetTagMisses} misses of ${assetTagAttempts} attempts)`);
+}
 
 function extractAssetTags(html: string) {
   return [
@@ -47,6 +70,7 @@ function extractAssetTags(html: string) {
 // never throw: a document without its bundle still renders its server HTML, a 503 does not.
 async function assetTags() {
   if (assetTagsCache && Date.now() - assetTagsCache.at < TEMPLATE_TTL_MS) return assetTagsCache.tags;
+  assetTagAttempts += 1;
   // The apex answers /index.html with a 308 to /, so ask for / directly.
   const target = process.env.NODE_ENV !== "production" ? "http://localhost:80/" : `${origin}/`;
   const controller = new AbortController();
@@ -59,13 +83,19 @@ async function assetTags() {
         assetTagsCache = { tags, at: Date.now() };
         return tags;
       }
+      noteAssetTagMiss(`extracted empty from ${target} (HTTP ${response.status})`);
+    } else {
+      noteAssetTagMiss(`fetch of ${target} returned HTTP ${response.status}`);
     }
-  } catch {
+  } catch (error) {
     // Network failure or timeout: keep the last set we saw rather than failing the document.
+    noteAssetTagMiss(`fetch of ${target} failed (${error instanceof Error ? error.name : "unknown error"})`);
   } finally {
     clearTimeout(timer);
   }
-  return assetTagsCache?.tags ?? "";
+  const fallback = assetTagsCache?.tags ?? "";
+  if (!fallback) noteAssetTagMiss("with no cached set to fall back on");
+  return fallback;
 }
 
 async function documentHtml(title: string, description: string, canonicalPath: string, content: string, bootstrap: unknown, image: string, schema: unknown, imageAlt?: string, imageVersion?: string) {
@@ -80,7 +110,7 @@ async function documentHtml(title: string, description: string, canonicalPath: s
   const socialAlt = imageAlt ?? (canonicalPath.split("?")[0] === "/blog" ? "Bali Accounting Journal — practical guides for better villa records" : "Bali Accounting — villa bookkeeping and clear owner reports");
   const branded = parsedImage.pathname.startsWith("/images/share/");
   const faqs = articleFaqs(content);
-  return `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  return `<!doctype html>${scriptsAndStyles ? "" : "<!-- journal-assets: missing -->"}<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${escape(title)} | Bali Accounting</title><meta name="description" content="${escape(description)}">
 <link rel="canonical" href="${origin}${escape(canonicalPath)}">
 <meta property="og:type" content="${canonicalPath === "/blog" ? "website" : "article"}"><meta property="og:title" content="${escape(title)}">
@@ -117,7 +147,7 @@ router.get("/blog", async (req, res) => {
   const hasMore = rows.length > 50;
   if (!rows.length && page > 1) { res.status(404).type("html").send('<h1>Guide page not found</h1><a href="/blog">Browse guides</a>'); return; }
   const posts = ListBlogPostsResponse.parse(rows.filter(row => !articleAliases[row.slug]).slice(0, 50));
-  const content = `<h1>Bali Villa Bookkeeping Guides</h1><p>Learn how to reconcile Airbnb payouts, track rental property expenses and review monthly villa P&amp;L and cash flow. Our practical guides connect reporting questions with the source records behind them.</p>${posts.map(post => `<article><h2><a href="/blog/${escape(post.slug)}">${escape(post.title)}</a></h2><img src="${escape(post.imageUrl)}" alt="${escape(post.imageAlt)}" width="1024" height="1024" loading="lazy"><p>${escape(post.excerpt)}</p></article>`).join("")}<nav aria-label="Guide pages">${page > 1 ? `<a href="/blog${page === 2 ? "" : `?page=${page - 1}`}">Newer guides</a>` : ""}${hasMore ? ` <a href="/blog?page=${page + 1}">Older guides</a>` : ""}</nav>
+  const content = `<h1>Bali Villa Bookkeeping Guides</h1><p>Learn how to reconcile Airbnb payouts, track rental property expenses and review monthly villa P&amp;L and cash flow. Our practical guides connect reporting questions with the source records behind them.</p>${posts.map(post => `<article><h2><a href="/blog/${escape(post.slug)}">${escape(post.title)}</a></h2><img src="${escape(post.imageUrl)}" alt="${escape(post.imageAlt)}"${sizeAttrs(post.slug)} loading="lazy"><p>${escape(post.excerpt)}</p></article>`).join("")}<nav aria-label="Guide pages">${page > 1 ? `<a href="/blog${page === 2 ? "" : `?page=${page - 1}`}">Newer guides</a>` : ""}${hasMore ? ` <a href="/blog?page=${page + 1}">Older guides</a>` : ""}</nav>
 <section><h2>Start with the monthly villa bookkeeping workflow</h2>
 <p>The monthly checklist explains how to collect bank exports, platform settlements, supplier invoices and owner notes before preparing a report. Use the Airbnb reconciliation guide when a booking total does not match the bank receipt. Read the owner-report guide when you need to distinguish operating profit, cash timing and owner movements.</p>
 <p>These articles support practical rental property bookkeeping. They do not promise platform integrations, tax savings or guaranteed business results. Choose the guide closest to your current record question, then use the service pages to confirm what can be included in an engagement.</p>
@@ -150,12 +180,12 @@ router.get("/blog/:slug", async (req, res) => {
   const post = GetBlogPostResponse.parse({ ...row, contentHtml: cleanHtml(row.contentHtml), relatedPosts: peers.slice(0, 3) });
   const servicePath = /airbnb|payout|booking|ota/i.test(post.slug) ? "/airbnb-ota-reconciliation-bali" : /cleanup|catch-up|incomplete/i.test(post.slug) ? "/villa-bookkeeping-cleanup-bali" : /pt-pma|tax-adviser/i.test(post.slug) ? "/pt-pma-villa-bookkeeping" : "/villa-financial-reporting-bali";
   const content = `<article><p>${escape(post.category)}</p><h1>${escape(post.title)}</h1><p>${escape(post.excerpt)}</p><time datetime="${post.publishedAt.toISOString()}">${post.publishedAt.toISOString().slice(0, 10)}</time>
-<img src="${escape(post.imageUrl)}" alt="${escape(post.imageAlt)}" width="${journalImagery[post.slug]?.width ?? 1024}" height="${journalImagery[post.slug]?.height ?? 1024}" fetchpriority="high">
+<img src="${escape(post.imageUrl)}" alt="${escape(post.imageAlt)}"${sizeAttrs(post.slug)} fetchpriority="high">
 <p>By Bali Accounting editorial desk · Editorial updated ${post.updatedAt.toISOString().slice(0,10)}. General information, not a claim of licensed professional review.</p>
 ${post.contentHtml}<p><a href="https://wa.me/6281237402292">Speak with Client Advisory</a></p><h2>Related guides</h2><ul>${post.relatedPosts.map(p => `<li><a href="/blog/${escape(p.slug)}">${escape(p.title)}</a></li>`).join("")}</ul></article>`;
   const articleVisual = journalImagery[post.slug];
   const articleShare = articleVisual?.imageUrl === post.imageUrl ? articleVisual.shareImage : post.imageUrl;
-  sendPage(res, req.originalUrl, await documentHtml(post.metaTitle, post.metaDescription, `/blog/${post.slug}`, content.replace("</article>", `<p>Need help applying this process? Explore the <a href="${servicePath}">relevant service scope</a>, <a href="/sample-report">sample owner report</a> and <a href="/pricing">bookkeeping package inclusions</a>.</p></article>`), { post }, articleShare, {
+  sendPage(res, req.originalUrl, await documentHtml(post.metaTitle, post.metaDescription, `/blog/${post.slug}`, content.replace("</article>", `<p>Need help applying this process? Explore the <a href="${servicePath}">relevant service scope</a>, <a href="/sample-report">sample owner report</a> and <a href="/pricing">bookkeeping package inclusions</a>.</p></article>`), { post, static: true }, articleShare, {
     "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.metaDescription,
     image: new URL(post.imageUrl, origin).href, datePublished: post.publishedAt, dateModified: post.updatedAt,
     wordCount: post.wordCount, author: { "@id": `${origin}/#business` },
