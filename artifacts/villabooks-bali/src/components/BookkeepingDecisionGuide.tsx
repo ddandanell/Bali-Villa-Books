@@ -15,7 +15,7 @@ const guides: Record<string, { heading: string; paragraphs: string[]; related: [
       "Start with the properties, reporting period and source records included. A useful monthly owner report separates rental revenue, channel fees and operating expenses, then explains why profit differs from cash in the bank. Owner funding, withdrawals and transfers need their own supporting schedules rather than being hidden inside income or costs.",
       "Where agreed, compare results with a budget or earlier period using consistent categories. Investigate changes in supplier costs, booking-channel mix and collection timing before making a decision. The sample report demonstrates occupancy, ADR, RevPAR and cash-flow scenarios; it is not a promise that every package includes every analysis.",
     ],
-    related: [["Monthly villa owner report checklist", "/blog/bali-villa-owner-monthly-report"], ["Explore the villa cash-flow forecast guide", "/blog/bali-villa-cash-flow-forecast"]],
+    related: [["Monthly villa owner report checklist", "/blog/bali-villa-owner-statement-template"], ["Explore the villa cash-flow forecast guide", "/blog/bali-villa-cash-flow-forecast"]],
   },
   "/villa-bookkeeping-cleanup-bali": {
     heading: "Catch-up bookkeeping before a recurring monthly close",
@@ -39,7 +39,7 @@ const guides: Record<string, { heading: string; paragraphs: string[]; related: [
       "Use an owner-approved schedule for each pay period and keep dated changes, allowances and reimbursements attached to their supporting records. Reconcile available payment evidence to the staff-cost entries in the monthly books, then list missing documents for the responsible owner or manager.",
       "A BPJS document checklist records what has been supplied and what needs follow-up. It does not calculate statutory contributions, register employees or confirm compliance. Staff payments, employment decisions and official submissions remain with the responsible operator and qualified providers.",
     ],
-    related: [["Villa supplier, payroll and BPJS control calendar", "/blog/bali-villa-supplier-invoice-payroll-bpjs-control-calendar"], ["Compare payroll-record package inclusions", "/pricing"]],
+    related: [["Villa supplier, payroll and BPJS control calendar", "/blog/bali-villa-supplier-invoice-payroll-control-calendar"], ["Compare payroll-record package inclusions", "/pricing"]],
   },
 };
 

@@ -67,7 +67,7 @@ export const pageEducation: Record<string, EducationSection[]> = {
         "Check the report's period and property coverage before comparing income or costs. Then review rental activity and channel fees, followed by supplier and staff expenses. Read the cash movement schedule separately: owner contributions, withdrawals, transfers and settlement timing can change the bank balance without describing the villa's operating performance.",
         "An unusual expense deserves a source-document review before a conclusion. A larger maintenance line could reflect several invoices arriving together, a one-off repair or work requiring separate assessment. Ask which invoice and property each item belongs to. For professional accounting or tax treatment, refer the underlying facts to the qualified adviser responsible for that decision.",
       ],
-      links: [["Monthly villa owner report checklist", "/blog/bali-villa-owner-monthly-report"]],
+      links: [["Monthly villa owner report checklist", "/blog/bali-villa-owner-statement-template"]],
     },
     {
       heading: "Property-by-property reporting and useful variance questions",
@@ -93,7 +93,7 @@ export const pageEducation: Record<string, EducationSection[]> = {
         "Agree the opening position, unresolved-item register and document cutoff before recurring work begins. Keep the historical corrections and their supporting explanations identifiable. That gives the next monthly review a starting point and prevents the same missing evidence from being repeatedly treated as a new issue.",
         "Choose an owner or operator contact for follow-up and establish a repeatable handover of booking exports and invoices. Retain copies of your records and reports. Cleanup supports clearer books; it is not a statutory audit, a tax return, a guarantee of compliance or a way to manufacture unavailable evidence.",
       ],
-      links: [["Set up a villa expense tracking system", "/blog/bali-villa-expense-tracking-system"], ["Discuss your backlog with Client Advisory", "/get-started"]],
+      links: [["Set up a villa expense tracking system", "/blog/bali-villa-chart-of-accounts"], ["Discuss your backlog with Client Advisory", "/get-started"]],
     },
   ],
   "/pt-pma-villa-bookkeeping": [
@@ -121,7 +121,7 @@ export const pageEducation: Record<string, EducationSection[]> = {
         "For each period, retain the authorized staff-cost schedule and the evidence supplied for salaries, reimbursements and documented changes. Use consistent dates and references across the schedule, bank record and monthly bookkeeping. Where a manager records a payment in cash, request the agreed supporting evidence rather than silently treating the schedule as proof that payment occurred.",
         "If staff work across several villas, document the allocation method agreed by the responsible operator. Shared staffing should remain visible in property reports rather than being assigned to whichever villa happens to have enough rental receipts that month. Keep company-level staff costs distinct where appropriate to the agreed reporting structure.",
       ],
-      links: [["Villa invoice, payroll and BPJS control calendar", "/blog/bali-villa-supplier-invoice-payroll-bpjs-control-calendar"]],
+      links: [["Villa invoice, payroll and BPJS control calendar", "/blog/bali-villa-supplier-invoice-payroll-control-calendar"]],
     },
     {
       heading: "BPJS document tracking and responsibility for official submissions",
@@ -157,7 +157,7 @@ export const pageEducation: Record<string, EducationSection[]> = {
         "Read the assumptions and period first, then inspect the rental income, channel reconciliation and operating-cost views. The example deliberately distinguishes a profit measure from cash movement. A payout schedule connects reservations and settlements to the bank, while the cash forecast depends on separately stated timing assumptions.",
         "Use the CSV export or print view to discuss the information you would need from a real report. The demonstration is not a client's financial statement, an investment forecast or a promise that every package includes the entire analysis. Agree the reports, supporting schedules and export formats for your own operation before starting.",
       ],
-      links: [["Monthly villa financial reporting scope", "/villa-financial-reporting-bali"], ["What to include in an owner report", "/blog/bali-villa-owner-monthly-report"]],
+      links: [["Monthly villa financial reporting scope", "/villa-financial-reporting-bali"], ["What to include in an owner report", "/blog/bali-villa-owner-statement-template"]],
     },
     {
       heading: "Questions to ask about occupancy, ADR, RevPAR and cash flow",
@@ -219,7 +219,7 @@ export const pageEducation: Record<string, EducationSection[]> = {
         "If cash and profit seem inconsistent, compare the owner report with the cash-flow guide. If the books are behind, make a period-by-period list of the statements available. If supplier expenses are hard to allocate, review the expense-tracking workflow. A specific example of the record problem helps Client Advisory discuss the work more accurately than a request to fix everything without seeing the scope.",
         "The journal is general educational information. It does not replace an engagement review or advice about tax, employment, immigration or legal status. Dated news articles retain their sources and limitations, and should not be treated as confirmation of current rules for your own circumstances.",
       ],
-      links: [["Browse the bookkeeping journal", "/blog"], ["Prepare a villa expense tracking system", "/blog/bali-villa-expense-tracking-system"]],
+      links: [["Browse the bookkeeping journal", "/blog"], ["Prepare a villa expense tracking system", "/blog/bali-villa-chart-of-accounts"]],
     },
   ],
   "/privacy": [
@@ -266,7 +266,7 @@ export const pageEducation: Record<string, EducationSection[]> = {
         "The monthly checklist explains how to collect bank exports, platform settlements, supplier invoices and owner notes before preparing a report. Use the Airbnb reconciliation guide when a booking total does not match the bank receipt. Read the owner-report guide when you need to distinguish operating profit, cash timing and owner movements.",
         "These articles support practical rental property bookkeeping. They do not promise platform integrations, tax savings or guaranteed business results. Choose the guide closest to your current record question, then use the service pages to confirm what can be included in an engagement.",
       ],
-      links: [["Monthly bookkeeping checklist", "/blog/monthly-bali-villa-bookkeeping-checklist"], ["Reconcile Airbnb and Booking.com payouts", "/blog/reconciling-airbnb-booking-payouts"], ["Monthly owner report guide", "/blog/bali-villa-owner-monthly-report"]],
+      links: [["Monthly bookkeeping checklist", "/blog/monthly-bali-villa-bookkeeping-checklist"], ["Reconcile Airbnb and Booking.com payouts", "/blog/reconciling-airbnb-booking-payouts"], ["Monthly owner report guide", "/blog/bali-villa-owner-statement-template"]],
     },
     {
       heading: "Keep expense controls and cash planning connected",
@@ -274,7 +274,7 @@ export const pageEducation: Record<string, EducationSection[]> = {
         "Expense tracking starts with the document behind a cost, the property it belongs to and the person responsible for clarification. A management pack brings those records together with booking and cash views. A forecast then makes future receipt and payment assumptions visible; it is not evidence that the projected amount will be received.",
         "Dated Indonesia news is published separately from the practical guides. Articles are general information, not individual tax, legal or immigration advice. Our in-house team offers separately scoped company, tax and visa support; a news headline is not an eligibility assessment or permission to operate or work.",
       ],
-      links: [["Villa expense tracking guide", "/blog/bali-villa-expense-tracking-system"], ["Villa cash-flow forecast guide", "/blog/bali-villa-cash-flow-forecast"], ["Explore monthly bookkeeping services", "/services"]],
+      links: [["Villa expense tracking guide", "/blog/bali-villa-chart-of-accounts"], ["Villa cash-flow forecast guide", "/blog/bali-villa-cash-flow-forecast"], ["Explore monthly bookkeeping services", "/services"]],
     },
   ],
 };
