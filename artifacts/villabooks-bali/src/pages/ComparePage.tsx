@@ -152,7 +152,7 @@ function DimensionTable({ page }: { page: ComparePageData }) {
     <section className="border-y border-primary/10 bg-white py-14 sm:py-20">
       <div className={wrap}>
         <p className={eyebrow}>Side by side</p>
-        <h2 className="mt-3 max-w-3xl font-serif text-3xl text-primary sm:text-4xl">{page.leftHeading} and {page.rightHeading.toLowerCase()}</h2>
+        <h2 className="mt-3 max-w-3xl font-serif text-3xl text-primary sm:text-4xl">{page.leftHeading}, compared with {page.rightHeading.toLowerCase()}</h2>
         <div className="mt-8 overflow-x-auto rounded-2xl border border-primary/10">
           <table className="w-full min-w-[720px] border-collapse text-left text-sm">
             <caption className="sr-only">{page.h1}: comparison by dimension</caption>
