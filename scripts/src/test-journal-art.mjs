@@ -134,6 +134,18 @@ assert.ok(!/Denderland|wikimedia/i.test(repaired.contentHtml), "the named third 
 const untouchedPost = { slug: "villa-petty-cash-reconciliation-vouchers-floats-counts", imageUrl: OLD_RAW, contentHtml: NAMED };
 assert.deepEqual(repointPost(untouchedPost), untouchedPost, "an article with no local art must keep its own credit");
 
+// A record with no local art of its own still runs its related cards through the
+// transform. A card pointing at an article that does have art must show that
+// article's art, or the card contradicts the page it links to.
+const noArtParent = { ...untouchedPost, relatedPosts: [{ slug, imageUrl: OLD_RAW, imageAlt: OLD_ALT_RAW }] };
+const noArtOut = repointPost(noArtParent);
+assert.equal(noArtOut.imageUrl, OLD_RAW, "a no-art record must keep its own image");
+assert.equal(noArtOut.contentHtml, NAMED, "a no-art record must keep its own credit");
+assert.ok(noArtOut.relatedPosts[0].imageUrl.endsWith(art.imageUrl), "a related card pointing at an art article must show its local art");
+assert.equal(noArtOut.relatedPosts[0].imageAlt, art.imageAlt, "the card alt must match the article it links to");
+assert.deepEqual(repointPost(noArtOut), noArtOut, "the card rewrite must be stable on a second pass");
+assert.equal(noArtParent.relatedPosts[0].imageUrl, OLD_RAW, "repointPost must not mutate the parent record's cards");
+
 assert.equal(repointJson(JSON.stringify(apiPost), `/api/blog/posts/${slug}`),
   JSON.stringify(repointPost(apiPost)), "single-record endpoint");
 assert.equal(repointJson(JSON.stringify([apiPost, untouchedPost]), "/api/blog/posts"),
