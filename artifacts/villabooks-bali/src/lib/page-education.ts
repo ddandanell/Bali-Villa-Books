@@ -139,7 +139,7 @@ export const pageEducation: Record<string, EducationSection[]> = {
         "Compare the work included rather than the headline price alone. A rental property's transaction volume, booking channels, accounts and record condition affect the reconciliation workload. Ask whether the quoted scope includes your property count, the report views you need and historical periods. Starter states one villa and up to two booking channels; limits for other packages must be confirmed.",
         "The monthly price should be read alongside responsibilities: who supplies exports, who answers questions and what happens when invoices arrive late. A bookkeeping package is not automatically a tax-filing, payroll-execution or company-compliance service. Our published prices cover the stated bookkeeping offering, with the actual basis and additional work agreed before engagement.",
       ],
-      links: [["Review Airbnb reconciliation deliverables", "/airbnb-bookkeeping-bali"], ["Compare report detail with the sample", "/sample-report"]],
+      links: [["Review Airbnb reconciliation deliverables", "/airbnb-bookkeeping-bali"], ["Weigh a monthly package against an hourly accountant", "/compare/monthly-package-vs-hourly-accountant"], ["Compare report detail with the sample", "/sample-report"]],
     },
     {
       heading: "Separate a recurring package from one-time bookkeeping cleanup",

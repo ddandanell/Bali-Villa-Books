@@ -15,10 +15,10 @@ import { calculateDemo, financeDemo, sum } from "@/lib/sample-finance-data";
 import { trackEvent } from "@/lib/analytics";
 
 const report = calculateDemo();
-const rupiah = (amount: number) => `Rp ${new Intl.NumberFormat("id-ID", { maximumFractionDigits: 0 }).format(amount)}`;
+const rupiah = (amount: number) => `Rp ${new Intl.NumberFormat("en-GB", { maximumFractionDigits: 0 }).format(amount)}`;
 const signedRupiah = (amount: number) => `${amount > 0 ? "+" : amount < 0 ? "−" : ""}${rupiah(Math.abs(amount))}`;
 const percentage = (value: number) => `${new Intl.NumberFormat("en", { maximumFractionDigits: 1, minimumFractionDigits: 1 }).format(value * 100)}%`;
-const compact = (amount: number) => `${new Intl.NumberFormat("id-ID", { maximumFractionDigits: 0 }).format(amount / 1_000_000)}m`;
+const compact = (amount: number) => `${new Intl.NumberFormat("en-GB", { maximumFractionDigits: 0 }).format(amount / 1_000_000)}m`;
 
 const actualGross = sum(financeDemo.channels.map((channel) => channel.gross));
 const actualRefunds = sum(financeDemo.channels.map((channel) => channel.refunds));
