@@ -223,6 +223,24 @@ for (const [target, sources] of internalLinks) {
   external.push({ target, sources: [...sources].slice(0, 5) });
 }
 
+// 2026-10-31: LINK-003 is a coded must rule (descriptive anchors, never "read more") and the
+// shared engine failed it on /faq with 16 generic anchors while this gate passed the build.
+// An anchor that does not describe its destination is invisible to a reader scanning links,
+// so the gate now fails on it rather than leaving the rule to a separate crawl.
+const GENERIC_ANCHOR = /^(read more|read this|read on|learn more|find out more|see more|more|details|click here|here|this page|this link|link|continue reading|go)$/i;
+for (const record of pages) {
+  const file = fileFor(record.path);
+  if (!existsSync(file)) continue;
+  const html = readFileSync(file, "utf8");
+  const generic = [];
+  for (const match of html.matchAll(/<a\b[^>]*?href="(\/[^"]*)"[^>]*>([\s\S]*?)<\/a>/gi)) {
+    const label = decode(match[2]).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+    const target = match[1].split("#")[0].split("?")[0] || "/";
+    if (GENERIC_ANCHOR.test(label)) generic.push(`"${label}" -> ${target}`);
+  }
+  if (generic.length) record.issues.push(`${generic.length} non-descriptive internal anchor(s), LINK-003: ${generic.slice(0, 3).join(", ")}`);
+}
+
 // 2026-10-31: the loop above reads href= only, so a <script src> or <img src> that 404s
 // passed the gate. Also check that no document was baked with a bundle this build does not
 // ship: that is the shape of the journal defect (77 URLs pointing at a dead asset pair).
