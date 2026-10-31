@@ -1,6 +1,18 @@
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { seoStrategy } from "@workspace/site-content";
+import { staticJournalPosts } from "@/lib/journal-static";
+
+
+// Articles this build prerenders are not in the blog API, so the journal hub cannot
+// link them. Give every marketing page the newest few as internal links, otherwise a
+// freshly published article is reachable only from its own sitemap.
+function newestStaticGuides() {
+  return staticJournalPosts
+    .slice()
+    .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))
+    .slice(0, 3);
+}
 
 export function SeoTopicGuides({ path }: { path: string }) {
   const cluster = seoStrategy.clusters.find(item => item.page === path)
@@ -16,6 +28,12 @@ export function SeoTopicGuides({ path }: { path: string }) {
           {guide.title}<ArrowRight className="mt-1 h-4 w-4 shrink-0" />
         </Link></li>
       )}</ul>
+      <div className="mt-10 border-t border-primary/10 pt-7">
+        <p className="text-xs font-bold uppercase tracking-[.18em] text-secondary">Newest from the journal</p>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-3">{newestStaticGuides().map(post =>
+          <li key={post.slug}><Link href={`/blog/${post.slug}`} className="block text-sm font-semibold leading-6 text-primary underline decoration-secondary/40 underline-offset-4 hover:decoration-secondary">{post.title}</Link></li>
+        )}</ul>
+      </div>
       {path !== cluster.page && <Link href={cluster.page} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4">Explore the related service<ArrowRight className="h-4 w-4" /></Link>}
     </div>
   </section>;
