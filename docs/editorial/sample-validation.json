@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-10-31T03:22:47.163Z",
+  "status": "deterministic_checks_passed",
+  "wordCount": 1827,
+  "inventorySize": 76,
+  "relatedLinksVerified": true,
+  "uniqueKeyword": true,
+  "approvedLocalImage": true,
+  "independentModelReview": "not_run_without_model_connection",
+  "published": false
+}

@@ -1,7 +1,8 @@
 export const TIMEZONE = "Asia/Makassar";
 export const SCHEDULED_HOUR = 9;
 export const MIN_WORDS = 1500;
-export const DAILY_POSTS = 2;
+// Latest owner request: one useful journal per Bali calendar day.
+export const DAILY_POSTS = 1;
 
 /** Public journal labels only. Never persist blueprint/cluster codes such as "SEO". */
 export const journalCategories = [

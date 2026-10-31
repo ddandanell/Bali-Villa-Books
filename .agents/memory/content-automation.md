@@ -3,7 +3,7 @@ name: Content automation
 description: User's editorial requirements and unattended publishing constraints.
 ---
 
-The user wants daily Journal publishing with pictures, individual SEO keywords and internal links, plus weekly SEO improvements. Their latest request says every day; retain the previously requested two-post daily allowance and include weekends. The supplied blueprint asks for 1,500–2,500-word standard articles.
+The user wants daily Journal publishing with pictures, individual SEO keywords and internal links, plus weekly SEO improvements. The latest request on 31 October 2026 specifies one post every day, including weekends; it supersedes the older two-post allowance. The supplied blueprint asks for 1,500–2,500-word standard articles.
 
 **Why:** The user wants unattended publishing and ongoing improvement, not a process they must supervise.
 

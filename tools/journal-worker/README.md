@@ -37,7 +37,7 @@ The package intentionally contains no `.replit` or artifact manifests. Set the
 worker's build/run commands in its own Publishing settings; never replace the
 main website's configuration with worker configuration.
 
-The 09:00 run creates that day's two articles. The 09:15, 09:30 and 09:45 runs
+The 09:00 run creates that day's one article. The 09:15, 09:30 and 09:45 runs
 are bounded recovery checks, not extra articles: completed slots are skipped
 without another generation. A failed slot gets at most four scheduled attempts.
 An active competing publisher or an incomplete exhausted run exits non-zero so

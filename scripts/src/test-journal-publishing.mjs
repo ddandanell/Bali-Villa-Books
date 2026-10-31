@@ -23,7 +23,7 @@ try {
   assert.equal(nextBlueprintTopic([...blueprintTopics,...priorityTopics].map(t=>({primaryKeyword:t.keyword}))),undefined);
   assert.equal(nextBlueprintTopic([{primaryKeyword:priorityTopics[0].keyword.toUpperCase().replaceAll(" ","-")}]).id,priorityTopics[1].id);
   assert.equal(MIN_WORDS,1500);
-  assert.equal(DAILY_POSTS,2);
+  assert.equal(DAILY_POSTS,1);
   assert.equal(baliClock(new Date("2026-10-10T00:59:00Z")).eligible,false);
   assert.equal(baliClock(new Date("2026-10-10T01:00:00Z")).eligible,true);
   assert.equal(baliClock(new Date("2026-10-11T01:00:00Z")).eligible,true);

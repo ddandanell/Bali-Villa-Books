@@ -4,13 +4,13 @@
 
 The uploaded 100-topic blueprint is bundled with the API and parsed into an explicit topic queue. Existing published primary keywords determine which topics have already been covered; the queue survives restarts without an in-memory progress counter.
 
-The existing two-post allowance is retained. The schedule now includes **every calendar day**, including weekends, at **09:00 Asia/Makassar**. Checks run every five minutes after that time. A database advisory lock, date/slot publication keys and completed run records prevent concurrent workers and restarted processes from publishing the same daily slot twice.
+The latest owner request is one useful post per day; this supersedes the older two-post allowance. The schedule now includes **every calendar day**, including weekends, at **09:00 Asia/Makassar**. Checks run every five minutes after that time. A database advisory lock, date/slot publication keys and completed run records prevent concurrent workers and restarted processes from publishing the same daily slot twice.
 
 The first article can be explicitly created before the scheduled hour with:
 
     pnpm --filter @workspace/api-server run publish-journals --first
 
-This creates only the first slot and skips the weekly review. The remaining daily slot can complete during the scheduled run. A normal unattended worker uses the same command without --first.
+This creates only the first slot and skips the weekly review. The completed slot is skipped by later scheduled recovery checks. A normal unattended worker uses the same command without --first.
 
 Each new article receives:
 
