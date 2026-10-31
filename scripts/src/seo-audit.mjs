@@ -223,6 +223,25 @@ for (const [target, sources] of internalLinks) {
   external.push({ target, sources: [...sources].slice(0, 5) });
 }
 
+// 2026-10-31: the loop above reads href= only, so a <script src> or <img src> that 404s
+// passed the gate. Also check that no document was baked with a bundle this build does not
+// ship: that is the shape of the journal defect (77 URLs pointing at a dead asset pair).
+const rootAssets = new Set(
+  [...readFileSync(path.join(dist, "index.html"), "utf8").matchAll(/\/assets\/[A-Za-z0-9._-]+/g)].map(match => match[0]),
+);
+for (const record of pages) {
+  const file = fileFor(record.path);
+  if (!existsSync(file)) continue;
+  const html = readFileSync(file, "utf8");
+  for (const match of html.matchAll(/src="(\/(?:assets|images)\/[^"?]+)/g)) {
+    const target = decode(match[1]);
+    if (!existsSync(path.join(dist, target.slice(1)))) errors.push(`${record.path}: missing asset ${target}`);
+  }
+  for (const match of html.matchAll(/\/assets\/[A-Za-z0-9._-]+/g)) {
+    if (!rootAssets.has(match[0])) errors.push(`${record.path}: references ${match[0]}, which this build does not ship`);
+  }
+}
+
 for (const record of pages) if (record.issues.length) errors.push(`${record.path}: ${record.issues.join("; ")}`);
 for (const record of pages) if (record.warnings.length) warnings.push(`${record.path}: ${record.warnings.join("; ")}`);
 for (const dead of external) errors.push(`unresolved internal link ${dead.target} (from ${dead.sources.join(", ")})`);
