@@ -1,5 +1,5 @@
 import { SITE_ORIGIN } from "./site-pages";
-import { getPageImagery, articleVisual } from "./page-imagery";
+import { getPageImagery, localArticleArt } from "./page-imagery";
 
 // New filenames intentionally replace the cached, old VillaBooks screenshot.
 export const DEFAULT_SHARE_IMAGE = getPageImagery("/")!.shareImage;
@@ -14,7 +14,9 @@ export function shareImageAlt(pathname: string) {
 }
 
 export function updateShareImage(pathname: string, article?: { slug?: string; imageUrl: string; imageAlt: string; updatedAt: string | Date }) {
-  const localArt = article?.slug ? articleVisual(article.slug, article) : undefined;
+  // Only art this build actually ships has a known 1200x630 share card; an
+  // article still on the database image must not be described as one.
+  const localArt = article?.slug ? localArticleArt(article.slug) : undefined;
   const url = new URL(localArt?.shareImage ?? article?.imageUrl ?? shareImage(pathname), SITE_ORIGIN);
   if (article && url.origin === SITE_ORIGIN) {
     const version = new Date(typeof article.updatedAt === "string" ? article.updatedAt : article.updatedAt.getTime()).getTime();
