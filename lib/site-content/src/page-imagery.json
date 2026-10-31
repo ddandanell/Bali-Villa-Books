@@ -214,5 +214,50 @@
     "height": 750,
     "updatedAt": "2026-10-28T04:06:54.019Z",
     "caption": "Illustrative visual, not an actual client engagement or an official document."
+  },
+  "/compare": {
+    "imageUrl": "/images/pages/compare-compare-2026-10.webp",
+    "imageAlt": "Illustrative side-by-side comparison diagram of four bookkeeping models for a Bali villa, with a record-to-report flow",
+    "shareImage": "/images/share/compare-compare-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-31T03:55:00.000Z",
+    "caption": "Illustrative diagram, not a client record or an official document."
+  },
+  "/compare/bali-firm-vs-offshore-bookkeeper": {
+    "imageUrl": "/images/pages/compare-bali-firm-vs-offshore-bookkeeper-2026-10.webp",
+    "imageAlt": "Illustrative comparison diagram of a Bali-based accounting firm and an offshore bookkeeping service",
+    "shareImage": "/images/share/compare-bali-firm-vs-offshore-bookkeeper-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-31T03:55:00.000Z",
+    "caption": "Illustrative diagram, not a client record or an official document."
+  },
+  "/compare/villa-manager-vs-specialist-bookkeeping": {
+    "imageUrl": "/images/pages/compare-villa-manager-vs-specialist-bookkeeping-2026-10.webp",
+    "imageAlt": "Illustrative comparison diagram of a villa management statement against reconciled specialist books",
+    "shareImage": "/images/share/compare-villa-manager-vs-specialist-bookkeeping-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-31T03:55:00.000Z",
+    "caption": "Illustrative diagram, not a client record or an official document."
+  },
+  "/compare/monthly-package-vs-hourly-accountant": {
+    "imageUrl": "/images/pages/compare-monthly-package-vs-hourly-accountant-2026-10.webp",
+    "imageAlt": "Illustrative comparison diagram of a fixed monthly bookkeeping package against hourly accountant work",
+    "shareImage": "/images/share/compare-monthly-package-vs-hourly-accountant-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-31T03:55:00.000Z",
+    "caption": "Illustrative diagram, not a client record or an official document."
+  },
+  "/compare/cleanup-and-monthly-vs-monthly-only": {
+    "imageUrl": "/images/pages/compare-cleanup-and-monthly-vs-monthly-only-2026-10.webp",
+    "imageAlt": "Illustrative comparison diagram of cleanup bookkeeping followed by monthly bookkeeping against monthly only",
+    "shareImage": "/images/share/compare-cleanup-and-monthly-vs-monthly-only-2026-10.jpg",
+    "width": 1200,
+    "height": 750,
+    "updatedAt": "2026-10-31T03:55:00.000Z",
+    "caption": "Illustrative diagram, not a client record or an official document."
   }
 }

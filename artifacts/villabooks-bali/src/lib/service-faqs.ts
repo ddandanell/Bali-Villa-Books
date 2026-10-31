@@ -1,0 +1,14 @@
+/**
+ * FAQ copy for the marketing service pages, shared by the page component and the
+ * document head so the visible answers and the FAQPage schema cannot drift.
+ */
+
+export const serviceFaqs: Record<string, [string, string][]> = {
+  "/airbnb-bookkeeping-bali": [["Do you connect directly to Airbnb or Booking.com?", "No direct integration is promised. We work from the records and exports agreed during intake."], ["What if a payout is different from the bank deposit?", "We record the visible difference and ask for the relevant statement or explanation. Unresolved timing or evidence gaps remain identified in the report."], ["Can you reconcile direct bookings too?", "Yes, where booking schedules and supporting receipts are supplied and included in the agreed scope."]],
+  "/villa-financial-reporting-bali": [["Can you show me what the report looks like?", "Yes. The ungated sample page uses fictional figures and explains how to read each part."], ["Does a report guarantee delivery on the 15th?", "No. The 15th is a target after complete, timely source records are received."], ["Is a P&L the same as cash in the bank?", "No. The page explains the difference using fictional example numbers."]],
+  "/villa-bookkeeping-cleanup-bali": [["What does up to 12 months mean?", "It describes the maximum period in the stated starting offer, subject to review—not a promise that every 12-month backlog fits the same price."], ["Can all missing records be reconstructed?", "Only where evidence supports it. Remaining gaps are listed for owner or adviser follow-up."], ["What should I send first?", "Start with a high-level description through the form or WhatsApp. We will agree a suitable document handover after reviewing fit and scope."]],
+  "/pt-pma-villa-bookkeeping": [["Is tax treatment advice included in PT PMA bookkeeping?", "No. The bookkeeping package organises records. Tax assessment and filing support are available through a separately scoped engagement with the responsible qualified professional."], ["Can records be separated by property?", "We can discuss an agreed schedule structure based on the records and scope; confirm the exact reporting dimensions before agreement."], ["Can you support company tax returns?", "Yes, discuss our separate tax-compliance service. The engagement confirms preparation, professional responsibility, client approval and any authorised submission work."]],
+  "/villa-payroll-records-bali": [["Do you run payroll or pay staff?", "No. We organize supplied payroll records within the bookkeeping scope; the owner or operator remains responsible for execution and authorization."], ["Do you register staff with BPJS?", "No. The stated service is record tracking only, not registration or filing."], ["What if payroll records are incomplete?", "We list missing evidence and request clarification rather than inventing amounts or status."]],
+};
+
+export const serviceFaqPaths = Object.keys(serviceFaqs);

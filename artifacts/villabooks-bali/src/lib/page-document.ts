@@ -6,6 +6,8 @@ import { OTA_PILLAR_PATH, otaFaqs, otaSteps } from "./ota-pillar";
 import { DEFAULT_SHARE_IMAGE, shareImage, shareImageAlt } from "./social-images";
 import { expandedServices } from "./expanded-services";
 import { getPageImagery } from "./page-imagery";
+import { comparePages, compareHub } from "./compare-pages";
+import { serviceFaqs } from "./service-faqs";
 
 const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]!));
 const json = (value: unknown) => JSON.stringify(value).replace(/</g, "\\u003c");
@@ -25,6 +27,7 @@ export function pageDocument(template: string, content: string, pathname: string
   const canonical = `${SITE_ORIGIN}${path}`;
   const socialImage = article ? new URL(article.imageUrl, SITE_ORIGIN).href : `${SITE_ORIGIN}${shareImage(path)}`;
   const socialAlt = article ? article.imageAlt : shareImageAlt(path);
+  const compareChild = comparePages.find(item => item.path === path);
   const businessId = `${SITE_ORIGIN}/#business`;
   const webId = `${SITE_ORIGIN}/#website`;
   const graph: unknown[] = [{
@@ -65,10 +68,29 @@ export function pageDocument(template: string, content: string, pathname: string
     })),
   });
   if (path !== "/" && sitePages[path]) graph.push({
-    "@type": "BreadcrumbList", itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_ORIGIN}/` },
-      { "@type": "ListItem", position: 2, name: page.h1, item: canonical },
-    ],
+    "@type": "BreadcrumbList", itemListElement: compareChild
+      ? [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_ORIGIN}/` },
+          { "@type": "ListItem", position: 2, name: "Compare", item: `${SITE_ORIGIN}/compare` },
+          { "@type": "ListItem", position: 3, name: compareChild.label, item: canonical },
+        ]
+      : [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_ORIGIN}/` },
+          { "@type": "ListItem", position: 2, name: page.h1, item: canonical },
+        ],
+  });
+  // Comparison pages answer the same questions on the page and in the schema.
+  const compareEntry = compareChild ?? (path === compareHub.path ? compareHub : undefined);
+  if (compareEntry) graph.push({
+    "@type": "FAQPage", "@id": `${canonical}#questions`,
+    mainEntity: compareEntry.faqs.map(entry => ({
+      "@type": "Question", name: entry[0], acceptedAnswer: { "@type": "Answer", text: entry[1] },
+    })),
+  });
+  if (path === compareHub.path) graph.push({
+    "@type": "CollectionPage", "@id": `${canonical}#comparisons`, name: compareHub.h1,
+    description: compareHub.description, url: canonical,
+    hasPart: comparePages.map(item => ({ "@type": "WebPage", name: item.h1, url: `${SITE_ORIGIN}${item.path}` })),
   });
   const visual = getPageImagery(path);
   if (visual) graph.push({
@@ -77,6 +99,13 @@ export function pageDocument(template: string, content: string, pathname: string
     width: visual.width, height: visual.height,
   });
   if (page.service) graph.push({ "@type": "Service", "@id": `${canonical}#service`, name: page.h1, description: page.description, image: visual ? `${SITE_ORIGIN}${visual.imageUrl}` : undefined, url: canonical, provider: { "@id": businessId }, areaServed: "Bali, Indonesia" });
+  const legacyFaqs = serviceFaqs[path];
+  if (legacyFaqs?.length) graph.push({
+    "@type": "FAQPage", "@id": `${canonical}#questions`,
+    mainEntity: legacyFaqs.map(([question, answer]) => ({
+      "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer },
+    })),
+  });
   const service = expandedServices.find(item => item.path === path);
   if (service) graph.push({
     "@type": "FAQPage", "@id": `${canonical}#questions`,

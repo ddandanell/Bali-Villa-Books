@@ -9,6 +9,8 @@ import Home from "@/pages/Home";
 import Blog from "@/pages/Blog";
 import BlogArticle from "@/pages/BlogArticle";
 import PageContent from "@/pages/PageContent";
+import ComparePage from "@/pages/ComparePage";
+import { allComparePaths } from "@/lib/compare-pages";
 import OtaPillar from "@/pages/OtaPillar";
 
 export const queryClient = new QueryClient();
@@ -28,6 +30,10 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={BlogArticle} />
+      <Route path="/compare"><ComparePage path="/compare" /></Route>
+      {allComparePaths.filter(path => path !== "/compare").map(path => (
+        <Route key={path} path={path}><ComparePage path={path} /></Route>
+      ))}
       <Route path="/services"><PageContent path="/services" /></Route>
       <Route path="/airbnb-bookkeeping-bali"><PageContent path="/airbnb-bookkeeping-bali" /></Route>
       <Route path="/airbnb-ota-reconciliation-bali"><OtaPillar /></Route>

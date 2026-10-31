@@ -9,6 +9,7 @@ import { BookkeepingDecisionGuide } from "@/components/BookkeepingDecisionGuide"
 import { ClientShowcase, SixVillaScenario } from "@/components/ClientShowcase";
 import { PageEducation } from "@/components/PageEducation";
 import { additionalFaqs } from "@/lib/additional-faqs";
+import { serviceFaqs } from "@/lib/service-faqs";
 import { PHONE, SITE_ORIGIN, sitePages, whatsapp } from "@/lib/site-pages";
 import { updateShareImage } from "@/lib/social-images";
 import { trackEvent } from "@/lib/analytics";
@@ -30,6 +31,27 @@ const serviceLinks = [
   ["/villa-payroll-records-bali", "Villa payroll and BPJS records"],
 ];
 
+/** Each service page answers one comparison question, so the cluster is not orphaned. */
+const compareCrossLinks: Record<string, [string, string]> = {
+  "/airbnb-bookkeeping-bali": ["Bali firm or offshore bookkeeper?", "/compare/bali-firm-vs-offshore-bookkeeper"],
+  "/airbnb-ota-reconciliation-bali": ["Manager statement or specialist books?", "/compare/villa-manager-vs-specialist-bookkeeping"],
+  "/villa-financial-reporting-bali": ["Manager statement or specialist books?", "/compare/villa-manager-vs-specialist-bookkeeping"],
+  "/villa-bookkeeping-cleanup-bali": ["Cleanup first, or straight to monthly?", "/compare/cleanup-and-monthly-vs-monthly-only"],
+  "/pt-pma-villa-bookkeeping": ["Bali firm or offshore bookkeeper?", "/compare/bali-firm-vs-offshore-bookkeeper"],
+  "/villa-payroll-records-bali": ["Manager statement or specialist books?", "/compare/villa-manager-vs-specialist-bookkeeping"],
+};
+
+function CompareCrossLink({ path }: { path: string }) {
+  const entry = compareCrossLinks[path];
+  if (!entry) return null;
+  return <section className="border-y border-primary/10 bg-white py-10">
+    <div className={`${wrap} flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between`}>
+      <p className="text-sm leading-7 text-foreground/70"><span className="font-semibold text-primary">Still deciding between options?</span> The comparison sets out what each model produces, and where it breaks.</p>
+      <Link href={entry[1]} className={linkClass}>{entry[0]}<ArrowRight className="h-4 w-4" /></Link>
+    </div>
+  </section>;
+}
+
 const serviceDetails: Record<string, ServiceInfo> = {
   ...Object.fromEntries(expandedServices.map(service => [service.path, service.details])),
   "/airbnb-bookkeeping-bali": {
@@ -44,7 +66,7 @@ const serviceDetails: Record<string, ServiceInfo> = {
     timing: "Timing depends on the agreed close calendar and when complete, usable source records arrive. Delivery by the 15th is a target after complete and timely source documents—not a guaranteed date.",
     price: `Monthly channel reconciliation is included according to the selected package's stated scope. Current package prices are ${priceText(prices.starter)}, ${priceText(prices.professional)} and ${priceText(prices.premium)} per month. Confirm the price basis, transaction volume and exact limits before agreement; those details are not assumed here.`,
     excludes: ["Direct OTA account access or platform integrations are not promised; work uses exports or statements provided by the client.", "We do not control bank accounts, authorize transfers or pay suppliers.", "Tax advice, legal advice and official filings are outside scope."],
-    faqs: [["Do you connect directly to Airbnb or Booking.com?", "No direct integration is promised. We work from the records and exports agreed during intake."], ["What if a payout is different from the bank deposit?", "We record the visible difference and ask for the relevant statement or explanation. Unresolved timing or evidence gaps remain identified in the report."], ["Can you reconcile direct bookings too?", "Yes, where booking schedules and supporting receipts are supplied and included in the agreed scope."]],
+    faqs: serviceFaqs["/airbnb-bookkeeping-bali"],
     guide: "Visit the journal for practical notes on payout reconciliation and monthly records.",
   },
   "/villa-financial-reporting-bali": {
@@ -59,7 +81,7 @@ const serviceDetails: Record<string, ServiceInfo> = {
     timing: "The 15th is a reporting target only when source documents are complete and received on time. Late records, unresolved questions or complex reconciliations can change delivery timing.",
     price: `Packages are ${priceText(prices.starter)}, ${priceText(prices.professional)} and ${priceText(prices.premium)} per month, with different reporting inclusions. Review the comparison page and confirm exact scope and price basis before agreement.`,
     excludes: ["Reports are management information, not audit opinions or official tax statements.", "Tax advice and filing support require a separate tax-compliance engagement; they are not included in this reporting package.", "No control of client bank accounts or payment authority is included."],
-    faqs: [["Can you show me what the report looks like?", "Yes. The ungated sample page uses fictional figures and explains how to read each part."], ["Does a report guarantee delivery on the 15th?", "No. The 15th is a target after complete, timely source records are received."], ["Is a P&L the same as cash in the bank?", "No. The page explains the difference using fictional example numbers."]],
+    faqs: serviceFaqs["/villa-financial-reporting-bali"],
     guide: "The sample report shows the shape of the monthly pack using demonstration figures only.",
   },
   "/villa-bookkeeping-cleanup-bali": {
@@ -74,7 +96,7 @@ const serviceDetails: Record<string, ServiceInfo> = {
     timing: "Duration depends on the period, completeness, transaction complexity and response to questions. Timing is confirmed after records review; no fixed turnaround is promised.",
     price: `Historical cleanup starts at ${priceText(prices.cleanup)} for up to 12 months, subject to review of the records and scope. This is a starting point, not a quote; confirm price basis and boundaries before agreement.`,
     excludes: ["Unsupported figures are not fabricated to fill gaps.", "Official filings, tax advice, legal conclusions and audit assurance are not included.", "The public enquiry form is not a document upload channel."],
-    faqs: [["What does up to 12 months mean?", "It describes the maximum period in the stated starting offer, subject to review—not a promise that every 12-month backlog fits the same price."], ["Can all missing records be reconstructed?", "Only where evidence supports it. Remaining gaps are listed for owner or adviser follow-up."], ["What should I send first?", "Start with a high-level description through the form or WhatsApp. We will agree a suitable document handover after reviewing fit and scope."]],
+    faqs: serviceFaqs["/villa-bookkeeping-cleanup-bali"],
     guide: "Browse the journal for practical record-keeping guidance before a cleanup review.",
   },
   "/pt-pma-villa-bookkeeping": {
@@ -89,7 +111,7 @@ const serviceDetails: Record<string, ServiceInfo> = {
     timing: "Monthly timing follows the agreed close and document arrival. The 15th is a target after complete, timely records; it is not a filing deadline or delivery guarantee.",
     price: `Monthly packages currently range from ${priceText(prices.starter)} to ${priceText(prices.premium)}. Exact scope and price basis depend on the records review and must be confirmed before agreement.`,
     excludes: ["Company formation, tax assessment and submission work are separately scoped, not included in this bookkeeping package.", "Any work requiring a professional licence or authority must be undertaken by the appropriate authorised person confirmed in the engagement.", "No bank access, payment execution or authorization is implied."],
-    faqs: [["Is tax treatment advice included in PT PMA bookkeeping?", "No. The bookkeeping package organises records. Tax assessment and filing support are available through a separately scoped engagement with the responsible qualified professional."], ["Can records be separated by property?", "We can discuss an agreed schedule structure based on the records and scope; confirm the exact reporting dimensions before agreement."], ["Can you support company tax returns?", "Yes, discuss our separate tax-compliance service. The engagement confirms preparation, professional responsibility, client approval and any authorised submission work."]],
+    faqs: serviceFaqs["/pt-pma-villa-bookkeeping"],
     guide: "Browse our journal for useful notes on preparing organized bookkeeping records.",
   },
   "/villa-payroll-records-bali": {
@@ -104,7 +126,7 @@ const serviceDetails: Record<string, ServiceInfo> = {
     timing: "Records follow the monthly close calendar. The 15th remains a target after complete and timely source documents, not a guarantee.",
     price: "Payroll and BPJS record tracking appears in the published Professional and Premium package inclusions. Confirm the exact scope, price basis and record limits before agreement.",
     excludes: ["No payroll payment execution, bank access or payment authorization.", "No BPJS registration, contribution calculation, filing or employment-law advice.", "No tax advice or official filings."],
-    faqs: [["Do you run payroll or pay staff?", "No. We organize supplied payroll records within the bookkeeping scope; the owner or operator remains responsible for execution and authorization."], ["Do you register staff with BPJS?", "No. The stated service is record tracking only, not registration or filing."], ["What if payroll records are incomplete?", "We list missing evidence and request clarification rather than inventing amounts or status."]],
+    faqs: serviceFaqs["/villa-payroll-records-bali"],
     guide: "Read more journal notes on record-keeping and monthly close processes.",
   },
 };
@@ -154,6 +176,7 @@ function ServicePage({ path }: { path: string }) {
       <p className="mt-3 text-sm leading-7 text-foreground/70">Explore the adjacent workstreams. Each has its own responsibilities and agreed scope.</p>
       <div className="mt-5 flex flex-wrap gap-x-8 gap-y-4">{relatedServicePaths[path].map(href => <Link key={href} href={href} className={linkClass}>{sitePages[href].h1}<ArrowRight className="h-4 w-4" /></Link>)}</div>
     </section>}
+    <CompareCrossLink path={path} />
     <section className="bg-accent/45 py-12"><div className={`${wrap} flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between`}><div><p className={eyebrow}>Client Advisory</p><h2 className="mt-2 font-serif text-3xl text-primary">Talk through your records.</h2></div><CTA message={`Hello Client Advisory, I'd like to discuss ${path.replaceAll("-", " ").replace("/", "")}.`} /></div></section>
   </>;
 }

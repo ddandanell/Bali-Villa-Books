@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
-    "build": "vite build --config vite.config.ts && vite build --config vite.ssr.config.ts && node prerender.mjs",
+    "build": "vite build --config vite.config.ts && vite build --config vite.ssr.config.ts && node prerender.mjs && node ../../scripts/src/seo-audit.mjs",
+    "seo:audit": "node ../../scripts/src/seo-audit.mjs",
     "serve": "node server.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },

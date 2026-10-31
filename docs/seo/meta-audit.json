@@ -1,0 +1,580 @@
+{
+  "generatedAt": "2026-10-31T03:59:09.145Z",
+  "origin": "https://bali-villa-accounting-service.com",
+  "pages": 29,
+  "errors": [],
+  "warnings": [
+    "/sample-report: 1 FAQ blocks without FAQPage schema",
+    "/terms: short body: 575 words",
+    "/blog/bali-villa-pbjt-accommodation-tax-records: FAQPage schema without on-page details blocks"
+  ],
+  "routes": [
+    {
+      "path": "/company-formation-bali",
+      "issues": [],
+      "warnings": [],
+      "title": "PT PMA Company Formation Bali | Bali Accounting",
+      "description": "Company formation and PT PMA setup support in Bali: review activities, prepare documents and plan tax registration, licensing and ongoing bookkeeping.",
+      "canonical": "https://bali-villa-accounting-service.com/company-formation-bali",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/company-formation-bali-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject",
+        "Service",
+        "FAQPage"
+      ],
+      "words": 1005
+    },
+    {
+      "path": "/business-licensing-bali",
+      "issues": [],
+      "warnings": [],
+      "title": "OSS & NIB Business Licensing Bali | Bali Accounting",
+      "description": "Business licensing support in Bali: organise OSS and NIB records, review activities and identify licence questions for a documented application workflow.",
+      "canonical": "https://bali-villa-accounting-service.com/business-licensing-bali",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/business-licensing-bali-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject",
+        "Service",
+        "FAQPage"
+      ],
+      "words": 966
+    },
+    {
+      "path": "/tax-registration-bali",
+      "issues": [],
+      "warnings": [],
+      "title": "NPWP & Coretax Registration Bali | Bali Accounting",
+      "description": "NPWP and Coretax registration support in Bali for businesses and owners. Prepare documents, confirm responsibilities and connect registration to bookkeeping.",
+      "canonical": "https://bali-villa-accounting-service.com/tax-registration-bali",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/tax-registration-bali-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject",
+        "Service",
+        "FAQPage"
+      ],
+      "words": 943
+    },
+    {
+      "path": "/tax-compliance-bali",
+      "issues": [],
+      "warnings": [],
+      "title": "Tax Compliance & Filing Support Bali | Bali Accounting",
+      "description": "Bali tax compliance and filing support: organise accounting evidence, review responsibilities and agree authorised preparation and submission scope.",
+      "canonical": "https://bali-villa-accounting-service.com/tax-compliance-bali",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/tax-compliance-bali-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject",
+        "Service",
+        "FAQPage"
+      ],
+      "words": 974
+    },
+    {
+      "path": "/tax-planning-bali",
+      "issues": [],
+      "warnings": [],
+      "title": "Bali Tax Planning & Benefits Review | Bali Accounting",
+      "description": "Tax planning and tax-benefit eligibility reviews in Bali. Review business evidence, costs and potential relief without promised savings or blanket tax claims.",
+      "canonical": "https://bali-villa-accounting-service.com/tax-planning-bali",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/tax-planning-bali-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject",
+        "Service",
+        "FAQPage"
+      ],
+      "words": 969
+    },
+    {
+      "path": "/business-visa-bali",
+      "issues": [],
+      "warnings": [],
+      "title": "Business Visa Support Bali | Bali Accounting",
+      "description": "Business visa application support in Bali: review travel purpose, prepare documents and track the agreed application steps without guaranteed approval.",
+      "canonical": "https://bali-villa-accounting-service.com/business-visa-bali",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/business-visa-bali-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject",
+        "Service",
+        "FAQPage"
+      ],
+      "words": 862
+    },
+    {
+      "path": "/investor-kitas-bali",
+      "issues": [],
+      "warnings": [],
+      "title": "Investor KITAS Support Bali | Bali Accounting",
+      "description": "Investor KITAS application support in Bali: review company and applicant records, prepare documents and distinguish residency from business permissions.",
+      "canonical": "https://bali-villa-accounting-service.com/investor-kitas-bali",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/investor-kitas-bali-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject",
+        "Service",
+        "FAQPage"
+      ],
+      "words": 886
+    },
+    {
+      "path": "/company-compliance-bali",
+      "issues": [],
+      "warnings": [],
+      "title": "Company Compliance Reporting Bali | Bali Accounting",
+      "description": "Ongoing company compliance support in Bali: organise corporate records, confirm reporting responsibilities and connect accounting with agreed submissions.",
+      "canonical": "https://bali-villa-accounting-service.com/company-compliance-bali",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/company-compliance-bali-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject",
+        "Service",
+        "FAQPage"
+      ],
+      "words": 955
+    },
+    {
+      "path": "/compare/bali-firm-vs-offshore-bookkeeper",
+      "issues": [],
+      "warnings": [],
+      "title": "Bali Accountant or Offshore Bookkeeper? Villa Owner Comparison",
+      "description": "Compare a Bali-based accountant with an offshore bookkeeping service: documents, OTA payouts, owner reporting and the pack a tax consultant needs.",
+      "canonical": "https://bali-villa-accounting-service.com/compare/bali-firm-vs-offshore-bookkeeper",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/compare-bali-firm-vs-offshore-bookkeeper-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "FAQPage",
+        "ImageObject"
+      ],
+      "words": 1795
+    },
+    {
+      "path": "/compare/villa-manager-vs-specialist-bookkeeping",
+      "issues": [],
+      "warnings": [],
+      "title": "Villa Manager Bookkeeping vs a Specialist Accountant",
+      "description": "What a villa management statement gives an owner, what specialist bookkeeping adds, and how to test whether the statement ties to the bank.",
+      "canonical": "https://bali-villa-accounting-service.com/compare/villa-manager-vs-specialist-bookkeeping",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/compare-villa-manager-vs-specialist-bookkeeping-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "FAQPage",
+        "ImageObject"
+      ],
+      "words": 1600
+    },
+    {
+      "path": "/compare/monthly-package-vs-hourly-accountant",
+      "issues": [],
+      "warnings": [],
+      "title": "Monthly Bookkeeping Package or Hourly Accountant in Bali?",
+      "description": "Compare a fixed monthly bookkeeping package with an hourly accountant in Bali: what each covers, the break-even point and the costs that hourly work hides.",
+      "canonical": "https://bali-villa-accounting-service.com/compare/monthly-package-vs-hourly-accountant",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/compare-monthly-package-vs-hourly-accountant-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "FAQPage",
+        "ImageObject"
+      ],
+      "words": 1577
+    },
+    {
+      "path": "/compare/cleanup-and-monthly-vs-monthly-only",
+      "issues": [],
+      "warnings": [],
+      "title": "Bookkeeping Cleanup First, or Straight to Monthly?",
+      "description": "Three tests that show whether your villa books need a cleanup before monthly bookkeeping, what a cleanup produces, and how the sequence and cost work.",
+      "canonical": "https://bali-villa-accounting-service.com/compare/cleanup-and-monthly-vs-monthly-only",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/compare-cleanup-and-monthly-vs-monthly-only-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "FAQPage",
+        "ImageObject"
+      ],
+      "words": 1608
+    },
+    {
+      "path": "/compare",
+      "issues": [],
+      "warnings": [],
+      "title": "Bali Villa Accounting Compared: Four Ways to Get the Books Done",
+      "description": "Compare four ways to run Bali villa bookkeeping — DIY, manager in-house, offshore service and a Bali firm — on documents, payouts, owner reporting and cost.",
+      "canonical": "https://bali-villa-accounting-service.com/compare",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/compare-compare-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "FAQPage",
+        "CollectionPage",
+        "ImageObject"
+      ],
+      "words": 1765
+    },
+    {
+      "path": "/",
+      "issues": [],
+      "warnings": [],
+      "title": "Villa Accounting Bali | Bookkeeping & Airbnb Reconciliation",
+      "description": "Bali villa accounting specialists. Monthly bookkeeping, Airbnb/OTA reconciliation and clear owner reports from Rp 2.9m. Free consultation.",
+      "canonical": "https://bali-villa-accounting-service.com/",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/home-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "ImageObject",
+        "FAQPage",
+        "OfferCatalog"
+      ],
+      "words": 2669
+    },
+    {
+      "path": "/services",
+      "issues": [],
+      "warnings": [],
+      "title": "Accounting Services Bali | Clear Monthly Books",
+      "description": "Compare accounting services in Bali: monthly bookkeeping, PT PMA setup, company records, tax and visa support. Clear deliverables and separately agreed scopes.",
+      "canonical": "https://bali-villa-accounting-service.com/services",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/services-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject"
+      ],
+      "words": 1387
+    },
+    {
+      "path": "/airbnb-bookkeeping-bali",
+      "issues": [],
+      "warnings": [],
+      "title": "Airbnb Bookkeeping Bali | Payouts & Fees",
+      "description": "Airbnb bookkeeping for Bali villas: reconcile Booking.com and OTA payouts, cleaning fees, extra guest charges and refunds. Keep short-term rental records clear.",
+      "canonical": "https://bali-villa-accounting-service.com/airbnb-bookkeeping-bali",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/airbnb-bookkeeping-bali-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject",
+        "Service",
+        "FAQPage"
+      ],
+      "words": 1279
+    },
+    {
+      "path": "/airbnb-ota-reconciliation-bali",
+      "issues": [],
+      "warnings": [],
+      "title": "Airbnb & OTA Payout Reconciliation for Bali Villas",
+      "description": "Reconcile Airbnb, Booking.com, Agoda and direct bookings for Bali villas: gross bookings to platform fees, refunds, reserves and bank receipts. From Rp 2.9m/month.",
+      "canonical": "https://bali-villa-accounting-service.com/airbnb-ota-reconciliation-bali",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/airbnb-ota-reconciliation-bali-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject",
+        "Service",
+        "FAQPage",
+        "HowTo"
+      ],
+      "words": 2456
+    },
+    {
+      "path": "/villa-financial-reporting-bali",
+      "issues": [],
+      "warnings": [],
+      "title": "Villa Financial Reporting Bali | P&L & Cash Flow",
+      "description": "Monthly villa financial reporting in Bali with profit and loss, rental income, expense tracking and cash-flow explanations. Explore a sample owner report.",
+      "canonical": "https://bali-villa-accounting-service.com/villa-financial-reporting-bali",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/villa-financial-reporting-bali-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject",
+        "Service",
+        "FAQPage"
+      ],
+      "words": 1232
+    },
+    {
+      "path": "/villa-bookkeeping-cleanup-bali",
+      "issues": [],
+      "warnings": [],
+      "title": "Bookkeeping Cleanup Bali | Catch-Up Books",
+      "description": "Catch-up bookkeeping for Bali villas: resolve unmatched bank transactions, organize overdue records and document missing evidence. From Rp 7.9m after review.",
+      "canonical": "https://bali-villa-accounting-service.com/villa-bookkeeping-cleanup-bali",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/villa-bookkeeping-cleanup-bali-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject",
+        "Service",
+        "FAQPage"
+      ],
+      "words": 1187
+    },
+    {
+      "path": "/pt-pma-villa-bookkeeping",
+      "issues": [],
+      "warnings": [],
+      "title": "PT PMA Accounting Bali | Villa Bookkeeping",
+      "description": "PT PMA bookkeeping in Bali for villa operators: reconcile company transactions, explain currency differences and separate owner funding from operating revenue.",
+      "canonical": "https://bali-villa-accounting-service.com/pt-pma-villa-bookkeeping",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/pt-pma-villa-bookkeeping-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject",
+        "Service",
+        "FAQPage"
+      ],
+      "words": 1210
+    },
+    {
+      "path": "/villa-payroll-records-bali",
+      "issues": [],
+      "warnings": [],
+      "title": "Villa Payroll Records Bali | Staff Costs & BPJS",
+      "description": "Organize Bali villa payroll records, staff costs and BPJS documents within your monthly bookkeeping. Record tracking only, not payroll execution or filing.",
+      "canonical": "https://bali-villa-accounting-service.com/villa-payroll-records-bali",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/villa-payroll-records-bali-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject",
+        "Service",
+        "FAQPage"
+      ],
+      "words": 1129
+    },
+    {
+      "path": "/pricing",
+      "issues": [],
+      "warnings": [],
+      "title": "Bali Bookkeeping Prices | From Rp 2.9m/Month",
+      "description": "Compare monthly bookkeeping costs for Bali villas, from Rp 2.9m/month. Review owner reports, OTA reconciliation and payroll-record scope before choosing.",
+      "canonical": "https://bali-villa-accounting-service.com/pricing",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/pricing-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject",
+        "OfferCatalog"
+      ],
+      "words": 842
+    },
+    {
+      "path": "/sample-report",
+      "issues": [],
+      "warnings": [
+        "1 FAQ blocks without FAQPage schema"
+      ],
+      "title": "Villa Financial Report Example | Bali Accounting",
+      "description": "See a fictional monthly villa financial report with P&L, occupancy, ADR, RevPAR, cash-flow forecast and OTA reconciliation. Download CSV or print the example.",
+      "canonical": "https://bali-villa-accounting-service.com/sample-report",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/sample-report-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject"
+      ],
+      "words": 2611
+    },
+    {
+      "path": "/about",
+      "issues": [],
+      "warnings": [],
+      "title": "Bali Accounting in Denpasar | About Our Bookkeeping Firm",
+      "description": "Meet Bali Accounting, a Denpasar-based villa bookkeeping firm founded by Abel Yuniartini. Learn about monthly reporting, record review and our service scope.",
+      "canonical": "https://bali-villa-accounting-service.com/about",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/about-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject"
+      ],
+      "words": 1150
+    },
+    {
+      "path": "/get-started",
+      "issues": [],
+      "warnings": [],
+      "title": "Contact Bali Accounting | Free Bookkeeping Consultation",
+      "description": "Contact Bali Accounting in Denpasar for a free villa bookkeeping consultation. Discuss rental properties, Airbnb payouts, catch-up records and monthly reports.",
+      "canonical": "https://bali-villa-accounting-service.com/get-started",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/get-started-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject"
+      ],
+      "words": 691
+    },
+    {
+      "path": "/faq",
+      "issues": [],
+      "warnings": [],
+      "title": "Bali Bookkeeping FAQ | Costs, Airbnb Payouts & Reports",
+      "description": "Bali villa bookkeeping questions answered: monthly costs, Airbnb reconciliation, cash flow, missing receipts and working with your manager or tax adviser.",
+      "canonical": "https://bali-villa-accounting-service.com/faq",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/faq-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject",
+        "FAQPage"
+      ],
+      "words": 1442
+    },
+    {
+      "path": "/privacy",
+      "issues": [],
+      "warnings": [],
+      "title": "Privacy Information | Bali Accounting",
+      "description": "How Bali Accounting handles website enquiries, WhatsApp contact, limited website measurement and bookkeeping document handover.",
+      "canonical": "https://bali-villa-accounting-service.com/privacy",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/privacy-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject"
+      ],
+      "words": 618
+    },
+    {
+      "path": "/terms",
+      "issues": [],
+      "warnings": [
+        "short body: 575 words"
+      ],
+      "title": "Website Terms | Bali Accounting",
+      "description": "Read the website information terms, limits of illustrative financial examples, and how bookkeeping scope is agreed with Bali Accounting.",
+      "canonical": "https://bali-villa-accounting-service.com/terms",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/share/terms-2026-10.jpg",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList",
+        "ImageObject"
+      ],
+      "words": 575
+    },
+    {
+      "path": "/blog/bali-villa-pbjt-accommodation-tax-records",
+      "issues": [],
+      "warnings": [
+        "FAQPage schema without on-page details blocks"
+      ],
+      "title": "Bali Villa PBJT: the Records Behind the 10% Charge",
+      "description": "PBJT on villa accommodation is collected from guests and proved from four records. What Bali owners and managers should keep, month by month.",
+      "canonical": "https://bali-villa-accounting-service.com/blog/bali-villa-pbjt-accommodation-tax-records",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/journal/preparing-villa-records-indonesian-tax-consultant-2026-10.webp",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "words": 2204
+    }
+  ]
+}

@@ -21,7 +21,7 @@ export function trackEvent(name: string, data?: AnalyticsData) {
   if (!supportedEvents.has(name)) return;
   const pathname = window.location.pathname.replace(/\/+$/, "") || "/";
   // Only public routes; exclude query strings, hashes and arbitrary error-page paths.
-  const page = pathname.length <= 200 && /^(?:\/|\/(?:services|airbnb-bookkeeping-bali|villa-financial-reporting-bali|villa-bookkeeping-cleanup-bali|pt-pma-villa-bookkeeping|villa-payroll-records-bali|pricing|sample-report|about|get-started|faq|privacy|terms)|\/blog(?:\/[a-z][a-z0-9]*(?:-[a-z0-9]+)*)?)$/.test(pathname) ? pathname : "other_page";
+  const page = pathname.length <= 200 && /^(?:\/|\/(?:compare(?:\/[a-z][a-z0-9]*(?:-[a-z0-9]+)*)?|services|airbnb-bookkeeping-bali|villa-financial-reporting-bali|villa-bookkeeping-cleanup-bali|pt-pma-villa-bookkeeping|villa-payroll-records-bali|pricing|sample-report|about|get-started|faq|privacy|terms)|\/blog(?:\/[a-z][a-z0-9]*(?:-[a-z0-9]+)*)?)$/.test(pathname) ? pathname : "other_page";
   const label = (value: unknown, fallback: string) => typeof value === "string" && /^[a-zA-Z0-9 _-]{1,80}$/.test(value) ? value : fallback;
   const safeData = {
     eventType: name, page,
