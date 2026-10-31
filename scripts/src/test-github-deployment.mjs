@@ -35,6 +35,8 @@ assert.notEqual(origin, publicOrigin, "backend cannot resolve to the Vercel fron
 assert.ok(existsSync(new URL("../../artifacts/villabooks-bali/dist/public/404.html", import.meta.url)));
 assert.equal(existsSync(new URL("../../artifacts/villabooks-bali/dist/public/sitemap.xml", import.meta.url)), false,
   "static sitemap.xml must not shadow the gateway rewrite");
+assert.equal(existsSync(new URL("../../artifacts/villabooks-bali/dist/public/blog/test.html", import.meta.url)), false,
+  "verification /blog/test must not remain as a static override");
 const routes = read("artifacts/villabooks-bali/dist/public/routes.json");
 for (const route of routes)
   assert.ok(existsSync(new URL(`../../artifacts/villabooks-bali/dist/public${route === "/" ? "" : route}/index.html`, import.meta.url)), route);

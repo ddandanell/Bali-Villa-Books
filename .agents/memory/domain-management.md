@@ -20,3 +20,8 @@ The public site should live on Vercel, while Replit remains the invisible backen
 **Why:** Dual hosting made GitHub/Vercel updates invisible on the custom domain.
 
 **How to apply:** Keep a separate verified backend origin. The Replit hostname's public-route exception is published, so it can now serve as the adapter's backend without a new api subdomain. Never target the public apex from its own Vercel adapter.
+
+`www.bali-villa-accounting-service.com` must stay attached to Vercel project
+`prj_R4hssmwrWpUrqAn7wgPlxTSeUbX7` with a DNS record (CNAME to `cname.vercel-dns.com`
+or the A/AAAA values Vercel shows). Apex alone is not enough if clients or old
+links use www. Agents authenticated only to other Vercel teams cannot edit this.
