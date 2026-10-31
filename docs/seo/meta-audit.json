@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-31T09:14:17.317Z",
+  "generatedAt": "2026-10-31T10:21:38.703Z",
   "origin": "https://bali-villa-accounting-service.com",
-  "pages": 29,
+  "pages": 30,
   "errors": [],
   "warnings": [
     "/sample-report: 1 FAQ blocks without FAQPage schema",
@@ -600,6 +600,26 @@
         "FAQPage"
       ],
       "words": 2204,
+      "faqQuestions": 6
+    },
+    {
+      "path": "/blog/pt-pma-annual-corporate-tax-return-records-bali",
+      "issues": [],
+      "warnings": [],
+      "title": "The Annual Corporate Tax Return File for a Bali PT PMA",
+      "description": "What a Bali PT PMA should hold before the annual corporate return is prepared: six record sections, who produces each, and the checks to run first.",
+      "canonical": "https://bali-villa-accounting-service.com/blog/pt-pma-annual-corporate-tax-return-records-bali",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/journal/pt-pma-annual-corporate-tax-return-records-2026-11.webp",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "words": 2597,
       "faqQuestions": 6
     }
   ]
