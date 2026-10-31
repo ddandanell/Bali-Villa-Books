@@ -1,5 +1,5 @@
 /** Every marketing route is real initial HTML. Rendering failures fail the release. */
-import { readFileSync, writeFileSync, mkdirSync, rmSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, rmSync, copyFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
@@ -66,5 +66,23 @@ if (journalPaths.length) {
   process.stdout.write(`Wrote sitemap-journal.xml with ${journalPaths.length} URL(s).\n`);
 }
 writeFileSync(path.join(output, "robots.txt"), "User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: https://bali-villa-accounting-service.com/sitemap.xml\nSitemap: https://bali-villa-accounting-service.com/sitemap-journal.xml\nSitemap: https://bali-villa-accounting-service.com/sitemap-pages.xml\n");
+// The Replit origin builds the journal documents, and its build is older than
+// this one: it references /assets/index-<hash>.js and .css that no longer exist
+// here, so every proxied journal URL asked for a stylesheet and a bundle that
+// both 404. Publish this build's real pair at stable aliases and let the gateway
+// repoint the origin's references at them. The origin markup is kept as-is; only
+// the two asset URLs change. Remove this once the origin is rebuilt from the same
+// commit or the journal is served entirely from this build.
+{
+  const shell = readFileSync(path.join(output, "index.html"), "utf8");
+  const js = shell.match(/assets\/index-[A-Za-z0-9_.-]+\.js/);
+  const css = shell.match(/assets\/index-[A-Za-z0-9_.-]+\.css/);
+  if (!js || !css) throw new Error("Shell asset hashes not found; journal asset aliases cannot be written.");
+  copyFileSync(path.join(output, js[0]), path.join(output, "assets/app.js"));
+  copyFileSync(path.join(output, css[0]), path.join(output, "assets/app.css"));
+  writeFileSync(path.join(output, "journal-assets.json"),
+    JSON.stringify({ from: { js: js[0], css: css[0] }, alias: { js: "/assets/app.js", css: "/assets/app.css" } }, null, 2) + "\n");
+  process.stdout.write(`Journal asset aliases: ${js[0]} -> /assets/app.js, ${css[0]} -> /assets/app.css.\n`);
+}
 rmSync(server, { recursive: true, force: true });
 process.stdout.write(`Pre-rendered ${pages.length} marketing pages, ${journalPaths.length} static journal article(s) and a real 404 document.\n`);

@@ -61,6 +61,16 @@ export async function proxyRequest(req, fetcher = fetch) {
   });
 }
 
+// The journal documents are rendered by the older Replit build, which references
+// asset hashes this deployment does not have; both 404, so the page arrives with
+// no stylesheet and no bundle. Repoint those two references at the aliases
+// prerender.mjs publishes from this build. Nothing else in the document changes.
+export function repointAssets(html) {
+  return html
+    .replace(/\/assets\/index-[A-Za-z0-9_.-]+\.js/g, "/assets/app.js")
+    .replace(/\/assets\/index-[A-Za-z0-9_.-]+\.css/g, "/assets/app.css");
+}
+
 export default async function handler(req, res) {
   try {
     const upstream = await proxyRequest(req);
@@ -68,6 +78,11 @@ export default async function handler(req, res) {
     for (const name of ["content-type", "location", "retry-after"])
       if (upstream.headers.has(name)) res.setHeader(name, upstream.headers.get(name));
     res.setHeader("Cache-Control", "no-store");
+    const type = upstream.headers.get("content-type") ?? "";
+    if (req.method !== "HEAD" && type.includes("text/html")) {
+      res.end(repointAssets(Buffer.from(await upstream.arrayBuffer()).toString("utf8")));
+      return;
+    }
     res.end(req.method === "HEAD" ? undefined : Buffer.from(await upstream.arrayBuffer()));
   } catch {
     res.statusCode = 502;
