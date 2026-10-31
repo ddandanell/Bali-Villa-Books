@@ -249,14 +249,18 @@ export function repointSitemapArt(xml) {
 export function repointPost(post) {
   if (!post || typeof post !== "object") return post;
   const art = journalArt[post.slug];
-  if (!art) return post;
-  const stale = staleArt(post.slug, post.imageUrl);
   let out = post;
-  if (stale) out = { ...out, imageUrl: `${SITE}${art.imageUrl}`, imageAlt: art.imageAlt };
-  if (typeof out.contentHtml === "string") {
-    const body = normaliseCredits(out.contentHtml, art.caption);
-    if (body !== out.contentHtml) out = { ...out, contentHtml: body };
+  if (art) {
+    const stale = staleArt(post.slug, post.imageUrl);
+    if (stale) out = { ...out, imageUrl: `${SITE}${art.imageUrl}`, imageAlt: art.imageAlt };
+    if (typeof out.contentHtml === "string") {
+      const body = normaliseCredits(out.contentHtml, art.caption);
+      if (body !== out.contentHtml) out = { ...out, contentHtml: body };
+    }
   }
+  // Related cards are reached even when this record has no local art of its own.
+  // A card pointing at an article that does have art must show that article's
+  // art, otherwise the card contradicts the page it links to.
   if (Array.isArray(out.relatedPosts)) out = { ...out, relatedPosts: out.relatedPosts.map(repointPost) };
   return out;
 }
