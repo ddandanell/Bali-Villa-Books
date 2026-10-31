@@ -156,6 +156,7 @@ export function pageDocument(template: string, content: string, pathname: string
 ${sitePages[path] || article ? "" : '<meta name="robots" content="noindex,follow">'}
 <link rel="canonical" href="${escape(canonical)}">
 <meta property="og:type" content="${article ? "article" : "website"}"><meta property="og:title" content="${escape(page.title)}">
+${article ? `<meta property="article:published_time" content="${article.publishedAt}"><meta property="article:modified_time" content="${article.updatedAt}"><meta property="article:section" content="${escape(article.category)}">` : ""}
 <meta property="og:description" content="${escape(page.description)}"><meta property="og:url" content="${escape(canonical)}">
 <meta property="og:image" content="${socialImage}"><meta property="og:image:secure_url" content="${socialImage}">
 <meta property="og:image:alt" content="${escape(socialAlt)}"><meta property="og:image:type" content="${socialType}">

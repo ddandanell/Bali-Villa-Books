@@ -633,7 +633,7 @@ export const compareHub = {
       bestFor: "Owners who mainly need distributions",
       produces: "An operating statement built from the property system",
       watchOut: "The statement reports on the manager; it is not a bank-tied ledger",
-      cost: "Inside an illustrative 6–10% management fee",
+      cost: "Inside the management fee you already pay",
     },
     {
       name: "Offshore bookkeeping service",
@@ -693,8 +693,8 @@ export const compareHub = {
     columns: ["Model", "Illustrative monthly cost", "What you still do yourself"],
     rows: [
       ["Owner spreadsheet", "Rp 0 in fees", "All reconciliation, six to ten hours"],
-      ["Manager in-house", "Inside a 6–10% management fee", "Chase per-property detail and evidence"],
-      ["Offshore bookkeeping", "Rp 1,500,000–3,500,000", "Forward documents, resolve Indonesian questions"],
+      ["Manager in-house", "Inside your management fee", "Chase per-property detail and evidence"],
+      ["Offshore bookkeeping", "Hourly or per transaction, billed outside Indonesia", "Forward documents, resolve Indonesian questions"],
       ["Bali specialist (our Starter)", "From Rp 2,900,000", "Supply documents by the agreed deadline"],
     ],
     note:
@@ -727,7 +727,7 @@ export const compareHub = {
   faqs: [
     [
       "Which bookkeeping option is cheapest for a Bali villa?",
-      "A spreadsheet has no fee and the highest hidden cost in your own hours. Offshore processing is often cheapest per hour. Fixed packages are usually cheapest once reconciliation, chasing and reporting are all counted, but we cannot price another firm's scope.",
+      "A spreadsheet has no fee and the highest hidden cost in your own hours. Fixed packages are usually cheapest once reconciliation, chasing and reporting are all counted, but we cannot price another firm's scope, so we do not put numbers on one.",
     ],
     [
       "Do you compare yourselves with named competitors?",

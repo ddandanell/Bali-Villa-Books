@@ -29,6 +29,14 @@ export default function BlogArticle() {
     for (const [name, value] of Object.entries({ "twitter:title": post.metaTitle, "twitter:description": post.metaDescription, "twitter:url": canonical, "twitter:image": new URL(post.imageUrl, "https://bali-villa-accounting-service.com").href })) {
       document.querySelector(`meta[name="${name}"]`)?.setAttribute("content", value);
     }
+    const setMeta = (property: string, value: string) => {
+      let meta = document.querySelector<HTMLMetaElement>(`meta[property="${property}"]`);
+      if (!meta) { meta = document.createElement("meta"); meta.setAttribute("property", property); document.head.appendChild(meta); }
+      meta.content = value;
+    };
+    setMeta("article:published_time", post.publishedAt);
+    setMeta("article:modified_time", post.updatedAt);
+    setMeta("article:section", post.category);
     const description = document.querySelector('meta[name="description"]');
     updateShareImage(`/blog/${slug}`, post);
     description?.setAttribute("content", post.metaDescription || post.excerpt);

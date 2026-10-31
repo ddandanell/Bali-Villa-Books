@@ -25,12 +25,12 @@ function WhatsAppCTA({ place, text = "Discuss your OTA reconciliation" }: { plac
 }
 
 const bridgeRows: [string, string][] = [
-  ["Gross booking value (all channels)", "Rp 100.000.000"],
-  ["Platform fees and commissions", "− Rp 15.000.000"],
-  ["Refunds, cancellations and adjustments", "− Rp 2.000.000"],
-  ["Net due from platforms", "Rp 83.000.000"],
-  ["Bank receipts matched in the month", "Rp 80.000.000"],
-  ["Timing item still in transit (explained, not lost)", "Rp 3.000.000"],
+  ["Gross booking value (all channels)", "Rp 100,000,000"],
+  ["Platform fees and commissions", "− Rp 15,000,000"],
+  ["Refunds, cancellations and adjustments", "− Rp 2,000,000"],
+  ["Net due from platforms", "Rp 83,000,000"],
+  ["Bank receipts matched in the month", "Rp 80,000,000"],
+  ["Timing item still in transit (explained, not lost)", "Rp 3,000,000"],
 ];
 
 const tiers = [
@@ -101,7 +101,7 @@ export default function OtaPillar() {
       <div className="mt-6 rounded-[1.75rem] bg-primary p-6 text-primary-foreground sm:p-9">
         <div className="mb-6 flex flex-wrap items-start justify-between gap-4"><div><p className="text-xs uppercase tracking-[.18em] text-secondary">Illustrative payout bridge · fictional figures · IDR</p><h3 className="mt-2 font-serif text-2xl">How one month walks from bookings to bank</h3></div><FileText className="h-6 w-6 text-secondary" /></div>
         <div>{bridgeRows.map(([label, value], i) => <div key={label} className={`flex items-center justify-between gap-4 border-t border-white/10 py-3 ${i === 3 ? "font-bold text-white" : "text-primary-foreground/70"}`}><span className="text-sm">{label}</span><span className="font-mono text-sm">{value}</span></div>)}</div>
-        <p className="mt-5 rounded-xl bg-secondary/15 p-4 text-sm leading-6 text-primary-foreground/75">Gross booking value → platform fees → refunds and adjustments → net due → bank receipts → timing items. The Rp 3.000.000 still in transit is an explained open item with a date and a reference — not missing money and not extra revenue. Read it beside the <Link href="/sample-report" className="font-semibold text-white underline underline-offset-4">worked sample owner report</Link>.</p>
+        <p className="mt-5 rounded-xl bg-secondary/15 p-4 text-sm leading-6 text-primary-foreground/75">Gross booking value → platform fees → refunds and adjustments → net due → bank receipts → timing items. The Rp 3,000,000 still in transit is an explained open item with a date and a reference — not missing money and not extra revenue. Read it beside the <Link href="/sample-report" className="font-semibold text-white underline underline-offset-4">worked sample owner report</Link>.</p>
       </div>
     </div></section>
 

@@ -142,9 +142,39 @@ for (const route of pagePaths) {
   if (words < 300) record.issues.push(`thin body: ${words} words`);
   else if (words < 600) record.warnings.push(`short body: ${words} words`);
 
+  // FAQ visible-text check. Accordions (<details>) are one way of rendering an FAQ,
+  // headings plus body copy are the other, so read the question text itself from the schema
+  // and match it against what a reader (and a crawler) actually sees.
   const details = (html.match(/<details[\s>]/gi) || []).length;
+  const ent = v => v
+    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
+    .replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&nbsp;/g, " ");
+  const visible = ent(text(html)).toLowerCase().replace(/[\u2018\u2019]/g, "'");
+  const faqQuestions = [];
+  for (const block of ld) {
+    try {
+      const parsed = JSON.parse(decode(block));
+      const graph = parsed["@graph"] ?? [parsed];
+      for (const node of graph) {
+        if (!node || node["@type"] !== "FAQPage") continue;
+        for (const item of node.mainEntity ?? []) {
+          const q = item?.name;
+          if (typeof q === "string") faqQuestions.push(q);
+        }
+      }
+    } catch {}
+  }
+  record.faqQuestions = faqQuestions.length;
   if (details && !record.schemaTypes.includes("FAQPage")) record.warnings.push(`${details} FAQ blocks without FAQPage schema`);
-  if (record.schemaTypes.includes("FAQPage") && details === 0) record.warnings.push("FAQPage schema without on-page details blocks");
+  if (record.schemaTypes.includes("FAQPage")) {
+    const missing = faqQuestions.filter(q => {
+      const norm = ent(q).toLowerCase().replace(/[\u2018\u2019]/g, "'").replace(/[?.!]+$/, "").replace(/\s+/g, " ").trim();
+      return norm.length > 0 && !visible.includes(norm);
+    });
+    if (!faqQuestions.length) record.warnings.push("FAQPage schema with no readable questions");
+    else if (missing.length) record.warnings.push(`${missing.length}/${faqQuestions.length} schema FAQs not found in visible text: ${missing[0].slice(0, 60)}`);
+  }
 
   pages.push(record);
 }
