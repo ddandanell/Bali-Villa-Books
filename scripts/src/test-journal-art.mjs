@@ -6,7 +6,8 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { journalArt } from "../../api/journal-art.mjs";
-import { repointArticleArt, repointHubArt, repointSitemapArt, repointDocument } from "../../api/gateway.mjs";
+import { repointArticleArt, repointHubArt, repointSitemapArt, repointDocument,
+  repointPost, repointJson, normaliseCredits } from "../../api/gateway.mjs";
 
 const imagery = JSON.parse(readFileSync("lib/site-content/src/journal-imagery.json", "utf8"));
 const expected = Object.fromEntries(Object.entries(imagery)
@@ -70,6 +71,74 @@ const siteOut = repointSitemapArt(sitemap);
 assert.ok(siteOut.includes(`<image:loc>https://bali-villa-accounting-service.com${art.imageUrl}</image:loc>`), "sitemap journal image not repointed");
 assert.ok(siteOut.includes("<image:loc>https://bali-villa-accounting-service.com/images/share/pricing.jpg</image:loc>"), "marketing sitemap image changed");
 assert.equal(repointSitemapArt(sitemap), siteOut, "sitemap rewrite must be stable");
+
+// ---- Named credits: the empty-credit matcher above is not enough -------------
+const NAMED = "<p><em>Illustrative photo, not a client engagement. Photo credit: Erfgoedcel Denderland. CC BY-SA 4.0. <a href=\"https://commons.wikimedia.org/wiki/File:x.jpg\">Original image and attribution</a> · <a href=\"https://creativecommons.org/licenses/by-sa/4.0\">License</a>.</em></p>";
+const namedOut = normaliseCredits(NAMED, art.caption);
+assert.equal(namedOut, `<p><em>${art.caption}</em></p>`, "a named third-party credit must be replaced, not kept under AI art");
+
+// A page that carries a generic library credit and a named credit collapses to
+// one caption, at the position of the first, so the page never shows two.
+const DOUBLE = `<p>Body.</p>${NAMED}<p>More body.</p><p><em>Image credit: Bali Accounting’s publisher-selected open-license image library; the pictured people or property are not represented as clients.</em></p>`;
+const doubleOut = normaliseCredits(DOUBLE, art.caption);
+assert.equal((doubleOut.match(/<p><em>/g) ?? []).length, 1, "exactly one credit paragraph must survive");
+assert.ok(doubleOut.includes(`<p><em>${art.caption}</em></p>`), "the surviving credit must be the local caption");
+assert.ok(doubleOut.includes("<p>Body.</p>") && doubleOut.includes("<p>More body.</p>"), "body copy must be untouched");
+assert.ok(!/wikimedia|publisher-selected/i.test(doubleOut), "no stale credit text may survive");
+
+// A scope or qualification paragraph is never treated as an image credit.
+const SCOPE = "<p><em>Scope: general information only. Editorial quality checks are not a licensed professional review. Image credit: none.</em></p>";
+assert.equal(normaliseCredits(SCOPE, art.caption), SCOPE, "scope paragraphs must never be rewritten");
+
+// ---- The API record the article page actually renders ------------------------
+const apiPost = {
+  slug, title: "x", imageUrl: OLD_RAW, imageAlt: OLD_ALT_RAW,
+  contentHtml: `<p>Lead.</p>${NAMED}<p><em>Scope: general information only, not tax advice.</em></p>`,
+  relatedPosts: [{ slug: "villa-petty-cash-reconciliation-vouchers-floats-counts", imageUrl: "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/x.jpg" }],
+};
+const apiOut = repointPost(apiPost);
+assert.equal(apiOut.imageUrl, `https://bali-villa-accounting-service.com${art.imageUrl}`, "API imageUrl must carry the local hero");
+assert.equal(apiOut.imageAlt, art.imageAlt, "API imageAlt must carry the recorded alt");
+assert.equal((apiOut.contentHtml.match(/<p><em>/g) ?? []).length, 2, "one caption plus the scope paragraph must survive");
+assert.ok(!/Photo credit|wikimedia/i.test(apiOut.contentHtml), "the API body must not keep the stale credit or its link");
+assert.ok(apiOut.contentHtml.includes("Scope: general information only"), "the API scope paragraph must be untouched");
+assert.equal(apiOut.relatedPosts[0].imageUrl, apiPost.relatedPosts[0].imageUrl, "an unmapped related post must be left alone");
+assert.notEqual(apiPost.imageUrl, apiOut.imageUrl, "repointPost must not mutate its input");
+
+// ---- The client seed inside the document ------------------------------------
+const seedDoc = `<html><head><meta property="og:image" content="${OLD}"></head><body>`
+  + `<main id="journal-server-content"><img src="${OLD}" alt="${OLD_ALT}" width="1024" height="1024">${NAMED}</main>`
+  + `<script>window.__BLOG_INITIAL__=${JSON.stringify({ post: apiPost })}</script></body></html>`;
+const seedOut = repointDocument(seedDoc, `/blog/${slug}`);
+const seedJson = seedOut.slice(seedOut.indexOf("window.__BLOG_INITIAL__=") + "window.__BLOG_INITIAL__=".length, seedOut.lastIndexOf("</script>"));
+const seedPost = JSON.parse(seedJson).post;
+assert.equal(seedPost.imageUrl, `https://bali-villa-accounting-service.com${art.imageUrl}`, "the seed record must carry the local hero");
+assert.equal(seedPost.imageAlt, art.imageAlt, "the seed record must carry the recorded alt");
+assert.ok(seedPost.contentHtml.includes(`<p><em>${art.caption}</em></p>`), "the seed body must carry the local caption");
+assert.ok(!/Photo credit|wikimedia/i.test(seedPost.contentHtml), "the seed body must not keep the stale credit");
+assert.ok(!seedOut.includes("\\u003cscript"), "the seed must stay inside its own script tag");
+assert.equal(repointDocument(seedOut, `/blog/${slug}`), seedOut, "a rewritten document must be stable on a second pass");
+
+const settledPost = { slug, imageUrl: `https://bali-villa-accounting-service.com${art.imageUrl}`, imageAlt: art.imageAlt, contentHtml: apiOut.contentHtml };
+assert.deepEqual(repointPost(settledPost), settledPost, "a record already carrying this art and this caption must be returned unchanged");
+assert.deepEqual(repointPost({ ...settledPost, relatedPosts: apiOut.relatedPosts }), { ...settledPost, relatedPosts: apiOut.relatedPosts }, "a settled record with related posts must be stable");
+
+// The art is already local but the credit still names a third party, which is
+// what the previous release left on the page. The record is corrected, not skipped.
+const localPost = { slug, imageUrl: `https://bali-villa-accounting-service.com${art.imageUrl}`, imageAlt: art.imageAlt, contentHtml: apiPost.contentHtml };
+const repaired = repointPost(localPost);
+assert.equal(repaired.imageUrl, localPost.imageUrl, "a local imageUrl must not be rewritten");
+assert.ok(repaired.contentHtml.includes(`<p><em>${art.caption}</em></p>`), "a leftover named credit must be replaced");
+assert.ok(!/Denderland|wikimedia/i.test(repaired.contentHtml), "the named third party and its link must be gone");
+
+const untouchedPost = { slug: "villa-petty-cash-reconciliation-vouchers-floats-counts", imageUrl: OLD_RAW, contentHtml: NAMED };
+assert.deepEqual(repointPost(untouchedPost), untouchedPost, "an article with no local art must keep its own credit");
+
+assert.equal(repointJson(JSON.stringify(apiPost), `/api/blog/posts/${slug}`),
+  JSON.stringify(repointPost(apiPost)), "single-record endpoint");
+assert.equal(repointJson(JSON.stringify([apiPost, untouchedPost]), "/api/blog/posts"),
+  JSON.stringify([repointPost(apiPost), untouchedPost]), "list endpoint");
+assert.equal(repointJson(JSON.stringify(apiPost), "/api/blog/automation/status"), JSON.stringify(apiPost), "other JSON endpoints pass through");
 
 const marketing = "<html><body><h1>Pricing</h1></body></html>";
 assert.equal(repointDocument(marketing, "/pricing"), marketing, "marketing pages must pass through untouched");

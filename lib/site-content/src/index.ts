@@ -23,9 +23,13 @@ export type PageImagery = {
 export const pageImagery: Record<string, PageImagery> = pages;
 export const journalImagery: Record<string, PageImagery> = journals;
 export const publicPagePaths = Object.keys(pageImagery);
+/** The local art this build ships for an article slug, if any. */
+export function localArticleArt(slug: string): PageImagery | undefined {
+  return journalImagery[slug];
+}
 /** Article art: a local journal image wins over whatever the database row carries. */
 export function articleVisual(slug: string, fallback: { imageUrl: string; imageAlt: string; width?: number; height?: number }): PageImagery {
-  const local = journalImagery[slug];
+  const local = localArticleArt(slug);
   if (local) return local;
   return {
     imageUrl: fallback.imageUrl, imageAlt: fallback.imageAlt, shareImage: fallback.imageUrl,
