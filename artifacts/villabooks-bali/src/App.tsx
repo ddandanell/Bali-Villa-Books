@@ -13,8 +13,12 @@ import OtaPillar from "@/pages/OtaPillar";
 
 export const queryClient = new QueryClient();
 if (typeof window !== "undefined") {
-  const bootstrap = (window as Window & { __BLOG_INITIAL__?: { post?: BlogPost; posts?: BlogPostSummary[]; listParams?: ListBlogPostsParams } }).__BLOG_INITIAL__;
+  const bootstrap = (window as Window & { __BLOG_INITIAL__?: { post?: BlogPost; posts?: BlogPostSummary[]; listParams?: ListBlogPostsParams; static?: boolean } }).__BLOG_INITIAL__;
   if (bootstrap?.post) queryClient.setQueryData(getGetBlogPostQueryKey(bootstrap.post.slug), bootstrap.post);
+  // A statically prerendered article has no row behind the API, so a refetch would 404 and
+  // flip the page to its error state. Its HTML is already the source of truth.
+  if (bootstrap?.static && bootstrap.post)
+    queryClient.setQueryDefaults(getGetBlogPostQueryKey(bootstrap.post.slug), { staleTime: Infinity, gcTime: Infinity, retry: false });
   if (bootstrap?.posts) queryClient.setQueryData(getListBlogPostsQueryKey(bootstrap.listParams ?? { limit: 50 }), bootstrap.posts);
 }
 

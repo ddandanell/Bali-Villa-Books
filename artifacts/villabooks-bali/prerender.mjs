@@ -35,7 +35,7 @@ for (const post of staticJournalPosts) {
     publishedAt: post.publishedAt, updatedAt: post.updatedAt,
     imageUrl: post.imageUrl, imageAlt: post.imageAlt, faqs: post.faqs,
   });
-  const bootstrap = JSON.stringify({ post }).replace(/</g, "\\u003c");
+  const bootstrap = JSON.stringify({ post, static: true }).replace(/</g, "\\u003c");
   writeFileSync(target, html.replace("</head>", `<script>window.__BLOG_INITIAL__=${bootstrap}</script></head>`));
   journalPaths.push(pathname);
 }
