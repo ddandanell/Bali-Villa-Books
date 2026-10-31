@@ -10,14 +10,21 @@ import { getPageImagery } from "./page-imagery";
 const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]!));
 const json = (value: unknown) => JSON.stringify(value).replace(/</g, "\\u003c");
 
-export function pageDocument(template: string, content: string, pathname: string) {
+export type ArticleMeta = {
+  title: string; description: string; category: string;
+  publishedAt: string; updatedAt: string;
+  imageUrl: string; imageAlt: string;
+  faqs?: [string, string][];
+};
+
+export function pageDocument(template: string, content: string, pathname: string, article?: ArticleMeta) {
   const path = pathname.replace(/\/+$/, "") || "/";
-  const page = sitePages[path] ?? {
+  const page = article ? { title: article.title, description: article.description, h1: article.title } : sitePages[path] ?? {
     title: "Page Not Found | Bali Accounting", description: "This page could not be found. Browse our villa bookkeeping services or contact Client Advisory.", h1: "Page not found",
   };
   const canonical = `${SITE_ORIGIN}${path}`;
-  const socialImage = `${SITE_ORIGIN}${shareImage(path)}`;
-  const socialAlt = shareImageAlt(path);
+  const socialImage = article ? new URL(article.imageUrl, SITE_ORIGIN).href : `${SITE_ORIGIN}${shareImage(path)}`;
+  const socialAlt = article ? article.imageAlt : shareImageAlt(path);
   const businessId = `${SITE_ORIGIN}/#business`;
   const webId = `${SITE_ORIGIN}/#website`;
   const graph: unknown[] = [{
@@ -36,6 +43,27 @@ export function pageDocument(template: string, content: string, pathname: string
     areaServed: { "@type": "Place", name: "Bali, Indonesia" },
   }, { "@type": "WebSite", "@id": webId, url: `${SITE_ORIGIN}/`, name: "Bali Accounting", publisher: { "@id": businessId } },
   { "@type": "WebPage", "@id": `${canonical}#webpage`, url: canonical, name: page.title, description: page.description, isPartOf: { "@id": webId }, about: { "@id": businessId } }];
+  if (article) graph.push({
+    "@type": "BlogPosting", "@id": `${canonical}#article`,
+    headline: article.title, description: article.description, url: canonical,
+    image: socialImage, datePublished: article.publishedAt, dateModified: article.updatedAt,
+    author: { "@type": "Organization", name: "Bali Accounting", url: SITE_ORIGIN },
+    publisher: { "@id": businessId }, isPartOf: { "@id": webId },
+    articleSection: article.category, inLanguage: "en",
+    mainEntityOfPage: { "@id": `${canonical}#webpage` },
+  }, {
+    "@type": "BreadcrumbList", itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_ORIGIN}/` },
+      { "@type": "ListItem", position: 2, name: "Journal", item: `${SITE_ORIGIN}/blog` },
+      { "@type": "ListItem", position: 3, name: article.title, item: canonical },
+    ],
+  });
+  if (article?.faqs?.length) graph.push({
+    "@type": "FAQPage", "@id": `${canonical}#questions`,
+    mainEntity: article.faqs.map(([question, answer]) => ({
+      "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer },
+    })),
+  });
   if (path !== "/" && sitePages[path]) graph.push({
     "@type": "BreadcrumbList", itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_ORIGIN}/` },
@@ -92,9 +120,9 @@ export function pageDocument(template: string, content: string, pathname: string
   const head = `
 <title>${escape(page.title)}</title>
 <meta name="description" content="${escape(page.description)}">
-${sitePages[path] ? "" : '<meta name="robots" content="noindex,follow">'}
+${sitePages[path] || article ? "" : '<meta name="robots" content="noindex,follow">'}
 <link rel="canonical" href="${escape(canonical)}">
-<meta property="og:type" content="website"><meta property="og:title" content="${escape(page.title)}">
+<meta property="og:type" content="${article ? "article" : "website"}"><meta property="og:title" content="${escape(page.title)}">
 <meta property="og:description" content="${escape(page.description)}"><meta property="og:url" content="${escape(canonical)}">
 <meta property="og:image" content="${socialImage}"><meta property="og:image:secure_url" content="${socialImage}">
 <meta property="og:image:alt" content="${escape(socialAlt)}"><meta property="og:image:type" content="image/jpeg">
