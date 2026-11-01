@@ -1,0 +1,129 @@
+{
+  "batchId": "2026-11-01",
+  "researchedAt": "2026-11-01T01:32:16.915489+00:00",
+  "sources": [
+    {
+      "id": "airbnb-cohost",
+      "url": "https://www.airbnb.com/help/article/3389",
+      "publisher": "Airbnb",
+      "title": "How co-host payouts work",
+      "kind": "primary_product_documentation",
+      "observed": "Describes allocation options and the listing owner visibility boundary. Supports explaining allocations separately from receipt evidence.",
+      "publicationDate": null,
+      "effectiveDate": null,
+      "applicability": "Home-host co-host payout arrangements, subject to account and regional eligibility. Not Indonesian accounting or tax authority.",
+      "retrievedAt": "2026-11-01T01:32:16.915489+00:00",
+      "access": "Full relevant text read via web retrieval on 1 November 2026.",
+      "dateLimitation": "No publication or effective date displayed in the retrieved article. This is not reported as a new rule or product change."
+    },
+    {
+      "id": "airbnb-routing",
+      "url": "https://www.airbnb.com/help/article/1343",
+      "publisher": "Airbnb",
+      "title": "Split payouts between different payout methods",
+      "kind": "primary_product_documentation",
+      "observed": "Distinguishes routing between payout methods from co-host allocations. No platform calculation example copied.",
+      "publicationDate": null,
+      "effectiveDate": null,
+      "applicability": "Use only for identifying the actual payout arrangement; no account eligibility claim.",
+      "retrievedAt": "2026-11-01T01:32:16.915489+00:00",
+      "access": "Full relevant text read via web retrieval on 1 November 2026.",
+      "dateLimitation": "No publication or effective date displayed in the retrieved article. This is not reported as a new rule or product change."
+    },
+    {
+      "id": "airbnb-reports",
+      "url": "https://www.airbnb.com/help/article/3632",
+      "publisher": "Airbnb",
+      "title": "Download your earnings",
+      "kind": "primary_product_documentation",
+      "observed": "Documents earnings reports, filters and exports. Menu labels differed across retrieved versions, so the article avoids a fixed UI walkthrough.",
+      "publicationDate": null,
+      "effectiveDate": null,
+      "applicability": "Options available in the relevant hosting account. No guarantee of a specific export interface.",
+      "retrievedAt": "2026-11-01T01:32:16.915489+00:00",
+      "access": "Full relevant text read via web retrieval on 1 November 2026.",
+      "dateLimitation": "No publication or effective date displayed in the retrieved article. This is not reported as a new rule or product change."
+    },
+    {
+      "id": "airbnb-regions",
+      "url": "https://www.airbnb.com/help/article/3767",
+      "publisher": "Airbnb",
+      "title": "Regional limitations for co-host payouts",
+      "kind": "primary_product_documentation",
+      "observed": "Eligibility depends on participant/listing locations. Draft explicitly requires account-specific checking rather than asserting universal Bali availability.",
+      "publicationDate": null,
+      "effectiveDate": null,
+      "applicability": "Account and location dependent. No setup instructions or eligibility conclusion.",
+      "retrievedAt": "2026-11-01T01:32:16.915489+00:00",
+      "access": "Full relevant text read via web retrieval on 1 November 2026.",
+      "dateLimitation": "No publication or effective date displayed in the retrieved article. This is not reported as a new rule or product change."
+    }
+  ],
+  "benchmarks": [
+    {
+      "name": "Emerhub",
+      "url": "https://emerhub.com/blog/",
+      "observed": "Country/service navigation and a clear enquiry handoff. Fresh extracted body was mainly navigation.",
+      "apply": "Define audience and correct service owner.",
+      "limit": "Article-level freshness and competitor performance not established from this index."
+    },
+    {
+      "name": "InCorp / Cekindo",
+      "url": "https://www.cekindo.com/blog",
+      "observed": "Service-led navigation and resource categories; currently displays a planned Ascentium rebrand notice.",
+      "apply": "Use questions and service context, without importing regulatory claims."
+    },
+    {
+      "name": "Seven Stones",
+      "url": "https://sevenstonesindonesia.com/departments/tax-accounting-services/monthly-bookkeeping-service/",
+      "observed": "Document collection, verification and progress handover described as separate process steps.",
+      "apply": "Give owners an actionable evidence checklist."
+    },
+    {
+      "name": "DDTCNews",
+      "url": "https://news.ddtc.co.id/upperdeck/coretax-system",
+      "observed": "Topic-specific tax news hub separates stories and related references.",
+      "apply": "Keep regulatory discovery separate from verified law. No tax news selected for this draft."
+    },
+    {
+      "name": "PwC Indonesia TaxFlash",
+      "url": "https://www.pwc.com/id/en/pwc-publications/services-publications/tax-publications.html",
+      "observed": "A dedicated tax-publication index; prior dated benchmark records the bulletin format. No exact instrument relied on in this practical draft.",
+      "apply": "Record scope, dates and limits explicitly."
+    },
+    {
+      "name": "Bali Accounting Service (B.A.S.)",
+      "url": "https://baliaccountingservice.com/",
+      "observed": "Accounting, tax and legal service categories with a consultation path.",
+      "apply": "Keep service boundaries and next steps explicit."
+    }
+  ],
+  "benchmarkLimit": "Format and narrow reviewed-page gap observations only. No provider ranking, revenue or traffic comparison. No claim that competitors never cover the topic.",
+  "currentCustomerQuestion": "How can an owner reconcile one Airbnb reservation when part of the settlement goes to a co-host?",
+  "questionEvidence": "Editorial hypothesis grounded in current platform allocation and visibility documentation, not a verified client enquiry or measured search trend.",
+  "originalContribution": "Original fixed-allocation IDR cash bridge, separate receipt-confirmation schedule, exception decision aid and handover checklist.",
+  "regulatoryResearch": "No Indonesian legal instrument, rate, deadline or filing instruction asserted. Regulatory and market-change candidates were not selected without exact instruments/datasets and suitable review.",
+  "marketDataset": null,
+  "sourceFailures": [
+    {
+      "source": "Emerhub index",
+      "issue": "Fresh extraction was mostly navigation; not enough to infer article-level content or updates.",
+      "treatment": "Only navigation/format observed; previous 31 October benchmark clearly kept as historical context."
+    }
+  ],
+  "historicalSourceLimitations": [
+    {
+      "source": "DataForSEO",
+      "date": "2026-10-28",
+      "issue": "Saved refresh records HTTP 402; not retried and not presented as a new failure today."
+    }
+  ],
+  "demand": {
+    "primaryKeyword": "airbnb co host payout reconciliation",
+    "exactVolume": null,
+    "status": "unknown",
+    "savedSnapshotDate": "2026-10-23",
+    "currentProviderLookup": "not_run",
+    "note": "Current keyword-map statements about no connected provider do not erase the historical repository snapshots. Neither supplies a measured volume for this exact topic."
+  }
+}
