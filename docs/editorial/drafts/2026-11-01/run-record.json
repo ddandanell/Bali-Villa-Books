@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 1,
+  "siteId": "bali-villa-accounting-service.com",
+  "batchId": "2026-11-01",
+  "timezone": "Asia/Makassar",
+  "createdAt": "2026-11-01T01:32:16.915489+00:00",
+  "idempotencyKey": "bali-villa-accounting-service.com:journal-draft:2026-11-01",
+  "publicationStatus": "draft",
+  "workflowStatus": "held_for_review",
+  "version": 1,
+  "defaultBranch": "main",
+  "baseCommit": "bc752488bbe8d14cf966bdaa50056d763bf33885",
+  "branch": "editorial/draft-2026-11-01",
+  "frameworkPR6": "merged; framework read from current main; runtime deployment not inferred",
+  "brief": {
+    "readerQuestion": "How can an owner reconcile one Airbnb reservation when part of the settlement goes to a co-host?",
+    "targetAudience": "Bali villa owners and managers preparing records for an eligible Airbnb co-host payout arrangement.",
+    "distinctIntent": "Booking-level evidence for two settlement recipients, not general payout reconciliation or management-company revenue recognition.",
+    "primaryKeyword": "airbnb co host payout reconciliation",
+    "exactVolume": null,
+    "evidenceDate": "2026-11-01",
+    "commercialOwnerUrl": "https://bali-villa-accounting-service.com/airbnb-bookkeeping-bali",
+    "relatedGuideUrls": [
+      "https://bali-villa-accounting-service.com/blog/bali-villa-owner-statement-template",
+      "https://bali-villa-accounting-service.com/blog/property-management-bookkeeping-owner-liabilities"
+    ],
+    "otherInternalLinks": [
+      "/",
+      "/pricing",
+      "/get-started"
+    ],
+    "inboundLinkProposal": "On a separately authorised release, add a contextual link from /airbnb-bookkeeping-bali. No commercial page changed in this run.",
+    "originalContribution": "Original fixed-allocation IDR cash bridge, separate receipt-confirmation schedule, exception decision aid and handover checklist.",
+    "exclusions": [
+      "No payout setup walkthrough",
+      "No claim of account eligibility",
+      "No tax or revenue-recognition conclusion",
+      "No actual platform fee or timing promise"
+    ],
+    "factualReviewRequirements": [
+      "Recheck source versions and account eligibility before release",
+      "Independent editorial review remains pending"
+    ]
+  },
+  "duplicateChecks": {
+    "apiPagination": [
+      {
+        "offset": 0,
+        "limit": 50,
+        "count": 50
+      },
+      {
+        "offset": 50,
+        "limit": 50,
+        "count": 28
+      }
+    ],
+    "apiCount": 78,
+    "staticArticlesAlsoChecked": "2, both public URLs returned HTML 200 with the expected title; see static-route-checks.json",
+    "combinedUniqueCandidateCount": 80,
+    "aliasFile": "lib/site-content/src/index.ts",
+    "alias": "clean-books-villa-sale-price -> clean-books-villa-sale-bali; unrelated to selected intent",
+    "sameDateDraftsBeforeRun": 0,
+    "openPRSearch": "repo:ddandanell/Bali-Villa-Books is:open returned none before selection; dated PR query also returned none",
+    "queuesRead": [
+      "docs/seo/keyword-map.json",
+      "lib/site-content/src/seo-priority-topics.json"
+    ],
+    "priorDraft": "docs/editorial/sample-post.json is the 31 October chargeback draft; not repeated",
+    "closestLiveGuides": [
+      "reconciling-airbnb-booking-payouts",
+      "property-management-bookkeeping-owner-liabilities",
+      "bali-villa-owner-statement-template"
+    ],
+    "closestGuidesContentRead": true,
+    "cohostOrSplitPayoutMentionsInThoseGuides": false,
+    "decision": "Distinct documented two-recipient evidence problem; do not retarget the existing commercial owner."
+  },
+  "priorRecordsReviewed": [
+    ".agents/memory/MEMORY.md and relevant linked records",
+    "docs/seo-research/seo-expansion-2026-10-28-review.md",
+    "docs/seo-research/editorial-benchmark-2026-10-31.json",
+    "docs/editorial/sample-validation.json",
+    "docs/seo/releases/2026-10-31j.md",
+    "docs/seo/keyword-map.md"
+  ],
+  "operationalObservations": [
+    {
+      "kind": "cadence_conflict",
+      "evidence": "Inventory shows late-tax-filing-penalty-indonesia-records-and-next-steps at 2026-11-01T01:13:52.212Z and undeclared-rental-income-bali-records-next-steps at 2026-11-01T01:14:40.712Z.",
+      "interpretation": "Two existing API posts already carry this Bali date. Their producing process was not identified; no claim of correct one-per-day live activation. This run produces only one separate draft and makes no publishing change."
+    },
+    {
+      "kind": "inventory_surface_gap",
+      "evidence": "Current main contains two static journal pages not listed in the Replit API.",
+      "interpretation": "Future duplicate checks should inspect both surfaces; no architecture migration inferred."
+    }
+  ],
+  "article": {
+    "json": "article.json",
+    "html": "article.html",
+    "sha256": "3366039ab9ece290e3755116c3f27fb59d6b76ecd34c5e0dc7c993916c424ce1",
+    "slug": "airbnb-co-host-payout-reconciliation-bali-villas",
+    "publicUrl": null
+  },
+  "qa": {
+    "deterministicChecks": "validation.json",
+    "internalLinkChecks": "link-checks.json",
+    "staticRouteChecks": "static-route-checks.json",
+    "mediaEvidence": "media.json",
+    "repositoryCheck": {
+      "command": "node scripts/src/check-repository.mjs",
+      "exitCode": 0,
+      "status": "passed",
+      "node": "24.22.1",
+      "pnpm": "11.25.0 provided by this environment; repository packageManager declares 10.26.1",
+      "coverage": [
+        "TypeScript and workspace checks",
+        "Journal image and publishing regressions",
+        "Editorial research regressions",
+        "Analytics and SEO regressions",
+        "API build",
+        "Web and SSR build",
+        "Vercel schema and routing compatibility"
+      ],
+      "scopeLimit": "Regression check of existing application. Draft documents are not wired into any publication path.",
+      "warnings": [
+        "Existing sample-report FAQ schema warning",
+        "Existing terms page short-body warning",
+        "Vite chunk-size and existing sourcemap warnings"
+      ]
+    },
+    "sourceLinkPreservation": "failed: current allowlist strips www.airbnb.com citations",
+    "independentModelReview": "not_run_no_verified_model_connection",
+    "professionalReview": "not_run",
+    "mobileRender": "not_run",
+    "articleWordCount": 1906,
+    "passedChecks": [
+      "validateArticle_existing_repository_function",
+      "validateBlueprintStructure_original_html",
+      "metadata_and_house_word_limits",
+      "html_json_identity_and_faq_count",
+      "illustrative_arithmetic",
+      "no_forbidden_punctuation"
+    ],
+    "failedChecks": [
+      "source_citations_survive_existing_sanitizer"
+    ],
+    "publicDraftCanonicalIndexingAndStructuredData": "not_run_unpublished_document_only",
+    "arithmeticReview": "Original illustrative schedule checked; no recognition or tax conclusion inferred."
+  },
+  "measurement": {
+    "GSC": "not_verified_connected",
+    "GA4": "not_verified_connected",
+    "VercelWebAnalytics": "not_enabled_when_checked_2026-10-31; not rechecked today",
+    "exactKeywordVolume": null,
+    "localArticleViewsAndCtaClicks": "No counts read; diagnostic engagement, not organic acquisition or enquiries.",
+    "enquiriesQualifiedLeadsRevenue": "No attribution or conversion evidence read.",
+    "editorialReviewCheckpoint": "2026-11-08",
+    "performanceCheckpoint": "Publication date plus 28 days; no traffic clock starts while draft. If published 1 November, proposed checkpoint 29 November 2026.",
+    "metricsToKeepSeparate": [
+      "Search Console impressions/clicks",
+      "GA4 organic sessions",
+      "local article views",
+      "CTA clicks",
+      "delivered enquiries",
+      "qualified leads",
+      "revenue"
+    ],
+    "causalConclusion": null
+  },
+  "proposedLessons": [
+    {
+      "status": "unapproved",
+      "scope": "Editorial QA",
+      "proposal": "Explicitly test citation preservation because validateArticle can pass a sanitized copy after removing primary-source links.",
+      "evidence": "validation.json",
+      "performanceClaim": null
+    },
+    {
+      "status": "unapproved",
+      "scope": "Inventory completeness",
+      "proposal": "Inspect static journal definitions as well as the paginated live API before topic selection.",
+      "evidence": "inventory.json and static-route-checks.json",
+      "performanceClaim": null
+    }
+  ],
+  "operationalAttempts": [
+    {
+      "attempt": "Draft harness root path",
+      "outcome": "Initial path error corrected in documentation-only validation script; no article rewritten."
+    },
+    {
+      "attempt": "Bundle logger initialisation",
+      "outcome": "Development logger transport failed in temporary bundle; corrected by suppressing development transport for pure validator imports."
+    }
+  ],
+  "authorisedActions": "Research, draft, local validation and draft GitHub PR only.",
+  "actionsNotPerformed": [
+    "Live publisher invocation",
+    "Production database write",
+    "Railway knowledge database write",
+    "PR merge",
+    "Staff or client message",
+    "Governing instruction edit"
+  ],
+  "blockers": [
+    "Current production-source sanitizer allowlist strips all four Airbnb source destinations; preserved draft is not publication-ready. No code change made.",
+    "Independent editorial/model review not run.",
+    "Responsive rendering, draft canonical/indexing/schema and image crop/share preparation not run because the article is not integrated for release.",
+    "Shared Railway knowledge connection unverified; this run persists only to GitHub."
+  ]
+}

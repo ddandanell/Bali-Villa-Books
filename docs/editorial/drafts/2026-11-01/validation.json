@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-11-01T01:32:18.625Z",
+  "publicationStatus": "draft",
+  "publishable": false,
+  "checks": [
+    {
+      "name": "validateArticle_existing_repository_function",
+      "status": "passed",
+      "details": {
+        "wordCount": 1906,
+        "note": "This function sanitizes a copy before checking it; citation preservation is tested separately."
+      }
+    },
+    {
+      "name": "validateBlueprintStructure_original_html",
+      "status": "passed",
+      "details": null
+    },
+    {
+      "name": "source_citations_survive_existing_sanitizer",
+      "status": "failed",
+      "details": "Existing source allowlist removes: https://www.airbnb.com/help/article/3767, https://www.airbnb.com/help/article/3389, https://www.airbnb.com/help/article/1343, https://www.airbnb.com/help/article/3632"
+    },
+    {
+      "name": "metadata_and_house_word_limits",
+      "status": "passed",
+      "details": {
+        "words": 1906,
+        "metaTitleCharacters": 29,
+        "metaDescriptionCharacters": 140
+      }
+    },
+    {
+      "name": "html_json_identity_and_faq_count",
+      "status": "passed",
+      "details": {
+        "faqs": 5
+      }
+    },
+    {
+      "name": "illustrative_arithmetic",
+      "status": "passed",
+      "details": "10,500,000 - 500,000 = 10,000,000; 8,000,000 + 2,000,000 = 10,000,000; remaining 2,000,000 then zero."
+    },
+    {
+      "name": "no_forbidden_punctuation",
+      "status": "passed",
+      "details": null
+    }
+  ],
+  "independentModelReview": "not_run_no_verified_model_connection",
+  "professionalReview": "not_run_no_named_review_claimed",
+  "mobileRendering": "not_run_no_browser_render_in_this_draft_run",
+  "runtimeMutation": "none",
+  "note": "A passing article validator does not establish source preservation, factual approval or permission to publish."
+}

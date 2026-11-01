@@ -1,0 +1,26 @@
+{
+  "title": "File:Calculator (5639214967).jpg",
+  "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Calculator_%285639214967%29.jpg/1280px-Calculator_%285639214967%29.jpg",
+  "sourceUrl": "https://commons.wikimedia.org/wiki/File:Calculator_(5639214967).jpg",
+  "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Calculator_%285639214967%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "artist": "jakeandlindsay",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "width": 5184,
+  "height": 3456,
+  "use": "Illustrative calculator photograph; not a client engagement or Airbnb interface.",
+  "checkedAt": "2026-11-01",
+  "availability": {
+    "status": 200,
+    "contentType": "image/jpeg"
+  },
+  "photoIdentity": "5639214967",
+  "duplicateCheck": {
+    "method": "Compare decoded Commons file identity 5639214967 against the complete API/static inventory and both approved image manifests.",
+    "matches": [
+      "outsource-accounting-bali-villa-cost-comparison"
+    ],
+    "visualInspection": "Calculator photograph inspected; no claim that it depicts a client, villa, or platform interface.",
+    "publicationAssetPreparation": "No cover crop or share-card asset generated; publisher image preparation remains unrun."
+  }
+}
