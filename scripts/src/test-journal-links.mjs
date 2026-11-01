@@ -28,4 +28,40 @@ for (const {source, destination} of redirects) {
   const related = {slug:'parent-without-art',relatedPosts:[post]};
   assert.deepEqual(JSON.parse(repointJson(JSON.stringify(related),'/api/blog/posts/parent-without-art')).relatedPosts,[expected]);
 }
+// Opposite quotes are legal inside a quoted HTML attribute. Exercise both
+// delimiters on every response surface, preserving the suffix byte-for-byte.
+for (const {source, destination} of redirects) {
+  for (const prefix of ['', publicOrigin]) {
+    for (const [quote, suffix] of [
+      ['"', "?ref=owner's-report&amp;x=1#owner's-section"],
+      ["'", '?ref=owner"s-report&amp;x=1#owner"s-section'],
+    ]) {
+      const anchor = `<a class="body" href=${quote}${prefix}${source}/${suffix}${quote} title="Unchanged title">Read guide</a>`;
+      const fixedAnchor = anchor.replace(`${prefix}${source}/`, `${prefix}${destination}`);
+      const post = {slug:'no-art-control', title:'Unchanged title', imageUrl:'/unchanged.webp', contentHtml:`<p>Unchanged scope</p>${anchor}`};
+      const expected = {...post, contentHtml:`<p>Unchanged scope</p>${fixedAnchor}`};
+      assert.equal(repointJournalLinks(anchor), fixedAnchor);
+      assert.equal(repointJournalLinks(fixedAnchor), fixedAnchor);
+      const seed = JSON.stringify({post}).replace(/</g,'\\u003c');
+      const html = `${post.contentHtml}<script>window.__BLOG_INITIAL__=${seed};</script>`;
+      const doc = repointDocument(html,'/blog/no-art-control');
+      assert.equal(doc.slice(0,doc.indexOf('<script>')), expected.contentHtml);
+      assert.deepEqual(JSON.parse(doc.match(/window\.__BLOG_INITIAL__=(.*);<\/script>/s)[1]),{post:expected});
+      assert.equal(repointDocument(doc,'/blog/no-art-control'),doc);
+      for (const [payload, fixed, path] of [
+        [post,expected,'/api/blog/posts/no-art-control'],
+        [[post],[expected],'/api/blog/posts'],
+        [{posts:[post],total:1},{posts:[expected],total:1},'/api/blog/posts'],
+        [{slug:'parent-without-art',relatedPosts:[post]},{slug:'parent-without-art',relatedPosts:[expected]},'/api/blog/posts/parent-without-art'],
+      ]) {
+        const actual = repointJson(JSON.stringify(payload),path);
+        assert.deepEqual(JSON.parse(actual),fixed);
+        assert.equal(repointJson(actual,path),actual);
+      }
+      const controls = `<a href=${quote}https://example.org${source}${suffix}${quote}>External</a><a href=${quote}//example.org${source}${suffix}${quote}>External</a><a href=${quote}${source}-other${suffix}${quote}>Other slug</a><p>${source}</p><link rel="canonical" href=${quote}${source}${suffix}${quote}>`;
+      assert.equal(repointJournalLinks(controls),controls);
+    }
+  }
+}
+console.log('PASS: opposite-quote hrefs canonicalised on document, seed, single/list API and related posts; suffixes, controls and idempotence intact.');
 console.log('PASS: journal redirect hrefs canonicalised on document, seed, single/list API and related posts; controls and idempotence intact.');

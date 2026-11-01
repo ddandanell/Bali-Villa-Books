@@ -86,7 +86,10 @@ const journalDestinations = {
   "/blog/bali-villa-supplier-invoice-payroll-bpjs-control-calendar": "/blog/bali-villa-supplier-invoice-payroll-control-calendar",
 };
 export function repointJournalLinks(html) {
-  return html.replace(/(<a\b[^>]*?\shref\s*=\s*)(["'])([^"']*)\2/gi, (match, prefix, quote, href) => {
+  // Each alternative stops only at its own delimiter; the opposite quote is data.
+  return html.replace(/(<a\b[^>]*?\shref\s*=\s*)("[^"]*"|'[^']*')/gi, (match, prefix, quotedHref) => {
+    const quote = quotedHref[0];
+    const href = quotedHref.slice(1, -1);
     const absolute = href.startsWith(`${publicOrigin}/`);
     const relative = href.startsWith("/") && !href.startsWith("//");
     if (!absolute && !relative) return match;
