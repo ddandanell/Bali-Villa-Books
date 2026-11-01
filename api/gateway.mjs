@@ -78,6 +78,26 @@ export async function proxyRequest(req, fetcher = fetch) {
 // asset hashes this deployment does not have; both 404, so the page arrives with
 // no stylesheet and no bundle. Repoint those two references at the aliases
 // prerender.mjs publishes from this build. Nothing else in the document changes.
+// Existing permanent journal redirects are retained for old external links.
+// Rewrite only anchor hrefs, not prose, slugs, canonicals or external URLs.
+const journalDestinations = {
+  "/blog/bali-villa-expense-tracking-system": "/blog/bali-villa-chart-of-accounts",
+  "/blog/bali-villa-owner-monthly-report": "/blog/bali-villa-owner-statement-template",
+  "/blog/bali-villa-supplier-invoice-payroll-bpjs-control-calendar": "/blog/bali-villa-supplier-invoice-payroll-control-calendar",
+};
+export function repointJournalLinks(html) {
+  return html.replace(/(<a\b[^>]*?\shref\s*=\s*)(["'])([^"']*)\2/gi, (match, prefix, quote, href) => {
+    const absolute = href.startsWith(`${publicOrigin}/`);
+    const relative = href.startsWith("/") && !href.startsWith("//");
+    if (!absolute && !relative) return match;
+    const path = absolute ? href.slice(publicOrigin.length) : href;
+    const parts = path.match(/^([^?#]*)([?#][\s\S]*)?$/);
+    const target = journalDestinations[parts[1].replace(/\/$/, "")];
+    if (!target) return match;
+    return `${prefix}${quote}${absolute ? publicOrigin : ""}${target}${parts[2] ?? ""}${quote}`;
+  });
+}
+
 export function repointAssets(html) {
   return html
     .replace(/\/assets\/index-[A-Za-z0-9_.-]+\.js/g, "/assets/app.js")
@@ -250,6 +270,10 @@ export function repointPost(post) {
   if (!post || typeof post !== "object") return post;
   const art = journalArt[post.slug];
   let out = post;
+  if (typeof out.contentHtml === "string") {
+    const contentHtml = repointJournalLinks(out.contentHtml);
+    if (contentHtml !== out.contentHtml) out = { ...out, contentHtml };
+  }
   if (art) {
     const stale = staleArt(post.slug, post.imageUrl);
     if (stale) out = { ...out, imageUrl: `${SITE}${art.imageUrl}`, imageAlt: art.imageAlt };
@@ -278,7 +302,7 @@ export function repointJson(body, targetPath) {
 }
 
 export function repointDocument(html, pathname) {
-  const withAssets = repointAssets(html);
+  const withAssets = repointSeed(repointJournalLinks(repointAssets(html)));
   const slug = pathname.match(/^\/blog\/([a-z0-9-]+)\/?$/);
   if (slug) return repointArticleArt(withAssets, slug[1]);
   if (/^\/blog\/?$/.test(pathname)) return repointHubArt(withAssets);
