@@ -86,18 +86,31 @@ const journalDestinations = {
   "/blog/bali-villa-supplier-invoice-payroll-bpjs-control-calendar": "/blog/bali-villa-supplier-invoice-payroll-control-calendar",
 };
 export function repointJournalLinks(html) {
-  // Each alternative stops only at its own delimiter; the opposite quote is data.
-  return html.replace(/(<a\b[^>]*?\shref\s*=\s*)("[^"]*"|'[^']*')/gi, (match, prefix, quotedHref) => {
-    const quote = quotedHref[0];
-    const href = quotedHref.slice(1, -1);
-    const absolute = href.startsWith(`${publicOrigin}/`);
-    const relative = href.startsWith("/") && !href.startsWith("//");
-    if (!absolute && !relative) return match;
-    const path = absolute ? href.slice(publicOrigin.length) : href;
-    const parts = path.match(/^([^?#]*)([?#][\s\S]*)?$/);
-    const target = journalDestinations[parts[1].replace(/\/$/, "")];
-    if (!target) return match;
-    return `${prefix}${quote}${absolute ? publicOrigin : ""}${target}${parts[2] ?? ""}${quote}`;
+  // Tokenize complete tags before attributes: quoted > and href-like title
+  // data must never become structural boundaries. Leave raw-text and comments alone.
+  const tokens = /<!--[\s\S]*?-->|<(script|style|textarea|title)\b(?:[^"'<>]|"[^"]*"|'[^']*')*>[\s\S]*?<\/\1\s*>|<[a-z][a-z0-9:-]*(?=[\s/>])(?:[^"'<>]|"[^"]*"|'[^']*')*>/gi;
+  return html.replace(tokens, (tag) => {
+    if (!/^<a(?=[\s/>])/i.test(tag)) return tag;
+    const attributes = /([^\s=/>]+)(?:\s*=\s*("[^"]*"|'[^']*'|[^\s>]+))?/g;
+    attributes.lastIndex = 2;
+    for (let attr; (attr = attributes.exec(tag));) {
+      if (attr[1].toLowerCase() !== "href") continue;
+      const value = attr[2];
+      // Keep unsupported/unquoted href syntax unchanged rather than guessing.
+      if (!value || !/^["']/.test(value)) return tag;
+      const href = value.slice(1, -1);
+      const absolute = href.startsWith(`${publicOrigin}/`);
+      const relative = href.startsWith("/") && !href.startsWith("//");
+      if (!absolute && !relative) return tag;
+      const path = absolute ? href.slice(publicOrigin.length) : href;
+      const parts = path.match(/^([^?#]*)([?#][\s\S]*)?$/);
+      const target = journalDestinations[parts[1].replace(/\/$/, "")];
+      if (!target) return tag;
+      const offset = attributes.lastIndex - value.length + 1;
+      const replacement = `${absolute ? publicOrigin : ""}${target}${parts[2] ?? ""}`;
+      return tag.slice(0, offset) + replacement + tag.slice(offset + href.length);
+    }
+    return tag;
   });
 }
 

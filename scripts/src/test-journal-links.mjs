@@ -65,3 +65,42 @@ for (const {source, destination} of redirects) {
 }
 console.log('PASS: opposite-quote hrefs canonicalised on document, seed, single/list API and related posts; suffixes, controls and idempotence intact.');
 console.log('PASS: journal redirect hrefs canonicalised on document, seed, single/list API and related posts; controls and idempotence intact.');
+
+// QA attribute-boundary regressions across all mappings, URL forms and quotes.
+let boundaryCases = 0;
+for (const {source, destination} of redirects) {
+  for (const prefix of ['', publicOrigin]) {
+    for (const [quote, other] of [['"', "'"], ["'", '"']]) {
+      const old = `${prefix}${source}`;
+      const fixed = `${prefix}${destination}`;
+      const cases = [
+        [`<a title=${quote}Balance > 0${quote} href=${quote}${old}${quote}>Read</a>`, `<a title=${quote}Balance > 0${quote} href=${quote}${fixed}${quote}>Read</a>`],
+        [`<a title=${quote}Example href=${other}${old}${other}${quote} href=${quote}/services${quote}>Read</a>`, null],
+        [`<a title=${quote}Example href=${other}${old}${other}${quote} href=${quote}${old}${quote}>Read</a>`, `<a title=${quote}Example href=${other}${old}${other}${quote} href=${quote}${fixed}${quote}>Read</a>`],
+      ];
+      for (const [input, changed] of cases) {
+        const expected = changed ?? input;
+        const post = {slug:'no-art-control',title:'Unchanged title',contentHtml:input};
+        const expectedPost = {...post,contentHtml:expected};
+        assert.equal(repointJournalLinks(input),expected);
+        assert.equal(repointDocument(input,'/blog/no-art-control'),expected);
+        const seed = JSON.stringify({post}).replace(/</g,'\\u003c');
+        const document = repointDocument(`<script>window.__BLOG_INITIAL__=${seed};</script>`,'/blog/no-art-control');
+        assert.deepEqual(JSON.parse(document.match(/window\.__BLOG_INITIAL__=(.*);<\/script>/s)[1]),{post:expectedPost});
+        for (const [payload, output, path] of [
+          [post,expectedPost,'/api/blog/posts/no-art-control'],
+          [[post],[expectedPost],'/api/blog/posts'],
+          [{posts:[post],total:1},{posts:[expectedPost],total:1},'/api/blog/posts'],
+          [{slug:'parent-without-art',relatedPosts:[post]},{slug:'parent-without-art',relatedPosts:[expectedPost]},'/api/blog/posts/parent-without-art'],
+        ]) assert.deepEqual(JSON.parse(repointJson(JSON.stringify(payload),path)),output);
+        assert.equal(repointJournalLinks(expected),expected);
+        boundaryCases++;
+      }
+      const anchor = `<a href=${quote}${old}${quote}>Read</a>`;
+      for (const control of [`<!-- ${anchor} -->`, `<script>const example = ${JSON.stringify(anchor)};</script>`, `<style>/* ${anchor} */</style>`, `<textarea>${anchor}</textarea>`, `<title>${anchor}</title>`]) {
+        assert.equal(repointJournalLinks(control),control);
+      }
+    }
+  }
+}
+console.log(`PASS: ${boundaryCases} attribute-boundary cases on document, seed, API and related posts; comments/raw-text controls unchanged.`);
