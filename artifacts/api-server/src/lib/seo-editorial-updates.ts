@@ -55,7 +55,7 @@ const updates: Record<string, EditorialUpdate> = {
       "The reported emergency response and a guest's booking changes are separate matters. Retain the dated announcement as context, and refer current permit questions to the responsible office. A flight cancellation, an extended villa reservation and permission to remain are not the same document.",
       "For bookkeeping, connect the revised stay dates with the additional charge or refund, the platform adjustment and the bank receipt. Record supplier costs connected with the change against their invoices. If the evidence is incomplete, place the item on the questions list rather than making up a settlement explanation. This records the financial consequences of disruption without claiming to assess eligibility for an emergency permit.",
     ],
-    links: [["Airbnb and OTA refund reconciliation", "/airbnb-bookkeeping-bali"], ["Track villa operating expenses", "/blog/bali-villa-expense-tracking-system"]],
+    links: [["Airbnb and OTA refund reconciliation", "/airbnb-bookkeeping-bali"], ["Track villa operating expenses", "/blog/bali-villa-chart-of-accounts"]],
   },
   "indonesia-foreign-worker-permits-oss-september-2026": {
     title: "Indonesia Foreign Worker Permits and OSS: September 2026 Update",
@@ -67,7 +67,7 @@ const updates: Record<string, EditorialUpdate> = {
       "An announcement about system integration does not establish that an individual employer or worker has completed the necessary process. Retain the actual correspondence and current instructions from the responsible provider. A processing target in a news report is not a guaranteed approval date.",
       "The bookkeeping file should distinguish authorized staff-cost schedules, recorded payments and the supporting documents supplied. If a fee or reimbursement is recorded, keep the invoice and purpose identifiable. Payroll record tracking cannot confirm employment eligibility, calculate every statutory obligation or replace a permit application. Agree who handles those professional responsibilities and which factual schedules the monthly owner report should include.",
     ],
-    links: [["Villa payroll records and BPJS tracking scope", "/villa-payroll-records-bali"], ["Read the staff-record control calendar", "/blog/bali-villa-supplier-invoice-payroll-bpjs-control-calendar"]],
+    links: [["Villa payroll records and BPJS tracking scope", "/villa-payroll-records-bali"], ["Read the staff-record control calendar", "/blog/bali-villa-supplier-invoice-payroll-control-calendar"]],
   },
   "bali-villa-supplier-invoice-payroll-bpjs-control-calendar": {
     title: "Bali Villa Payroll, Supplier Invoices and BPJS: A Monthly Control Checklist",
