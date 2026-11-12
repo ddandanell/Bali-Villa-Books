@@ -13,7 +13,8 @@ reminder. `seo-autopilot.json` records its scope. The schedule is external to th
 website and does not depend on an idle Replit process. There is deliberately no
 second GitHub cron that generates competing articles.
 
-Each run edits the current repository, runs the checks, commits to `main`, then
+Each run edits the current repository, runs the checks, opens a pull request,
+autonomously merges after required checks, then
 uses the existing Vercel Git deployment. No new AI API key, database migration,
 replacement CMS or Vercel token is required. Connections and the scheduled-task
 service must remain available. Report a genuine access failure; do not ask
@@ -79,8 +80,11 @@ existing backend for old articles, anonymous forms and measurement events.
    owner, changes, checks, measurement limitations and release expectations.
    Keep draft checkpoints so a failed run can resume without another article.
 3. Re-read the `main` head. If another contributor changed it, integrate their
-   changes and repeat affected checks. Push one normal commit to `main` using
-   GitHub tools or Git. Never force push. No routine human approval step.
+   changes and repeat affected checks. Push a normal commit to a unique `seo/autopilot-*` branch, open a non-draft
+   pull request and merge it after required checks pass, using the expected head
+   SHA. Main requires a pull request. Never force push, disable branch protection
+   or use an administrator bypass. No routine human approval step; report an
+   exact unmet human-review requirement if one actually blocks the merge.
 4. Observe the commit's GitHub checks and Vercel status. The expected Vercel
    project is the one linked to this repository, previously reported as
    `bali-villa-books-api-serverff` under `daviddandanell-9392s-projects`. Do not

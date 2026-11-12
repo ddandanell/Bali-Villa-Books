@@ -63,5 +63,6 @@
     "timezone": "Asia/Makassar",
     "nextRun": "2026-11-16T09:00:00+08:00"
   },
-  "updatedAt": "2026-11-12T17:57:38.253977+00:00"
+  "updatedAt": "2026-11-12T17:57:38.253977+00:00",
+  "releasePolicy": "main requires a pull request; conventional branch, checks and autonomous merge; no policy bypass"
 }

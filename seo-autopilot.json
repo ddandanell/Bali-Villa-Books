@@ -23,5 +23,6 @@
   "deployment": "existing Vercel Git integration",
   "measurementPolicy": "Record unavailable data explicitly; never substitute content counts for rankings, leads or revenue.",
   "automationId": "Automation_74b916cd2bc481918165cb95d8a589f1",
-  "nextScheduledRun": "2026-11-16T09:00:00+08:00"
+  "nextScheduledRun": "2026-11-16T09:00:00+08:00",
+  "release": "pull request, required checks, autonomous merge to main"
 }
