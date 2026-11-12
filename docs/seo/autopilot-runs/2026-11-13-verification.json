@@ -1,0 +1,45 @@
+{
+  "verifiedAt": "2026-11-12T20:57:41.166416+00:00",
+  "site": "https://bali-villa-accounting-service.com",
+  "mainRelease": "83dc4600ae14393ddce9c4aaf18756c225e7b090",
+  "githubPullRequest": 33,
+  "vercelProduction": "EiJE34n2v8yXsrXfNVYyS4u2bH94",
+  "status": "main release deployed successfully; final journal search correction in companion PR",
+  "fullSiteAudit": {
+    "canonicalPages": 130,
+    "assets": 103,
+    "pageErrors": 0,
+    "duplicateTitles": 0,
+    "duplicateDescriptions": 0,
+    "brokenInternalLinks": 0,
+    "brokenAssets": 0
+  },
+  "runtimeChecks": {
+    "homeServicesPricingArticleAndSitemaps": "pass",
+    "emptyEnquiry": "HTTP 400, rejected without creating a lead",
+    "unknownMarketingPage": "HTTP 404",
+    "unknownJournalArticle": "HTTP 404",
+    "serviceToStaticArticleBrowserNavigation": "pass",
+    "articleImage": "loaded",
+    "articleHorizontalOverflow": "none at inspected desktop viewport"
+  },
+  "fixedIssues": [
+    {
+      "issue": "Vercel preview failed before application build while provisioning an unused Supabase resource",
+      "repair": "Project connection Require Active Resource Before Deploy set to Not Required; no database deletion or secret rotation",
+      "confirmed": "Fresh preview and subsequent main-branch production both succeeded"
+    },
+    {
+      "issue": "Journal search showed a no-results message alongside a matching repository article",
+      "repair": "Require both database results and static results to be empty before rendering the empty state",
+      "validation": "Full pnpm check passed; production browser check follows companion PR merge"
+    }
+  ],
+  "limitations": [
+    "No complete claim of 100% defect freedom or verification of every financial/legal statement",
+    "Fresh keyword/ranking data unavailable from Semrush due to no API units",
+    "Vercel connector still cannot list this project; signed-in browser provided exact deployment evidence"
+  ],
+  "nextRun": "Existing Monday and Thursday automation continues; verify current production and resume optimization from the latest merged source."
+}
+
