@@ -45,7 +45,12 @@
     "liveInventory": "passed: 98 backend articles; zero unmapped",
     "image": "visually inspected; exact illustrative process diagram",
     "browserLocal": "not completed: Chromium launch blocked by process_singleton socket Operation not permitted; no browser pass claimed",
-    "publicRelease": "pending commit and deployment verification"
+    "publicRelease": "blocked: Vercel preview failed; not merged or published",
+    "githubActions": {
+      "commit": "f87d86ca38b6905b499d99ab3ff5056b60b85cfe",
+      "run": 43278401311,
+      "result": "success"
+    }
   },
   "measurements": {
     "semrush": "no_api_units; not retried; no fresh rankings/volumes obtained",
@@ -64,5 +69,15 @@
     "nextRun": "2026-11-16T09:00:00+08:00"
   },
   "updatedAt": "2026-11-12T17:57:38.253977+00:00",
-  "releasePolicy": "main requires a pull request; conventional branch, checks and autonomous merge; no policy bypass"
+  "releasePolicy": "main requires a pull request; conventional branch, checks and autonomous merge; no policy bypass",
+  "release": {
+    "pullRequest": "https://github.com/ddandanell/Bali-Villa-Books/pull/33",
+    "branch": "seo/autopilot-2026-11-13",
+    "latestValidatedCodeCommit": "f87d86ca38b6905b499d99ab3ff5056b60b85cfe",
+    "vercelPreviewStatus": "failure",
+    "failedDeployment": "dpl_Ht5vS8zXtu4oYNRvGwBRTjrhvRsR",
+    "deploymentUrl": "https://vercel.com/daviddandanell-9392s-projects/bali-villa-books-api-serverff/Ht5vS8zXtu4oYNRvGwBRTjrhvRsR",
+    "diagnosis": "The Vercel connector lists only an unrelated project. Exact project ID and deployment reads, including build events, return 404. No Vercel CLI token is configured. The failure cause cannot be established from available logs.",
+    "nextAction": "Restore connector access to the existing project or obtain permission for browser inspection of its deployment log. Read the failure before changing configuration, then resume this PR. Do not generate another article while this release remains blocked."
+  }
 }
