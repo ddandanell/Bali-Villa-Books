@@ -7,13 +7,17 @@ import { Layout } from "@/components/Layout";
 import { BlogCard } from "@/components/BlogCard";
 import { trackEvent } from "@/lib/analytics";
 import { articleVisual } from "@workspace/site-content";
+import { staticJournalPosts } from "@/lib/journal-static";
 
 const WA = "https://wa.me/6281237402292";
 const wa = (message: string) => `${WA}?text=${encodeURIComponent(message)}`;
 
 export default function BlogArticle() {
   const { slug = "" } = useParams<{ slug: string }>();
-  const { data: post, isLoading, isError, refetch } = useGetBlogPost(slug, { query: { queryKey: getGetBlogPostQueryKey(slug), enabled: !!slug } });
+  const staticPost = staticJournalPosts.find(post => post.slug === slug);
+  const { data: post, isLoading, isError, refetch } = useGetBlogPost(slug, { query: {
+    queryKey: getGetBlogPostQueryKey(slug), enabled: !!slug && !staticPost, initialData: staticPost,
+  } });
   const imagery = post ? articleVisual(slug, post) : undefined;
   const event = useRecordBlogEvent();
   const complete = useRef(false);

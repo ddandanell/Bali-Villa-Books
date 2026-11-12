@@ -1,0 +1,104 @@
+{
+  "runDate": "2026-11-13",
+  "kind": "installation and first publication",
+  "startingCommit": "66fd19f0815c86d9ad65886a3a9d032b3feb75be",
+  "inventory": {
+    "liveBackendArticles": 98,
+    "existingStaticArticles": 2,
+    "newStaticArticles": 1,
+    "keywordOwners": 130,
+    "unmappedLiveArticles": 0
+  },
+  "intent": {
+    "primary": "bali villa pre opening bookkeeping records",
+    "serviceOwner": "/villa-financial-reporting-bali",
+    "distinctContribution": "Pre-trading supplier commitments, deposits and owner-funding register; original checked cash bridge. Existing opening-balance and owner-funding articles cover adjacent handovers.",
+    "article": "/blog/bali-villa-pre-opening-bookkeeping-records",
+    "wordCount": 1731
+  },
+  "sources": [
+    {
+      "url": "https://www.airbnb.com/help/article/3632",
+      "accessed": "2026-11-13",
+      "supports": "Availability of host earnings reports; only a short supporting claim, not Indonesian accounting treatment."
+    }
+  ],
+  "changes": [
+    "External executing automation enabled for Monday and Thursday around 09:00 Asia/Makassar.",
+    "Stable ownership registry across marketing, hub, legal and article pages.",
+    "Keyword collision check and preservation against previous GitHub base.",
+    "New registry-backed static article with a unique process illustration and conversion links.",
+    "Static article navigation repaired; journal registry archive made searchable.",
+    "Crawlable pre-hydration journal links and sitemap coverage.",
+    "Legacy cleanup guide assigned a distinct informational target at the gateway."
+  ],
+  "checks": {
+    "repository": "passed: workspace type checks, editorial/analytics tests, keyword tests, API build, production web build and Vercel compatibility",
+    "seoAudit": {
+      "documents": 31,
+      "errors": 0,
+      "existingWarnings": [
+        "sample-report FAQ without FAQPage schema",
+        "terms short body 575 words"
+      ]
+    },
+    "liveInventory": "passed: 98 backend articles; zero unmapped",
+    "image": "visually inspected; exact illustrative process diagram",
+    "browserLocal": "not completed: Chromium launch blocked by process_singleton socket Operation not permitted; no browser pass claimed",
+    "publicRelease": "verified: initial code b4916d3 is already live on the production domain, confirmed by Vercel Overview",
+    "githubActions": {
+      "commit": "f87d86ca38b6905b499d99ab3ff5056b60b85cfe",
+      "run": 43278401311,
+      "result": "success"
+    },
+    "fullLiveAudit": {
+      "checkedAt": "2026-11-12T20:50:36.742Z",
+      "pages": 130,
+      "assetsChecked": 103,
+      "pageErrors": 0,
+      "duplicateTitles": 0,
+      "duplicateDescriptions": 0,
+      "brokenInternalLinks": 0,
+      "brokenAssets": 0,
+      "scope": "All canonical URLs from all three sitemaps; title, description, H1, canonical, indexability, JSON-LD, links and local asset availability."
+    },
+    "repositoryRecheck": "passed: full pnpm check repeated after owner requested complete recheck"
+  },
+  "measurements": {
+    "semrush": "no_api_units; not retried; no fresh rankings/volumes obtained",
+    "searchConsole": "no verified connected performance source",
+    "ga4": "no verified connected performance source",
+    "vercelConnector": "existing project lookup returned 404; use exact GitHub integration status and public domain verification"
+  },
+  "schedule": {
+    "enabled": true,
+    "days": [
+      "Monday",
+      "Thursday"
+    ],
+    "localTime": "around 09:00",
+    "timezone": "Asia/Makassar",
+    "nextRun": "2026-11-16T09:00:00+08:00"
+  },
+  "updatedAt": "2026-11-12T20:53:57.510899+00:00",
+  "releasePolicy": "main requires a pull request; conventional branch, checks and autonomous merge; no policy bypass",
+  "release": {
+    "pullRequest": "https://github.com/ddandanell/Bali-Villa-Books/pull/33",
+    "branch": "seo/autopilot-2026-11-13",
+    "latestValidatedCodeCommit": "f87d86ca38b6905b499d99ab3ff5056b60b85cfe",
+    "vercelPreviewStatus": "failure",
+    "failedDeployment": "dpl_Ht5vS8zXtu4oYNRvGwBRTjrhvRsR",
+    "deploymentUrl": "https://vercel.com/daviddandanell-9392s-projects/bali-villa-books-api-serverff/Ht5vS8zXtu4oYNRvGwBRTjrhvRsR",
+    "diagnosis": "Browser inspection established that preview deployment stopped before the app build because an unused Supabase integration was marked as a required deployment resource. The Vercel frontend and gateway do not use Supabase.",
+    "nextAction": "Commit this verified audit record, observe the fresh preview using the repaired integration configuration, merge via the normal GitHub PR rules and verify the main-branch production deployment.",
+    "configurationRepair": "Set Require Active Resource Before Deploy to Not Required for this project connection. Reopened the dialog and confirmed the saved value. Database, connection, environments and secrets were preserved.",
+    "observedProduction": {
+      "deployment": "BDdCpHPtj4gKVMSV75Ls1RUxBPVo",
+      "status": "Ready",
+      "commit": "b4916d3ffe9cc63fb35d5d696f3555b78daf65a7",
+      "sourceBranch": "seo/autopilot-2026-11-13",
+      "url": "https://bali-villa-accounting-service.com",
+      "observedAt": "2026-11-12T20:53:57.510886+00:00"
+    }
+  }
+}

@@ -49,9 +49,9 @@ export default function Blog() {
   // Articles this build prerenders live in the repo, not the API, so the API list cannot see them.
   const latestStatic = useMemo(() => staticJournalPosts
     .filter((post) => !(posts ?? []).some((live) => live.slug === post.slug))
+    .filter((post) => `${post.title} ${post.excerpt} ${post.primaryKeyword}`.toLowerCase().includes(search.toLowerCase()))
     .slice()
-    .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))
-    .slice(0, 3), [posts]);
+    .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt)), [posts, search]);
   const filtered = useMemo(() => (posts ?? []).filter((post) =>
     `${post.title} ${post.excerpt} ${post.category} ${post.primaryKeyword}`.toLowerCase().includes(search.toLowerCase())
   ), [posts, search]);
@@ -78,7 +78,7 @@ export default function Blog() {
           </div>
         </section>
         <section className="container mx-auto max-w-7xl px-5 py-14 md:px-8 sm:py-20">
-          {page === 1 && !search && latestStatic.length > 0 && <div className="mb-12 rounded-[1.75rem] border border-primary/10 bg-white p-7 sm:p-9" data-testid="section-newest-articles">
+          {page === 1 && latestStatic.length > 0 && <div className="mb-12 rounded-[1.75rem] border border-primary/10 bg-white p-7 sm:p-9" data-testid="section-newest-articles">
             <p className="text-xs font-bold uppercase tracking-[.18em] text-secondary">Newest guides</p>
             <div className="mt-5 divide-y divide-primary/10">
               {latestStatic.map((post) => <Link key={post.slug} href={`/blog/${post.slug}`} className="group flex flex-col gap-2 py-5 first:pt-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">

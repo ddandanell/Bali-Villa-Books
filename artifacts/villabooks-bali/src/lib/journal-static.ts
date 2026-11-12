@@ -9,6 +9,8 @@
  *
  * Data only. Publishing policy lives in the article contract and the QA gate.
  */
+import autopilotPosts from "../../../../lib/site-content/src/autopilot-posts.json" with { type: "json" };
+
 export type StaticJournalPost = {
   slug: string; title: string; metaTitle: string; metaDescription: string;
   excerpt: string; primaryKeyword: string; category: string;
@@ -20,6 +22,7 @@ export type StaticJournalPost = {
 };
 
 export const staticJournalPosts: StaticJournalPost[] = [
+  ...autopilotPosts.map(post => ({ ...post, faqs: post.faqs.map(([question, answer]): [string, string] => [question, answer]) })),
   {
     "slug": "bali-villa-pbjt-accommodation-tax-records",
     "title": "Bali Villa PBJT: the Records Behind the 10% Charge",

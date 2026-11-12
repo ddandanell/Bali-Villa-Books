@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-31T10:29:22.279Z",
+  "generatedAt": "2026-11-12T18:17:16.848Z",
   "origin": "https://bali-villa-accounting-service.com",
-  "pages": 30,
+  "pages": 31,
   "errors": [],
   "warnings": [
     "/sample-report: 1 FAQ blocks without FAQPage schema",
@@ -26,7 +26,7 @@
         "Service",
         "FAQPage"
       ],
-      "words": 1029,
+      "words": 1037,
       "faqQuestions": 3
     },
     {
@@ -47,7 +47,7 @@
         "Service",
         "FAQPage"
       ],
-      "words": 990,
+      "words": 998,
       "faqQuestions": 3
     },
     {
@@ -68,7 +68,7 @@
         "Service",
         "FAQPage"
       ],
-      "words": 967,
+      "words": 975,
       "faqQuestions": 3
     },
     {
@@ -89,7 +89,7 @@
         "Service",
         "FAQPage"
       ],
-      "words": 998,
+      "words": 1006,
       "faqQuestions": 3
     },
     {
@@ -110,7 +110,7 @@
         "Service",
         "FAQPage"
       ],
-      "words": 993,
+      "words": 1001,
       "faqQuestions": 3
     },
     {
@@ -173,7 +173,7 @@
         "Service",
         "FAQPage"
       ],
-      "words": 979,
+      "words": 987,
       "faqQuestions": 3
     },
     {
@@ -294,7 +294,7 @@
         "FAQPage",
         "OfferCatalog"
       ],
-      "words": 2693,
+      "words": 2701,
       "faqQuestions": 5
     },
     {
@@ -313,7 +313,7 @@
         "BreadcrumbList",
         "ImageObject"
       ],
-      "words": 1411,
+      "words": 1419,
       "faqQuestions": 0
     },
     {
@@ -334,7 +334,7 @@
         "Service",
         "FAQPage"
       ],
-      "words": 1303,
+      "words": 1311,
       "faqQuestions": 3
     },
     {
@@ -377,7 +377,7 @@
         "Service",
         "FAQPage"
       ],
-      "words": 1263,
+      "words": 1271,
       "faqQuestions": 3
     },
     {
@@ -398,7 +398,7 @@
         "Service",
         "FAQPage"
       ],
-      "words": 1210,
+      "words": 1218,
       "faqQuestions": 3
     },
     {
@@ -419,7 +419,7 @@
         "Service",
         "FAQPage"
       ],
-      "words": 1234,
+      "words": 1242,
       "faqQuestions": 3
     },
     {
@@ -440,7 +440,7 @@
         "Service",
         "FAQPage"
       ],
-      "words": 1153,
+      "words": 1161,
       "faqQuestions": 3
     },
     {
@@ -460,7 +460,7 @@
         "ImageObject",
         "OfferCatalog"
       ],
-      "words": 874,
+      "words": 882,
       "faqQuestions": 0
     },
     {
@@ -481,7 +481,7 @@
         "BreadcrumbList",
         "ImageObject"
       ],
-      "words": 2635,
+      "words": 2643,
       "faqQuestions": 0
     },
     {
@@ -500,7 +500,7 @@
         "BreadcrumbList",
         "ImageObject"
       ],
-      "words": 1174,
+      "words": 1182,
       "faqQuestions": 0
     },
     {
@@ -519,7 +519,7 @@
         "BreadcrumbList",
         "ImageObject"
       ],
-      "words": 715,
+      "words": 723,
       "faqQuestions": 0
     },
     {
@@ -539,7 +539,7 @@
         "ImageObject",
         "FAQPage"
       ],
-      "words": 1541,
+      "words": 1549,
       "faqQuestions": 10
     },
     {
@@ -581,6 +581,26 @@
       ],
       "words": 575,
       "faqQuestions": 0
+    },
+    {
+      "path": "/blog/bali-villa-pre-opening-bookkeeping-records",
+      "issues": [],
+      "warnings": [],
+      "title": "Bali Villa Pre-Opening Bookkeeping: Before the First Guest",
+      "description": "Opening a Bali villa? Organize furniture invoices, deposits, owner funding and unpaid commitments before the first guest, with a worked IDR example.",
+      "canonical": "https://bali-villa-accounting-service.com/blog/bali-villa-pre-opening-bookkeeping-records",
+      "robots": "index,follow",
+      "ogImage": "https://bali-villa-accounting-service.com/images/journal/bali-villa-pre-opening-bookkeeping-records.webp",
+      "schemaTypes": [
+        "AccountingService",
+        "WebSite",
+        "WebPage",
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "words": 1972,
+      "faqQuestions": 5
     },
     {
       "path": "/blog/bali-villa-pbjt-accommodation-tax-records",
