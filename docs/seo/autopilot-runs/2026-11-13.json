@@ -45,12 +45,24 @@
     "liveInventory": "passed: 98 backend articles; zero unmapped",
     "image": "visually inspected; exact illustrative process diagram",
     "browserLocal": "not completed: Chromium launch blocked by process_singleton socket Operation not permitted; no browser pass claimed",
-    "publicRelease": "blocked: Vercel preview failed; not merged or published",
+    "publicRelease": "verified: initial code b4916d3 is already live on the production domain, confirmed by Vercel Overview",
     "githubActions": {
       "commit": "f87d86ca38b6905b499d99ab3ff5056b60b85cfe",
       "run": 43278401311,
       "result": "success"
-    }
+    },
+    "fullLiveAudit": {
+      "checkedAt": "2026-11-12T20:50:36.742Z",
+      "pages": 130,
+      "assetsChecked": 103,
+      "pageErrors": 0,
+      "duplicateTitles": 0,
+      "duplicateDescriptions": 0,
+      "brokenInternalLinks": 0,
+      "brokenAssets": 0,
+      "scope": "All canonical URLs from all three sitemaps; title, description, H1, canonical, indexability, JSON-LD, links and local asset availability."
+    },
+    "repositoryRecheck": "passed: full pnpm check repeated after owner requested complete recheck"
   },
   "measurements": {
     "semrush": "no_api_units; not retried; no fresh rankings/volumes obtained",
@@ -68,7 +80,7 @@
     "timezone": "Asia/Makassar",
     "nextRun": "2026-11-16T09:00:00+08:00"
   },
-  "updatedAt": "2026-11-12T17:57:38.253977+00:00",
+  "updatedAt": "2026-11-12T20:53:57.510899+00:00",
   "releasePolicy": "main requires a pull request; conventional branch, checks and autonomous merge; no policy bypass",
   "release": {
     "pullRequest": "https://github.com/ddandanell/Bali-Villa-Books/pull/33",
@@ -77,7 +89,16 @@
     "vercelPreviewStatus": "failure",
     "failedDeployment": "dpl_Ht5vS8zXtu4oYNRvGwBRTjrhvRsR",
     "deploymentUrl": "https://vercel.com/daviddandanell-9392s-projects/bali-villa-books-api-serverff/Ht5vS8zXtu4oYNRvGwBRTjrhvRsR",
-    "diagnosis": "The Vercel connector lists only an unrelated project. Exact project ID and deployment reads, including build events, return 404. No Vercel CLI token is configured. The failure cause cannot be established from available logs.",
-    "nextAction": "Restore connector access to the existing project or obtain permission for browser inspection of its deployment log. Read the failure before changing configuration, then resume this PR. Do not generate another article while this release remains blocked."
+    "diagnosis": "Browser inspection established that preview deployment stopped before the app build because an unused Supabase integration was marked as a required deployment resource. The Vercel frontend and gateway do not use Supabase.",
+    "nextAction": "Commit this verified audit record, observe the fresh preview using the repaired integration configuration, merge via the normal GitHub PR rules and verify the main-branch production deployment.",
+    "configurationRepair": "Set Require Active Resource Before Deploy to Not Required for this project connection. Reopened the dialog and confirmed the saved value. Database, connection, environments and secrets were preserved.",
+    "observedProduction": {
+      "deployment": "BDdCpHPtj4gKVMSV75Ls1RUxBPVo",
+      "status": "Ready",
+      "commit": "b4916d3ffe9cc63fb35d5d696f3555b78daf65a7",
+      "sourceBranch": "seo/autopilot-2026-11-13",
+      "url": "https://bali-villa-accounting-service.com",
+      "observedAt": "2026-11-12T20:53:57.510886+00:00"
+    }
   }
 }
