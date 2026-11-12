@@ -23,6 +23,8 @@ if (!process.env.CI && before) {
   } catch {}
 }
 const commands = [
+  ["node", ["scripts/src/seo-autopilot.mjs", "check"]],
+  ["node", ["scripts/src/test-seo-autopilot.mjs"]],
   ["pnpm", ["run", "typecheck"]],
   ["node", ["scripts/src/test-journal-art.mjs"]],
   ["node", ["scripts/src/test-journal-publishing.mjs"]],

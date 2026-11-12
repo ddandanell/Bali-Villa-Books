@@ -1,0 +1,67 @@
+{
+  "runDate": "2026-11-13",
+  "kind": "installation and first publication",
+  "startingCommit": "66fd19f0815c86d9ad65886a3a9d032b3feb75be",
+  "inventory": {
+    "liveBackendArticles": 98,
+    "existingStaticArticles": 2,
+    "newStaticArticles": 1,
+    "keywordOwners": 130,
+    "unmappedLiveArticles": 0
+  },
+  "intent": {
+    "primary": "bali villa pre opening bookkeeping records",
+    "serviceOwner": "/villa-financial-reporting-bali",
+    "distinctContribution": "Pre-trading supplier commitments, deposits and owner-funding register; original checked cash bridge. Existing opening-balance and owner-funding articles cover adjacent handovers.",
+    "article": "/blog/bali-villa-pre-opening-bookkeeping-records",
+    "wordCount": 1731
+  },
+  "sources": [
+    {
+      "url": "https://www.airbnb.com/help/article/3632",
+      "accessed": "2026-11-13",
+      "supports": "Availability of host earnings reports; only a short supporting claim, not Indonesian accounting treatment."
+    }
+  ],
+  "changes": [
+    "External executing automation enabled for Monday and Thursday around 09:00 Asia/Makassar.",
+    "Stable ownership registry across marketing, hub, legal and article pages.",
+    "Keyword collision check and preservation against previous GitHub base.",
+    "New registry-backed static article with a unique process illustration and conversion links.",
+    "Static article navigation repaired; journal registry archive made searchable.",
+    "Crawlable pre-hydration journal links and sitemap coverage.",
+    "Legacy cleanup guide assigned a distinct informational target at the gateway."
+  ],
+  "checks": {
+    "repository": "passed: workspace type checks, editorial/analytics tests, keyword tests, API build, production web build and Vercel compatibility",
+    "seoAudit": {
+      "documents": 31,
+      "errors": 0,
+      "existingWarnings": [
+        "sample-report FAQ without FAQPage schema",
+        "terms short body 575 words"
+      ]
+    },
+    "liveInventory": "passed: 98 backend articles; zero unmapped",
+    "image": "visually inspected; exact illustrative process diagram",
+    "browserLocal": "not completed: Chromium launch blocked by process_singleton socket Operation not permitted; no browser pass claimed",
+    "publicRelease": "pending commit and deployment verification"
+  },
+  "measurements": {
+    "semrush": "no_api_units; not retried; no fresh rankings/volumes obtained",
+    "searchConsole": "no verified connected performance source",
+    "ga4": "no verified connected performance source",
+    "vercelConnector": "existing project lookup returned 404; use exact GitHub integration status and public domain verification"
+  },
+  "schedule": {
+    "enabled": true,
+    "days": [
+      "Monday",
+      "Thursday"
+    ],
+    "localTime": "around 09:00",
+    "timezone": "Asia/Makassar",
+    "nextRun": "2026-11-16T09:00:00+08:00"
+  },
+  "updatedAt": "2026-11-12T17:57:38.253977+00:00"
+}

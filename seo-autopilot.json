@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "site": "https://bali-villa-accounting-service.com",
+  "repository": "ddandanell/Bali-Villa-Books",
+  "branch": "main",
+  "schedule": {
+    "days": [
+      "Monday",
+      "Thursday"
+    ],
+    "localTime": "09:00",
+    "timezone": "Asia/Makassar",
+    "timing": "within an hour"
+  },
+  "runner": "ChatGPT scheduled automation",
+  "runbook": "docs/seo/autopilot.md",
+  "keywordLock": "lib/site-content/src/keyword-lock.json",
+  "articles": "lib/site-content/src/autopilot-posts.json",
+  "targetNewArticlesPerRun": 1,
+  "minimumArticleWords": 1500,
+  "maximumArticleWords": 2500,
+  "maxRepairAttempts": 2,
+  "deployment": "existing Vercel Git integration",
+  "measurementPolicy": "Record unavailable data explicitly; never substitute content counts for rankings, leads or revenue.",
+  "automationId": "Automation_74b916cd2bc481918165cb95d8a589f1",
+  "nextScheduledRun": "2026-11-16T09:00:00+08:00"
+}

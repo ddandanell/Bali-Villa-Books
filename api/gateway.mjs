@@ -8,6 +8,8 @@
  * readers and crawlers see.
  */
 import { journalArt } from "./journal-art.mjs";
+import keywordLock from "../lib/site-content/src/keyword-lock.json" with { type: "json" };
+import autopilotPosts from "../lib/site-content/src/autopilot-posts.json" with { type: "json" };
 
 export const origin = "https://bali-villa-books.replit.app";
 export const publicOrigin = "https://bali-villa-accounting-service.com";
@@ -250,6 +252,8 @@ export function repointPost(post) {
   if (!post || typeof post !== "object") return post;
   const art = journalArt[post.slug];
   let out = post;
+  const assigned = keywordLock.pages[`/blog/${post.slug}`];
+  if (assigned && typeof post.primaryKeyword === "string" && post.primaryKeyword !== assigned.primary) out = { ...out, primaryKeyword: assigned.primary };
   if (art) {
     const stale = staleArt(post.slug, post.imageUrl);
     if (stale) out = { ...out, imageUrl: `${SITE}${art.imageUrl}`, imageAlt: art.imageAlt };
@@ -281,8 +285,17 @@ export function repointDocument(html, pathname) {
   const withAssets = repointAssets(html);
   const slug = pathname.match(/^\/blog\/([a-z0-9-]+)\/?$/);
   if (slug) return repointArticleArt(withAssets, slug[1]);
-  if (/^\/blog\/?$/.test(pathname)) return repointHubArt(withAssets);
+  if (/^\/blog\/?$/.test(pathname)) return includeAutopilotGuides(repointHubArt(withAssets));
   return withAssets;
+}
+
+// Origin HTML predates repository articles. Include crawlable links before
+// hydration; the current client renders the same registry after mounting.
+export function includeAutopilotGuides(html) {
+  const missing = autopilotPosts.filter(post => !html.includes(`href="/blog/${post.slug}"`));
+  if (!missing.length || !html.includes("</main>")) return html;
+  const cards = missing.map(post => `<li class="border-t border-primary/10 py-5"><a class="font-semibold text-primary underline underline-offset-4" href="/blog/${post.slug}">${escapeText(post.title)}</a><p class="mt-2 text-sm">${escapeText(post.excerpt)}</p></li>`).join("");
+  return html.replace("</main>", `<section class="mx-auto max-w-7xl px-6 py-12" aria-label="More villa bookkeeping guides"><h2 class="font-serif text-3xl text-primary">More practical villa guides</h2><ul class="mt-6">${cards}</ul></section></main>`);
 }
 
 export default async function handler(req, res) {
