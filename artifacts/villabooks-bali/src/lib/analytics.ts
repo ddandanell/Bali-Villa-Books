@@ -1,3 +1,4 @@
+import { track as vercelTrack } from "@vercel/analytics";
 type AnalyticsData = Record<string, string | number | boolean>;
 const firstPartyEvents = new Set([
   "whatsapp_click", "phone_click", "consultation_click", "sample_report_view",
@@ -29,6 +30,10 @@ export function trackEvent(name: string, data?: AnalyticsData) {
     ...(data?.service ? { service: label(data.service, "unspecified") } : {}),
   };
   const { eventType: _eventType, ...dimensions } = safeData;
+  if (window.location.hostname === "bali-villa-accounting-service.com") {
+    try { vercelTrack(name, dimensions); } catch { /* Measurement never blocks an interaction. */ }
+  }
+
   const plan = typeof data?.plan === "string" && ["Starter", "Professional", "Premium", "Cleanup", "unspecified"].includes(data.plan) ? data.plan : undefined;
   try {
     // Publishing injects the tracker. Never configure a script, website ID or pageview here.

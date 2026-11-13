@@ -6,7 +6,7 @@ import { getGetBlogPostQueryKey, useGetBlogPost, useRecordBlogEvent } from "@wor
 import { Layout } from "@/components/Layout";
 import { BlogCard } from "@/components/BlogCard";
 import { trackEvent } from "@/lib/analytics";
-import { articleVisual } from "@workspace/site-content";
+import { articleVisual, articleService } from "@workspace/site-content";
 import { staticJournalPosts } from "@/lib/journal-static";
 
 const WA = "https://wa.me/6281237402292";
@@ -67,19 +67,10 @@ export default function BlogArticle() {
   if (isLoading) return <Layout><section className="container mx-auto max-w-4xl px-5 pb-24 pt-40"><div className="h-8 w-32 animate-pulse rounded bg-primary/10" /><div className="mt-8 h-28 animate-pulse rounded bg-primary/10" /><div className="mt-10 space-y-3"><div className="h-4 animate-pulse rounded bg-primary/10" /><div className="h-4 animate-pulse rounded bg-primary/10" /><div className="h-4 w-2/3 animate-pulse rounded bg-primary/10" /></div></section></Layout>;
   if (isError || !post) return <Layout><section className="container mx-auto max-w-3xl px-5 pb-24 pt-40 text-center"><p className="font-serif text-3xl text-primary">This guide could not be found.</p><button data-testid="button-article-retry" onClick={() => refetch()} className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-white"><RefreshCw className="h-4 w-4" /> Try again</button></section></Layout>;
   const clickWhatsApp = () => { event.mutate({ data: { slug, eventType: "article_cta_click" } }); trackEvent("whatsapp_click", { page: `/blog/${slug}`, placement: "article_cta" }); trackEvent("consultation_click", { page: `/blog/${slug}`, placement: "article_cta" }); };
-  const topic = `${post.title} ${post.primaryKeyword} ${post.category}`.toLowerCase();
-  const contextualServices: [string, string][] =
-    /airbnb|booking|payout|ota|channel/.test(topic)
-      ? [["Booking-channel bookkeeping", "/airbnb-bookkeeping-bali"], ["Monthly owner reporting", "/villa-financial-reporting-bali"]]
-      : /cleanup|catch.?up|missing record|receipt|reconciliation/.test(topic)
-        ? [["Historical bookkeeping cleanup", "/villa-bookkeeping-cleanup-bali"], ["Monthly owner reporting", "/villa-financial-reporting-bali"]]
-        : /pt pma|company|entity/.test(topic)
-          ? [["PT PMA bookkeeping", "/pt-pma-villa-bookkeeping"], ["Monthly owner reporting", "/villa-financial-reporting-bali"]]
-          : /payroll|bpjs|staff/.test(topic)
-            ? [["Payroll and BPJS record tracking", "/villa-payroll-records-bali"], ["Monthly owner reporting", "/villa-financial-reporting-bali"]]
-            : /report|profit|cash|expense|financial/.test(topic)
-              ? [["Monthly owner reporting", "/villa-financial-reporting-bali"], ["See a sample report", "/sample-report"]]
-              : [["Explore bookkeeping services", "/services"], ["Compare package pricing", "/pricing"]];
+  const service = articleService(slug);
+  const contextualServices: [string, string][] = [
+    [service.label, service.path], ["Compare bookkeeping packages", "/pricing"],
+  ];
   return <Layout><div className="bg-background">
     <header className="container mx-auto max-w-5xl px-5 pb-14 pt-36 md:px-8">
       <Link href="/blog" data-testid="link-back-blog" className="inline-flex items-center gap-2 text-sm font-semibold text-secondary"><ArrowLeft className="h-4 w-4" /> All guides</Link>

@@ -1,0 +1,36 @@
+name: Weekly SEO audit
+on:
+  schedule:
+    # Monday 09:17 in Bali (UTC+8); offset from the documented editorial run.
+    - cron: '17 1 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: weekly-seo-audit
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Crawl production and record findings
+        run: node scripts/src/weekly-seo.mjs
+      - name: Publish job summary
+        if: always()
+        run: |
+          if [ -f .cache/weekly-seo/summary.md ]; then
+            cat .cache/weekly-seo/summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: weekly-seo-${{ github.run_id }}
+          path: .cache/weekly-seo/
+          include-hidden-files: true
+          retention-days: 90
+          if-no-files-found: warn
