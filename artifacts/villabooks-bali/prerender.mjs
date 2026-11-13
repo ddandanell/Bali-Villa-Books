@@ -44,10 +44,9 @@ writeFileSync(path.join(output, "routes.json"), JSON.stringify(pages));
 // Marketing routes are fixed in this build, so their sitemap is generated here.
 // The journal origin keeps its own sitemap; neither list has to know the other.
 {
-  const today = new Date().toISOString().slice(0, 10);
   const entries = pages.map(route => {
     const priority = route === "/" ? "1.0" : /^\/(pricing|services|compare)$/.test(route) ? "0.9" : route.startsWith("/compare/") ? "0.8" : "0.7";
-    return `  <url><loc>https://bali-villa-accounting-service.com${route === "/" ? "/" : route}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>${priority}</priority></url>`;
+    return `  <url><loc>https://bali-villa-accounting-service.com${route === "/" ? "/" : route}</loc><changefreq>monthly</changefreq><priority>${priority}</priority></url>`;
   }).join("\n");
   writeFileSync(path.join(output, "sitemap-pages.xml"),
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries}\n</urlset>\n`);

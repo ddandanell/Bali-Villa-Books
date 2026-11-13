@@ -41,11 +41,6 @@ export function pageDocument(template: string, content: string, pathname: string
     founder: { "@type": "Person", name: "Abel Yuniartini" },
     address: { "@type": "PostalAddress", streetAddress: "Jl. Tukad Barito Timur III No.16, Panjer", addressLocality: "Denpasar Selatan", addressRegion: "Bali", postalCode: "80226", addressCountry: "ID" },
     geo: { "@type": "GeoCoordinates", latitude: OFFICE_LATITUDE, longitude: OFFICE_LONGITUDE },
-    openingHoursSpecification: [{
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00", closes: "18:00",
-    }],
     sameAs: [mapsDirectionsUrl],
     areaServed: { "@type": "Place", name: "Bali, Indonesia" },
   }, { "@type": "WebSite", "@id": webId, url: `${SITE_ORIGIN}/`, name: "Bali Accounting", publisher: { "@id": businessId } },

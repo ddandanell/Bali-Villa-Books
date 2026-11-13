@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T18:17:16.848Z",
+  "generatedAt": "2026-11-13T08:37:48.427Z",
   "origin": "https://bali-villa-accounting-service.com",
   "pages": 31,
   "errors": [],
@@ -274,7 +274,7 @@
         "CollectionPage",
         "ImageObject"
       ],
-      "words": 1778,
+      "words": 1789,
       "faqQuestions": 5
     },
     {
@@ -294,7 +294,7 @@
         "FAQPage",
         "OfferCatalog"
       ],
-      "words": 2701,
+      "words": 2714,
       "faqQuestions": 5
     },
     {
@@ -460,7 +460,7 @@
         "ImageObject",
         "OfferCatalog"
       ],
-      "words": 882,
+      "words": 898,
       "faqQuestions": 0
     },
     {
@@ -558,7 +558,7 @@
         "BreadcrumbList",
         "ImageObject"
       ],
-      "words": 618,
+      "words": 658,
       "faqQuestions": 0
     },
     {
@@ -619,7 +619,7 @@
         "BreadcrumbList",
         "FAQPage"
       ],
-      "words": 2204,
+      "words": 2206,
       "faqQuestions": 6
     },
     {
@@ -639,7 +639,7 @@
         "BreadcrumbList",
         "FAQPage"
       ],
-      "words": 2597,
+      "words": 2599,
       "faqQuestions": 6
     }
   ]

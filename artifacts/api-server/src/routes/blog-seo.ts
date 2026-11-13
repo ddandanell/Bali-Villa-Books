@@ -6,7 +6,7 @@ import { db, blogPosts } from "@workspace/db";
 import { cleanHtml } from "../lib/blog-content";
 import { articleFaqs } from "../lib/editorial-blueprint";
 import { GetBlogPostResponse, ListBlogPostsResponse } from "@workspace/api-zod";
-import { pageImagery, journalImagery, articleVisual, publicPagePaths } from "@workspace/site-content";
+import { pageImagery, journalImagery, articleVisual, articleService, publicPagePaths } from "@workspace/site-content";
 
 const router = Router();
 // Verified custom domain returned by deployment metadata, not a development domain.
@@ -178,13 +178,13 @@ router.get("/blog/:slug", async (req, res) => {
     for (const post of recent) if (post.slug !== row.slug && !peers.some(p => p.slug === post.slug)) peers.push(post);
   }
   const post = GetBlogPostResponse.parse({ ...row, contentHtml: cleanHtml(row.contentHtml), relatedPosts: peers.slice(0, 3) });
-  const servicePath = /airbnb|payout|booking|ota/i.test(post.slug) ? "/airbnb-ota-reconciliation-bali" : /cleanup|catch-up|incomplete/i.test(post.slug) ? "/villa-bookkeeping-cleanup-bali" : /pt-pma|tax-adviser/i.test(post.slug) ? "/pt-pma-villa-bookkeeping" : "/villa-financial-reporting-bali";
+  const service = articleService(post.slug);
   const visual = articleVisual(post.slug, post);
   const content = `<article><p>${escape(post.category)}</p><h1>${escape(post.title)}</h1><p>${escape(post.excerpt)}</p><time datetime="${post.publishedAt.toISOString()}">${post.publishedAt.toISOString().slice(0, 10)}</time>
 <img src="${escape(visual.imageUrl)}" alt="${escape(visual.imageAlt)}" width="${visual.width}" height="${visual.height}" fetchpriority="high">
 <p>By Bali Accounting editorial desk · Editorial updated ${post.updatedAt.toISOString().slice(0,10)}. General information, not a claim of licensed professional review.</p>
 ${post.contentHtml}<p><a href="https://wa.me/6281237402292">Speak with Client Advisory</a></p><h2>Related guides</h2><ul>${post.relatedPosts.map(p => `<li><a href="/blog/${escape(p.slug)}">${escape(p.title)}</a></li>`).join("")}</ul></article>`;
-  sendPage(res, req.originalUrl, await documentHtml(post.metaTitle, post.metaDescription, `/blog/${post.slug}`, content.replace("</article>", `<p>Need help applying this process? Explore the <a href="${servicePath}">relevant service scope</a>, <a href="/sample-report">sample owner report</a> and <a href="/pricing">bookkeeping package inclusions</a>.</p></article>`), { post, static: true }, visual.shareImage, {
+  sendPage(res, req.originalUrl, await documentHtml(post.metaTitle, post.metaDescription, `/blog/${post.slug}`, content.replace("</article>", `<p>Need help applying this process? Explore the <a href="${escape(service.path)}">${escape(service.label)}</a>, <a href="/sample-report">sample owner report</a> and <a href="/pricing">bookkeeping package inclusions</a>.</p></article>`), { post, static: true }, visual.shareImage, {
     "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.metaDescription,
     image: new URL(visual.imageUrl, origin).href, datePublished: post.publishedAt, dateModified: post.updatedAt,
     wordCount: post.wordCount, author: { "@id": `${origin}/#business` },

@@ -1,3 +1,5 @@
+import serviceLabels from "./service-labels.json";
+import keywordLock from "./keyword-lock.json";
 import pages from "./page-imagery.json";
 import journals from "./journal-imagery.json";
 import strategyData from "./seo-strategy.json";
@@ -50,4 +52,12 @@ export function photoKey(value: string): string {
     const host = /^(?:upload|thumb)\.wikimedia\.org$/.test(url.hostname) ? "wikimedia" : url.hostname;
     return `${host}${decodeURIComponent(pathname)}`;
   } catch { return value.split(/[?#]/)[0]; }
+}
+
+/** One editorial assignment drives both initial HTML and client service links. */
+export function articleService(slug: string): { path: string; label: string } {
+  const assignments = keywordLock.pages as Record<string, { serviceOwner?: string }>;
+  const labels: Record<string, string> = serviceLabels;
+  const path = assignments[`/blog/${slug}`]?.serviceOwner ?? "/services";
+  return { path, label: labels[path] ?? "Bali accounting service scopes" };
 }

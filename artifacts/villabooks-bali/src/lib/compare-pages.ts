@@ -680,7 +680,7 @@ export const compareHub = {
       heading: "What we do, and what we do not",
       paragraphs: [
         "We are a Bali-based firm. Monthly packages from Rp 2,900,000 cover reconciliation, owner reporting and a document register for an agreed scope. Cleanup starts from Rp 7,900,000 for up to 12 months of records, reviewed per file.",
-        "We do not provide tax advice, file tax returns, execute payroll or handle immigration. Those sit with a licensed adviser or a separately scoped engagement. We do not publish comparisons of named competitors, because a claim about another firm's process cannot be verified from outside it.",
+        "Monthly bookkeeping does not include tax advice, tax-return filing, payroll execution or immigration applications. Our in-house team offers separately scoped company, tax and visa support, with the responsible qualified and authorised person confirmed in the engagement. We do not publish comparisons of named competitors, because a claim about another firm's process cannot be verified from outside it.",
       ],
       links: [
         ["Review a sample monthly report", "/sample-report"],

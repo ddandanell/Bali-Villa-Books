@@ -8,6 +8,7 @@
  * readers and crawlers see.
  */
 import { journalArt } from "./journal-art.mjs";
+import serviceLabels from "../lib/site-content/src/service-labels.json" with { type: "json" };
 import keywordLock from "../lib/site-content/src/keyword-lock.json" with { type: "json" };
 import autopilotPosts from "../lib/site-content/src/autopilot-posts.json" with { type: "json" };
 
@@ -284,9 +285,18 @@ export function repointJson(body, targetPath) {
 export function repointDocument(html, pathname) {
   const withAssets = repointAssets(html);
   const slug = pathname.match(/^\/blog\/([a-z0-9-]+)\/?$/);
-  if (slug) return repointArticleArt(withAssets, slug[1]);
+  if (slug) return includeArticleService(repointArticleArt(withAssets, slug[1]), slug[1]);
   if (/^\/blog\/?$/.test(pathname)) return includeAutopilotGuides(repointHubArt(withAssets));
   return withAssets;
+}
+
+// Match the client service assignment even while the upstream build is older.
+export function includeArticleService(html, slug) {
+  const path = keywordLock.pages[`/blog/${slug}`]?.serviceOwner;
+  if (!path || html.includes('data-seo-service="assigned"') || !html.includes("</main>")) return html;
+  const label = serviceLabels[path] ?? "Bali accounting service scopes";
+  const block = `<nav data-seo-service="assigned" aria-label="Related service"><p>For help applying this guide, explore <a href="${escapeAttr(path)}">${escapeText(label)}</a>. Monthly bookkeeping and project work have separately agreed scopes.</p></nav>`;
+  return html.replace("</main>", `${block}</main>`);
 }
 
 // Origin HTML predates repository articles. Include crawlable links before
