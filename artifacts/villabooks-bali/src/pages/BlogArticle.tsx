@@ -23,7 +23,7 @@ export default function BlogArticle() {
   const complete = useRef(false);
   useEffect(() => {
     if (!post) return;
-    document.title = `${post.metaTitle || post.title} | Bali Accounting`;
+    document.title = staticPost ? (post.metaTitle || post.title) : `${post.metaTitle || post.title} | Bali Accounting`;
     complete.current = false;
     const canonical = `https://bali-villa-accounting-service.com/blog/${encodeURIComponent(slug)}`;
     document.querySelector('link[rel="canonical"]')?.setAttribute("href", canonical);
@@ -63,7 +63,7 @@ export default function BlogArticle() {
       document.head.appendChild(schema);
     }
     return () => { window.removeEventListener("scroll", onScroll); schema?.remove(); };
-  }, [post, slug]);
+  }, [post, slug, staticPost]);
   if (isLoading) return <Layout><section className="container mx-auto max-w-4xl px-5 pb-24 pt-40"><div className="h-8 w-32 animate-pulse rounded bg-primary/10" /><div className="mt-8 h-28 animate-pulse rounded bg-primary/10" /><div className="mt-10 space-y-3"><div className="h-4 animate-pulse rounded bg-primary/10" /><div className="h-4 animate-pulse rounded bg-primary/10" /><div className="h-4 w-2/3 animate-pulse rounded bg-primary/10" /></div></section></Layout>;
   if (isError || !post) return <Layout><section className="container mx-auto max-w-3xl px-5 pb-24 pt-40 text-center"><p className="font-serif text-3xl text-primary">This guide could not be found.</p><button data-testid="button-article-retry" onClick={() => refetch()} className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-white"><RefreshCw className="h-4 w-4" /> Try again</button></section></Layout>;
   const clickWhatsApp = () => { event.mutate({ data: { slug, eventType: "article_cta_click" } }); trackEvent("whatsapp_click", { page: `/blog/${slug}`, placement: "article_cta" }); trackEvent("consultation_click", { page: `/blog/${slug}`, placement: "article_cta" }); };

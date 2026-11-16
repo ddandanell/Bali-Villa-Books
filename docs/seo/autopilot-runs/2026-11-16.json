@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-16",
+  "startingCommit": "e0a8aa1e8fe36d83ffadfc2e33ab0161e8e296b2",
+  "inventory": {
+    "backendPosts": 106,
+    "repositoryPosts": 3,
+    "newlyMapped": [
+      "usd-bookkeeping-permit-indonesia-pt-pma",
+      "pt-pma-zero-revenue-filing",
+      "lkpm-report-pt-pma-deadline-records",
+      "coretax-e-faktur-pt-pma-records-workflow",
+      "vat-threshold-villa-indonesia-records-to-review",
+      "bpjs-villa-employees-bali-records-contributions",
+      "pph-21-villa-staff-records",
+      "pph-23-withholding-villa"
+    ],
+    "keywordOwnersAfter": 138,
+    "crawlPages": 142,
+    "crawlComplete": true
+  },
+  "decision": {
+    "action": "Improve an existing answer instead of creating another post",
+    "rationale": "The backend has added eight articles since the last run. Recover missing keyword ownership first; the existing pre-opening answer benefits from a concrete exception log rather than another overlapping opening-records article.",
+    "primary": "bali villa pre opening bookkeeping records",
+    "serviceOwner": "/villa-financial-reporting-bali",
+    "url": "https://bali-villa-accounting-service.com/blog/bali-villa-pre-opening-bookkeeping-records",
+    "words": 2083,
+    "updatedAt": "2026-11-16T01:42:48.517Z",
+    "image": "existing unique process diagram preserved"
+  },
+  "changes": [
+    "Append eight existing live article keyword owners without changing established assignments.",
+    "Add an original exception register, evidence closure conditions and a double-counting arithmetic check to the pre-opening guide.",
+    "Keep static article browser titles identical to initial HTML instead of appending a second brand suffix.",
+    "Require the expected updatedAt in public verification so an old article cannot pass as the new revision."
+  ],
+  "sources": [
+    {
+      "url": "https://www.airbnb.com/help/article/3632",
+      "accessed": "2026-11-16",
+      "supports": "Host earnings report availability only; no tax treatment or legal conclusions"
+    }
+  ],
+  "checks": {
+    "keywordPreservation": "passed against starting main",
+    "repository": "full corepack pnpm check passed",
+    "crawlFindings": [
+      {
+        "url": "https://bali-villa-accounting-service.com/sample-report",
+        "issues": [
+          "Expected one nonempty title"
+        ]
+      },
+      {
+        "url": "https://bali-villa-accounting-service.com/blog?page=2",
+        "issues": [
+          "Duplicate description with https://bali-villa-accounting-service.com/blog"
+        ]
+      },
+      {
+        "url": "https://bali-villa-accounting-service.com/blog/bali-villa-expense-tracking-system",
+        "issues": [
+          "Redirects to https://bali-villa-accounting-service.com/blog/bali-villa-chart-of-accounts",
+          "Duplicate title with https://bali-villa-accounting-service.com/blog/bali-villa-chart-of-accounts",
+          "Duplicate description with https://bali-villa-accounting-service.com/blog/bali-villa-chart-of-accounts"
+        ]
+      },
+      {
+        "url": "https://bali-villa-accounting-service.com/blog/bali-villa-supplier-invoice-payroll-bpjs-control-calendar",
+        "issues": [
+          "Redirects to https://bali-villa-accounting-service.com/blog/bali-villa-supplier-invoice-payroll-control-calendar",
+          "Duplicate title with https://bali-villa-accounting-service.com/blog/bali-villa-supplier-invoice-payroll-control-calendar",
+          "Duplicate description with https://bali-villa-accounting-service.com/blog/bali-villa-supplier-invoice-payroll-control-calendar"
+        ]
+      },
+      {
+        "url": "https://bali-villa-accounting-service.com/blog?page=3",
+        "issues": [
+          "Duplicate description with https://bali-villa-accounting-service.com/blog"
+        ]
+      }
+    ],
+    "crawlInterpretation": "Two redirect aliases are expected canonical consolidations; two archive pages share their description. Sample report title finding requires SVG title versus head title review. Do not present this crawl as zero findings.",
+    "publicRevision": "pending release",
+    "browser": "local Chromium launch failed; cloud browser verification attempted after deployment"
+  },
+  "measurement": {
+    "semrush": "no_api_units on 16 November; no retry or purchase",
+    "searchConsole": "not connected",
+    "ga4": "not connected",
+    "vercel": "project API returned 404; no authenticated page-view dataset obtained; GitHub deployment status remains available",
+    "crawl": "not traffic, search volume or rankings"
+  },
+  "nextActions": [
+    "Confirm exact changed article revision and retained keyword ownership after release.",
+    "Differentiate archive-page descriptions and review crawler handling of SVG title elements in a later maintenance pass."
+  ]
+}

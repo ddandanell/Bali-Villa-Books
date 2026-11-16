@@ -114,7 +114,7 @@ async function main() {
         if (route === "/sitemap-journal.xml") for (const p of posts) if (!html.includes(`/blog/${p.slug}</loc>`)) throw new Error(`Sitemap missing ${p.slug}`);
       } else {
         if (!response.headers.get("content-type")?.includes("text/html") || !html.includes("<h1")) throw new Error(`Not a public page: ${route}`);
-        if (post && (!html.includes(post.slug) || !html.includes(post.title) || !html.includes('"static":true'))) throw new Error(`Expected article revision not live: ${route}`);
+        if (post && (!html.includes(post.slug) || !html.includes(post.title) || !html.includes('"static":true') || !html.includes('"updatedAt":' + JSON.stringify(post.updatedAt)))) throw new Error(`Expected article revision not live: ${route}`);
       }
       console.log(`PASS live: ${route}`);
     }
