@@ -719,6 +719,46 @@
       "primary": "bali villa pre opening bookkeeping records",
       "kind": "article",
       "serviceOwner": "/villa-financial-reporting-bali"
+    },
+    "/blog/usd-bookkeeping-permit-indonesia-pt-pma": {
+      "primary": "usd bookkeeping permit indonesia",
+      "kind": "article",
+      "serviceOwner": "/pt-pma-villa-bookkeeping"
+    },
+    "/blog/pt-pma-zero-revenue-filing": {
+      "primary": "pt pma zero revenue filing",
+      "kind": "article",
+      "serviceOwner": "/tax-compliance-bali"
+    },
+    "/blog/lkpm-report-pt-pma-deadline-records": {
+      "primary": "lkpm report pt pma deadline",
+      "kind": "article",
+      "serviceOwner": "/company-compliance-bali"
+    },
+    "/blog/coretax-e-faktur-pt-pma-records-workflow": {
+      "primary": "coretax e-faktur pt pma",
+      "kind": "article",
+      "serviceOwner": "/tax-registration-bali"
+    },
+    "/blog/vat-threshold-villa-indonesia-records-to-review": {
+      "primary": "vat threshold villa indonesia",
+      "kind": "article",
+      "serviceOwner": "/tax-compliance-bali"
+    },
+    "/blog/bpjs-villa-employees-bali-records-contributions": {
+      "primary": "bpjs villa employees bali",
+      "kind": "article",
+      "serviceOwner": "/villa-payroll-records-bali"
+    },
+    "/blog/pph-21-villa-staff-records": {
+      "primary": "pph 21 villa staff",
+      "kind": "article",
+      "serviceOwner": "/villa-payroll-records-bali"
+    },
+    "/blog/pph-23-withholding-villa": {
+      "primary": "pph 23 withholding villa",
+      "kind": "article",
+      "serviceOwner": "/tax-compliance-bali"
     }
   }
 }
