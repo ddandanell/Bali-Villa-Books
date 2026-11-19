@@ -1,0 +1,102 @@
+{
+  "checkedAt": "2026-11-19T01:26:10.723Z",
+  "route": "/blog/bali-villa-supplier-bank-detail-change-checklist",
+  "updatedAt": "2026-11-19T01:20:00.000Z",
+  "canonical": "https://bali-villa-accounting-service.com/blog/bali-villa-supplier-bank-detail-change-checklist",
+  "initialHtml": true,
+  "metadata": true,
+  "internal": [
+    {
+      "path": "/villa-payroll-records-bali",
+      "status": 200
+    },
+    {
+      "path": "/blog/villa-bookkeeping-duplicate-invoices-credit-notes",
+      "status": 200
+    },
+    {
+      "path": "/blog/bali-villa-payroll-supplier-invoice-control-workflow",
+      "status": 200
+    },
+    {
+      "path": "/pricing",
+      "status": 200
+    },
+    {
+      "path": "/get-started",
+      "status": 200
+    }
+  ],
+  "image": {
+    "status": 200,
+    "bytes": 51202,
+    "exactLocalMatch": true
+  },
+  "journalDiscovery": true,
+  "serviceDiscovery": true,
+  "archive": [
+    {
+      "page": 2,
+      "descriptionVerified": true
+    },
+    {
+      "page": 3,
+      "descriptionVerified": true
+    }
+  ],
+  "unknownPageStatus": 404,
+  "nestedApiStatus": 200,
+  "structuredData": "JSON-LD parsed successfully; BlogPosting and FAQPage present in schema graph.",
+  "date": "2026-11-19",
+  "recordType": "completed publication verification",
+  "implementationCommit": "9d083389853115e9638ea847a39c67261140fad5",
+  "mergeCommit": "f0ddca4bb2b9d78f60101d210cef69cf51a57b89",
+  "pullRequest": "https://github.com/ddandanell/Bali-Villa-Books/pull/37",
+  "status": "implemented, merged and exact public article revision verified",
+  "checks": {
+    "local": "corepack pnpm seo:check --base-ref 43cb020fcb98de077e01317d12a7ffea156f4768 and corepack pnpm check passed after final source changes.",
+    "github": "Repository checks run 44436453022, check job 135266430873: completed success on implementation SHA.",
+    "vercelPreview": "success for implementation SHA; deployment BdMmbzBRuzUep3gCccKoi4X7Eerj",
+    "vercelProduction": "GitHub Vercel success for merge SHA; deployment GW52RF5UPLxRjw3Gwf8afC8GKEL3",
+    "seoVerifyLive": "PASS all default routes, both autopilot exact revisions and both generated sitemaps.",
+    "browser": "Cloud Chromium: journal discovery click, article title/canonical/description, 1200px loaded original image, visible content, no desktop horizontal overflow, article-to-service navigation and return guide link, hydrated page-2 canonical/description.",
+    "mobileLimit": "Native desktop input failed: AT-SPI provider unavailable. No narrow-viewport browser or measured Core Web Vitals result claimed. Source tables retain overflow-x:auto; desktop rendering checked.",
+    "treeMatch": "Fetched connected GitHub branch and verified no diff from validated files, excluding generated meta-audit report."
+  },
+  "crawlAfter": {
+    "pages": 149,
+    "complete": true,
+    "findings": [
+      {
+        "url": "https://bali-villa-accounting-service.com/blog/bali-villa-expense-tracking-system",
+        "issues": [
+          "Redirects to https://bali-villa-accounting-service.com/blog/bali-villa-chart-of-accounts",
+          "Duplicate title with https://bali-villa-accounting-service.com/blog/bali-villa-chart-of-accounts",
+          "Duplicate description with https://bali-villa-accounting-service.com/blog/bali-villa-chart-of-accounts"
+        ]
+      },
+      {
+        "url": "https://bali-villa-accounting-service.com/blog/bali-villa-supplier-invoice-payroll-bpjs-control-calendar",
+        "issues": [
+          "Redirects to https://bali-villa-accounting-service.com/blog/bali-villa-supplier-invoice-payroll-control-calendar",
+          "Duplicate title with https://bali-villa-accounting-service.com/blog/bali-villa-supplier-invoice-payroll-control-calendar",
+          "Duplicate description with https://bali-villa-accounting-service.com/blog/bali-villa-supplier-invoice-payroll-control-calendar"
+        ]
+      }
+    ],
+    "interpretation": "Archive snippet duplication and SVG-title false positive resolved; two existing canonical redirect aliases retained."
+  },
+  "accessLimits": [
+    "CLI push had no HTTPS username; connected GitHub git-data APIs published identical validated files.",
+    "Vercel project list returned zero matching projects; direct deployment API returned 404. Exact-commit Vercel statuses observed through GitHub; production verified independently.",
+    "Semrush no API units. Search Console and GA4 not connected. No acquisition, ranking or lead metrics invented."
+  ],
+  "repairAttempts": 0,
+  "nextActions": [
+    "No incomplete content publication remains.",
+    "When available, verify narrow mobile viewport and measured performance; do not infer field performance from source checks.",
+    "Review source-backed supporting questions against the full refreshed backend inventory next run.",
+    "Use authenticated acquisition and enquiry data when available before claiming SEO impact."
+  ],
+  "verificationLedgerRelease": "This companion evidence file uses its own protected documentation PR. Its later deployment does not change the verified site content."
+}
