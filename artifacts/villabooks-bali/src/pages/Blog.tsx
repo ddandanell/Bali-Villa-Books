@@ -1,3 +1,4 @@
+import { journalArchiveDescription } from "@workspace/site-content";
 import { useEffect, useMemo, useState } from "react";
 import { updateShareImage } from "@/lib/social-images";
 import { Link } from "wouter";
@@ -22,7 +23,7 @@ export default function Blog() {
   useEffect(() => {
     updateShareImage("/blog");
     const title = page > 1 ? `Bali Accounting Journal — Page ${page}` : "Bali Villa Bookkeeping & Airbnb Guides | Bali Accounting";
-    const description = "Practical Bali villa bookkeeping guides: Airbnb reconciliation, expense tracking, monthly owner reports and cash-flow forecasts, plus source-checked news.";
+    const description = journalArchiveDescription(page);
     document.title = title;
     const canonical = `${SITE_ORIGIN}/blog${page > 1 ? `?page=${page}` : ""}`;
     let link = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');

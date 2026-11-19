@@ -61,3 +61,10 @@ export function articleService(slug: string): { path: string; label: string } {
   const path = assignments[`/blog/${slug}`]?.serviceOwner ?? "/services";
   return { path, label: labels[path] ?? "Bali accounting service scopes" };
 }
+
+/** Archive pages keep their own snippet and canonical as readers paginate. */
+export function journalArchiveDescription(page: number): string {
+  return page > 1
+    ? `Page ${page} of the Bali Accounting journal: explore earlier villa bookkeeping guides on payout reconciliation, supplier records, owner reporting and cash flow.`
+    : "Practical Bali villa bookkeeping guides: Airbnb reconciliation, expense tracking, monthly owner reports and cash-flow forecasts, plus source-checked news.";
+}

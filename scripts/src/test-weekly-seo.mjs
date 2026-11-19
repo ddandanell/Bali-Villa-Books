@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { internalUrl, inspectHtml, audit } from "./weekly-seo.mjs";
-import { includeArticleService } from "../../api/gateway.mjs";
+import { archiveMetadata, includeArticleService } from "../../api/gateway.mjs";
 import { readFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { createRequire } from "node:module";
@@ -14,6 +14,8 @@ assert.equal(internalUrl("/blog?page=2&email=private#secret"), origin + "/blog?p
 assert.equal(internalUrl("/pricing?name=private"), origin + "/pricing");
 const html = (path, extra = "") => `<html><head><title>${path}</title><meta content='Description of ${path}' name='description'><link href='${origin}${path}' rel='canonical'></head><body><main><h1>Page</h1>${extra}</main></body></html>`;
 assert.deepEqual(inspectHtml(html("/"), origin + "/").issues, []);
+assert.deepEqual(inspectHtml(html("/", '<svg><title>Accessible chart label</title></svg>'), origin + "/").issues, []);
+assert.ok(inspectHtml(html("/").replace("</head>", "<title>Duplicate</title></head>"), origin + "/").issues.includes("Expected one nonempty title"));
 assert.ok(inspectHtml("<h1>x</h1>", origin + "/").issues.includes("Expected one nonempty meta description"));
 assert.ok(inspectHtml(html("/", '<a href="/pricing">Click here</a>'), origin + "/").issues.some(i => i.includes("Generic anchor")));
 const report = await audit(async url => {
@@ -48,3 +50,7 @@ assert.ok(!document.includes("openingHoursSpecification"));
 const prerender = readFileSync("artifacts/villabooks-bali/prerender.mjs", "utf8");
 assert.ok(!prerender.includes("${today}"));
 console.log("PASS: weekly inventory, HTML metadata, privacy filtering, partial failures, shared service links and schema/sitemap safeguards.");
+
+const archive = archiveMetadata(html("/blog?page=2"), 2);
+assert.match(inspectHtml(archive, origin + "/blog?page=2").description, /^Page 2 of the Bali Accounting journal/);
+assert.equal(archiveMetadata(html("/blog"), 1), html("/blog"));
