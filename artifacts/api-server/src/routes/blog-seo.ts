@@ -1,3 +1,4 @@
+import { journalArchiveDescription } from "@workspace/site-content";
 import { Router } from "express";
 import { notInArray } from "drizzle-orm";
 import { articleAliases } from "@workspace/site-content";
@@ -157,7 +158,7 @@ router.get("/blog", async (req, res) => {
 <p>Dated Indonesia news and practical guides are general information, not individual tax, legal or immigration advice. Our in-house team offers separately scoped company, tax and visa support. Read each article's sources and limitations; a headline is not an eligibility assessment or permission to operate or work.</p>
 <ul><li><a href="/blog/bali-villa-chart-of-accounts">Villa expense classification guide</a></li><li><a href="/blog/bali-villa-cash-flow-forecast">Villa cash-flow forecast guide</a></li><li><a href="/services">Explore monthly bookkeeping services</a></li></ul></section>`;
   const archivePath = page === 1 ? "/blog" : `/blog?page=${page}`;
-  sendPage(res, req.originalUrl, await documentHtml(page === 1 ? "Bali Villa Bookkeeping & Airbnb Guides" : `Bali Accounting Journal — Page ${page}`, "Practical Bali villa bookkeeping guides: Airbnb reconciliation, expense tracking, monthly owner reports and cash-flow forecasts, plus source-checked news.", archivePath, content, { posts, listParams: page === 1 ? { limit: 50 } : { limit: 50, offset: (page - 1) * 50 } }, journalShareImage, {
+  sendPage(res, req.originalUrl, await documentHtml(page === 1 ? "Bali Villa Bookkeeping & Airbnb Guides" : `Bali Accounting Journal — Page ${page}`, journalArchiveDescription(page), archivePath, content, { posts, listParams: page === 1 ? { limit: 50 } : { limit: 50, offset: (page - 1) * 50 } }, journalShareImage, {
     "@context": "https://schema.org", "@type": "CollectionPage", name: "Bali Villa Bookkeeping Guides",
     url: `${origin}${archivePath}`, hasPart: posts.map(post => ({ "@type": "BlogPosting", headline: post.title, url: `${origin}/blog/${post.slug}` })),
   }));

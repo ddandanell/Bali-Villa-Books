@@ -282,11 +282,20 @@ export function repointJson(body, targetPath) {
   return JSON.stringify(repointPost(parsed));
 }
 
-export function repointDocument(html, pathname) {
+export function archiveMetadata(html, page) {
+  if (!Number.isInteger(page) || page <= 1 || page > 10000) return html;
+  const description = `Page ${page} of the Bali Accounting journal: explore earlier villa bookkeeping guides on payout reconciliation, supplier records, owner reporting and cash flow.`;
+  return html.replace(/<meta\b[^>]*>/gi, tag => {
+    if (!/(?:name|property)=["'](?:description|og:description|twitter:description)["']/i.test(tag)) return tag;
+    return tag.replace(/content=["'][^"']*["']/i, `content="${description}"`);
+  });
+}
+
+export function repointDocument(html, pathname, page = 1) {
   const withAssets = repointAssets(html);
   const slug = pathname.match(/^\/blog\/([a-z0-9-]+)\/?$/);
   if (slug) return includeArticleService(repointArticleArt(withAssets, slug[1]), slug[1]);
-  if (/^\/blog\/?$/.test(pathname)) return includeAutopilotGuides(repointHubArt(withAssets));
+  if (/^\/blog\/?$/.test(pathname)) return archiveMetadata(includeAutopilotGuides(repointHubArt(withAssets)), page);
   return withAssets;
 }
 
@@ -318,7 +327,7 @@ export default async function handler(req, res) {
     const type = upstream.headers.get("content-type") ?? "";
     const targetPath = resolveTarget(req);
     if (req.method !== "HEAD" && type.includes("text/html")) {
-      res.end(repointDocument(Buffer.from(await upstream.arrayBuffer()).toString("utf8"), targetPath));
+      res.end(repointDocument(Buffer.from(await upstream.arrayBuffer()).toString("utf8"), targetPath, Number(new URL(req.url, publicOrigin).searchParams.get("page") ?? "1")));
       return;
     }
     if (req.method !== "HEAD" && targetPath === "/sitemap.xml" && /xml/.test(type)) {

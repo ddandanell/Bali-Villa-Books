@@ -22,7 +22,8 @@ export function internalUrl(value, base = ORIGIN) {
 export function inspectHtml(html, url) {
   const metas = [...html.matchAll(/<meta\b[^>]*>/gi)].map(m => attrs(m[0]));
   const links = [...html.matchAll(/<link\b[^>]*>/gi)].map(m => attrs(m[0]));
-  const titles = [...html.matchAll(/<title\b[^>]*>([\s\S]*?)<\/title>/gi)].map(m => decode(m[1]).trim());
+  const head = html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)?.[1] ?? "";
+  const titles = [...head.matchAll(/<title\b[^>]*>([\s\S]*?)<\/title>/gi)].map(m => decode(m[1]).trim());
   const descriptions = metas.filter(m => m.name?.toLowerCase() === "description").map(m => m.content ?? "");
   const canonicals = links.filter(l => l.rel?.toLowerCase() === "canonical").map(l => l.href);
   const issues = [];

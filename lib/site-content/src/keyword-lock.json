@@ -759,6 +759,41 @@
       "primary": "pph 23 withholding villa",
       "kind": "article",
       "serviceOwner": "/tax-compliance-bali"
+    },
+    "/blog/pt-pma-late-filing-fine-records": {
+      "primary": "pt pma late filing fine",
+      "kind": "article",
+      "serviceOwner": "/tax-compliance-bali"
+    },
+    "/blog/tax-audit-pt-pma-bali-records-review": {
+      "primary": "tax audit pt pma bali",
+      "kind": "article",
+      "serviceOwner": "/tax-compliance-bali"
+    },
+    "/blog/villa-depreciation-tax-indonesia-records": {
+      "primary": "villa depreciation tax indonesia",
+      "kind": "article",
+      "serviceOwner": "/tax-compliance-bali"
+    },
+    "/blog/deductible-expenses-villa-indonesia": {
+      "primary": "deductible expenses villa indonesia",
+      "kind": "article",
+      "serviceOwner": "/tax-compliance-bali"
+    },
+    "/blog/fiscal-reconciliation-indonesia-accounting-profit-taxable-profit": {
+      "primary": "fiscal reconciliation indonesia",
+      "kind": "article",
+      "serviceOwner": "/tax-compliance-bali"
+    },
+    "/blog/transfer-pricing-pt-pma-villa-records": {
+      "primary": "transfer pricing pt pma villa",
+      "kind": "article",
+      "serviceOwner": "/tax-compliance-bali"
+    },
+    "/blog/bali-villa-supplier-bank-detail-change-checklist": {
+      "primary": "bali villa supplier bank detail change checklist",
+      "kind": "article",
+      "serviceOwner": "/villa-payroll-records-bali"
     }
   }
 }
