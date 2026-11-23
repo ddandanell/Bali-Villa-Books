@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { validateLocks, validateArticles, normalizeKeyword, inventory } from "./seo-autopilot.mjs";
+import { validateLocks, validateArticles, normalizeKeyword, inventory, validateLiveArticle } from "./seo-autopilot.mjs";
 import { repointPost, includeAutopilotGuides } from "../../api/gateway.mjs";
 const read = name => JSON.parse(readFileSync(new URL(`../../${name}`, import.meta.url)));
 const config = read("seo-autopilot.json"), lock = read(config.keywordLock), posts = read(config.articles);
@@ -36,3 +36,11 @@ assert.equal(calls, 2); assert.equal(listed.length, 52);
 await assert.rejects(inventory(async () => new Response('[]', {status:503})), /inventory failed/);
 await assert.rejects(inventory(async () => new Response(JSON.stringify(Array.from({length:50},()=>({slug:"repeated"}))), {headers:{"content-type":"application/json"}})), /Repeated journal slug/);
 console.log("PASS: keyword collisions/reassignment, article validation, gateway ownership, full inventory pagination and failed-read handling.");
+
+const sample = { slug: "source-check", updatedAt: "2026-11-23T01:23:00.000Z", metaTitle: "Source check", metaDescription: "Expected description", imageUrl: "/images/source.webp", contentHtml: '<a href="https://www.airbnb.com/help/article/3389">Primary source</a>' };
+const initialHtml = '<head><title>Source check</title><meta name="description" content="Expected description"><link rel="canonical" href="https://example.test/blog/source-check"></head><body><img src="/images/source.webp"><a href="https://www.airbnb.com/help/article/3389">Primary source</a><script>{"static":true,"updatedAt":"2026-11-23T01:23:00.000Z"}</script></body>';
+assert.deepEqual(validateLiveArticle(initialHtml, sample, "https://example.test"), []);
+assert.ok(validateLiveArticle(initialHtml.replace('<a href="https://www.airbnb.com/help/article/3389">Primary source</a>', ''), sample, "https://example.test").some(e => e.includes("missing rendered link")));
+assert.ok(validateLiveArticle(initialHtml.replace(sample.updatedAt, "2026-11-01T00:00:00.000Z"), sample, "https://example.test").includes("expected static revision"));
+assert.ok(validateLiveArticle('<script>' + JSON.stringify(sample) + '</script>', sample, "https://example.test").includes("expected rendered image"));
+assert.ok(validateLiveArticle(initialHtml.replace('rel="canonical"', 'rel="alternate"'), sample, "https://example.test").includes("expected canonical URL"));
