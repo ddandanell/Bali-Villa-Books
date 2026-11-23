@@ -44,3 +44,6 @@ assert.ok(validateLiveArticle(initialHtml.replace('<a href="https://www.airbnb.c
 assert.ok(validateLiveArticle(initialHtml.replace(sample.updatedAt, "2026-11-01T00:00:00.000Z"), sample, "https://example.test").includes("expected static revision"));
 assert.ok(validateLiveArticle('<script>' + JSON.stringify(sample) + '</script>', sample, "https://example.test").includes("expected rendered image"));
 assert.ok(validateLiveArticle(initialHtml.replace('rel="canonical"', 'rel="alternate"'), sample, "https://example.test").includes("expected canonical URL"));
+const withSocialDescription = initialHtml.replace('</head>', '<meta property="og:description" content="Expected description"></head>');
+assert.ok(validateLiveArticle(withSocialDescription.replace('<meta name="description" content="Expected description">', ''), sample, "https://example.test").includes("expected description"));
+assert.ok(validateLiveArticle(withSocialDescription.replace('name="description" content="Expected description"', 'name="description" content="Stale description"'), sample, "https://example.test").includes("expected description"));

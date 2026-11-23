@@ -85,7 +85,8 @@ export function validateLiveArticle(html, post, site) {
   if (!head.includes(`<title>${escape(post.metaTitle)}</title>`)) errors.push("expected document title");
   const canonicals = [...head.matchAll(/<link\b[^>]*>/gi)].map(m => m[0]).filter(tag => /\brel=["']canonical["']/i.test(tag));
   if (canonicals.length !== 1 || !canonicals[0].includes(`href="${site}/blog/${post.slug}"`)) errors.push("expected canonical URL");
-  if (!head.includes(`content="${escape(post.metaDescription)}"`)) errors.push("expected description");
+  const descriptions = [...head.matchAll(/<meta\b[^>]*>/gi)].map(m => m[0]).filter(tag => /\bname=["']description["']/i.test(tag));
+  if (descriptions.length !== 1 || !descriptions[0].includes(`content="${escape(post.metaDescription)}"`)) errors.push("expected description");
   if (!html.includes(`src="${escape(post.imageUrl)}"`)) errors.push("expected rendered image");
   // Inspect actual anchors, not the escaped bootstrap JSON. This catches the
   // citation-loss gate that held the original co-host draft in the legacy path.
