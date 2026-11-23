@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-23",
+  "recordType": "blocked release verification",
+  "status": "tested reviewable PR; not merged or published",
+  "implementationCommit": "c3876c1abeac5f5b0fb95bece20e887c250fb37f",
+  "pullRequest": "https://github.com/ddandanell/Bali-Villa-Books/pull/39",
+  "startingAndUnchangedMain": "6df13136a24d9f6af67e1e4bea70ca6d73b33d98",
+  "localValidation": "Node 24.22.3; frozen corepack pnpm 10.26.1 install; seo:check --base-ref starting main and full corepack pnpm check passed. All three built autopilot pages pass stronger rendered-citation checks. All seven uploaded blobs match validated local file bytes.",
+  "remoteValidation": {
+    "repositoryRun": 45094588826,
+    "job": 137431454103,
+    "outcome": "failure before any step started",
+    "annotation": "The job was not started because your account is locked due to a billing issue.",
+    "annotationEvidence": "https://api.github.com/repos/ddandanell/Bali-Villa-Books/check-runs/137431454103/annotations",
+    "browserEvidence": "Same exact annotation observed by opening job annotations in public GitHub UI.",
+    "logs": "Log download returned BlobNotFound; no build step ran.",
+    "vercelPreview": "success for implementation SHA; deployment HiNqnpLTePn1WcfNjWXGqyCfwBUq",
+    "branchProtectionRead": "Connected API returned 403 Resource not accessible by integration. Owner instructions require passing checks before merge; failed check not bypassed."
+  },
+  "publicVerification": "seo:verify-live confirms existing homepage/services/pricing; fails sitemap check because new co-host guide is not deployed. Publication not claimed.",
+  "browserAndPerformance": "Connected extension unavailable. Cloud GitHub browser confirmed exact runner error. Native mobile input failed with AT-SPI provider unavailable. No field Core Web Vitals or narrow-viewport result claimed.",
+  "repairAttempts": 1,
+  "reasonNoRepair": "GitHub billing lock is an account issue, not a source/build failure. No workflow/protection bypass or payment change attempted.",
+  "preservation": "Production, backend articles/data/forms and existing keyword owners preserved. Historical co-host draft retained; resumed version and original image are in PR.",
+  "nextActions": [
+    "Resolve the GitHub account billing lock.",
+    "Rerun the required Repository checks on the current PR head.",
+    "After checks pass, merge PR39 with expected head SHA, observe production Vercel commit status, run strengthened seo:verify-live and inspect the public article/navigation/image/sitemap in browser.",
+    "Resume this PR before generating any other article."
+  ],
+  "reviewRepair": "Vercel review identified that a correct og:description could mask a stale or missing standard description. Require exactly one meta[name=description] with the expected value; added missing/stale regression cases.",
+  "automation": "Paused after confirming the persistent GitHub account billing lock.",
+  "publicArticleStatus": 404,
+  "latestObservedRequiredRun": {
+    "run": 45094860618,
+    "head": "49d3a05d4717cccc22367687c5dec7b9bd090754",
+    "status": "failure"
+  }
+}

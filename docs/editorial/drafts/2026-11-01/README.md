@@ -1,3 +1,7 @@
+## Current release status, 23 November 2026
+
+Resumed under the authorized SEO autopilot. The refreshed article is registered in `lib/site-content/src/autopilot-posts.json` for prerendered publication with an original local diagram. All four primary sources were checked again on 23 November. The static path preserves source citations without modifying the legacy backend sanitizer. The original draft and historical validation records below are retained as provenance. Release and public verification outcomes belong to `docs/seo/autopilot-runs/2026-11-23*.json`; registration alone is not proof of publication. No licensed professional review is claimed.
+
 # Journal draft: 1 November 2026
 
 **Airbnb Co-Host Payouts: Reconcile the Owner's Share**

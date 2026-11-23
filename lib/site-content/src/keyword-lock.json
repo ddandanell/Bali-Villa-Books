@@ -794,6 +794,41 @@
       "primary": "bali villa supplier bank detail change checklist",
       "kind": "article",
       "serviceOwner": "/villa-payroll-records-bali"
+    },
+    "/blog/bali-villa-purchase-taxes-records-closing-costs": {
+      "primary": "bali villa purchase taxes",
+      "kind": "article",
+      "serviceOwner": "/tax-compliance-bali"
+    },
+    "/blog/hak-pakai-hak-sewa-hgb-tax-records": {
+      "primary": "hak pakai hak sewa tax",
+      "kind": "article",
+      "serviceOwner": "/tax-compliance-bali"
+    },
+    "/blog/nominee-villa-bali-risk-records-questions": {
+      "primary": "nominee villa bali risk",
+      "kind": "article",
+      "serviceOwner": "/tax-compliance-bali"
+    },
+    "/blog/villa-tax-comparison-indonesia-records-before-rates": {
+      "primary": "villa tax comparison indonesia",
+      "kind": "article",
+      "serviceOwner": "/tax-compliance-bali"
+    },
+    "/blog/pt-pma-vs-leasehold-tax-records-cost-comparison": {
+      "primary": "pt pma vs leasehold tax",
+      "kind": "article",
+      "serviceOwner": "/tax-compliance-bali"
+    },
+    "/blog/individual-vs-pt-pma-tax-bali-villa-records": {
+      "primary": "individual vs pt pma tax bali",
+      "kind": "article",
+      "serviceOwner": "/tax-compliance-bali"
+    },
+    "/blog/airbnb-co-host-payout-reconciliation-bali-villas": {
+      "primary": "airbnb co host payout reconciliation",
+      "kind": "article",
+      "serviceOwner": "/airbnb-bookkeeping-bali"
     }
   }
 }

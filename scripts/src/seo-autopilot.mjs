@@ -77,6 +77,25 @@ export async function inventory(fetcher = fetch) {
   throw new Error("Journal inventory did not terminate");
 }
 
+export function validateLiveArticle(html, post, site) {
+  const errors = [];
+  const escape = value => value.replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
+  if (!html.includes('"static":true') || !html.includes('"updatedAt":' + JSON.stringify(post.updatedAt))) errors.push("expected static revision");
+  const head = html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)?.[1] ?? "";
+  if (!head.includes(`<title>${escape(post.metaTitle)}</title>`)) errors.push("expected document title");
+  const canonicals = [...head.matchAll(/<link\b[^>]*>/gi)].map(m => m[0]).filter(tag => /\brel=["']canonical["']/i.test(tag));
+  if (canonicals.length !== 1 || !canonicals[0].includes(`href="${site}/blog/${post.slug}"`)) errors.push("expected canonical URL");
+  const descriptions = [...head.matchAll(/<meta\b[^>]*>/gi)].map(m => m[0]).filter(tag => /\bname=["']description["']/i.test(tag));
+  if (descriptions.length !== 1 || !descriptions[0].includes(`content="${escape(post.metaDescription)}"`)) errors.push("expected description");
+  if (!html.includes(`src="${escape(post.imageUrl)}"`)) errors.push("expected rendered image");
+  // Inspect actual anchors, not the escaped bootstrap JSON. This catches the
+  // citation-loss gate that held the original co-host draft in the legacy path.
+  for (const match of post.contentHtml.matchAll(/href="([^"]+)"/g)) {
+    if (!html.includes(`href="${escape(match[1])}"`)) errors.push(`missing rendered link ${match[1]}`);
+  }
+  return errors;
+}
+
 async function main() {
   const [mode = "check", ...args] = process.argv.slice(2);
   const config = read("seo-autopilot.json"), lock = read(config.keywordLock), posts = read(config.articles);
@@ -114,7 +133,10 @@ async function main() {
         if (route === "/sitemap-journal.xml") for (const p of posts) if (!html.includes(`/blog/${p.slug}</loc>`)) throw new Error(`Sitemap missing ${p.slug}`);
       } else {
         if (!response.headers.get("content-type")?.includes("text/html") || !html.includes("<h1")) throw new Error(`Not a public page: ${route}`);
-        if (post && (!html.includes(post.slug) || !html.includes(post.title) || !html.includes('"static":true') || !html.includes('"updatedAt":' + JSON.stringify(post.updatedAt)))) throw new Error(`Expected article revision not live: ${route}`);
+        if (post) {
+          const errors = validateLiveArticle(html, post, config.site);
+          if (errors.length) throw new Error(`Expected article revision not live: ${route}: ${errors.join(", ")}`);
+        }
       }
       console.log(`PASS live: ${route}`);
     }
